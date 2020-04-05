@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- 读取外部配置文件 -->
+	<context:property-placeholder location="server.properties,jdbc.properties" />
+	
+	<!-- 开启注解扫描 -->
+	<context:component-scan base-package="com"></context:component-scan>
+
+	<!-- 数据源配置 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}"></property>
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		
+		<!-- 修改select语句的默认返回值， 当没有查询到结果的时候，返回空字符串 -->
+		<property name="validationQuery" value="select ''"></property>
+		<!-- 设置每隔多长时间就去检查一下空闲连接超时，单位毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="5000"></property>
+		<!-- 在进行后台对象清理的时候，每次检查几个连接 -->
+		<property name="numTestsPerEvictionRun" value="10"></property>
+		
+		<!-- 连接有效性校验 -->
+		<property name="testOnBorrow" value="true"></property>
+		<property name="testWhileIdle" value="true"></property>
+		
+		<!-- 定义数据源在初始时的初始连接数 -->
+		<property name="initialSize" value="10"></property>		
+		<!-- 定义最大连接数 -->
+		<property name="maxActive" value="50"></property>
+		<!-- 定义最大空闲连接数 -->
+		<property name="maxIdle" value="5"></property>
+		<!-- 定义最小空闲连接数 -->
+		<property name="minIdle" value="1"></property>
+	</bean>
+	
+	<!-- 配置数据连接对象工厂 -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="packagesToScan" value="com.game.**.entity"></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.show_sql">false</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 定义spring的命名空间，按照自己的方式来解析字段，初始化bean对象。实际上TotemServer就是通过
+	自定义bean的方式来初始化的，而我们的TotemServer对象就是Netty服务的提供者 -->
+	
+</beans>

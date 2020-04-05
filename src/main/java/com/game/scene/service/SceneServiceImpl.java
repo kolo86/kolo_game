@@ -50,7 +50,7 @@ public class SceneServiceImpl implements ISceneService {
 
         AbstractMapHandler handler = SceneType.MAINCITY.getHandler();
         if(!handler.checkChangeMapCondition(player, SceneType.MAINCITY.getMapId())){
-            logger.error("玩家{}创建角色后，进入地图{}失败！玩家当前地图ID为：{}", account, SceneType.MAINCITY.getMapName(), player.getMapId());
+            logger.error("玩家{}创建角色后，进入地图{}失败！玩家当前地图ID为：{}", player.getAccountEntity().getNickName(), SceneType.MAINCITY.getMapName(), player.getMapId());
         }
         handler.doEnterMap(player);
         persistenceService.update(player);

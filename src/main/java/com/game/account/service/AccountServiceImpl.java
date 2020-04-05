@@ -5,6 +5,7 @@ import com.game.account.entity.AccountEntity;
 import com.game.account.entity.PlayerEntity;
 import com.game.account.event.CreateAccountAsyncEvent;
 import com.game.persistence.IPersistenceService;
+import com.game.util.MD5Utils;
 import com.game.util.PacketUtils;
 import com.netty.proto.Message;
 import io.netty.channel.Channel;
@@ -84,7 +85,8 @@ public class AccountServiceImpl implements IAccountService{
 			return ;
 		}
 
-		AccountEntity newAccount = AccountEntity.valueOf(message.getAccount(), message.getNickName());
+		String accountId = MD5Utils.encryption(message.getAccount());
+		AccountEntity newAccount = AccountEntity.valueOf(accountId, message.getNickName());
 		saveAccount(channel, newAccount);
 
 		PlayerEntity playerEntity = PlayerEntity.valueOf(newAccount);

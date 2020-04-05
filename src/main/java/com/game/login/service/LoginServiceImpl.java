@@ -15,6 +15,7 @@ import com.game.account.service.IAccountService;
 import com.game.account.service.IPlayerService;
 import com.game.login.event.CreateRoleLoginEvent;
 import com.game.login.event.LoginEvent;
+import com.game.util.MD5Utils;
 import com.game.util.PacketUtils;
 import io.netty.channel.Channel;
 import org.slf4j.Logger;
@@ -46,7 +47,7 @@ public class LoginServiceImpl implements ILoginService {
     public void createAccountToLogin(String accountId) {
         PlayerEntity player = playerService.getPlayer(accountId);
         if (player == null) {
-            logger.error("玩家{}创建角色后，登录失败，无法根据账号ID获取账号信息", accountId);
+            logger.error("玩家创建角色后，登录失败，无法根据账号ID获取账号信息");
         }
 
         player.online();
@@ -57,7 +58,8 @@ public class LoginServiceImpl implements ILoginService {
 
     @Override
     public void login(Channel channel, String account) {
-        boolean checkAccount = accountService.checkAccount(account);
+        String encryptionAccount = MD5Utils.encryption(account);
+        boolean checkAccount = accountService.checkAccount(encryptionAccount);
         if(!checkAccount){
             StringBuilder sb = new StringBuilder();
             sb.append("妲己：你还没有创建账号：").append(account).append("呢，快来创建帐号吧！");
@@ -65,7 +67,7 @@ public class LoginServiceImpl implements ILoginService {
             return ;
         }
 
-        PlayerEntity player = playerService.getPlayer(account);
+        PlayerEntity player = playerService.getPlayer(encryptionAccount);
         player.login(channel);
         playerService.cacheChannelMap(channel, player);
 
@@ -73,7 +75,7 @@ public class LoginServiceImpl implements ILoginService {
         sb.append("欢迎回来:").append(player.getAccountEntity().getNickName());
         PacketUtils.send(player, sb.toString());
 
-        eventService.submitAsyncEvent(LoginEvent.valueOf(account));
+        eventService.submitAsyncEvent(LoginEvent.valueOf(encryptionAccount));
     }
 
 }

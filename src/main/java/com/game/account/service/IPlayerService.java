@@ -66,4 +66,11 @@ public interface IPlayerService {
      * @param player
      */
     void cacheChannelMap(Channel channel, PlayerEntity player);
+
+    /**
+     * 玩家退出游戏
+     *
+     * @param accountId
+     */
+    void signOut(String accountId);
 }

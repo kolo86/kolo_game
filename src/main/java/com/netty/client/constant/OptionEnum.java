@@ -122,6 +122,23 @@ public enum OptionEnum {
                     .build();
             return message;
         }
+    },
+
+    QUIT(6, "退出"){
+        @Override
+        public Message.Option getMessage(String[] args) {
+            Message.Option message = Message.Option.newBuilder()
+                    .setOptionType(Message.Option.OptionType.QUIT).
+                            setState(Message.State.newBuilder()
+                                    .build())
+                    .build();
+            return message;
+        }
+
+        @Override
+        public boolean checkParamNum(String[] args) {
+            return args.length - 1 != Message.Quit.class.getFields().length;
+        }
     }
 
     ;

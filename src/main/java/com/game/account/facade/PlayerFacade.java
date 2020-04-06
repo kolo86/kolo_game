@@ -12,6 +12,7 @@ package com.game.account.facade;
 import com.frame.annotation.EventAnno;
 import com.frame.event.impl.OpenServerSyncEvent;
 import com.game.account.service.IPlayerService;
+import com.game.signout.event.SignOutEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -39,4 +40,12 @@ public class PlayerFacade {
         playerService.onStart();
     }
 
+    /**
+     * 监听玩家退出游戏事件
+     *
+     */
+    @EventAnno
+    public void doSignOut(SignOutEvent event){
+        playerService.signOut(event.getAccountId());
+    }
 }

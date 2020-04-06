@@ -12,6 +12,7 @@ message Option{
     CHANGE_MAP = 3; // 切图
     STATE = 4; // 查看当前场景中所有实体的状态
     RESPONSE = 5; // 返回数据
+    QUIT = 6; // 玩家退出游戏
   }
 
   OptionType option_type = 1;
@@ -23,6 +24,7 @@ message Option{
       ChangeMap changeMap = 5;
       State state = 6;
       Response response = 7;
+      Quit quit = 8;
   }
 
 }
@@ -55,4 +57,8 @@ message State{
 // 返回给客户端的消息
 message Response{
   string answer = 1;
+}
+
+// 玩家退出游戏
+message Quit{
 }

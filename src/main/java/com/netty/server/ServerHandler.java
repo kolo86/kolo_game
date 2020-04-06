@@ -43,7 +43,12 @@ public class ServerHandler extends SimpleChannelInboundHandler<Message.Option> {
             HandlerDefintion handlerDefintion = ActionDispatcher.getHandlerDefintion(state.getClass());
             handlerDefintion.invoke(ctx.channel(), state);
 
-        } else{
+        } else if(msg.getOptionType() == Message.Option.OptionType.QUIT){
+            Message.Quit quit = msg.getQuit();
+            HandlerDefintion handlerDefintion = ActionDispatcher.getHandlerDefintion(quit.getClass());
+            handlerDefintion.invoke(ctx.channel(), quit);
+
+        }else{
             logger.error("传入的协议类型不对应！！！");
         }
     }

@@ -138,4 +138,10 @@ public class SceneServiceImpl implements ISceneService {
         PlayerEntity player = playerService.getPlayer(accountId);
         enterNewMap(player, player.getMapId());
     }
+
+    @Override
+    public void signOut(String accountId) {
+        PlayerEntity player = playerService.getPlayer(accountId);
+        SceneType.getSceneById(player.getMapId()).getHandler().doSignOut(player);
+    }
 }

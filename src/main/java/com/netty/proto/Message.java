@@ -105,6 +105,19 @@ public final class Message {
      */
     ResponseOrBuilder getResponseOrBuilder();
 
+    /**
+     * <code>.Quit quit = 8;</code>
+     */
+    boolean hasQuit();
+    /**
+     * <code>.Quit quit = 8;</code>
+     */
+    Quit getQuit();
+    /**
+     * <code>.Quit quit = 8;</code>
+     */
+    QuitOrBuilder getQuitOrBuilder();
+
     public Option.OptionContentCase getOptionContentCase();
   }
   /**
@@ -237,6 +250,20 @@ public final class Message {
               optionContentCase_ = 7;
               break;
             }
+            case 66: {
+              Quit.Builder subBuilder = null;
+              if (optionContentCase_ == 8) {
+                subBuilder = ((Quit) optionContent_).toBuilder();
+              }
+              optionContent_ =
+                  input.readMessage(Quit.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((Quit) optionContent_);
+                optionContent_ = subBuilder.buildPartial();
+              }
+              optionContentCase_ = 8;
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -322,6 +349,14 @@ public final class Message {
        * <code>RESPONSE = 5;</code>
        */
       RESPONSE(5),
+      /**
+       * <pre>
+       * 玩家退出游戏
+       * </pre>
+       *
+       * <code>QUIT = 6;</code>
+       */
+      QUIT(6),
       UNRECOGNIZED(-1),
       ;
 
@@ -373,6 +408,14 @@ public final class Message {
        * <code>RESPONSE = 5;</code>
        */
       public static final int RESPONSE_VALUE = 5;
+      /**
+       * <pre>
+       * 玩家退出游戏
+       * </pre>
+       *
+       * <code>QUIT = 6;</code>
+       */
+      public static final int QUIT_VALUE = 6;
 
 
       public final int getNumber() {
@@ -399,6 +442,7 @@ public final class Message {
           case 3: return CHANGE_MAP;
           case 4: return STATE;
           case 5: return RESPONSE;
+          case 6: return QUIT;
           default: return null;
         }
       }
@@ -461,6 +505,7 @@ public final class Message {
       CHANGEMAP(5),
       STATE(6),
       RESPONSE(7),
+      QUIT(8),
       OPTIONCONTENT_NOT_SET(0);
       private final int value;
       private OptionContentCase(int value) {
@@ -482,6 +527,7 @@ public final class Message {
           case 5: return CHANGEMAP;
           case 6: return STATE;
           case 7: return RESPONSE;
+          case 8: return QUIT;
           case 0: return OPTIONCONTENT_NOT_SET;
           default: return null;
         }
@@ -670,6 +716,32 @@ public final class Message {
       return Response.getDefaultInstance();
     }
 
+    public static final int QUIT_FIELD_NUMBER = 8;
+    /**
+     * <code>.Quit quit = 8;</code>
+     */
+    public boolean hasQuit() {
+      return optionContentCase_ == 8;
+    }
+    /**
+     * <code>.Quit quit = 8;</code>
+     */
+    public Quit getQuit() {
+      if (optionContentCase_ == 8) {
+         return (Quit) optionContent_;
+      }
+      return Quit.getDefaultInstance();
+    }
+    /**
+     * <code>.Quit quit = 8;</code>
+     */
+    public QuitOrBuilder getQuitOrBuilder() {
+      if (optionContentCase_ == 8) {
+         return (Quit) optionContent_;
+      }
+      return Quit.getDefaultInstance();
+    }
+
     private byte memoizedIsInitialized = -1;
     @Override
     public final boolean isInitialized() {
@@ -704,6 +776,9 @@ public final class Message {
       }
       if (optionContentCase_ == 7) {
         output.writeMessage(7, (Response) optionContent_);
+      }
+      if (optionContentCase_ == 8) {
+        output.writeMessage(8, (Quit) optionContent_);
       }
       unknownFields.writeTo(output);
     }
@@ -741,6 +816,10 @@ public final class Message {
       if (optionContentCase_ == 7) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(7, (Response) optionContent_);
+      }
+      if (optionContentCase_ == 8) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, (Quit) optionContent_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -787,6 +866,10 @@ public final class Message {
           result = result && getResponse()
               .equals(other.getResponse());
           break;
+        case 8:
+          result = result && getQuit()
+              .equals(other.getQuit());
+          break;
         case 0:
         default:
       }
@@ -827,6 +910,10 @@ public final class Message {
         case 7:
           hash = (37 * hash) + RESPONSE_FIELD_NUMBER;
           hash = (53 * hash) + getResponse().hashCode();
+          break;
+        case 8:
+          hash = (37 * hash) + QUIT_FIELD_NUMBER;
+          hash = (53 * hash) + getQuit().hashCode();
           break;
         case 0:
         default:
@@ -1037,6 +1124,13 @@ public final class Message {
             result.optionContent_ = responseBuilder_.build();
           }
         }
+        if (optionContentCase_ == 8) {
+          if (quitBuilder_ == null) {
+            result.optionContent_ = optionContent_;
+          } else {
+            result.optionContent_ = quitBuilder_.build();
+          }
+        }
         result.optionContentCase_ = optionContentCase_;
         onBuilt();
         return result;
@@ -1112,6 +1206,10 @@ public final class Message {
           }
           case RESPONSE: {
             mergeResponse(other.getResponse());
+            break;
+          }
+          case QUIT: {
+            mergeQuit(other.getQuit());
             break;
           }
           case OPTIONCONTENT_NOT_SET: {
@@ -2021,6 +2119,142 @@ public final class Message {
         optionContentCase_ = 7;
         onChanged();;
         return responseBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Quit, Quit.Builder, QuitOrBuilder> quitBuilder_;
+      /**
+       * <code>.Quit quit = 8;</code>
+       */
+      public boolean hasQuit() {
+        return optionContentCase_ == 8;
+      }
+      /**
+       * <code>.Quit quit = 8;</code>
+       */
+      public Quit getQuit() {
+        if (quitBuilder_ == null) {
+          if (optionContentCase_ == 8) {
+            return (Quit) optionContent_;
+          }
+          return Quit.getDefaultInstance();
+        } else {
+          if (optionContentCase_ == 8) {
+            return quitBuilder_.getMessage();
+          }
+          return Quit.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.Quit quit = 8;</code>
+       */
+      public Builder setQuit(Quit value) {
+        if (quitBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          optionContent_ = value;
+          onChanged();
+        } else {
+          quitBuilder_.setMessage(value);
+        }
+        optionContentCase_ = 8;
+        return this;
+      }
+      /**
+       * <code>.Quit quit = 8;</code>
+       */
+      public Builder setQuit(
+          Quit.Builder builderForValue) {
+        if (quitBuilder_ == null) {
+          optionContent_ = builderForValue.build();
+          onChanged();
+        } else {
+          quitBuilder_.setMessage(builderForValue.build());
+        }
+        optionContentCase_ = 8;
+        return this;
+      }
+      /**
+       * <code>.Quit quit = 8;</code>
+       */
+      public Builder mergeQuit(Quit value) {
+        if (quitBuilder_ == null) {
+          if (optionContentCase_ == 8 &&
+              optionContent_ != Quit.getDefaultInstance()) {
+            optionContent_ = Quit.newBuilder((Quit) optionContent_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            optionContent_ = value;
+          }
+          onChanged();
+        } else {
+          if (optionContentCase_ == 8) {
+            quitBuilder_.mergeFrom(value);
+          }
+          quitBuilder_.setMessage(value);
+        }
+        optionContentCase_ = 8;
+        return this;
+      }
+      /**
+       * <code>.Quit quit = 8;</code>
+       */
+      public Builder clearQuit() {
+        if (quitBuilder_ == null) {
+          if (optionContentCase_ == 8) {
+            optionContentCase_ = 0;
+            optionContent_ = null;
+            onChanged();
+          }
+        } else {
+          if (optionContentCase_ == 8) {
+            optionContentCase_ = 0;
+            optionContent_ = null;
+          }
+          quitBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.Quit quit = 8;</code>
+       */
+      public Quit.Builder getQuitBuilder() {
+        return getQuitFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.Quit quit = 8;</code>
+       */
+      public QuitOrBuilder getQuitOrBuilder() {
+        if ((optionContentCase_ == 8) && (quitBuilder_ != null)) {
+          return quitBuilder_.getMessageOrBuilder();
+        } else {
+          if (optionContentCase_ == 8) {
+            return (Quit) optionContent_;
+          }
+          return Quit.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.Quit quit = 8;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Quit, Quit.Builder, QuitOrBuilder>
+          getQuitFieldBuilder() {
+        if (quitBuilder_ == null) {
+          if (!(optionContentCase_ == 8)) {
+            optionContent_ = Quit.getDefaultInstance();
+          }
+          quitBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              Quit, Quit.Builder, QuitOrBuilder>(
+                  (Quit) optionContent_,
+                  getParentForChildren(),
+                  isClean());
+          optionContent_ = null;
+        }
+        optionContentCase_ = 8;
+        onChanged();;
+        return quitBuilder_;
       }
       @Override
       public final Builder setUnknownFields(
@@ -5422,6 +5656,426 @@ public final class Message {
 
   }
 
+  public interface QuitOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Quit)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * <pre>
+   * 玩家退出游戏
+   * </pre>
+   *
+   * Protobuf type {@code Quit}
+   */
+  public  static final class Quit extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:Quit)
+      QuitOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Quit.newBuilder() to construct.
+    private Quit(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Quit() {
+    }
+
+    @Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Quit(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Message.internal_static_Quit_descriptor;
+    }
+
+    @Override
+    protected FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Message.internal_static_Quit_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Quit.class, Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      unknownFields.writeTo(output);
+    }
+
+    @Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Quit)) {
+        return super.equals(obj);
+      }
+      Quit other = (Quit) obj;
+
+      boolean result = true;
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Quit parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Quit parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Quit parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Quit parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Quit parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Quit parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Quit parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static Quit parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Quit parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static Quit parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Quit parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static Quit parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Quit prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @Override
+    protected Builder newBuilderForType(
+        BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * 玩家退出游戏
+     * </pre>
+     *
+     * Protobuf type {@code Quit}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Quit)
+        QuitOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Message.internal_static_Quit_descriptor;
+      }
+
+      @Override
+      protected FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Message.internal_static_Quit_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Quit.class, Builder.class);
+      }
+
+      // Construct using com.netty.proto.Message.Quit.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Message.internal_static_Quit_descriptor;
+      }
+
+      @Override
+      public Quit getDefaultInstanceForType() {
+        return Quit.getDefaultInstance();
+      }
+
+      @Override
+      public Quit build() {
+        Quit result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @Override
+      public Quit buildPartial() {
+        Quit result = new Quit(this);
+        onBuilt();
+        return result;
+      }
+
+      @Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Quit) {
+          return mergeFrom((Quit)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Quit other) {
+        if (other == Quit.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        Quit parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (Quit) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      @Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:Quit)
+    }
+
+    // @@protoc_insertion_point(class_scope:Quit)
+    private static final Quit DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Quit();
+    }
+
+    public static Quit getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Quit>
+        PARSER = new com.google.protobuf.AbstractParser<Quit>() {
+      @Override
+      public Quit parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Quit(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Quit> parser() {
+      return PARSER;
+    }
+
+    @Override
+    public com.google.protobuf.Parser<Quit> getParserForType() {
+      return PARSER;
+    }
+
+    @Override
+    public Quit getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Option_descriptor;
   private static final 
@@ -5457,6 +6111,11 @@ public final class Message {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Response_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Quit_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Quit_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -5466,20 +6125,21 @@ public final class Message {
       descriptor;
   static {
     String[] descriptorData = {
-      "\n\nUser.proto\"\317\002\n\006Option\022\'\n\013option_type\030\001" +
+      "\n\nUser.proto\"\360\002\n\006Option\022\'\n\013option_type\030\001" +
       " \001(\0162\022.Option.OptionType\022\035\n\010register\030\002 \001" +
       "(\0132\t.RegisterH\000\022 \n\tcreatRole\030\003 \001(\0132\013.Cre" +
       "ateRoleH\000\022\027\n\005login\030\004 \001(\0132\006.LoginH\000\022\037\n\tch" +
       "angeMap\030\005 \001(\0132\n.ChangeMapH\000\022\027\n\005state\030\006 \001" +
       "(\0132\006.StateH\000\022\035\n\010response\030\007 \001(\0132\t.Respons" +
-      "eH\000\"X\n\nOptionType\022\014\n\010REGISTER\020\000\022\010\n\004ROLE\020" +
-      "\001\022\t\n\005LOGIN\020\002\022\016\n\nCHANGE_MAP\020\003\022\t\n\005STATE\020\004\022" +
-      "\014\n\010RESPONSE\020\005B\017\n\roptionContent\"-\n\010Regist" +
-      "er\022\017\n\007account\030\001 \001(\t\022\020\n\010nickName\030\002 \001(\t\"\036\n" +
-      "\nCreateRole\022\020\n\010roleType\030\001 \001(\005\"\030\n\005Login\022\017" +
-      "\n\007account\030\001 \001(\t\"\032\n\tChangeMap\022\r\n\005mapId\030\001 " +
-      "\001(\005\"\007\n\005State\"\032\n\010Response\022\016\n\006answer\030\001 \001(\t" +
-      "B\034\n\017com.netty.protoB\007MessageH\001b\006proto3"
+      "eH\000\022\025\n\004quit\030\010 \001(\0132\005.QuitH\000\"b\n\nOptionType" +
+      "\022\014\n\010REGISTER\020\000\022\010\n\004ROLE\020\001\022\t\n\005LOGIN\020\002\022\016\n\nC" +
+      "HANGE_MAP\020\003\022\t\n\005STATE\020\004\022\014\n\010RESPONSE\020\005\022\010\n\004" +
+      "QUIT\020\006B\017\n\roptionContent\"-\n\010Register\022\017\n\007a" +
+      "ccount\030\001 \001(\t\022\020\n\010nickName\030\002 \001(\t\"\036\n\nCreate" +
+      "Role\022\020\n\010roleType\030\001 \001(\005\"\030\n\005Login\022\017\n\007accou" +
+      "nt\030\001 \001(\t\"\032\n\tChangeMap\022\r\n\005mapId\030\001 \001(\005\"\007\n\005" +
+      "State\"\032\n\010Response\022\016\n\006answer\030\001 \001(\t\"\006\n\004Qui" +
+      "tB\034\n\017com.netty.protoB\007MessageH\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -5498,7 +6158,7 @@ public final class Message {
     internal_static_Option_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Option_descriptor,
-        new String[] { "OptionType", "Register", "CreatRole", "Login", "ChangeMap", "State", "Response", "OptionContent", });
+        new String[] { "OptionType", "Register", "CreatRole", "Login", "ChangeMap", "State", "Response", "Quit", "OptionContent", });
     internal_static_Register_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_Register_fieldAccessorTable = new
@@ -5535,6 +6195,12 @@ public final class Message {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Response_descriptor,
         new String[] { "Answer", });
+    internal_static_Quit_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_Quit_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Quit_descriptor,
+        new String[] { });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

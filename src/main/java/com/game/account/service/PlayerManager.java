@@ -107,4 +107,15 @@ public class PlayerManager {
         return channel;
     }
 
+    /**
+     * 根据玩家账号ID移除玩家channel信息
+     *
+     * @param accountId
+     */
+    public void removeChannel(String accountId){
+        PlayerEntity playerEntity = accountPlayerMap.get(accountId);
+        if(playerEntity != null && playerEntity.getChannel() != null){
+            channelPlayerMap.remove(playerEntity.getChannel());
+        }
+    }
 }

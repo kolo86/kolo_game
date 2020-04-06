@@ -14,6 +14,7 @@ import com.frame.annotation.ReceiverAnno;
 import com.game.login.event.LoginEvent;
 import com.game.role.event.CreateRoleEvent;
 import com.game.scene.service.ISceneService;
+import com.game.signout.event.SignOutEvent;
 import com.netty.proto.Message;
 import io.netty.channel.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,16 @@ public class SceneFacade {
     @EventAnno
     public void doLogin(LoginEvent event){
         sceneService.login(event.getAccountId());
+    }
+
+    /**
+     * 监听玩家退出游戏事件
+     *
+     * @param event
+     */
+    @EventAnno
+    public void doSignOut(SignOutEvent event){
+        sceneService.signOut(event.getAccountId());
     }
 
     /**

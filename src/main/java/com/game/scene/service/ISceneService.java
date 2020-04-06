@@ -50,4 +50,11 @@ public interface ISceneService {
      * @param channel
      */
     void state(Channel channel);
+
+    /**
+     * 玩家退出游戏事件
+     *
+     * @param accountId
+     */
+    void signOut(String accountId);
 }

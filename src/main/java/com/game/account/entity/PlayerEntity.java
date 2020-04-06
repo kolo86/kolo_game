@@ -98,4 +98,12 @@ public class PlayerEntity {
         this.online = true;
     }
 
+    /**
+     * 玩家退出游戏
+     *
+     */
+    public void signOut(){
+        this.online = false;
+    }
+
 }

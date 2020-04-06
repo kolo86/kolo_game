@@ -79,4 +79,9 @@ public class PlayerServiceImpl implements IPlayerService {
     public void cacheChannelMap(Channel channel, PlayerEntity player) {
         playerManager.cacheChannelMap(channel, player);
     }
+
+    @Override
+    public void signOut(String accountId) {
+        playerManager.removeChannel(accountId);
+    }
 }

@@ -50,4 +50,10 @@ public interface IRoleService {
      * @return
      */
     RoleEntity getRoleByAccountId(String accountId);
+
+    /**
+     * 关服
+     *
+     */
+    void closeService();
 }

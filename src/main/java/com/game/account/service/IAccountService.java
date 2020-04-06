@@ -46,4 +46,10 @@ public interface IAccountService {
 	 * @return
 	 */
 	AccountEntity getEntityByAccountId(String accountId);
+
+	/**
+	 * 关服
+	 *
+	 */
+	void closeServer();
 }

@@ -129,7 +129,7 @@ public enum OptionEnum {
         public Message.Option getMessage(String[] args) {
             Message.Option message = Message.Option.newBuilder()
                     .setOptionType(Message.Option.OptionType.QUIT).
-                            setState(Message.State.newBuilder()
+                            setQuit(Message.Quit.newBuilder()
                                     .build())
                     .build();
             return message;

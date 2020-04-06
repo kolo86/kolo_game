@@ -118,4 +118,13 @@ public class PlayerManager {
             channelPlayerMap.remove(playerEntity.getChannel());
         }
     }
+
+    /**
+     * 关服
+     *
+     */
+    public void closeService(){
+        accountPlayerMap.clear();
+        channelPlayerMap.clear();
+    }
 }

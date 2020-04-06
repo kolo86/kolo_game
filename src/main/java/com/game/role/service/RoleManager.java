@@ -52,4 +52,11 @@ public class RoleManager {
         return roleMap.get(accountId);
     }
 
+    /**
+     * 关服
+     *
+     */
+    public void closeService(){
+        roleMap.clear();
+    }
 }

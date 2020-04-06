@@ -10,8 +10,10 @@
 package com.game.account.facade;
 
 import com.frame.annotation.EventAnno;
+import com.frame.event.impl.CloseServerSyncEvent;
 import com.frame.event.impl.OpenServerSyncEvent;
 import com.game.account.service.IPlayerService;
+import com.game.account.service.PlayerManager;
 import com.game.signout.event.SignOutEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -47,5 +49,15 @@ public class PlayerFacade {
     @EventAnno
     public void doSignOut(SignOutEvent event){
         playerService.signOut(event.getAccountId());
+    }
+
+    /**
+     * 监听关服事件
+     *
+     * @param event
+     */
+    @EventAnno
+    public void closeServer(CloseServerSyncEvent event){
+        playerService.closeService();
     }
 }

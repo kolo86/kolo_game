@@ -2,6 +2,7 @@ package com.game.account.facade;
 
 import com.frame.annotation.EventAnno;
 import com.frame.annotation.ReceiverAnno;
+import com.frame.event.impl.CloseServerSyncEvent;
 import com.frame.event.impl.OpenServerSyncEvent;
 import com.game.account.service.IAccountService;
 import com.netty.proto.Message;
@@ -41,4 +42,13 @@ public class AccountFacade {
 		accountService.onStart();
 	}
 
+	/**
+	 * 监听关服事件
+	 *
+	 * @param event
+	 */
+	@EventAnno
+	public void doCloseServer(CloseServerSyncEvent event){
+		accountService.closeServer();
+	}
 }

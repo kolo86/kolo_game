@@ -107,4 +107,9 @@ public class AccountServiceImpl implements IAccountService{
 
 		return accountManager.getAccountMap().get(accountId);
 	}
+
+	@Override
+	public void closeServer() {
+		accountManager.closeServer();
+	}
 }

@@ -84,4 +84,9 @@ public class PlayerServiceImpl implements IPlayerService {
     public void signOut(String accountId) {
         playerManager.removeChannel(accountId);
     }
+
+    @Override
+    public void closeService() {
+        playerManager.closeService();
+    }
 }

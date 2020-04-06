@@ -73,4 +73,10 @@ public interface IPlayerService {
      * @param accountId
      */
     void signOut(String accountId);
+
+    /**
+     * 关服
+     *
+     */
+    void closeService();
 }

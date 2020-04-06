@@ -11,6 +11,7 @@ package com.game.role.facade;
 
 import com.frame.annotation.EventAnno;
 import com.frame.annotation.ReceiverAnno;
+import com.frame.event.impl.CloseServerSyncEvent;
 import com.frame.event.impl.OpenServerSyncEvent;
 import com.game.account.service.IPlayerService;
 import com.game.login.event.CreateRoleLoginEvent;
@@ -66,5 +67,15 @@ public class RoleFacade {
     @EventAnno
     public void onStart(OpenServerSyncEvent event){
         roleService.onStart();
+    }
+
+    /**
+     * 关服
+     *
+     * @param event
+     */
+    @EventAnno
+    public void closeService(CloseServerSyncEvent event){
+        roleService.closeService();
     }
 }

@@ -124,4 +124,9 @@ public class RoleServiceImpl implements IRoleService {
 
         return roleManager.getRole(accountId);
     }
+
+    @Override
+    public void closeService() {
+        roleManager.closeService();
+    }
 }

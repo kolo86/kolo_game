@@ -55,4 +55,11 @@ public class AccountManager{
 		return accountMap.get(accountId) != null;
 	}
 
+	/**
+	 * 关服时执行的操作
+	 *
+	 */
+	public void closeServer(){
+		accountMap.clear();
+	}
 }

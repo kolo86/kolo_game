@@ -1,5 +1,6 @@
 package com.game;
 
+import com.frame.resource.handler.ResourceCacheHandler;
 import com.game.common.GlobalServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +32,10 @@ public class Start {
 				}
 			}
 		});
-		
+
+		// 初始化配置表数据
+		ResourceCacheHandler.init();
+
 		// 加载spring容器
 		applicationContext.start();
 		

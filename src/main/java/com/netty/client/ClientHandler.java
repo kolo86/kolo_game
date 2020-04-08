@@ -38,13 +38,9 @@ public class ClientHandler extends SimpleChannelInboundHandler<Message.Option> {
      */
     @Override
     public void channelRead0(ChannelHandlerContext ctx, Message.Option msg) throws Exception {
-        if(msg.getOptionType() == Message.Option.OptionType.RESPONSE){
-            String answer = msg.getResponse().getAnswer();
-            logger.info(answer);
-            ResponseTools.specialHandler(answer);
-        } else {
-            logger.info(msg.toString());
-        }
+        String answer = msg.getResponse().getAnswer();
+        logger.info(answer);
+        ResponseTools.specialHandler(answer);
     }
 
     @Override

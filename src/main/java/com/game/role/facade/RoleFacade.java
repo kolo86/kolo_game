@@ -9,8 +9,8 @@
  */
 package com.game.role.facade;
 
-import com.frame.annotation.EventAnno;
-import com.frame.annotation.ReceiverAnno;
+import com.frame.event.anno.EventAnno;
+import com.frame.dispatcher.anno.ReceiverAnno;
 import com.frame.event.impl.CloseServerSyncEvent;
 import com.frame.event.impl.OpenServerSyncEvent;
 import com.game.account.service.IPlayerService;

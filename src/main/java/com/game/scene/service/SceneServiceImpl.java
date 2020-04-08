@@ -130,7 +130,7 @@ public class SceneServiceImpl implements ISceneService {
         PlayerEntity player = playerService.getPlayer(channel);
         int mapId = player.getMapId();
         SceneType scene = SceneType.getSceneById(mapId);
-        scene.getHandler().currentMapInfo(player);
+        scene.getHandler().sendEntityInfo(player);
     }
 
     @Override

@@ -18,7 +18,6 @@ public class PacketUtils {
      */
     public static void send(Channel channel, String message){
         Message.Option build = Message.Option.newBuilder()
-                .setOptionType(Message.Option.OptionType.RESPONSE)
                 .setResponse(Message.Response.newBuilder()
                         .setAnswer(message).build())
                 .build();
@@ -34,7 +33,6 @@ public class PacketUtils {
      */
     public static void send(PlayerEntity player, String message){
         Message.Option build = Message.Option.newBuilder()
-                .setOptionType(Message.Option.OptionType.RESPONSE)
                 .setResponse(Message.Response.newBuilder()
                         .setAnswer(message).build())
                 .build();

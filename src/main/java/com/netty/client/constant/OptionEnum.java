@@ -9,6 +9,7 @@
  */
 package com.netty.client.constant;
 
+import com.game.npc.constant.NpcEnum;
 import com.game.role.constant.RoleEnum;
 import com.game.scene.constant.SceneType;
 import com.netty.proto.Message;
@@ -36,7 +37,6 @@ public enum OptionEnum {
         @Override
         public Message.Option getMessage(String[] args) {
             Message.Option message = Message.Option.newBuilder()
-                    .setOptionType(Message.Option.OptionType.REGISTER)
                     .setRegister(Message.Register.newBuilder()
                             .setAccount(StringUtils.trimAllWhitespace(args[1]))
                             .setNickName(StringUtils.trimAllWhitespace(args[2])).build())
@@ -55,7 +55,6 @@ public enum OptionEnum {
             String accountId = StringUtils.trimAllWhitespace(args[1]);
 
             Message.Option message = Message.Option.newBuilder()
-                    .setOptionType(Message.Option.OptionType.LOGIN)
                     .setLogin(Message.Login.newBuilder()
                             .setAccount(accountId).build())
                     .build();
@@ -78,7 +77,6 @@ public enum OptionEnum {
             }
 
             Message.Option message = Message.Option.newBuilder()
-                    .setOptionType(Message.Option.OptionType.ROLE)
                     .setCreatRole(Message.CreateRole.newBuilder().setRoleType(roleType).build())
                     .build();
             return message;
@@ -100,8 +98,7 @@ public enum OptionEnum {
             }
 
             Message.Option message = Message.Option.newBuilder()
-                    .setOptionType(Message.Option.OptionType.CHANGE_MAP).
-                    setChangeMap(Message.ChangeMap.newBuilder()
+                    .setChangeMap(Message.ChangeMap.newBuilder()
                             .setMapId(mapId).build())
                     .build();
             return message;
@@ -116,8 +113,7 @@ public enum OptionEnum {
         @Override
         public Message.Option getMessage(String[] args) {
             Message.Option message = Message.Option.newBuilder()
-                    .setOptionType(Message.Option.OptionType.STATE).
-                    setState(Message.State.newBuilder()
+                    .setState(Message.State.newBuilder()
                             .build())
                     .build();
             return message;
@@ -128,8 +124,7 @@ public enum OptionEnum {
         @Override
         public Message.Option getMessage(String[] args) {
             Message.Option message = Message.Option.newBuilder()
-                    .setOptionType(Message.Option.OptionType.QUIT).
-                            setQuit(Message.Quit.newBuilder()
+            .setQuit(Message.Quit.newBuilder()
                                     .build())
                     .build();
             return message;
@@ -138,6 +133,27 @@ public enum OptionEnum {
         @Override
         public boolean checkParamNum(String[] args) {
             return args.length - 1 != Message.Quit.class.getFields().length;
+        }
+    },
+
+    TALK(7, "对话"){
+        @Override
+        public Message.Option getMessage(String[] args) {
+            String npcName = args[1];
+            Integer npcId = NpcEnum.getNpcId(npcName.toUpperCase());
+            if(npcId == null){
+                return null;
+            }
+
+            Message.Option message = Message.Option.newBuilder()
+                    .setTalk(Message.Talk.newBuilder().setNpcId(npcId).build())
+                    .build();
+            return message;
+        }
+
+        @Override
+        public boolean checkParamNum(String[] args) {
+            return args.length - 1 != Message.Talk.class.getFields().length;
         }
     }
 

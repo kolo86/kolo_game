@@ -1,21 +1,18 @@
-/**
- * FileName: AbstractMapHandler
- * Author:   坤龙
- * Date:     2020/4/2 17:18
- * Description: 地图抽象类
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.scene;
 
+import com.frame.resource.handler.ResourceCacheHandler;
 import com.game.account.entity.PlayerEntity;
+import com.game.npc.resource.NpcResource;
 import com.game.role.constant.RoleEnum;
 import com.game.role.constant.RoleStateEnum;
+import com.game.role.entity.RoleEntity;
 import com.game.scene.constant.SceneType;
 import com.game.util.PacketUtils;
+import lombok.Data;
 
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -26,11 +23,21 @@ import java.util.concurrent.ConcurrentHashMap;
  * @create 2020/4/2
  * @since 1.0.0
  */
+@Data
 public abstract class AbstractMapHandler {
 
-    // 在当前场景中所有账号信息。Map < 账号ID， 账号信息 >
+    /** 在当前场景中所有账号信息。Map < 账号ID， 账号信息 > */
     private Map<String, PlayerEntity> accountMap = new ConcurrentHashMap<String, PlayerEntity>();
+    /** Set < NpcId> */
+    private Set<Integer> npcSet = new HashSet<Integer>();
+    /** Map < 怪物名称, 怪物实体  > */
+    private Map<String, RoleEntity> monsterMap = new ConcurrentHashMap<String, RoleEntity>();
 
+    /**
+     * 获取场景类型
+     *
+     * @return
+     */
     public abstract SceneType getSceneType();
 
     /**
@@ -63,23 +70,32 @@ public abstract class AbstractMapHandler {
      *
      * @param player
      */
-    private void sendSuccessMessage(PlayerEntity player){
+    public void sendSuccessMessage(PlayerEntity player){
         StringBuilder sb = new StringBuilder();
         SceneType sceneType = getSceneType();
 
         sb.append("你已成功进入【");
-        sb.append(sceneType.getMapName()).append("】\n");
-        sb.append("当前地图:【").append(sceneType.getMapName())
-        .append("】中，实体情况为：");
-
-        for( PlayerEntity tempPlayer : accountMap.values()){
-            sb.append(tempPlayer.getAccountEntity().getNickName())
-                    .append("【").append(RoleEnum.getRoleNameById(tempPlayer.getRoleType()))
-                    .append("】").append("【")
-                    .append(RoleStateEnum.getStateNameById(tempPlayer.getRoleEntity().getRoleState()))
-                    .append("】\t");
-        }
+        sb.append(sceneType.getMapName()).append("】");
         PacketUtils.send(player, sb.toString());
+
+        sendEntityInfo(player);
+    }
+
+    /**
+     * 获取当前场景的Npc信息
+     *
+     * @param player
+     */
+    private String getNpcInfo(PlayerEntity player){
+        StringBuilder sb = new StringBuilder();
+        sb.append("NPC信息为：");
+        if(getNpcSet().size() != 0){
+            for( int npcId  : getNpcSet() ){
+                NpcResource resource = (NpcResource) ResourceCacheHandler.getResource(NpcResource.class, npcId);
+                sb.append(resource.getName()).append("\t");
+            }
+        }
+        return sb.toString();
     }
 
     /**
@@ -87,10 +103,10 @@ public abstract class AbstractMapHandler {
      *
      * @param player
      */
-    public void currentMapInfo(PlayerEntity player){
+    public void sendEntityInfo(PlayerEntity player){
         StringBuilder sb = new StringBuilder();
         sb.append("当前地图:【").append(SceneType.getSceneById(player.getMapId()).getMapName())
-                .append("】中，实体情况为：");
+                .append("】中：\n玩家列表为：");
 
         for( PlayerEntity tempPlayer : accountMap.values()){
             sb.append(tempPlayer.getAccountEntity().getNickName())
@@ -99,6 +115,7 @@ public abstract class AbstractMapHandler {
                     .append(RoleStateEnum.getStateNameById(tempPlayer.getRoleEntity().getRoleState()))
                     .append("】\t");
         }
+        sb.append("\n").append(getNpcInfo(player));
         PacketUtils.send(player, sb.toString());
     }
 
@@ -127,5 +144,15 @@ public abstract class AbstractMapHandler {
      */
     protected void removeAccount(PlayerEntity player){
         accountMap.remove(player.getAccountId());
+    }
+
+    /**
+     * 检查当前场景中是否存在该NPC
+     *
+     * @param npcId
+     * @return
+     */
+    public boolean checkNpcExist(int npcId){
+        return npcSet.contains(npcId);
     }
 }

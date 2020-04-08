@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
  * @create 2020/4/2
  * @since 1.0.0
  */
-public class ResponseTools {
+public class ResponseTools{
 
     private static final Logger logger = LoggerFactory.getLogger(ResponseTools.class);
 
@@ -36,13 +36,17 @@ public class ResponseTools {
                     "\t  例子：角色 怪物");
         } else if(answer.contains("当前地图") ||
                     answer.contains("直接去到地图")){
-            logger.info("【切换地图】\n" +
+            logger.info("\n【切换地图】\n" +
                     "\t请输入：MOVE 起始之地 |  村子 | 森林 | 城堡\n" +
                     "\t  例子：MOVE 村子\n" +
                     "\n" +
                     "【查看当前场景中所有实体信息】\n" +
                     "\t请输入：AOI\n" +
                     "\t  例子：AOI\n" +
+                    "\n" +
+                    "【对话NPC】\n" +
+                    "\t请输入：对话 村民NPC\n" +
+                    "\t  例子：对话 村民NPC\n" +
                     "\n" +
                     "【退出游戏】\n" +
                     "\t请输入：退出\n" +

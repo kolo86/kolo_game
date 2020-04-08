@@ -10,6 +10,7 @@
 package com.game.scene.handler;
 
 import com.game.account.entity.PlayerEntity;
+import com.game.npc.constant.NpcEnum;
 import com.game.scene.AbstractMapHandler;
 import com.game.scene.constant.SceneType;
 
@@ -29,6 +30,15 @@ public class MainCityMapHandler extends AbstractMapHandler {
     }
 
     /**
+     * 构造函数
+     *
+     */
+    public MainCityMapHandler(){
+        super();
+        getNpcSet().add(NpcEnum.VILLAGER.getId());
+    }
+
+    /**
      * 检查切图条件
      *
      * @param player
@@ -41,5 +51,4 @@ public class MainCityMapHandler extends AbstractMapHandler {
         }
         return super.checkChangeMapCondition(player, oldMapId);
     }
-
 }

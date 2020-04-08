@@ -9,8 +9,8 @@
  */
 package com.game.scene.facade;
 
-import com.frame.annotation.EventAnno;
-import com.frame.annotation.ReceiverAnno;
+import com.frame.event.anno.EventAnno;
+import com.frame.dispatcher.anno.ReceiverAnno;
 import com.game.login.event.LoginEvent;
 import com.game.role.event.CreateRoleEvent;
 import com.game.scene.service.ISceneService;

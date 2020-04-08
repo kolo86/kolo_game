@@ -63,6 +63,7 @@ public class AccountServiceImpl implements IAccountService{
 	 * 保存新账号
 	 * 
 	 */
+	@Override
 	public void saveAccount(Channel channel, AccountEntity entity) {
 		if(accountManager.checkAccount(entity.getAccountId())) {
 			PacketUtils.send(channel, "抱歉，当前账号已被注册！");

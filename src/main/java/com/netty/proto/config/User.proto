@@ -5,28 +5,16 @@ option java_outer_classname = "Message"; // 外部类名
 
 message Option{
 
-  enum OptionType{
-    REGISTER = 0; // 注册账号
-    ROLE = 1; //创建角色
-    LOGIN = 2; // 玩家登录
-    CHANGE_MAP = 3; // 切图
-    STATE = 4; // 查看当前场景中所有实体的状态
-    RESPONSE = 5; // 返回数据
-    QUIT = 6; // 玩家退出游戏
-  }
-
-  OptionType option_type = 1;
-
   oneof optionContent{
-      Register register = 2;
-      CreateRole creatRole = 3;
-      Login login = 4;
-      ChangeMap changeMap = 5;
-      State state = 6;
-      Response response = 7;
-      Quit quit = 8;
+      Register register = 1;
+      CreateRole creatRole = 2;
+      Login login = 3;
+      ChangeMap changeMap = 4;
+      State state = 5;
+      Response response = 6;
+      Quit quit = 7;
+      Talk talk = 8;
   }
-
 }
 
 // 注册
@@ -61,4 +49,9 @@ message Response{
 
 // 玩家退出游戏
 message Quit{
+}
+
+// 玩家对话NPC
+message Talk{
+  int32 npcId = 1;
 }

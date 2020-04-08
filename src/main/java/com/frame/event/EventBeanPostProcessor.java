@@ -9,7 +9,7 @@
  */
 package com.frame.event;
 
-import com.frame.annotation.EventAnno;
+import com.frame.event.anno.EventAnno;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.core.Ordered;

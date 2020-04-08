@@ -9,8 +9,8 @@
  */
 package com.game.login.facade;
 
-import com.frame.annotation.EventAnno;
-import com.frame.annotation.ReceiverAnno;
+import com.frame.event.anno.EventAnno;
+import com.frame.dispatcher.anno.ReceiverAnno;
 import com.game.account.event.CreateAccountAsyncEvent;
 import com.game.login.service.ILoginService;
 import com.netty.proto.Message;

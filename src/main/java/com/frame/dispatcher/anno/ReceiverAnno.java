@@ -7,7 +7,7 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package com.frame.annotation;
+package com.frame.dispatcher.anno;
 
 import java.lang.annotation.*;
 

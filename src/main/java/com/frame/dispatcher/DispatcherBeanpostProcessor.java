@@ -9,7 +9,7 @@
  */
 package com.frame.dispatcher;
 
-import com.frame.annotation.ReceiverAnno;
+import com.frame.dispatcher.anno.ReceiverAnno;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;

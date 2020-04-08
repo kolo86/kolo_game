@@ -19,104 +19,108 @@ public final class Message {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.Option.OptionType option_type = 1;</code>
-     */
-    int getOptionTypeValue();
-    /**
-     * <code>.Option.OptionType option_type = 1;</code>
-     */
-    Option.OptionType getOptionType();
-
-    /**
-     * <code>.Register register = 2;</code>
+     * <code>.Register register = 1;</code>
      */
     boolean hasRegister();
     /**
-     * <code>.Register register = 2;</code>
+     * <code>.Register register = 1;</code>
      */
     Register getRegister();
     /**
-     * <code>.Register register = 2;</code>
+     * <code>.Register register = 1;</code>
      */
     RegisterOrBuilder getRegisterOrBuilder();
 
     /**
-     * <code>.CreateRole creatRole = 3;</code>
+     * <code>.CreateRole creatRole = 2;</code>
      */
     boolean hasCreatRole();
     /**
-     * <code>.CreateRole creatRole = 3;</code>
+     * <code>.CreateRole creatRole = 2;</code>
      */
     CreateRole getCreatRole();
     /**
-     * <code>.CreateRole creatRole = 3;</code>
+     * <code>.CreateRole creatRole = 2;</code>
      */
     CreateRoleOrBuilder getCreatRoleOrBuilder();
 
     /**
-     * <code>.Login login = 4;</code>
+     * <code>.Login login = 3;</code>
      */
     boolean hasLogin();
     /**
-     * <code>.Login login = 4;</code>
+     * <code>.Login login = 3;</code>
      */
     Login getLogin();
     /**
-     * <code>.Login login = 4;</code>
+     * <code>.Login login = 3;</code>
      */
     LoginOrBuilder getLoginOrBuilder();
 
     /**
-     * <code>.ChangeMap changeMap = 5;</code>
+     * <code>.ChangeMap changeMap = 4;</code>
      */
     boolean hasChangeMap();
     /**
-     * <code>.ChangeMap changeMap = 5;</code>
+     * <code>.ChangeMap changeMap = 4;</code>
      */
     ChangeMap getChangeMap();
     /**
-     * <code>.ChangeMap changeMap = 5;</code>
+     * <code>.ChangeMap changeMap = 4;</code>
      */
     ChangeMapOrBuilder getChangeMapOrBuilder();
 
     /**
-     * <code>.State state = 6;</code>
+     * <code>.State state = 5;</code>
      */
     boolean hasState();
     /**
-     * <code>.State state = 6;</code>
+     * <code>.State state = 5;</code>
      */
     State getState();
     /**
-     * <code>.State state = 6;</code>
+     * <code>.State state = 5;</code>
      */
     StateOrBuilder getStateOrBuilder();
 
     /**
-     * <code>.Response response = 7;</code>
+     * <code>.Response response = 6;</code>
      */
     boolean hasResponse();
     /**
-     * <code>.Response response = 7;</code>
+     * <code>.Response response = 6;</code>
      */
     Response getResponse();
     /**
-     * <code>.Response response = 7;</code>
+     * <code>.Response response = 6;</code>
      */
     ResponseOrBuilder getResponseOrBuilder();
 
     /**
-     * <code>.Quit quit = 8;</code>
+     * <code>.Quit quit = 7;</code>
      */
     boolean hasQuit();
     /**
-     * <code>.Quit quit = 8;</code>
+     * <code>.Quit quit = 7;</code>
      */
     Quit getQuit();
     /**
-     * <code>.Quit quit = 8;</code>
+     * <code>.Quit quit = 7;</code>
      */
     QuitOrBuilder getQuitOrBuilder();
+
+    /**
+     * <code>.Talk talk = 8;</code>
+     */
+    boolean hasTalk();
+    /**
+     * <code>.Talk talk = 8;</code>
+     */
+    Talk getTalk();
+    /**
+     * <code>.Talk talk = 8;</code>
+     */
+    TalkOrBuilder getTalkOrBuilder();
 
     public Option.OptionContentCase getOptionContentCase();
   }
@@ -133,7 +137,6 @@ public final class Message {
       super(builder);
     }
     private Option() {
-      optionType_ = 0;
     }
 
     @Override
@@ -160,15 +163,9 @@ public final class Message {
             case 0:
               done = true;
               break;
-            case 8: {
-              int rawValue = input.readEnum();
-
-              optionType_ = rawValue;
-              break;
-            }
-            case 18: {
+            case 10: {
               Register.Builder subBuilder = null;
-              if (optionContentCase_ == 2) {
+              if (optionContentCase_ == 1) {
                 subBuilder = ((Register) optionContent_).toBuilder();
               }
               optionContent_ =
@@ -177,12 +174,12 @@ public final class Message {
                 subBuilder.mergeFrom((Register) optionContent_);
                 optionContent_ = subBuilder.buildPartial();
               }
-              optionContentCase_ = 2;
+              optionContentCase_ = 1;
               break;
             }
-            case 26: {
+            case 18: {
               CreateRole.Builder subBuilder = null;
-              if (optionContentCase_ == 3) {
+              if (optionContentCase_ == 2) {
                 subBuilder = ((CreateRole) optionContent_).toBuilder();
               }
               optionContent_ =
@@ -191,12 +188,12 @@ public final class Message {
                 subBuilder.mergeFrom((CreateRole) optionContent_);
                 optionContent_ = subBuilder.buildPartial();
               }
-              optionContentCase_ = 3;
+              optionContentCase_ = 2;
               break;
             }
-            case 34: {
+            case 26: {
               Login.Builder subBuilder = null;
-              if (optionContentCase_ == 4) {
+              if (optionContentCase_ == 3) {
                 subBuilder = ((Login) optionContent_).toBuilder();
               }
               optionContent_ =
@@ -205,12 +202,12 @@ public final class Message {
                 subBuilder.mergeFrom((Login) optionContent_);
                 optionContent_ = subBuilder.buildPartial();
               }
-              optionContentCase_ = 4;
+              optionContentCase_ = 3;
               break;
             }
-            case 42: {
+            case 34: {
               ChangeMap.Builder subBuilder = null;
-              if (optionContentCase_ == 5) {
+              if (optionContentCase_ == 4) {
                 subBuilder = ((ChangeMap) optionContent_).toBuilder();
               }
               optionContent_ =
@@ -219,12 +216,12 @@ public final class Message {
                 subBuilder.mergeFrom((ChangeMap) optionContent_);
                 optionContent_ = subBuilder.buildPartial();
               }
-              optionContentCase_ = 5;
+              optionContentCase_ = 4;
               break;
             }
-            case 50: {
+            case 42: {
               State.Builder subBuilder = null;
-              if (optionContentCase_ == 6) {
+              if (optionContentCase_ == 5) {
                 subBuilder = ((State) optionContent_).toBuilder();
               }
               optionContent_ =
@@ -233,12 +230,12 @@ public final class Message {
                 subBuilder.mergeFrom((State) optionContent_);
                 optionContent_ = subBuilder.buildPartial();
               }
-              optionContentCase_ = 6;
+              optionContentCase_ = 5;
               break;
             }
-            case 58: {
+            case 50: {
               Response.Builder subBuilder = null;
-              if (optionContentCase_ == 7) {
+              if (optionContentCase_ == 6) {
                 subBuilder = ((Response) optionContent_).toBuilder();
               }
               optionContent_ =
@@ -247,18 +244,32 @@ public final class Message {
                 subBuilder.mergeFrom((Response) optionContent_);
                 optionContent_ = subBuilder.buildPartial();
               }
-              optionContentCase_ = 7;
+              optionContentCase_ = 6;
               break;
             }
-            case 66: {
+            case 58: {
               Quit.Builder subBuilder = null;
-              if (optionContentCase_ == 8) {
+              if (optionContentCase_ == 7) {
                 subBuilder = ((Quit) optionContent_).toBuilder();
               }
               optionContent_ =
                   input.readMessage(Quit.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom((Quit) optionContent_);
+                optionContent_ = subBuilder.buildPartial();
+              }
+              optionContentCase_ = 7;
+              break;
+            }
+            case 66: {
+              Talk.Builder subBuilder = null;
+              if (optionContentCase_ == 8) {
+                subBuilder = ((Talk) optionContent_).toBuilder();
+              }
+              optionContent_ =
+                  input.readMessage(Talk.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((Talk) optionContent_);
                 optionContent_ = subBuilder.buildPartial();
               }
               optionContentCase_ = 8;
@@ -296,216 +307,18 @@ public final class Message {
               Option.class, Builder.class);
     }
 
-    /**
-     * Protobuf enum {@code Option.OptionType}
-     */
-    public enum OptionType
-        implements com.google.protobuf.ProtocolMessageEnum {
-      /**
-       * <pre>
-       * 注册账号
-       * </pre>
-       *
-       * <code>REGISTER = 0;</code>
-       */
-      REGISTER(0),
-      /**
-       * <pre>
-       *创建角色
-       * </pre>
-       *
-       * <code>ROLE = 1;</code>
-       */
-      ROLE(1),
-      /**
-       * <pre>
-       * 玩家登录
-       * </pre>
-       *
-       * <code>LOGIN = 2;</code>
-       */
-      LOGIN(2),
-      /**
-       * <pre>
-       * 切图
-       * </pre>
-       *
-       * <code>CHANGE_MAP = 3;</code>
-       */
-      CHANGE_MAP(3),
-      /**
-       * <pre>
-       * 查看当前场景中所有实体的状态
-       * </pre>
-       *
-       * <code>STATE = 4;</code>
-       */
-      STATE(4),
-      /**
-       * <pre>
-       * 返回数据
-       * </pre>
-       *
-       * <code>RESPONSE = 5;</code>
-       */
-      RESPONSE(5),
-      /**
-       * <pre>
-       * 玩家退出游戏
-       * </pre>
-       *
-       * <code>QUIT = 6;</code>
-       */
-      QUIT(6),
-      UNRECOGNIZED(-1),
-      ;
-
-      /**
-       * <pre>
-       * 注册账号
-       * </pre>
-       *
-       * <code>REGISTER = 0;</code>
-       */
-      public static final int REGISTER_VALUE = 0;
-      /**
-       * <pre>
-       *创建角色
-       * </pre>
-       *
-       * <code>ROLE = 1;</code>
-       */
-      public static final int ROLE_VALUE = 1;
-      /**
-       * <pre>
-       * 玩家登录
-       * </pre>
-       *
-       * <code>LOGIN = 2;</code>
-       */
-      public static final int LOGIN_VALUE = 2;
-      /**
-       * <pre>
-       * 切图
-       * </pre>
-       *
-       * <code>CHANGE_MAP = 3;</code>
-       */
-      public static final int CHANGE_MAP_VALUE = 3;
-      /**
-       * <pre>
-       * 查看当前场景中所有实体的状态
-       * </pre>
-       *
-       * <code>STATE = 4;</code>
-       */
-      public static final int STATE_VALUE = 4;
-      /**
-       * <pre>
-       * 返回数据
-       * </pre>
-       *
-       * <code>RESPONSE = 5;</code>
-       */
-      public static final int RESPONSE_VALUE = 5;
-      /**
-       * <pre>
-       * 玩家退出游戏
-       * </pre>
-       *
-       * <code>QUIT = 6;</code>
-       */
-      public static final int QUIT_VALUE = 6;
-
-
-      public final int getNumber() {
-        if (this == UNRECOGNIZED) {
-          throw new IllegalArgumentException(
-              "Can't get the number of an unknown enum value.");
-        }
-        return value;
-      }
-
-      /**
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @Deprecated
-      public static OptionType valueOf(int value) {
-        return forNumber(value);
-      }
-
-      public static OptionType forNumber(int value) {
-        switch (value) {
-          case 0: return REGISTER;
-          case 1: return ROLE;
-          case 2: return LOGIN;
-          case 3: return CHANGE_MAP;
-          case 4: return STATE;
-          case 5: return RESPONSE;
-          case 6: return QUIT;
-          default: return null;
-        }
-      }
-
-      public static com.google.protobuf.Internal.EnumLiteMap<OptionType>
-          internalGetValueMap() {
-        return internalValueMap;
-      }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          OptionType> internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<OptionType>() {
-              public OptionType findValueByNumber(int number) {
-                return OptionType.forNumber(number);
-              }
-            };
-
-      public final com.google.protobuf.Descriptors.EnumValueDescriptor
-          getValueDescriptor() {
-        return getDescriptor().getValues().get(ordinal());
-      }
-      public final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptorForType() {
-        return getDescriptor();
-      }
-      public static final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptor() {
-        return Option.getDescriptor().getEnumTypes().get(0);
-      }
-
-      private static final OptionType[] VALUES = values();
-
-      public static OptionType valueOf(
-          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-        if (desc.getType() != getDescriptor()) {
-          throw new IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
-        }
-        if (desc.getIndex() == -1) {
-          return UNRECOGNIZED;
-        }
-        return VALUES[desc.getIndex()];
-      }
-
-      private final int value;
-
-      private OptionType(int value) {
-        this.value = value;
-      }
-
-      // @@protoc_insertion_point(enum_scope:Option.OptionType)
-    }
-
     private int optionContentCase_ = 0;
     private Object optionContent_;
     public enum OptionContentCase
         implements com.google.protobuf.Internal.EnumLite {
-      REGISTER(2),
-      CREATROLE(3),
-      LOGIN(4),
-      CHANGEMAP(5),
-      STATE(6),
-      RESPONSE(7),
-      QUIT(8),
+      REGISTER(1),
+      CREATROLE(2),
+      LOGIN(3),
+      CHANGEMAP(4),
+      STATE(5),
+      RESPONSE(6),
+      QUIT(7),
+      TALK(8),
       OPTIONCONTENT_NOT_SET(0);
       private final int value;
       private OptionContentCase(int value) {
@@ -521,13 +334,14 @@ public final class Message {
 
       public static OptionContentCase forNumber(int value) {
         switch (value) {
-          case 2: return REGISTER;
-          case 3: return CREATROLE;
-          case 4: return LOGIN;
-          case 5: return CHANGEMAP;
-          case 6: return STATE;
-          case 7: return RESPONSE;
-          case 8: return QUIT;
+          case 1: return REGISTER;
+          case 2: return CREATROLE;
+          case 3: return LOGIN;
+          case 4: return CHANGEMAP;
+          case 5: return STATE;
+          case 6: return RESPONSE;
+          case 7: return QUIT;
+          case 8: return TALK;
           case 0: return OPTIONCONTENT_NOT_SET;
           default: return null;
         }
@@ -543,203 +357,212 @@ public final class Message {
           optionContentCase_);
     }
 
-    public static final int OPTION_TYPE_FIELD_NUMBER = 1;
-    private int optionType_;
+    public static final int REGISTER_FIELD_NUMBER = 1;
     /**
-     * <code>.Option.OptionType option_type = 1;</code>
-     */
-    public int getOptionTypeValue() {
-      return optionType_;
-    }
-    /**
-     * <code>.Option.OptionType option_type = 1;</code>
-     */
-    public OptionType getOptionType() {
-      @SuppressWarnings("deprecation")
-      OptionType result = OptionType.valueOf(optionType_);
-      return result == null ? OptionType.UNRECOGNIZED : result;
-    }
-
-    public static final int REGISTER_FIELD_NUMBER = 2;
-    /**
-     * <code>.Register register = 2;</code>
+     * <code>.Register register = 1;</code>
      */
     public boolean hasRegister() {
+      return optionContentCase_ == 1;
+    }
+    /**
+     * <code>.Register register = 1;</code>
+     */
+    public Register getRegister() {
+      if (optionContentCase_ == 1) {
+         return (Register) optionContent_;
+      }
+      return Register.getDefaultInstance();
+    }
+    /**
+     * <code>.Register register = 1;</code>
+     */
+    public RegisterOrBuilder getRegisterOrBuilder() {
+      if (optionContentCase_ == 1) {
+         return (Register) optionContent_;
+      }
+      return Register.getDefaultInstance();
+    }
+
+    public static final int CREATROLE_FIELD_NUMBER = 2;
+    /**
+     * <code>.CreateRole creatRole = 2;</code>
+     */
+    public boolean hasCreatRole() {
       return optionContentCase_ == 2;
     }
     /**
-     * <code>.Register register = 2;</code>
+     * <code>.CreateRole creatRole = 2;</code>
      */
-    public Register getRegister() {
+    public CreateRole getCreatRole() {
       if (optionContentCase_ == 2) {
-         return (Register) optionContent_;
+         return (CreateRole) optionContent_;
       }
-      return Register.getDefaultInstance();
+      return CreateRole.getDefaultInstance();
     }
     /**
-     * <code>.Register register = 2;</code>
+     * <code>.CreateRole creatRole = 2;</code>
      */
-    public RegisterOrBuilder getRegisterOrBuilder() {
+    public CreateRoleOrBuilder getCreatRoleOrBuilder() {
       if (optionContentCase_ == 2) {
-         return (Register) optionContent_;
+         return (CreateRole) optionContent_;
       }
-      return Register.getDefaultInstance();
+      return CreateRole.getDefaultInstance();
     }
 
-    public static final int CREATROLE_FIELD_NUMBER = 3;
+    public static final int LOGIN_FIELD_NUMBER = 3;
     /**
-     * <code>.CreateRole creatRole = 3;</code>
+     * <code>.Login login = 3;</code>
      */
-    public boolean hasCreatRole() {
+    public boolean hasLogin() {
       return optionContentCase_ == 3;
     }
     /**
-     * <code>.CreateRole creatRole = 3;</code>
+     * <code>.Login login = 3;</code>
      */
-    public CreateRole getCreatRole() {
+    public Login getLogin() {
       if (optionContentCase_ == 3) {
-         return (CreateRole) optionContent_;
+         return (Login) optionContent_;
       }
-      return CreateRole.getDefaultInstance();
+      return Login.getDefaultInstance();
     }
     /**
-     * <code>.CreateRole creatRole = 3;</code>
+     * <code>.Login login = 3;</code>
      */
-    public CreateRoleOrBuilder getCreatRoleOrBuilder() {
+    public LoginOrBuilder getLoginOrBuilder() {
       if (optionContentCase_ == 3) {
-         return (CreateRole) optionContent_;
+         return (Login) optionContent_;
       }
-      return CreateRole.getDefaultInstance();
+      return Login.getDefaultInstance();
     }
 
-    public static final int LOGIN_FIELD_NUMBER = 4;
+    public static final int CHANGEMAP_FIELD_NUMBER = 4;
     /**
-     * <code>.Login login = 4;</code>
+     * <code>.ChangeMap changeMap = 4;</code>
      */
-    public boolean hasLogin() {
+    public boolean hasChangeMap() {
       return optionContentCase_ == 4;
     }
     /**
-     * <code>.Login login = 4;</code>
+     * <code>.ChangeMap changeMap = 4;</code>
      */
-    public Login getLogin() {
+    public ChangeMap getChangeMap() {
       if (optionContentCase_ == 4) {
-         return (Login) optionContent_;
+         return (ChangeMap) optionContent_;
       }
-      return Login.getDefaultInstance();
+      return ChangeMap.getDefaultInstance();
     }
     /**
-     * <code>.Login login = 4;</code>
+     * <code>.ChangeMap changeMap = 4;</code>
      */
-    public LoginOrBuilder getLoginOrBuilder() {
+    public ChangeMapOrBuilder getChangeMapOrBuilder() {
       if (optionContentCase_ == 4) {
-         return (Login) optionContent_;
+         return (ChangeMap) optionContent_;
       }
-      return Login.getDefaultInstance();
+      return ChangeMap.getDefaultInstance();
     }
 
-    public static final int CHANGEMAP_FIELD_NUMBER = 5;
+    public static final int STATE_FIELD_NUMBER = 5;
     /**
-     * <code>.ChangeMap changeMap = 5;</code>
+     * <code>.State state = 5;</code>
      */
-    public boolean hasChangeMap() {
+    public boolean hasState() {
       return optionContentCase_ == 5;
     }
     /**
-     * <code>.ChangeMap changeMap = 5;</code>
+     * <code>.State state = 5;</code>
      */
-    public ChangeMap getChangeMap() {
+    public State getState() {
       if (optionContentCase_ == 5) {
-         return (ChangeMap) optionContent_;
+         return (State) optionContent_;
       }
-      return ChangeMap.getDefaultInstance();
+      return State.getDefaultInstance();
     }
     /**
-     * <code>.ChangeMap changeMap = 5;</code>
+     * <code>.State state = 5;</code>
      */
-    public ChangeMapOrBuilder getChangeMapOrBuilder() {
+    public StateOrBuilder getStateOrBuilder() {
       if (optionContentCase_ == 5) {
-         return (ChangeMap) optionContent_;
+         return (State) optionContent_;
       }
-      return ChangeMap.getDefaultInstance();
+      return State.getDefaultInstance();
     }
 
-    public static final int STATE_FIELD_NUMBER = 6;
+    public static final int RESPONSE_FIELD_NUMBER = 6;
     /**
-     * <code>.State state = 6;</code>
+     * <code>.Response response = 6;</code>
      */
-    public boolean hasState() {
+    public boolean hasResponse() {
       return optionContentCase_ == 6;
     }
     /**
-     * <code>.State state = 6;</code>
+     * <code>.Response response = 6;</code>
      */
-    public State getState() {
+    public Response getResponse() {
       if (optionContentCase_ == 6) {
-         return (State) optionContent_;
+         return (Response) optionContent_;
       }
-      return State.getDefaultInstance();
+      return Response.getDefaultInstance();
     }
     /**
-     * <code>.State state = 6;</code>
+     * <code>.Response response = 6;</code>
      */
-    public StateOrBuilder getStateOrBuilder() {
+    public ResponseOrBuilder getResponseOrBuilder() {
       if (optionContentCase_ == 6) {
-         return (State) optionContent_;
+         return (Response) optionContent_;
       }
-      return State.getDefaultInstance();
+      return Response.getDefaultInstance();
     }
 
-    public static final int RESPONSE_FIELD_NUMBER = 7;
+    public static final int QUIT_FIELD_NUMBER = 7;
     /**
-     * <code>.Response response = 7;</code>
+     * <code>.Quit quit = 7;</code>
      */
-    public boolean hasResponse() {
+    public boolean hasQuit() {
       return optionContentCase_ == 7;
     }
     /**
-     * <code>.Response response = 7;</code>
+     * <code>.Quit quit = 7;</code>
      */
-    public Response getResponse() {
+    public Quit getQuit() {
       if (optionContentCase_ == 7) {
-         return (Response) optionContent_;
+         return (Quit) optionContent_;
       }
-      return Response.getDefaultInstance();
+      return Quit.getDefaultInstance();
     }
     /**
-     * <code>.Response response = 7;</code>
+     * <code>.Quit quit = 7;</code>
      */
-    public ResponseOrBuilder getResponseOrBuilder() {
+    public QuitOrBuilder getQuitOrBuilder() {
       if (optionContentCase_ == 7) {
-         return (Response) optionContent_;
+         return (Quit) optionContent_;
       }
-      return Response.getDefaultInstance();
+      return Quit.getDefaultInstance();
     }
 
-    public static final int QUIT_FIELD_NUMBER = 8;
+    public static final int TALK_FIELD_NUMBER = 8;
     /**
-     * <code>.Quit quit = 8;</code>
+     * <code>.Talk talk = 8;</code>
      */
-    public boolean hasQuit() {
+    public boolean hasTalk() {
       return optionContentCase_ == 8;
     }
     /**
-     * <code>.Quit quit = 8;</code>
+     * <code>.Talk talk = 8;</code>
      */
-    public Quit getQuit() {
+    public Talk getTalk() {
       if (optionContentCase_ == 8) {
-         return (Quit) optionContent_;
+         return (Talk) optionContent_;
       }
-      return Quit.getDefaultInstance();
+      return Talk.getDefaultInstance();
     }
     /**
-     * <code>.Quit quit = 8;</code>
+     * <code>.Talk talk = 8;</code>
      */
-    public QuitOrBuilder getQuitOrBuilder() {
+    public TalkOrBuilder getTalkOrBuilder() {
       if (optionContentCase_ == 8) {
-         return (Quit) optionContent_;
+         return (Talk) optionContent_;
       }
-      return Quit.getDefaultInstance();
+      return Talk.getDefaultInstance();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -756,29 +579,29 @@ public final class Message {
     @Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (optionType_ != OptionType.REGISTER.getNumber()) {
-        output.writeEnum(1, optionType_);
+      if (optionContentCase_ == 1) {
+        output.writeMessage(1, (Register) optionContent_);
       }
       if (optionContentCase_ == 2) {
-        output.writeMessage(2, (Register) optionContent_);
+        output.writeMessage(2, (CreateRole) optionContent_);
       }
       if (optionContentCase_ == 3) {
-        output.writeMessage(3, (CreateRole) optionContent_);
+        output.writeMessage(3, (Login) optionContent_);
       }
       if (optionContentCase_ == 4) {
-        output.writeMessage(4, (Login) optionContent_);
+        output.writeMessage(4, (ChangeMap) optionContent_);
       }
       if (optionContentCase_ == 5) {
-        output.writeMessage(5, (ChangeMap) optionContent_);
+        output.writeMessage(5, (State) optionContent_);
       }
       if (optionContentCase_ == 6) {
-        output.writeMessage(6, (State) optionContent_);
+        output.writeMessage(6, (Response) optionContent_);
       }
       if (optionContentCase_ == 7) {
-        output.writeMessage(7, (Response) optionContent_);
+        output.writeMessage(7, (Quit) optionContent_);
       }
       if (optionContentCase_ == 8) {
-        output.writeMessage(8, (Quit) optionContent_);
+        output.writeMessage(8, (Talk) optionContent_);
       }
       unknownFields.writeTo(output);
     }
@@ -789,37 +612,37 @@ public final class Message {
       if (size != -1) return size;
 
       size = 0;
-      if (optionType_ != OptionType.REGISTER.getNumber()) {
+      if (optionContentCase_ == 1) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, optionType_);
+          .computeMessageSize(1, (Register) optionContent_);
       }
       if (optionContentCase_ == 2) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, (Register) optionContent_);
+          .computeMessageSize(2, (CreateRole) optionContent_);
       }
       if (optionContentCase_ == 3) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, (CreateRole) optionContent_);
+          .computeMessageSize(3, (Login) optionContent_);
       }
       if (optionContentCase_ == 4) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, (Login) optionContent_);
+          .computeMessageSize(4, (ChangeMap) optionContent_);
       }
       if (optionContentCase_ == 5) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, (ChangeMap) optionContent_);
+          .computeMessageSize(5, (State) optionContent_);
       }
       if (optionContentCase_ == 6) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, (State) optionContent_);
+          .computeMessageSize(6, (Response) optionContent_);
       }
       if (optionContentCase_ == 7) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, (Response) optionContent_);
+          .computeMessageSize(7, (Quit) optionContent_);
       }
       if (optionContentCase_ == 8) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, (Quit) optionContent_);
+          .computeMessageSize(8, (Talk) optionContent_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -837,38 +660,41 @@ public final class Message {
       Option other = (Option) obj;
 
       boolean result = true;
-      result = result && optionType_ == other.optionType_;
       result = result && getOptionContentCase().equals(
           other.getOptionContentCase());
       if (!result) return false;
       switch (optionContentCase_) {
-        case 2:
+        case 1:
           result = result && getRegister()
               .equals(other.getRegister());
           break;
-        case 3:
+        case 2:
           result = result && getCreatRole()
               .equals(other.getCreatRole());
           break;
-        case 4:
+        case 3:
           result = result && getLogin()
               .equals(other.getLogin());
           break;
-        case 5:
+        case 4:
           result = result && getChangeMap()
               .equals(other.getChangeMap());
           break;
-        case 6:
+        case 5:
           result = result && getState()
               .equals(other.getState());
           break;
-        case 7:
+        case 6:
           result = result && getResponse()
               .equals(other.getResponse());
           break;
-        case 8:
+        case 7:
           result = result && getQuit()
               .equals(other.getQuit());
+          break;
+        case 8:
+          result = result && getTalk()
+              .equals(other.getTalk());
           break;
         case 0:
         default:
@@ -884,36 +710,38 @@ public final class Message {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + OPTION_TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + optionType_;
       switch (optionContentCase_) {
-        case 2:
+        case 1:
           hash = (37 * hash) + REGISTER_FIELD_NUMBER;
           hash = (53 * hash) + getRegister().hashCode();
           break;
-        case 3:
+        case 2:
           hash = (37 * hash) + CREATROLE_FIELD_NUMBER;
           hash = (53 * hash) + getCreatRole().hashCode();
           break;
-        case 4:
+        case 3:
           hash = (37 * hash) + LOGIN_FIELD_NUMBER;
           hash = (53 * hash) + getLogin().hashCode();
           break;
-        case 5:
+        case 4:
           hash = (37 * hash) + CHANGEMAP_FIELD_NUMBER;
           hash = (53 * hash) + getChangeMap().hashCode();
           break;
-        case 6:
+        case 5:
           hash = (37 * hash) + STATE_FIELD_NUMBER;
           hash = (53 * hash) + getState().hashCode();
           break;
-        case 7:
+        case 6:
           hash = (37 * hash) + RESPONSE_FIELD_NUMBER;
           hash = (53 * hash) + getResponse().hashCode();
           break;
-        case 8:
+        case 7:
           hash = (37 * hash) + QUIT_FIELD_NUMBER;
           hash = (53 * hash) + getQuit().hashCode();
+          break;
+        case 8:
+          hash = (37 * hash) + TALK_FIELD_NUMBER;
+          hash = (53 * hash) + getTalk().hashCode();
           break;
         case 0:
         default:
@@ -1051,8 +879,6 @@ public final class Message {
       @Override
       public Builder clear() {
         super.clear();
-        optionType_ = 0;
-
         optionContentCase_ = 0;
         optionContent_ = null;
         return this;
@@ -1081,54 +907,60 @@ public final class Message {
       @Override
       public Option buildPartial() {
         Option result = new Option(this);
-        result.optionType_ = optionType_;
-        if (optionContentCase_ == 2) {
+        if (optionContentCase_ == 1) {
           if (registerBuilder_ == null) {
             result.optionContent_ = optionContent_;
           } else {
             result.optionContent_ = registerBuilder_.build();
           }
         }
-        if (optionContentCase_ == 3) {
+        if (optionContentCase_ == 2) {
           if (creatRoleBuilder_ == null) {
             result.optionContent_ = optionContent_;
           } else {
             result.optionContent_ = creatRoleBuilder_.build();
           }
         }
-        if (optionContentCase_ == 4) {
+        if (optionContentCase_ == 3) {
           if (loginBuilder_ == null) {
             result.optionContent_ = optionContent_;
           } else {
             result.optionContent_ = loginBuilder_.build();
           }
         }
-        if (optionContentCase_ == 5) {
+        if (optionContentCase_ == 4) {
           if (changeMapBuilder_ == null) {
             result.optionContent_ = optionContent_;
           } else {
             result.optionContent_ = changeMapBuilder_.build();
           }
         }
-        if (optionContentCase_ == 6) {
+        if (optionContentCase_ == 5) {
           if (stateBuilder_ == null) {
             result.optionContent_ = optionContent_;
           } else {
             result.optionContent_ = stateBuilder_.build();
           }
         }
-        if (optionContentCase_ == 7) {
+        if (optionContentCase_ == 6) {
           if (responseBuilder_ == null) {
             result.optionContent_ = optionContent_;
           } else {
             result.optionContent_ = responseBuilder_.build();
           }
         }
-        if (optionContentCase_ == 8) {
+        if (optionContentCase_ == 7) {
           if (quitBuilder_ == null) {
             result.optionContent_ = optionContent_;
           } else {
             result.optionContent_ = quitBuilder_.build();
+          }
+        }
+        if (optionContentCase_ == 8) {
+          if (talkBuilder_ == null) {
+            result.optionContent_ = optionContent_;
+          } else {
+            result.optionContent_ = talkBuilder_.build();
           }
         }
         result.optionContentCase_ = optionContentCase_;
@@ -1180,9 +1012,6 @@ public final class Message {
 
       public Builder mergeFrom(Option other) {
         if (other == Option.getDefaultInstance()) return this;
-        if (other.optionType_ != 0) {
-          setOptionTypeValue(other.getOptionTypeValue());
-        }
         switch (other.getOptionContentCase()) {
           case REGISTER: {
             mergeRegister(other.getRegister());
@@ -1210,6 +1039,10 @@ public final class Message {
           }
           case QUIT: {
             mergeQuit(other.getQuit());
+            break;
+          }
+          case TALK: {
+            mergeTalk(other.getTalk());
             break;
           }
           case OPTIONCONTENT_NOT_SET: {
@@ -1260,77 +1093,32 @@ public final class Message {
       }
 
 
-      private int optionType_ = 0;
-      /**
-       * <code>.Option.OptionType option_type = 1;</code>
-       */
-      public int getOptionTypeValue() {
-        return optionType_;
-      }
-      /**
-       * <code>.Option.OptionType option_type = 1;</code>
-       */
-      public Builder setOptionTypeValue(int value) {
-        optionType_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.Option.OptionType option_type = 1;</code>
-       */
-      public OptionType getOptionType() {
-        @SuppressWarnings("deprecation")
-        OptionType result = OptionType.valueOf(optionType_);
-        return result == null ? OptionType.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.Option.OptionType option_type = 1;</code>
-       */
-      public Builder setOptionType(OptionType value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        optionType_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.Option.OptionType option_type = 1;</code>
-       */
-      public Builder clearOptionType() {
-        
-        optionType_ = 0;
-        onChanged();
-        return this;
-      }
-
       private com.google.protobuf.SingleFieldBuilderV3<
           Register, Register.Builder, RegisterOrBuilder> registerBuilder_;
       /**
-       * <code>.Register register = 2;</code>
+       * <code>.Register register = 1;</code>
        */
       public boolean hasRegister() {
-        return optionContentCase_ == 2;
+        return optionContentCase_ == 1;
       }
       /**
-       * <code>.Register register = 2;</code>
+       * <code>.Register register = 1;</code>
        */
       public Register getRegister() {
         if (registerBuilder_ == null) {
-          if (optionContentCase_ == 2) {
+          if (optionContentCase_ == 1) {
             return (Register) optionContent_;
           }
           return Register.getDefaultInstance();
         } else {
-          if (optionContentCase_ == 2) {
+          if (optionContentCase_ == 1) {
             return registerBuilder_.getMessage();
           }
           return Register.getDefaultInstance();
         }
       }
       /**
-       * <code>.Register register = 2;</code>
+       * <code>.Register register = 1;</code>
        */
       public Builder setRegister(Register value) {
         if (registerBuilder_ == null) {
@@ -1342,11 +1130,11 @@ public final class Message {
         } else {
           registerBuilder_.setMessage(value);
         }
-        optionContentCase_ = 2;
+        optionContentCase_ = 1;
         return this;
       }
       /**
-       * <code>.Register register = 2;</code>
+       * <code>.Register register = 1;</code>
        */
       public Builder setRegister(
           Register.Builder builderForValue) {
@@ -1356,15 +1144,15 @@ public final class Message {
         } else {
           registerBuilder_.setMessage(builderForValue.build());
         }
-        optionContentCase_ = 2;
+        optionContentCase_ = 1;
         return this;
       }
       /**
-       * <code>.Register register = 2;</code>
+       * <code>.Register register = 1;</code>
        */
       public Builder mergeRegister(Register value) {
         if (registerBuilder_ == null) {
-          if (optionContentCase_ == 2 &&
+          if (optionContentCase_ == 1 &&
               optionContent_ != Register.getDefaultInstance()) {
             optionContent_ = Register.newBuilder((Register) optionContent_)
                 .mergeFrom(value).buildPartial();
@@ -1373,26 +1161,26 @@ public final class Message {
           }
           onChanged();
         } else {
-          if (optionContentCase_ == 2) {
+          if (optionContentCase_ == 1) {
             registerBuilder_.mergeFrom(value);
           }
           registerBuilder_.setMessage(value);
         }
-        optionContentCase_ = 2;
+        optionContentCase_ = 1;
         return this;
       }
       /**
-       * <code>.Register register = 2;</code>
+       * <code>.Register register = 1;</code>
        */
       public Builder clearRegister() {
         if (registerBuilder_ == null) {
-          if (optionContentCase_ == 2) {
+          if (optionContentCase_ == 1) {
             optionContentCase_ = 0;
             optionContent_ = null;
             onChanged();
           }
         } else {
-          if (optionContentCase_ == 2) {
+          if (optionContentCase_ == 1) {
             optionContentCase_ = 0;
             optionContent_ = null;
           }
@@ -1401,32 +1189,32 @@ public final class Message {
         return this;
       }
       /**
-       * <code>.Register register = 2;</code>
+       * <code>.Register register = 1;</code>
        */
       public Register.Builder getRegisterBuilder() {
         return getRegisterFieldBuilder().getBuilder();
       }
       /**
-       * <code>.Register register = 2;</code>
+       * <code>.Register register = 1;</code>
        */
       public RegisterOrBuilder getRegisterOrBuilder() {
-        if ((optionContentCase_ == 2) && (registerBuilder_ != null)) {
+        if ((optionContentCase_ == 1) && (registerBuilder_ != null)) {
           return registerBuilder_.getMessageOrBuilder();
         } else {
-          if (optionContentCase_ == 2) {
+          if (optionContentCase_ == 1) {
             return (Register) optionContent_;
           }
           return Register.getDefaultInstance();
         }
       }
       /**
-       * <code>.Register register = 2;</code>
+       * <code>.Register register = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           Register, Register.Builder, RegisterOrBuilder>
           getRegisterFieldBuilder() {
         if (registerBuilder_ == null) {
-          if (!(optionContentCase_ == 2)) {
+          if (!(optionContentCase_ == 1)) {
             optionContent_ = Register.getDefaultInstance();
           }
           registerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -1436,7 +1224,7 @@ public final class Message {
                   isClean());
           optionContent_ = null;
         }
-        optionContentCase_ = 2;
+        optionContentCase_ = 1;
         onChanged();;
         return registerBuilder_;
       }
@@ -1444,29 +1232,29 @@ public final class Message {
       private com.google.protobuf.SingleFieldBuilderV3<
           CreateRole, CreateRole.Builder, CreateRoleOrBuilder> creatRoleBuilder_;
       /**
-       * <code>.CreateRole creatRole = 3;</code>
+       * <code>.CreateRole creatRole = 2;</code>
        */
       public boolean hasCreatRole() {
-        return optionContentCase_ == 3;
+        return optionContentCase_ == 2;
       }
       /**
-       * <code>.CreateRole creatRole = 3;</code>
+       * <code>.CreateRole creatRole = 2;</code>
        */
       public CreateRole getCreatRole() {
         if (creatRoleBuilder_ == null) {
-          if (optionContentCase_ == 3) {
+          if (optionContentCase_ == 2) {
             return (CreateRole) optionContent_;
           }
           return CreateRole.getDefaultInstance();
         } else {
-          if (optionContentCase_ == 3) {
+          if (optionContentCase_ == 2) {
             return creatRoleBuilder_.getMessage();
           }
           return CreateRole.getDefaultInstance();
         }
       }
       /**
-       * <code>.CreateRole creatRole = 3;</code>
+       * <code>.CreateRole creatRole = 2;</code>
        */
       public Builder setCreatRole(CreateRole value) {
         if (creatRoleBuilder_ == null) {
@@ -1478,11 +1266,11 @@ public final class Message {
         } else {
           creatRoleBuilder_.setMessage(value);
         }
-        optionContentCase_ = 3;
+        optionContentCase_ = 2;
         return this;
       }
       /**
-       * <code>.CreateRole creatRole = 3;</code>
+       * <code>.CreateRole creatRole = 2;</code>
        */
       public Builder setCreatRole(
           CreateRole.Builder builderForValue) {
@@ -1492,15 +1280,15 @@ public final class Message {
         } else {
           creatRoleBuilder_.setMessage(builderForValue.build());
         }
-        optionContentCase_ = 3;
+        optionContentCase_ = 2;
         return this;
       }
       /**
-       * <code>.CreateRole creatRole = 3;</code>
+       * <code>.CreateRole creatRole = 2;</code>
        */
       public Builder mergeCreatRole(CreateRole value) {
         if (creatRoleBuilder_ == null) {
-          if (optionContentCase_ == 3 &&
+          if (optionContentCase_ == 2 &&
               optionContent_ != CreateRole.getDefaultInstance()) {
             optionContent_ = CreateRole.newBuilder((CreateRole) optionContent_)
                 .mergeFrom(value).buildPartial();
@@ -1509,26 +1297,26 @@ public final class Message {
           }
           onChanged();
         } else {
-          if (optionContentCase_ == 3) {
+          if (optionContentCase_ == 2) {
             creatRoleBuilder_.mergeFrom(value);
           }
           creatRoleBuilder_.setMessage(value);
         }
-        optionContentCase_ = 3;
+        optionContentCase_ = 2;
         return this;
       }
       /**
-       * <code>.CreateRole creatRole = 3;</code>
+       * <code>.CreateRole creatRole = 2;</code>
        */
       public Builder clearCreatRole() {
         if (creatRoleBuilder_ == null) {
-          if (optionContentCase_ == 3) {
+          if (optionContentCase_ == 2) {
             optionContentCase_ = 0;
             optionContent_ = null;
             onChanged();
           }
         } else {
-          if (optionContentCase_ == 3) {
+          if (optionContentCase_ == 2) {
             optionContentCase_ = 0;
             optionContent_ = null;
           }
@@ -1537,32 +1325,32 @@ public final class Message {
         return this;
       }
       /**
-       * <code>.CreateRole creatRole = 3;</code>
+       * <code>.CreateRole creatRole = 2;</code>
        */
       public CreateRole.Builder getCreatRoleBuilder() {
         return getCreatRoleFieldBuilder().getBuilder();
       }
       /**
-       * <code>.CreateRole creatRole = 3;</code>
+       * <code>.CreateRole creatRole = 2;</code>
        */
       public CreateRoleOrBuilder getCreatRoleOrBuilder() {
-        if ((optionContentCase_ == 3) && (creatRoleBuilder_ != null)) {
+        if ((optionContentCase_ == 2) && (creatRoleBuilder_ != null)) {
           return creatRoleBuilder_.getMessageOrBuilder();
         } else {
-          if (optionContentCase_ == 3) {
+          if (optionContentCase_ == 2) {
             return (CreateRole) optionContent_;
           }
           return CreateRole.getDefaultInstance();
         }
       }
       /**
-       * <code>.CreateRole creatRole = 3;</code>
+       * <code>.CreateRole creatRole = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           CreateRole, CreateRole.Builder, CreateRoleOrBuilder>
           getCreatRoleFieldBuilder() {
         if (creatRoleBuilder_ == null) {
-          if (!(optionContentCase_ == 3)) {
+          if (!(optionContentCase_ == 2)) {
             optionContent_ = CreateRole.getDefaultInstance();
           }
           creatRoleBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -1572,7 +1360,7 @@ public final class Message {
                   isClean());
           optionContent_ = null;
         }
-        optionContentCase_ = 3;
+        optionContentCase_ = 2;
         onChanged();;
         return creatRoleBuilder_;
       }
@@ -1580,29 +1368,29 @@ public final class Message {
       private com.google.protobuf.SingleFieldBuilderV3<
           Login, Login.Builder, LoginOrBuilder> loginBuilder_;
       /**
-       * <code>.Login login = 4;</code>
+       * <code>.Login login = 3;</code>
        */
       public boolean hasLogin() {
-        return optionContentCase_ == 4;
+        return optionContentCase_ == 3;
       }
       /**
-       * <code>.Login login = 4;</code>
+       * <code>.Login login = 3;</code>
        */
       public Login getLogin() {
         if (loginBuilder_ == null) {
-          if (optionContentCase_ == 4) {
+          if (optionContentCase_ == 3) {
             return (Login) optionContent_;
           }
           return Login.getDefaultInstance();
         } else {
-          if (optionContentCase_ == 4) {
+          if (optionContentCase_ == 3) {
             return loginBuilder_.getMessage();
           }
           return Login.getDefaultInstance();
         }
       }
       /**
-       * <code>.Login login = 4;</code>
+       * <code>.Login login = 3;</code>
        */
       public Builder setLogin(Login value) {
         if (loginBuilder_ == null) {
@@ -1614,11 +1402,11 @@ public final class Message {
         } else {
           loginBuilder_.setMessage(value);
         }
-        optionContentCase_ = 4;
+        optionContentCase_ = 3;
         return this;
       }
       /**
-       * <code>.Login login = 4;</code>
+       * <code>.Login login = 3;</code>
        */
       public Builder setLogin(
           Login.Builder builderForValue) {
@@ -1628,15 +1416,15 @@ public final class Message {
         } else {
           loginBuilder_.setMessage(builderForValue.build());
         }
-        optionContentCase_ = 4;
+        optionContentCase_ = 3;
         return this;
       }
       /**
-       * <code>.Login login = 4;</code>
+       * <code>.Login login = 3;</code>
        */
       public Builder mergeLogin(Login value) {
         if (loginBuilder_ == null) {
-          if (optionContentCase_ == 4 &&
+          if (optionContentCase_ == 3 &&
               optionContent_ != Login.getDefaultInstance()) {
             optionContent_ = Login.newBuilder((Login) optionContent_)
                 .mergeFrom(value).buildPartial();
@@ -1645,26 +1433,26 @@ public final class Message {
           }
           onChanged();
         } else {
-          if (optionContentCase_ == 4) {
+          if (optionContentCase_ == 3) {
             loginBuilder_.mergeFrom(value);
           }
           loginBuilder_.setMessage(value);
         }
-        optionContentCase_ = 4;
+        optionContentCase_ = 3;
         return this;
       }
       /**
-       * <code>.Login login = 4;</code>
+       * <code>.Login login = 3;</code>
        */
       public Builder clearLogin() {
         if (loginBuilder_ == null) {
-          if (optionContentCase_ == 4) {
+          if (optionContentCase_ == 3) {
             optionContentCase_ = 0;
             optionContent_ = null;
             onChanged();
           }
         } else {
-          if (optionContentCase_ == 4) {
+          if (optionContentCase_ == 3) {
             optionContentCase_ = 0;
             optionContent_ = null;
           }
@@ -1673,32 +1461,32 @@ public final class Message {
         return this;
       }
       /**
-       * <code>.Login login = 4;</code>
+       * <code>.Login login = 3;</code>
        */
       public Login.Builder getLoginBuilder() {
         return getLoginFieldBuilder().getBuilder();
       }
       /**
-       * <code>.Login login = 4;</code>
+       * <code>.Login login = 3;</code>
        */
       public LoginOrBuilder getLoginOrBuilder() {
-        if ((optionContentCase_ == 4) && (loginBuilder_ != null)) {
+        if ((optionContentCase_ == 3) && (loginBuilder_ != null)) {
           return loginBuilder_.getMessageOrBuilder();
         } else {
-          if (optionContentCase_ == 4) {
+          if (optionContentCase_ == 3) {
             return (Login) optionContent_;
           }
           return Login.getDefaultInstance();
         }
       }
       /**
-       * <code>.Login login = 4;</code>
+       * <code>.Login login = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           Login, Login.Builder, LoginOrBuilder>
           getLoginFieldBuilder() {
         if (loginBuilder_ == null) {
-          if (!(optionContentCase_ == 4)) {
+          if (!(optionContentCase_ == 3)) {
             optionContent_ = Login.getDefaultInstance();
           }
           loginBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -1708,7 +1496,7 @@ public final class Message {
                   isClean());
           optionContent_ = null;
         }
-        optionContentCase_ = 4;
+        optionContentCase_ = 3;
         onChanged();;
         return loginBuilder_;
       }
@@ -1716,29 +1504,29 @@ public final class Message {
       private com.google.protobuf.SingleFieldBuilderV3<
           ChangeMap, ChangeMap.Builder, ChangeMapOrBuilder> changeMapBuilder_;
       /**
-       * <code>.ChangeMap changeMap = 5;</code>
+       * <code>.ChangeMap changeMap = 4;</code>
        */
       public boolean hasChangeMap() {
-        return optionContentCase_ == 5;
+        return optionContentCase_ == 4;
       }
       /**
-       * <code>.ChangeMap changeMap = 5;</code>
+       * <code>.ChangeMap changeMap = 4;</code>
        */
       public ChangeMap getChangeMap() {
         if (changeMapBuilder_ == null) {
-          if (optionContentCase_ == 5) {
+          if (optionContentCase_ == 4) {
             return (ChangeMap) optionContent_;
           }
           return ChangeMap.getDefaultInstance();
         } else {
-          if (optionContentCase_ == 5) {
+          if (optionContentCase_ == 4) {
             return changeMapBuilder_.getMessage();
           }
           return ChangeMap.getDefaultInstance();
         }
       }
       /**
-       * <code>.ChangeMap changeMap = 5;</code>
+       * <code>.ChangeMap changeMap = 4;</code>
        */
       public Builder setChangeMap(ChangeMap value) {
         if (changeMapBuilder_ == null) {
@@ -1750,11 +1538,11 @@ public final class Message {
         } else {
           changeMapBuilder_.setMessage(value);
         }
-        optionContentCase_ = 5;
+        optionContentCase_ = 4;
         return this;
       }
       /**
-       * <code>.ChangeMap changeMap = 5;</code>
+       * <code>.ChangeMap changeMap = 4;</code>
        */
       public Builder setChangeMap(
           ChangeMap.Builder builderForValue) {
@@ -1764,15 +1552,15 @@ public final class Message {
         } else {
           changeMapBuilder_.setMessage(builderForValue.build());
         }
-        optionContentCase_ = 5;
+        optionContentCase_ = 4;
         return this;
       }
       /**
-       * <code>.ChangeMap changeMap = 5;</code>
+       * <code>.ChangeMap changeMap = 4;</code>
        */
       public Builder mergeChangeMap(ChangeMap value) {
         if (changeMapBuilder_ == null) {
-          if (optionContentCase_ == 5 &&
+          if (optionContentCase_ == 4 &&
               optionContent_ != ChangeMap.getDefaultInstance()) {
             optionContent_ = ChangeMap.newBuilder((ChangeMap) optionContent_)
                 .mergeFrom(value).buildPartial();
@@ -1781,26 +1569,26 @@ public final class Message {
           }
           onChanged();
         } else {
-          if (optionContentCase_ == 5) {
+          if (optionContentCase_ == 4) {
             changeMapBuilder_.mergeFrom(value);
           }
           changeMapBuilder_.setMessage(value);
         }
-        optionContentCase_ = 5;
+        optionContentCase_ = 4;
         return this;
       }
       /**
-       * <code>.ChangeMap changeMap = 5;</code>
+       * <code>.ChangeMap changeMap = 4;</code>
        */
       public Builder clearChangeMap() {
         if (changeMapBuilder_ == null) {
-          if (optionContentCase_ == 5) {
+          if (optionContentCase_ == 4) {
             optionContentCase_ = 0;
             optionContent_ = null;
             onChanged();
           }
         } else {
-          if (optionContentCase_ == 5) {
+          if (optionContentCase_ == 4) {
             optionContentCase_ = 0;
             optionContent_ = null;
           }
@@ -1809,32 +1597,32 @@ public final class Message {
         return this;
       }
       /**
-       * <code>.ChangeMap changeMap = 5;</code>
+       * <code>.ChangeMap changeMap = 4;</code>
        */
       public ChangeMap.Builder getChangeMapBuilder() {
         return getChangeMapFieldBuilder().getBuilder();
       }
       /**
-       * <code>.ChangeMap changeMap = 5;</code>
+       * <code>.ChangeMap changeMap = 4;</code>
        */
       public ChangeMapOrBuilder getChangeMapOrBuilder() {
-        if ((optionContentCase_ == 5) && (changeMapBuilder_ != null)) {
+        if ((optionContentCase_ == 4) && (changeMapBuilder_ != null)) {
           return changeMapBuilder_.getMessageOrBuilder();
         } else {
-          if (optionContentCase_ == 5) {
+          if (optionContentCase_ == 4) {
             return (ChangeMap) optionContent_;
           }
           return ChangeMap.getDefaultInstance();
         }
       }
       /**
-       * <code>.ChangeMap changeMap = 5;</code>
+       * <code>.ChangeMap changeMap = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           ChangeMap, ChangeMap.Builder, ChangeMapOrBuilder>
           getChangeMapFieldBuilder() {
         if (changeMapBuilder_ == null) {
-          if (!(optionContentCase_ == 5)) {
+          if (!(optionContentCase_ == 4)) {
             optionContent_ = ChangeMap.getDefaultInstance();
           }
           changeMapBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -1844,7 +1632,7 @@ public final class Message {
                   isClean());
           optionContent_ = null;
         }
-        optionContentCase_ = 5;
+        optionContentCase_ = 4;
         onChanged();;
         return changeMapBuilder_;
       }
@@ -1852,29 +1640,29 @@ public final class Message {
       private com.google.protobuf.SingleFieldBuilderV3<
           State, State.Builder, StateOrBuilder> stateBuilder_;
       /**
-       * <code>.State state = 6;</code>
+       * <code>.State state = 5;</code>
        */
       public boolean hasState() {
-        return optionContentCase_ == 6;
+        return optionContentCase_ == 5;
       }
       /**
-       * <code>.State state = 6;</code>
+       * <code>.State state = 5;</code>
        */
       public State getState() {
         if (stateBuilder_ == null) {
-          if (optionContentCase_ == 6) {
+          if (optionContentCase_ == 5) {
             return (State) optionContent_;
           }
           return State.getDefaultInstance();
         } else {
-          if (optionContentCase_ == 6) {
+          if (optionContentCase_ == 5) {
             return stateBuilder_.getMessage();
           }
           return State.getDefaultInstance();
         }
       }
       /**
-       * <code>.State state = 6;</code>
+       * <code>.State state = 5;</code>
        */
       public Builder setState(State value) {
         if (stateBuilder_ == null) {
@@ -1886,11 +1674,11 @@ public final class Message {
         } else {
           stateBuilder_.setMessage(value);
         }
-        optionContentCase_ = 6;
+        optionContentCase_ = 5;
         return this;
       }
       /**
-       * <code>.State state = 6;</code>
+       * <code>.State state = 5;</code>
        */
       public Builder setState(
           State.Builder builderForValue) {
@@ -1900,15 +1688,15 @@ public final class Message {
         } else {
           stateBuilder_.setMessage(builderForValue.build());
         }
-        optionContentCase_ = 6;
+        optionContentCase_ = 5;
         return this;
       }
       /**
-       * <code>.State state = 6;</code>
+       * <code>.State state = 5;</code>
        */
       public Builder mergeState(State value) {
         if (stateBuilder_ == null) {
-          if (optionContentCase_ == 6 &&
+          if (optionContentCase_ == 5 &&
               optionContent_ != State.getDefaultInstance()) {
             optionContent_ = State.newBuilder((State) optionContent_)
                 .mergeFrom(value).buildPartial();
@@ -1917,26 +1705,26 @@ public final class Message {
           }
           onChanged();
         } else {
-          if (optionContentCase_ == 6) {
+          if (optionContentCase_ == 5) {
             stateBuilder_.mergeFrom(value);
           }
           stateBuilder_.setMessage(value);
         }
-        optionContentCase_ = 6;
+        optionContentCase_ = 5;
         return this;
       }
       /**
-       * <code>.State state = 6;</code>
+       * <code>.State state = 5;</code>
        */
       public Builder clearState() {
         if (stateBuilder_ == null) {
-          if (optionContentCase_ == 6) {
+          if (optionContentCase_ == 5) {
             optionContentCase_ = 0;
             optionContent_ = null;
             onChanged();
           }
         } else {
-          if (optionContentCase_ == 6) {
+          if (optionContentCase_ == 5) {
             optionContentCase_ = 0;
             optionContent_ = null;
           }
@@ -1945,32 +1733,32 @@ public final class Message {
         return this;
       }
       /**
-       * <code>.State state = 6;</code>
+       * <code>.State state = 5;</code>
        */
       public State.Builder getStateBuilder() {
         return getStateFieldBuilder().getBuilder();
       }
       /**
-       * <code>.State state = 6;</code>
+       * <code>.State state = 5;</code>
        */
       public StateOrBuilder getStateOrBuilder() {
-        if ((optionContentCase_ == 6) && (stateBuilder_ != null)) {
+        if ((optionContentCase_ == 5) && (stateBuilder_ != null)) {
           return stateBuilder_.getMessageOrBuilder();
         } else {
-          if (optionContentCase_ == 6) {
+          if (optionContentCase_ == 5) {
             return (State) optionContent_;
           }
           return State.getDefaultInstance();
         }
       }
       /**
-       * <code>.State state = 6;</code>
+       * <code>.State state = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           State, State.Builder, StateOrBuilder>
           getStateFieldBuilder() {
         if (stateBuilder_ == null) {
-          if (!(optionContentCase_ == 6)) {
+          if (!(optionContentCase_ == 5)) {
             optionContent_ = State.getDefaultInstance();
           }
           stateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -1980,7 +1768,7 @@ public final class Message {
                   isClean());
           optionContent_ = null;
         }
-        optionContentCase_ = 6;
+        optionContentCase_ = 5;
         onChanged();;
         return stateBuilder_;
       }
@@ -1988,29 +1776,29 @@ public final class Message {
       private com.google.protobuf.SingleFieldBuilderV3<
           Response, Response.Builder, ResponseOrBuilder> responseBuilder_;
       /**
-       * <code>.Response response = 7;</code>
+       * <code>.Response response = 6;</code>
        */
       public boolean hasResponse() {
-        return optionContentCase_ == 7;
+        return optionContentCase_ == 6;
       }
       /**
-       * <code>.Response response = 7;</code>
+       * <code>.Response response = 6;</code>
        */
       public Response getResponse() {
         if (responseBuilder_ == null) {
-          if (optionContentCase_ == 7) {
+          if (optionContentCase_ == 6) {
             return (Response) optionContent_;
           }
           return Response.getDefaultInstance();
         } else {
-          if (optionContentCase_ == 7) {
+          if (optionContentCase_ == 6) {
             return responseBuilder_.getMessage();
           }
           return Response.getDefaultInstance();
         }
       }
       /**
-       * <code>.Response response = 7;</code>
+       * <code>.Response response = 6;</code>
        */
       public Builder setResponse(Response value) {
         if (responseBuilder_ == null) {
@@ -2022,11 +1810,11 @@ public final class Message {
         } else {
           responseBuilder_.setMessage(value);
         }
-        optionContentCase_ = 7;
+        optionContentCase_ = 6;
         return this;
       }
       /**
-       * <code>.Response response = 7;</code>
+       * <code>.Response response = 6;</code>
        */
       public Builder setResponse(
           Response.Builder builderForValue) {
@@ -2036,15 +1824,15 @@ public final class Message {
         } else {
           responseBuilder_.setMessage(builderForValue.build());
         }
-        optionContentCase_ = 7;
+        optionContentCase_ = 6;
         return this;
       }
       /**
-       * <code>.Response response = 7;</code>
+       * <code>.Response response = 6;</code>
        */
       public Builder mergeResponse(Response value) {
         if (responseBuilder_ == null) {
-          if (optionContentCase_ == 7 &&
+          if (optionContentCase_ == 6 &&
               optionContent_ != Response.getDefaultInstance()) {
             optionContent_ = Response.newBuilder((Response) optionContent_)
                 .mergeFrom(value).buildPartial();
@@ -2053,26 +1841,26 @@ public final class Message {
           }
           onChanged();
         } else {
-          if (optionContentCase_ == 7) {
+          if (optionContentCase_ == 6) {
             responseBuilder_.mergeFrom(value);
           }
           responseBuilder_.setMessage(value);
         }
-        optionContentCase_ = 7;
+        optionContentCase_ = 6;
         return this;
       }
       /**
-       * <code>.Response response = 7;</code>
+       * <code>.Response response = 6;</code>
        */
       public Builder clearResponse() {
         if (responseBuilder_ == null) {
-          if (optionContentCase_ == 7) {
+          if (optionContentCase_ == 6) {
             optionContentCase_ = 0;
             optionContent_ = null;
             onChanged();
           }
         } else {
-          if (optionContentCase_ == 7) {
+          if (optionContentCase_ == 6) {
             optionContentCase_ = 0;
             optionContent_ = null;
           }
@@ -2081,32 +1869,32 @@ public final class Message {
         return this;
       }
       /**
-       * <code>.Response response = 7;</code>
+       * <code>.Response response = 6;</code>
        */
       public Response.Builder getResponseBuilder() {
         return getResponseFieldBuilder().getBuilder();
       }
       /**
-       * <code>.Response response = 7;</code>
+       * <code>.Response response = 6;</code>
        */
       public ResponseOrBuilder getResponseOrBuilder() {
-        if ((optionContentCase_ == 7) && (responseBuilder_ != null)) {
+        if ((optionContentCase_ == 6) && (responseBuilder_ != null)) {
           return responseBuilder_.getMessageOrBuilder();
         } else {
-          if (optionContentCase_ == 7) {
+          if (optionContentCase_ == 6) {
             return (Response) optionContent_;
           }
           return Response.getDefaultInstance();
         }
       }
       /**
-       * <code>.Response response = 7;</code>
+       * <code>.Response response = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           Response, Response.Builder, ResponseOrBuilder>
           getResponseFieldBuilder() {
         if (responseBuilder_ == null) {
-          if (!(optionContentCase_ == 7)) {
+          if (!(optionContentCase_ == 6)) {
             optionContent_ = Response.getDefaultInstance();
           }
           responseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -2116,7 +1904,7 @@ public final class Message {
                   isClean());
           optionContent_ = null;
         }
-        optionContentCase_ = 7;
+        optionContentCase_ = 6;
         onChanged();;
         return responseBuilder_;
       }
@@ -2124,29 +1912,29 @@ public final class Message {
       private com.google.protobuf.SingleFieldBuilderV3<
           Quit, Quit.Builder, QuitOrBuilder> quitBuilder_;
       /**
-       * <code>.Quit quit = 8;</code>
+       * <code>.Quit quit = 7;</code>
        */
       public boolean hasQuit() {
-        return optionContentCase_ == 8;
+        return optionContentCase_ == 7;
       }
       /**
-       * <code>.Quit quit = 8;</code>
+       * <code>.Quit quit = 7;</code>
        */
       public Quit getQuit() {
         if (quitBuilder_ == null) {
-          if (optionContentCase_ == 8) {
+          if (optionContentCase_ == 7) {
             return (Quit) optionContent_;
           }
           return Quit.getDefaultInstance();
         } else {
-          if (optionContentCase_ == 8) {
+          if (optionContentCase_ == 7) {
             return quitBuilder_.getMessage();
           }
           return Quit.getDefaultInstance();
         }
       }
       /**
-       * <code>.Quit quit = 8;</code>
+       * <code>.Quit quit = 7;</code>
        */
       public Builder setQuit(Quit value) {
         if (quitBuilder_ == null) {
@@ -2158,11 +1946,11 @@ public final class Message {
         } else {
           quitBuilder_.setMessage(value);
         }
-        optionContentCase_ = 8;
+        optionContentCase_ = 7;
         return this;
       }
       /**
-       * <code>.Quit quit = 8;</code>
+       * <code>.Quit quit = 7;</code>
        */
       public Builder setQuit(
           Quit.Builder builderForValue) {
@@ -2172,15 +1960,15 @@ public final class Message {
         } else {
           quitBuilder_.setMessage(builderForValue.build());
         }
-        optionContentCase_ = 8;
+        optionContentCase_ = 7;
         return this;
       }
       /**
-       * <code>.Quit quit = 8;</code>
+       * <code>.Quit quit = 7;</code>
        */
       public Builder mergeQuit(Quit value) {
         if (quitBuilder_ == null) {
-          if (optionContentCase_ == 8 &&
+          if (optionContentCase_ == 7 &&
               optionContent_ != Quit.getDefaultInstance()) {
             optionContent_ = Quit.newBuilder((Quit) optionContent_)
                 .mergeFrom(value).buildPartial();
@@ -2189,19 +1977,155 @@ public final class Message {
           }
           onChanged();
         } else {
-          if (optionContentCase_ == 8) {
+          if (optionContentCase_ == 7) {
             quitBuilder_.mergeFrom(value);
           }
           quitBuilder_.setMessage(value);
+        }
+        optionContentCase_ = 7;
+        return this;
+      }
+      /**
+       * <code>.Quit quit = 7;</code>
+       */
+      public Builder clearQuit() {
+        if (quitBuilder_ == null) {
+          if (optionContentCase_ == 7) {
+            optionContentCase_ = 0;
+            optionContent_ = null;
+            onChanged();
+          }
+        } else {
+          if (optionContentCase_ == 7) {
+            optionContentCase_ = 0;
+            optionContent_ = null;
+          }
+          quitBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.Quit quit = 7;</code>
+       */
+      public Quit.Builder getQuitBuilder() {
+        return getQuitFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.Quit quit = 7;</code>
+       */
+      public QuitOrBuilder getQuitOrBuilder() {
+        if ((optionContentCase_ == 7) && (quitBuilder_ != null)) {
+          return quitBuilder_.getMessageOrBuilder();
+        } else {
+          if (optionContentCase_ == 7) {
+            return (Quit) optionContent_;
+          }
+          return Quit.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.Quit quit = 7;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Quit, Quit.Builder, QuitOrBuilder>
+          getQuitFieldBuilder() {
+        if (quitBuilder_ == null) {
+          if (!(optionContentCase_ == 7)) {
+            optionContent_ = Quit.getDefaultInstance();
+          }
+          quitBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              Quit, Quit.Builder, QuitOrBuilder>(
+                  (Quit) optionContent_,
+                  getParentForChildren(),
+                  isClean());
+          optionContent_ = null;
+        }
+        optionContentCase_ = 7;
+        onChanged();;
+        return quitBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Talk, Talk.Builder, TalkOrBuilder> talkBuilder_;
+      /**
+       * <code>.Talk talk = 8;</code>
+       */
+      public boolean hasTalk() {
+        return optionContentCase_ == 8;
+      }
+      /**
+       * <code>.Talk talk = 8;</code>
+       */
+      public Talk getTalk() {
+        if (talkBuilder_ == null) {
+          if (optionContentCase_ == 8) {
+            return (Talk) optionContent_;
+          }
+          return Talk.getDefaultInstance();
+        } else {
+          if (optionContentCase_ == 8) {
+            return talkBuilder_.getMessage();
+          }
+          return Talk.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.Talk talk = 8;</code>
+       */
+      public Builder setTalk(Talk value) {
+        if (talkBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          optionContent_ = value;
+          onChanged();
+        } else {
+          talkBuilder_.setMessage(value);
         }
         optionContentCase_ = 8;
         return this;
       }
       /**
-       * <code>.Quit quit = 8;</code>
+       * <code>.Talk talk = 8;</code>
        */
-      public Builder clearQuit() {
-        if (quitBuilder_ == null) {
+      public Builder setTalk(
+          Talk.Builder builderForValue) {
+        if (talkBuilder_ == null) {
+          optionContent_ = builderForValue.build();
+          onChanged();
+        } else {
+          talkBuilder_.setMessage(builderForValue.build());
+        }
+        optionContentCase_ = 8;
+        return this;
+      }
+      /**
+       * <code>.Talk talk = 8;</code>
+       */
+      public Builder mergeTalk(Talk value) {
+        if (talkBuilder_ == null) {
+          if (optionContentCase_ == 8 &&
+              optionContent_ != Talk.getDefaultInstance()) {
+            optionContent_ = Talk.newBuilder((Talk) optionContent_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            optionContent_ = value;
+          }
+          onChanged();
+        } else {
+          if (optionContentCase_ == 8) {
+            talkBuilder_.mergeFrom(value);
+          }
+          talkBuilder_.setMessage(value);
+        }
+        optionContentCase_ = 8;
+        return this;
+      }
+      /**
+       * <code>.Talk talk = 8;</code>
+       */
+      public Builder clearTalk() {
+        if (talkBuilder_ == null) {
           if (optionContentCase_ == 8) {
             optionContentCase_ = 0;
             optionContent_ = null;
@@ -2212,49 +2136,49 @@ public final class Message {
             optionContentCase_ = 0;
             optionContent_ = null;
           }
-          quitBuilder_.clear();
+          talkBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>.Quit quit = 8;</code>
+       * <code>.Talk talk = 8;</code>
        */
-      public Quit.Builder getQuitBuilder() {
-        return getQuitFieldBuilder().getBuilder();
+      public Talk.Builder getTalkBuilder() {
+        return getTalkFieldBuilder().getBuilder();
       }
       /**
-       * <code>.Quit quit = 8;</code>
+       * <code>.Talk talk = 8;</code>
        */
-      public QuitOrBuilder getQuitOrBuilder() {
-        if ((optionContentCase_ == 8) && (quitBuilder_ != null)) {
-          return quitBuilder_.getMessageOrBuilder();
+      public TalkOrBuilder getTalkOrBuilder() {
+        if ((optionContentCase_ == 8) && (talkBuilder_ != null)) {
+          return talkBuilder_.getMessageOrBuilder();
         } else {
           if (optionContentCase_ == 8) {
-            return (Quit) optionContent_;
+            return (Talk) optionContent_;
           }
-          return Quit.getDefaultInstance();
+          return Talk.getDefaultInstance();
         }
       }
       /**
-       * <code>.Quit quit = 8;</code>
+       * <code>.Talk talk = 8;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          Quit, Quit.Builder, QuitOrBuilder>
-          getQuitFieldBuilder() {
-        if (quitBuilder_ == null) {
+          Talk, Talk.Builder, TalkOrBuilder>
+          getTalkFieldBuilder() {
+        if (talkBuilder_ == null) {
           if (!(optionContentCase_ == 8)) {
-            optionContent_ = Quit.getDefaultInstance();
+            optionContent_ = Talk.getDefaultInstance();
           }
-          quitBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              Quit, Quit.Builder, QuitOrBuilder>(
-                  (Quit) optionContent_,
+          talkBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              Talk, Talk.Builder, TalkOrBuilder>(
+                  (Talk) optionContent_,
                   getParentForChildren(),
                   isClean());
           optionContent_ = null;
         }
         optionContentCase_ = 8;
         onChanged();;
-        return quitBuilder_;
+        return talkBuilder_;
       }
       @Override
       public final Builder setUnknownFields(
@@ -6076,6 +6000,490 @@ public final class Message {
 
   }
 
+  public interface TalkOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Talk)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 npcId = 1;</code>
+     */
+    int getNpcId();
+  }
+  /**
+   * <pre>
+   * 玩家对话NPC
+   * </pre>
+   *
+   * Protobuf type {@code Talk}
+   */
+  public  static final class Talk extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:Talk)
+      TalkOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Talk.newBuilder() to construct.
+    private Talk(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Talk() {
+      npcId_ = 0;
+    }
+
+    @Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Talk(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              npcId_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Message.internal_static_Talk_descriptor;
+    }
+
+    @Override
+    protected FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Message.internal_static_Talk_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Talk.class, Builder.class);
+    }
+
+    public static final int NPCID_FIELD_NUMBER = 1;
+    private int npcId_;
+    /**
+     * <code>int32 npcId = 1;</code>
+     */
+    public int getNpcId() {
+      return npcId_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (npcId_ != 0) {
+        output.writeInt32(1, npcId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (npcId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, npcId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Talk)) {
+        return super.equals(obj);
+      }
+      Talk other = (Talk) obj;
+
+      boolean result = true;
+      result = result && (getNpcId()
+          == other.getNpcId());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + NPCID_FIELD_NUMBER;
+      hash = (53 * hash) + getNpcId();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Talk parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Talk parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Talk parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Talk parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Talk parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Talk parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Talk parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static Talk parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Talk parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static Talk parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Talk parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static Talk parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Talk prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @Override
+    protected Builder newBuilderForType(
+        BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * 玩家对话NPC
+     * </pre>
+     *
+     * Protobuf type {@code Talk}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Talk)
+        TalkOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Message.internal_static_Talk_descriptor;
+      }
+
+      @Override
+      protected FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Message.internal_static_Talk_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Talk.class, Builder.class);
+      }
+
+      // Construct using com.netty.proto.Message.Talk.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @Override
+      public Builder clear() {
+        super.clear();
+        npcId_ = 0;
+
+        return this;
+      }
+
+      @Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Message.internal_static_Talk_descriptor;
+      }
+
+      @Override
+      public Talk getDefaultInstanceForType() {
+        return Talk.getDefaultInstance();
+      }
+
+      @Override
+      public Talk build() {
+        Talk result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @Override
+      public Talk buildPartial() {
+        Talk result = new Talk(this);
+        result.npcId_ = npcId_;
+        onBuilt();
+        return result;
+      }
+
+      @Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Talk) {
+          return mergeFrom((Talk)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Talk other) {
+        if (other == Talk.getDefaultInstance()) return this;
+        if (other.getNpcId() != 0) {
+          setNpcId(other.getNpcId());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        Talk parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (Talk) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int npcId_ ;
+      /**
+       * <code>int32 npcId = 1;</code>
+       */
+      public int getNpcId() {
+        return npcId_;
+      }
+      /**
+       * <code>int32 npcId = 1;</code>
+       */
+      public Builder setNpcId(int value) {
+        
+        npcId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 npcId = 1;</code>
+       */
+      public Builder clearNpcId() {
+        
+        npcId_ = 0;
+        onChanged();
+        return this;
+      }
+      @Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:Talk)
+    }
+
+    // @@protoc_insertion_point(class_scope:Talk)
+    private static final Talk DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Talk();
+    }
+
+    public static Talk getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Talk>
+        PARSER = new com.google.protobuf.AbstractParser<Talk>() {
+      @Override
+      public Talk parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Talk(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Talk> parser() {
+      return PARSER;
+    }
+
+    @Override
+    public com.google.protobuf.Parser<Talk> getParserForType() {
+      return PARSER;
+    }
+
+    @Override
+    public Talk getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Option_descriptor;
   private static final 
@@ -6116,6 +6524,11 @@ public final class Message {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Quit_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Talk_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Talk_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -6125,21 +6538,19 @@ public final class Message {
       descriptor;
   static {
     String[] descriptorData = {
-      "\n\nUser.proto\"\360\002\n\006Option\022\'\n\013option_type\030\001" +
-      " \001(\0162\022.Option.OptionType\022\035\n\010register\030\002 \001" +
-      "(\0132\t.RegisterH\000\022 \n\tcreatRole\030\003 \001(\0132\013.Cre" +
-      "ateRoleH\000\022\027\n\005login\030\004 \001(\0132\006.LoginH\000\022\037\n\tch" +
-      "angeMap\030\005 \001(\0132\n.ChangeMapH\000\022\027\n\005state\030\006 \001" +
-      "(\0132\006.StateH\000\022\035\n\010response\030\007 \001(\0132\t.Respons" +
-      "eH\000\022\025\n\004quit\030\010 \001(\0132\005.QuitH\000\"b\n\nOptionType" +
-      "\022\014\n\010REGISTER\020\000\022\010\n\004ROLE\020\001\022\t\n\005LOGIN\020\002\022\016\n\nC" +
-      "HANGE_MAP\020\003\022\t\n\005STATE\020\004\022\014\n\010RESPONSE\020\005\022\010\n\004" +
-      "QUIT\020\006B\017\n\roptionContent\"-\n\010Register\022\017\n\007a" +
-      "ccount\030\001 \001(\t\022\020\n\010nickName\030\002 \001(\t\"\036\n\nCreate" +
-      "Role\022\020\n\010roleType\030\001 \001(\005\"\030\n\005Login\022\017\n\007accou" +
-      "nt\030\001 \001(\t\"\032\n\tChangeMap\022\r\n\005mapId\030\001 \001(\005\"\007\n\005" +
-      "State\"\032\n\010Response\022\016\n\006answer\030\001 \001(\t\"\006\n\004Qui" +
-      "tB\034\n\017com.netty.protoB\007MessageH\001b\006proto3"
+      "\n\nUser.proto\"\372\001\n\006Option\022\035\n\010register\030\001 \001(" +
+      "\0132\t.RegisterH\000\022 \n\tcreatRole\030\002 \001(\0132\013.Crea" +
+      "teRoleH\000\022\027\n\005login\030\003 \001(\0132\006.LoginH\000\022\037\n\tcha" +
+      "ngeMap\030\004 \001(\0132\n.ChangeMapH\000\022\027\n\005state\030\005 \001(" +
+      "\0132\006.StateH\000\022\035\n\010response\030\006 \001(\0132\t.Response" +
+      "H\000\022\025\n\004quit\030\007 \001(\0132\005.QuitH\000\022\025\n\004talk\030\010 \001(\0132" +
+      "\005.TalkH\000B\017\n\roptionContent\"-\n\010Register\022\017\n" +
+      "\007account\030\001 \001(\t\022\020\n\010nickName\030\002 \001(\t\"\036\n\nCrea" +
+      "teRole\022\020\n\010roleType\030\001 \001(\005\"\030\n\005Login\022\017\n\007acc" +
+      "ount\030\001 \001(\t\"\032\n\tChangeMap\022\r\n\005mapId\030\001 \001(\005\"\007" +
+      "\n\005State\"\032\n\010Response\022\016\n\006answer\030\001 \001(\t\"\006\n\004Q" +
+      "uit\"\025\n\004Talk\022\r\n\005npcId\030\001 \001(\005B\034\n\017com.netty." +
+      "protoB\007MessageH\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6158,7 +6569,7 @@ public final class Message {
     internal_static_Option_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Option_descriptor,
-        new String[] { "OptionType", "Register", "CreatRole", "Login", "ChangeMap", "State", "Response", "Quit", "OptionContent", });
+        new String[] { "Register", "CreatRole", "Login", "ChangeMap", "State", "Response", "Quit", "Talk", "OptionContent", });
     internal_static_Register_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_Register_fieldAccessorTable = new
@@ -6201,6 +6612,12 @@ public final class Message {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Quit_descriptor,
         new String[] { });
+    internal_static_Talk_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_Talk_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Talk_descriptor,
+        new String[] { "NpcId", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

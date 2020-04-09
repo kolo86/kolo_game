@@ -27,7 +27,7 @@ import java.util.Map;
  * @since 1.0.0
  */
 public enum OptionEnum {
-
+    /** 注册 */
     REGISTER(1, "注册") {
         @Override
         public boolean checkParamNum(String[] args) {
@@ -44,6 +44,7 @@ public enum OptionEnum {
             return message;
         }
     },
+    /** 登录 */
     LOGIN(2,"登录"){
         @Override
         public boolean checkParamNum(String[] args) {
@@ -61,6 +62,7 @@ public enum OptionEnum {
             return message;
         }
     },
+    /** 角色 */
     CREATE_ROLE(3,"角色"){
         @Override
         public boolean checkParamNum(String[] args) {
@@ -82,6 +84,7 @@ public enum OptionEnum {
             return message;
         }
     },
+    /** 移动 */
     CHANGE_MAP(4,"MOVE"){
         @Override
         public boolean checkParamNum(String[] args) {
@@ -104,6 +107,7 @@ public enum OptionEnum {
             return message;
         }
     },
+    /** 查看当前地图所有实体状态 */
     STATE(5,"AOI"){
         @Override
         public boolean checkParamNum(String[] args) {
@@ -119,7 +123,7 @@ public enum OptionEnum {
             return message;
         }
     },
-
+    /** 退出游戏 */
     QUIT(6, "退出"){
         @Override
         public Message.Option getMessage(String[] args) {
@@ -135,7 +139,7 @@ public enum OptionEnum {
             return args.length - 1 != Message.Quit.class.getFields().length;
         }
     },
-
+    /** 对话NPC */
     TALK(7, "对话"){
         @Override
         public Message.Option getMessage(String[] args) {
@@ -155,15 +159,35 @@ public enum OptionEnum {
         public boolean checkParamNum(String[] args) {
             return args.length - 1 != Message.Talk.class.getFields().length;
         }
+    },
+
+    /** 攻击怪物 */
+    ATTACK(8, "攻击"){
+        @Override
+        public Message.Option getMessage(String[] args) {
+            int monsterId = Integer.parseInt(args[1]);
+
+            Message.Option message = Message.Option.newBuilder()
+                    .setAttack(Message.Attack.newBuilder()
+                            .setMonsterId(monsterId).build())
+                    .build();
+
+            return message;
+        }
+
+        @Override
+        public boolean checkParamNum(String[] args) {
+            return args.length - 1 != Message.Attack.class.getFields().length;
+        }
     }
 
     ;
     private int id;
     private String optionName;
 
-    // Map< 操作ID， 操作命令 >
+    /** Map< 操作ID， 操作命令 > */
     private static final Map<Integer, String> idToName = new HashMap<Integer, String>();
-    // Map< 操作命令 ， 操作对象 >
+    /** Map< 操作命令 ， 操作对象 > */
     private static final Map<String, OptionEnum> nameToOption = new HashMap<String, OptionEnum>();
     static{
         for( OptionEnum option: values() ){

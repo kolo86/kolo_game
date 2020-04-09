@@ -9,7 +9,7 @@
  */
 package com.frame.resource.util;
 
-import com.frame.resource.IResource;
+import com.frame.resource.AbstractResource;
 import com.frame.resource.constant.FieldEnum;
 import com.frame.resource.handler.ResourceCacheHandler;
 import com.frame.resource.handler.ResourceScanHandler;
@@ -76,7 +76,7 @@ public class ResourceParseUtils {
      */
     private static void cacheData(List list) {
         for (int i = 0; i < list.size(); i++) {
-            ResourceCacheHandler.addResource(list.get(i).getClass(), (IResource) list.get(i));
+            ResourceCacheHandler.addResource(list.get(i).getClass(), (AbstractResource) list.get(i));
         }
     }
 
@@ -149,7 +149,7 @@ public class ResourceParseUtils {
         // 缓存 Map < 列数 ， 字段类型（枚举） >
         for (int index = 1; index < lastCellNum; index++) {
             XSSFCell tempCell = serverRow.getCell(index);
-            if (tempCell.getStringCellValue().trim() != null) {
+            if (tempCell != null && tempCell.getStringCellValue().trim() != null) {
                 String type = typeRow.getCell(index).getStringCellValue().toUpperCase();
                 String fieldName = serverRow.getCell(index).getStringCellValue();
                 readerSet.add(FieldObj.valueOf(index, fieldName, type));

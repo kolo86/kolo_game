@@ -9,12 +9,15 @@
  */
 package com.game.account.service;
 
+import com.frame.resource.handler.ResourceCacheHandler;
 import com.game.account.entity.PlayerEntity;
+import com.game.account.resource.PlayerResource;
 import io.netty.channel.Channel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -32,10 +35,31 @@ public class PlayerManager {
 
     private static final Logger logger = LoggerFactory.getLogger(PlayerManager.class);
 
-    // Map< 玩家channel， 玩家对象信息 >
+    /** Map< 玩家channel， 玩家对象信息 > */
     private static final Map<Channel, PlayerEntity> channelPlayerMap = new ConcurrentHashMap<Channel, PlayerEntity>();
-    // Map< 玩家账号ID， 玩家对象信息 >
+    /** Map< 玩家账号ID， 玩家对象信息 > */
     private static final Map<String, PlayerEntity> accountPlayerMap = new ConcurrentHashMap<String, PlayerEntity>();
+    /** 当前对象的实例 */
+    private static PlayerManager instance;
+
+    @PostConstruct
+    public void init(){
+        instance = this;
+    }
+
+    public static PlayerManager getPlayerManager(){
+        return instance;
+    }
+
+    /**
+     * 根据角色类型获取角色配置表
+     *
+     * @param roleType
+     * @return
+     */
+    public PlayerResource getPlayerResource(int roleType){
+        return (PlayerResource) ResourceCacheHandler.getResource(PlayerResource.class, roleType);
+    }
 
     /**
      * 缓存玩家信息

@@ -1,5 +1,6 @@
 package com.netty.client;
 
+import com.frame.resource.handler.ResourceCacheHandler;
 import com.netty.client.tool.ClientParseToos;
 import com.netty.proto.Message;
 import io.netty.bootstrap.Bootstrap;
@@ -64,6 +65,8 @@ public class NettyClient {
     }
 
     public static void main(String[] args) throws Exception {
+        // 初始化配置表数据。由于客户端是使用JAVA代码，所以在处理地图的枚举类型的时候，会像服务端一样初始化，而地图枚举类初始化过程需要用到配置表的数据
+        ResourceCacheHandler.init();
         new NettyClient("localhost", 8080).run();
     }
 

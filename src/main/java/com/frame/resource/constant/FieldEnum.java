@@ -28,17 +28,25 @@ import java.util.Map;
  * @author kolo
  */
 public enum FieldEnum {
-
+    /** 字符串类型 */
     STRING("String") {
         @Override
         public Object parseData(XSSFCell rowCell) {
             return rowCell.getStringCellValue();
         }
     },
+    /** 整型 */
     INT("int") {
         @Override
         public Object parseData(XSSFCell rowCell) {
             return Double.valueOf(rowCell.getNumericCellValue()).intValue();
+        }
+    },
+    /** 长整型 */
+    Long("long"){
+        @Override
+        public Object parseData(XSSFCell rowCell) {
+            return Double.valueOf(rowCell.getNumericCellValue()).longValue();
         }
     },
 

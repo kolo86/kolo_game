@@ -34,7 +34,6 @@ public class MainCityMapHandler extends AbstractMapHandler {
      *
      */
     public MainCityMapHandler(){
-        super();
         getNpcSet().add(NpcEnum.VILLAGER.getId());
     }
 

@@ -9,7 +9,7 @@
  */
 package com.frame.resource.handler;
 
-import com.frame.resource.IResource;
+import com.frame.resource.AbstractResource;
 import com.frame.resource.constant.ResourceConstant;
 import com.frame.resource.util.ResourceParseUtils;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -20,9 +20,7 @@ import org.springframework.util.ResourceUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -37,7 +35,7 @@ public class ResourceCacheHandler {
     private static final Logger logger = LoggerFactory.getLogger(ResourceCacheHandler.class);
 
     /** Map< 该配置文件的Class, Map< 配置的主键ID， 配置文件 > > */
-    public static final Map<Class<?>, Map<Integer, IResource>> resourceMap = new HashMap<Class<?>, Map<Integer, IResource>>();
+    public static final Map<Class<?>, Map<Integer, AbstractResource>> resourceMap = new HashMap<Class<?>, Map<Integer, AbstractResource>>();
 
     /**
      * 初始化资源缓存器
@@ -75,14 +73,14 @@ public class ResourceCacheHandler {
      * @param key
      * @return
      */
-    public static IResource getResource(Class<?> clz, Integer key){
-        Map<Integer, IResource> objectMap = resourceMap.get(clz);
+    public static AbstractResource getResource(Class<?> clz, Integer key){
+        Map<Integer, AbstractResource> objectMap = resourceMap.get(clz);
         if(Objects.isNull(objectMap)){
             logger.error("当配置文件class为：{}时，无法获取对应的配置文件列表", clz);
             return null;
         }
 
-        IResource obj = objectMap.get(key);
+        AbstractResource obj = objectMap.get(key);
         if(ObjectUtils.isEmpty(obj)){
             logger.error("当配置文件class为：{},主键为：{}时，无法获取对应的配置文件列表", clz, key);
             return null;
@@ -91,15 +89,32 @@ public class ResourceCacheHandler {
     }
 
     /**
+     * 获取所有配置文件
+     *
+     */
+    public static List<AbstractResource> getAllResource(Class<?> clz){
+        Map<Integer, AbstractResource> objectMap = resourceMap.get(clz);
+        if(Objects.isNull(objectMap)){
+            logger.error("当配置文件class为：{}时，无法获取对应的配置文件列表", clz);
+            return null;
+        }
+
+        return new ArrayList<>(objectMap.values());
+    }
+
+    /**
      * 缓存配置表
      *
      * @param clz
      * @param obj
      */
-    public static void addResource(Class<?> clz, IResource obj){
-        Map<Integer, IResource> resourceMapTemp = resourceMap.get(clz);
+    public static void addResource(Class<?> clz, AbstractResource obj){
+        // 执行配置的初始化方法
+        obj.init();
+
+        Map<Integer, AbstractResource> resourceMapTemp = resourceMap.get(clz);
         if(ObjectUtils.isEmpty(resourceMapTemp)){
-            resourceMapTemp = new HashMap<Integer, IResource>();
+            resourceMapTemp = new HashMap<Integer, AbstractResource>();
             resourceMapTemp.put(obj.getResourceId(), obj);
             resourceMap.put(clz, resourceMapTemp);
             return ;

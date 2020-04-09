@@ -21,9 +21,9 @@ import java.util.Map;
  * @since 1.0.0
  */
 public enum RoleStateEnum {
-
+    /** 生存 */
     EXIST(1, "生存"),
-
+    /** 死亡 */
     DEAD(2,"死亡")
 
     ;

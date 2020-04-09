@@ -9,7 +9,7 @@
  */
 package com.frame.resource.service;
 
-import com.frame.resource.IResource;
+import com.frame.resource.AbstractResource;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -28,6 +28,6 @@ public interface IResourceService {
      * @param key
      * @return
      */
-    IResource getResource(Class<?> clz, int key);
+    AbstractResource getResource(Class<?> clz, int key);
 
 }

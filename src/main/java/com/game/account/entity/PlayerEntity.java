@@ -1,14 +1,9 @@
-/**
- * FileName: PlayerEnt
- * Author:   坤龙
- * Date:     2020/4/2 14:23
- * Description: 玩家信息
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.account.entity;
 
+import com.frame.resource.handler.ResourceCacheHandler;
+import com.game.account.resource.PlayerResource;
+import com.game.container.AbstractContainer;
+import com.game.container.constant.ContainerType;
 import com.game.role.constant.RoleEnum;
 import com.game.role.entity.RoleEntity;
 import com.game.scene.constant.SceneType;
@@ -17,6 +12,8 @@ import lombok.Data;
 import org.hibernate.annotations.Table;
 
 import javax.persistence.*;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -45,17 +42,20 @@ public class PlayerEntity {
     @Column(columnDefinition = "int comment '地图ID'")
     private int mapId;
 
-    // 是否在线
+    /** 是否在线 */
     private transient boolean online = false;
 
-    // 角色信息
+    /** 角色信息 */
     private transient RoleEntity roleEntity;
 
-    // 账号信息
+    /** 账号信息 */
     private transient AccountEntity accountEntity;
 
-    // 通道信息
+    /** 通道信息 */
     private transient Channel channel;
+
+    /** 角色的属性容器 ，这里暂不存进数据库中*/
+    private transient Map<ContainerType, AbstractContainer> containerMap = new ConcurrentHashMap<>();
 
     /**
      * 创建角色实体
@@ -96,6 +96,8 @@ public class PlayerEntity {
     public void login(Channel channel){
         this.channel = channel;
         this.online = true;
+        // 初始化玩家容器
+        initContainer();
     }
 
     /**
@@ -106,4 +108,16 @@ public class PlayerEntity {
         this.online = false;
     }
 
+    /**
+     * 初始化玩家容器
+     *
+     */
+    public void initContainer(){
+        if(this.roleType == RoleEnum.NONE.getRoleId()){
+            return ;
+        }
+
+        PlayerResource resource = (PlayerResource) ResourceCacheHandler.getResource(PlayerResource.class, this.roleType);
+        this.containerMap = ContainerType.initPlayerContainer(resource);
+    }
 }

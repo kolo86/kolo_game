@@ -122,6 +122,19 @@ public final class Message {
      */
     TalkOrBuilder getTalkOrBuilder();
 
+    /**
+     * <code>.Attack attack = 9;</code>
+     */
+    boolean hasAttack();
+    /**
+     * <code>.Attack attack = 9;</code>
+     */
+    Attack getAttack();
+    /**
+     * <code>.Attack attack = 9;</code>
+     */
+    AttackOrBuilder getAttackOrBuilder();
+
     public Option.OptionContentCase getOptionContentCase();
   }
   /**
@@ -275,6 +288,20 @@ public final class Message {
               optionContentCase_ = 8;
               break;
             }
+            case 74: {
+              Attack.Builder subBuilder = null;
+              if (optionContentCase_ == 9) {
+                subBuilder = ((Attack) optionContent_).toBuilder();
+              }
+              optionContent_ =
+                  input.readMessage(Attack.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((Attack) optionContent_);
+                optionContent_ = subBuilder.buildPartial();
+              }
+              optionContentCase_ = 9;
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -319,6 +346,7 @@ public final class Message {
       RESPONSE(6),
       QUIT(7),
       TALK(8),
+      ATTACK(9),
       OPTIONCONTENT_NOT_SET(0);
       private final int value;
       private OptionContentCase(int value) {
@@ -342,6 +370,7 @@ public final class Message {
           case 6: return RESPONSE;
           case 7: return QUIT;
           case 8: return TALK;
+          case 9: return ATTACK;
           case 0: return OPTIONCONTENT_NOT_SET;
           default: return null;
         }
@@ -565,6 +594,32 @@ public final class Message {
       return Talk.getDefaultInstance();
     }
 
+    public static final int ATTACK_FIELD_NUMBER = 9;
+    /**
+     * <code>.Attack attack = 9;</code>
+     */
+    public boolean hasAttack() {
+      return optionContentCase_ == 9;
+    }
+    /**
+     * <code>.Attack attack = 9;</code>
+     */
+    public Attack getAttack() {
+      if (optionContentCase_ == 9) {
+         return (Attack) optionContent_;
+      }
+      return Attack.getDefaultInstance();
+    }
+    /**
+     * <code>.Attack attack = 9;</code>
+     */
+    public AttackOrBuilder getAttackOrBuilder() {
+      if (optionContentCase_ == 9) {
+         return (Attack) optionContent_;
+      }
+      return Attack.getDefaultInstance();
+    }
+
     private byte memoizedIsInitialized = -1;
     @Override
     public final boolean isInitialized() {
@@ -602,6 +657,9 @@ public final class Message {
       }
       if (optionContentCase_ == 8) {
         output.writeMessage(8, (Talk) optionContent_);
+      }
+      if (optionContentCase_ == 9) {
+        output.writeMessage(9, (Attack) optionContent_);
       }
       unknownFields.writeTo(output);
     }
@@ -643,6 +701,10 @@ public final class Message {
       if (optionContentCase_ == 8) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(8, (Talk) optionContent_);
+      }
+      if (optionContentCase_ == 9) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, (Attack) optionContent_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -696,6 +758,10 @@ public final class Message {
           result = result && getTalk()
               .equals(other.getTalk());
           break;
+        case 9:
+          result = result && getAttack()
+              .equals(other.getAttack());
+          break;
         case 0:
         default:
       }
@@ -742,6 +808,10 @@ public final class Message {
         case 8:
           hash = (37 * hash) + TALK_FIELD_NUMBER;
           hash = (53 * hash) + getTalk().hashCode();
+          break;
+        case 9:
+          hash = (37 * hash) + ATTACK_FIELD_NUMBER;
+          hash = (53 * hash) + getAttack().hashCode();
           break;
         case 0:
         default:
@@ -963,6 +1033,13 @@ public final class Message {
             result.optionContent_ = talkBuilder_.build();
           }
         }
+        if (optionContentCase_ == 9) {
+          if (attackBuilder_ == null) {
+            result.optionContent_ = optionContent_;
+          } else {
+            result.optionContent_ = attackBuilder_.build();
+          }
+        }
         result.optionContentCase_ = optionContentCase_;
         onBuilt();
         return result;
@@ -1043,6 +1120,10 @@ public final class Message {
           }
           case TALK: {
             mergeTalk(other.getTalk());
+            break;
+          }
+          case ATTACK: {
+            mergeAttack(other.getAttack());
             break;
           }
           case OPTIONCONTENT_NOT_SET: {
@@ -2179,6 +2260,142 @@ public final class Message {
         optionContentCase_ = 8;
         onChanged();;
         return talkBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Attack, Attack.Builder, AttackOrBuilder> attackBuilder_;
+      /**
+       * <code>.Attack attack = 9;</code>
+       */
+      public boolean hasAttack() {
+        return optionContentCase_ == 9;
+      }
+      /**
+       * <code>.Attack attack = 9;</code>
+       */
+      public Attack getAttack() {
+        if (attackBuilder_ == null) {
+          if (optionContentCase_ == 9) {
+            return (Attack) optionContent_;
+          }
+          return Attack.getDefaultInstance();
+        } else {
+          if (optionContentCase_ == 9) {
+            return attackBuilder_.getMessage();
+          }
+          return Attack.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.Attack attack = 9;</code>
+       */
+      public Builder setAttack(Attack value) {
+        if (attackBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          optionContent_ = value;
+          onChanged();
+        } else {
+          attackBuilder_.setMessage(value);
+        }
+        optionContentCase_ = 9;
+        return this;
+      }
+      /**
+       * <code>.Attack attack = 9;</code>
+       */
+      public Builder setAttack(
+          Attack.Builder builderForValue) {
+        if (attackBuilder_ == null) {
+          optionContent_ = builderForValue.build();
+          onChanged();
+        } else {
+          attackBuilder_.setMessage(builderForValue.build());
+        }
+        optionContentCase_ = 9;
+        return this;
+      }
+      /**
+       * <code>.Attack attack = 9;</code>
+       */
+      public Builder mergeAttack(Attack value) {
+        if (attackBuilder_ == null) {
+          if (optionContentCase_ == 9 &&
+              optionContent_ != Attack.getDefaultInstance()) {
+            optionContent_ = Attack.newBuilder((Attack) optionContent_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            optionContent_ = value;
+          }
+          onChanged();
+        } else {
+          if (optionContentCase_ == 9) {
+            attackBuilder_.mergeFrom(value);
+          }
+          attackBuilder_.setMessage(value);
+        }
+        optionContentCase_ = 9;
+        return this;
+      }
+      /**
+       * <code>.Attack attack = 9;</code>
+       */
+      public Builder clearAttack() {
+        if (attackBuilder_ == null) {
+          if (optionContentCase_ == 9) {
+            optionContentCase_ = 0;
+            optionContent_ = null;
+            onChanged();
+          }
+        } else {
+          if (optionContentCase_ == 9) {
+            optionContentCase_ = 0;
+            optionContent_ = null;
+          }
+          attackBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.Attack attack = 9;</code>
+       */
+      public Attack.Builder getAttackBuilder() {
+        return getAttackFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.Attack attack = 9;</code>
+       */
+      public AttackOrBuilder getAttackOrBuilder() {
+        if ((optionContentCase_ == 9) && (attackBuilder_ != null)) {
+          return attackBuilder_.getMessageOrBuilder();
+        } else {
+          if (optionContentCase_ == 9) {
+            return (Attack) optionContent_;
+          }
+          return Attack.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.Attack attack = 9;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Attack, Attack.Builder, AttackOrBuilder>
+          getAttackFieldBuilder() {
+        if (attackBuilder_ == null) {
+          if (!(optionContentCase_ == 9)) {
+            optionContent_ = Attack.getDefaultInstance();
+          }
+          attackBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              Attack, Attack.Builder, AttackOrBuilder>(
+                  (Attack) optionContent_,
+                  getParentForChildren(),
+                  isClean());
+          optionContent_ = null;
+        }
+        optionContentCase_ = 9;
+        onChanged();;
+        return attackBuilder_;
       }
       @Override
       public final Builder setUnknownFields(
@@ -6484,6 +6701,490 @@ public final class Message {
 
   }
 
+  public interface AttackOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Attack)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 monsterId = 1;</code>
+     */
+    int getMonsterId();
+  }
+  /**
+   * <pre>
+   * 攻击怪物
+   * </pre>
+   *
+   * Protobuf type {@code Attack}
+   */
+  public  static final class Attack extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:Attack)
+      AttackOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Attack.newBuilder() to construct.
+    private Attack(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Attack() {
+      monsterId_ = 0;
+    }
+
+    @Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Attack(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              monsterId_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Message.internal_static_Attack_descriptor;
+    }
+
+    @Override
+    protected FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Message.internal_static_Attack_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Attack.class, Builder.class);
+    }
+
+    public static final int MONSTERID_FIELD_NUMBER = 1;
+    private int monsterId_;
+    /**
+     * <code>int32 monsterId = 1;</code>
+     */
+    public int getMonsterId() {
+      return monsterId_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (monsterId_ != 0) {
+        output.writeInt32(1, monsterId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (monsterId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, monsterId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Attack)) {
+        return super.equals(obj);
+      }
+      Attack other = (Attack) obj;
+
+      boolean result = true;
+      result = result && (getMonsterId()
+          == other.getMonsterId());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + MONSTERID_FIELD_NUMBER;
+      hash = (53 * hash) + getMonsterId();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Attack parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Attack parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Attack parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Attack parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Attack parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Attack parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Attack parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static Attack parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Attack parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static Attack parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Attack parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static Attack parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Attack prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @Override
+    protected Builder newBuilderForType(
+        BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * 攻击怪物
+     * </pre>
+     *
+     * Protobuf type {@code Attack}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Attack)
+        AttackOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Message.internal_static_Attack_descriptor;
+      }
+
+      @Override
+      protected FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Message.internal_static_Attack_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Attack.class, Builder.class);
+      }
+
+      // Construct using com.netty.proto.Message.Attack.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @Override
+      public Builder clear() {
+        super.clear();
+        monsterId_ = 0;
+
+        return this;
+      }
+
+      @Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Message.internal_static_Attack_descriptor;
+      }
+
+      @Override
+      public Attack getDefaultInstanceForType() {
+        return Attack.getDefaultInstance();
+      }
+
+      @Override
+      public Attack build() {
+        Attack result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @Override
+      public Attack buildPartial() {
+        Attack result = new Attack(this);
+        result.monsterId_ = monsterId_;
+        onBuilt();
+        return result;
+      }
+
+      @Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Attack) {
+          return mergeFrom((Attack)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Attack other) {
+        if (other == Attack.getDefaultInstance()) return this;
+        if (other.getMonsterId() != 0) {
+          setMonsterId(other.getMonsterId());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        Attack parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (Attack) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int monsterId_ ;
+      /**
+       * <code>int32 monsterId = 1;</code>
+       */
+      public int getMonsterId() {
+        return monsterId_;
+      }
+      /**
+       * <code>int32 monsterId = 1;</code>
+       */
+      public Builder setMonsterId(int value) {
+        
+        monsterId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 monsterId = 1;</code>
+       */
+      public Builder clearMonsterId() {
+        
+        monsterId_ = 0;
+        onChanged();
+        return this;
+      }
+      @Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:Attack)
+    }
+
+    // @@protoc_insertion_point(class_scope:Attack)
+    private static final Attack DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Attack();
+    }
+
+    public static Attack getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Attack>
+        PARSER = new com.google.protobuf.AbstractParser<Attack>() {
+      @Override
+      public Attack parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Attack(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Attack> parser() {
+      return PARSER;
+    }
+
+    @Override
+    public com.google.protobuf.Parser<Attack> getParserForType() {
+      return PARSER;
+    }
+
+    @Override
+    public Attack getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Option_descriptor;
   private static final 
@@ -6529,6 +7230,11 @@ public final class Message {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Talk_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Attack_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Attack_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -6538,19 +7244,20 @@ public final class Message {
       descriptor;
   static {
     String[] descriptorData = {
-      "\n\nUser.proto\"\372\001\n\006Option\022\035\n\010register\030\001 \001(" +
+      "\n\nUser.proto\"\225\002\n\006Option\022\035\n\010register\030\001 \001(" +
       "\0132\t.RegisterH\000\022 \n\tcreatRole\030\002 \001(\0132\013.Crea" +
       "teRoleH\000\022\027\n\005login\030\003 \001(\0132\006.LoginH\000\022\037\n\tcha" +
       "ngeMap\030\004 \001(\0132\n.ChangeMapH\000\022\027\n\005state\030\005 \001(" +
       "\0132\006.StateH\000\022\035\n\010response\030\006 \001(\0132\t.Response" +
       "H\000\022\025\n\004quit\030\007 \001(\0132\005.QuitH\000\022\025\n\004talk\030\010 \001(\0132" +
-      "\005.TalkH\000B\017\n\roptionContent\"-\n\010Register\022\017\n" +
-      "\007account\030\001 \001(\t\022\020\n\010nickName\030\002 \001(\t\"\036\n\nCrea" +
-      "teRole\022\020\n\010roleType\030\001 \001(\005\"\030\n\005Login\022\017\n\007acc" +
-      "ount\030\001 \001(\t\"\032\n\tChangeMap\022\r\n\005mapId\030\001 \001(\005\"\007" +
-      "\n\005State\"\032\n\010Response\022\016\n\006answer\030\001 \001(\t\"\006\n\004Q" +
-      "uit\"\025\n\004Talk\022\r\n\005npcId\030\001 \001(\005B\034\n\017com.netty." +
-      "protoB\007MessageH\001b\006proto3"
+      "\005.TalkH\000\022\031\n\006attack\030\t \001(\0132\007.AttackH\000B\017\n\ro" +
+      "ptionContent\"-\n\010Register\022\017\n\007account\030\001 \001(" +
+      "\t\022\020\n\010nickName\030\002 \001(\t\"\036\n\nCreateRole\022\020\n\010rol" +
+      "eType\030\001 \001(\005\"\030\n\005Login\022\017\n\007account\030\001 \001(\t\"\032\n" +
+      "\tChangeMap\022\r\n\005mapId\030\001 \001(\005\"\007\n\005State\"\032\n\010Re" +
+      "sponse\022\016\n\006answer\030\001 \001(\t\"\006\n\004Quit\"\025\n\004Talk\022\r" +
+      "\n\005npcId\030\001 \001(\005\"\033\n\006Attack\022\021\n\tmonsterId\030\001 \001" +
+      "(\005B\034\n\017com.netty.protoB\007MessageH\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6569,7 +7276,7 @@ public final class Message {
     internal_static_Option_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Option_descriptor,
-        new String[] { "Register", "CreatRole", "Login", "ChangeMap", "State", "Response", "Quit", "Talk", "OptionContent", });
+        new String[] { "Register", "CreatRole", "Login", "ChangeMap", "State", "Response", "Quit", "Talk", "Attack", "OptionContent", });
     internal_static_Register_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_Register_fieldAccessorTable = new
@@ -6618,6 +7325,12 @@ public final class Message {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Talk_descriptor,
         new String[] { "NpcId", });
+    internal_static_Attack_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_Attack_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Attack_descriptor,
+        new String[] { "MonsterId", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

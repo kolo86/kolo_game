@@ -21,10 +21,13 @@ import java.util.Map;
  * @since 1.0.0
  */
 public enum RoleEnum {
-
+    /** 未建角色 */
     NONE(0,"未建角色"),
+    /** 英雄 */
     HERO(1, "英雄"),
+    /** 村民 */
     VILLAGER(2,"村民"),
+    /** 怪物 */
     MONSTER(3,"怪物")
 
     ;

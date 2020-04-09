@@ -9,7 +9,7 @@
  */
 package com.frame.resource.service;
 
-import com.frame.resource.IResource;
+import com.frame.resource.AbstractResource;
 import com.frame.resource.handler.ResourceCacheHandler;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +25,7 @@ import org.springframework.stereotype.Component;
 public class ResourceService implements IResourceService {
 
     @Override
-    public IResource getResource(Class<?> clz, int key) {
+    public AbstractResource getResource(Class<?> clz, int key) {
         return ResourceCacheHandler.getResource(clz, key);
     }
 }

@@ -22,7 +22,7 @@ import lombok.Data;
  */
 @Data
 public class CreateRoleEvent implements IEvent {
-    // 账号ID
+    /** 账号ID */
     private String accountId;
 
     public static CreateRoleEvent valueOf(String accountId){

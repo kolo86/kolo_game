@@ -9,7 +9,7 @@
  */
 package com.game.npc.resource;
 
-import com.frame.resource.IResource;
+import com.frame.resource.AbstractResource;
 import com.frame.resource.anno.Resource;
 import lombok.Data;
 
@@ -23,7 +23,7 @@ import lombok.Data;
  */
 @Data
 @Resource
-public class NpcResource implements IResource {
+public class NpcResource extends AbstractResource {
 
     /** npcId */
     private int id;

@@ -14,6 +14,7 @@ message Option{
       Response response = 6;
       Quit quit = 7;
       Talk talk = 8;
+      Attack attack = 9;
   }
 }
 
@@ -54,4 +55,9 @@ message Quit{
 // 玩家对话NPC
 message Talk{
   int32 npcId = 1;
+}
+
+// 攻击怪物
+message Attack{
+  int32 monsterId = 1;
 }

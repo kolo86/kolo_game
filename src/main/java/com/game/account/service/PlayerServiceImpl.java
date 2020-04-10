@@ -11,7 +11,7 @@ package com.game.account.service;
 
 import com.game.account.entity.AccountEntity;
 import com.game.account.entity.PlayerEntity;
-import com.game.persistence.IPersistenceService;
+import com.game.persistence.service.IPersistenceService;
 import com.game.role.entity.RoleEntity;
 import com.game.role.service.IRoleService;
 import io.netty.channel.Channel;

@@ -1,5 +1,6 @@
 package com.game.account.entity;
 
+import com.game.persistence.AbstractEntity;
 import lombok.Data;
 import org.hibernate.annotations.Table;
 
@@ -15,7 +16,7 @@ import java.util.Date;
 @Data
 @Entity(name = "account")
 @Table(appliesTo = "account", comment = "账号信息")
-public class AccountEntity {
+public class AccountEntity extends AbstractEntity {
 	
 	@Id
 	@Column(columnDefinition = "varchar(255) CHARACTER SET utf8 COLLATE utf8_bin comment '账号ID'", nullable = false)

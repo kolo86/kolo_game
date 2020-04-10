@@ -57,4 +57,5 @@ public interface ISceneService {
      * @param accountId
      */
     void signOut(String accountId);
+
 }

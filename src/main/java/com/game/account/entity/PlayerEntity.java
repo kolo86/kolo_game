@@ -4,6 +4,7 @@ import com.frame.resource.handler.ResourceCacheHandler;
 import com.game.account.resource.PlayerResource;
 import com.game.container.AbstractContainer;
 import com.game.container.constant.ContainerType;
+import com.game.persistence.AbstractEntity;
 import com.game.role.constant.RoleEnum;
 import com.game.role.entity.RoleEntity;
 import com.game.scene.constant.SceneType;
@@ -26,7 +27,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Data
 @Entity(name = "player")
 @Table(appliesTo = "player", comment = "玩家信息")
-public class PlayerEntity {
+public class PlayerEntity extends AbstractEntity {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

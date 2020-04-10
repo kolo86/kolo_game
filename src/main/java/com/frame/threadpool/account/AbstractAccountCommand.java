@@ -12,7 +12,7 @@ public abstract class AbstractAccountCommand {
     /** 玩家账号ID */
     private String accountId;
 
-    AbstractAccountCommand(String accountId){
+    public AbstractAccountCommand(String accountId){
         this.accountId = accountId;
     }
 

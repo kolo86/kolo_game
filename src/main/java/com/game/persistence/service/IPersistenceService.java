@@ -1,4 +1,6 @@
-package com.game.persistence;
+package com.game.persistence.service;
+
+import com.game.persistence.AbstractEntity;
 
 import java.util.List;
 
@@ -13,14 +15,14 @@ public interface IPersistenceService {
      *
      * @param entity
      */
-    void save(Object entity);
+    void save(AbstractEntity entity);
 
     /**
      * 更新对象
      *
      * @param entity
      */
-    void update(Object entity);
+    void update(AbstractEntity entity);
 
     /**
      * 查询所有数据

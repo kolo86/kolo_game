@@ -12,7 +12,7 @@ package com.game.role.service;
 import com.frame.event.service.IEventService;
 import com.game.account.entity.PlayerEntity;
 import com.game.account.service.IPlayerService;
-import com.game.persistence.IPersistenceService;
+import com.game.persistence.service.IPersistenceService;
 import com.game.role.constant.RoleEnum;
 import com.game.role.entity.RoleEntity;
 import com.game.role.event.CreateRoleEvent;

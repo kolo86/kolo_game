@@ -11,7 +11,7 @@ package com.game.scene.service;
 
 import com.game.account.entity.PlayerEntity;
 import com.game.account.service.IPlayerService;
-import com.game.persistence.IPersistenceService;
+import com.game.persistence.service.IPersistenceService;
 import com.game.scene.AbstractMapHandler;
 import com.game.scene.constant.SceneType;
 import com.game.util.PacketUtils;
@@ -118,7 +118,7 @@ public class SceneServiceImpl implements ISceneService {
      * @param player
      * @param newMapId
      */
-    private void enterNewMap(PlayerEntity player, int newMapId){
+    public void enterNewMap(PlayerEntity player, int newMapId){
         SceneType newScece = SceneType.getSceneById(newMapId);
         AbstractMapHandler newSceceHandler = newScece.getHandler();
         newSceceHandler.doEnterMap(player);

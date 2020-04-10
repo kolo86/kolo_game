@@ -1,14 +1,6 @@
-/**
- * FileName: RoleEntity
- * Author:   坤龙
- * Date:     2020/4/2 16:56
- * Description: 角色实体
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.role.entity;
 
+import com.game.persistence.AbstractEntity;
 import com.game.role.constant.RoleStateEnum;
 import lombok.Data;
 import org.hibernate.annotations.Table;
@@ -26,7 +18,7 @@ import javax.persistence.*;
 @Data
 @Entity(name = "role")
 @Table(appliesTo = "role", comment = "角色")
-public class RoleEntity {
+public class RoleEntity extends AbstractEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

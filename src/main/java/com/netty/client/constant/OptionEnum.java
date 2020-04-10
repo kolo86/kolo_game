@@ -179,6 +179,38 @@ public enum OptionEnum {
         public boolean checkParamNum(String[] args) {
             return args.length - 1 != Message.Attack.class.getFields().length;
         }
+    },
+    /** 查看背包 */
+    BACKPACK(9, "查看背包"){
+        @Override
+        public Message.Option getMessage(String[] args) {
+            Message.Option build = Message.Option.newBuilder()
+                    .setBackPack(Message.BackPack.newBuilder().build())
+                    .build();
+            return build;
+        }
+
+        @Override
+        public boolean checkParamNum(String[] args) {
+            return args.length - 1 != Message.BackPack.class.getFields().length;
+        }
+    },
+    /** 使用道具 */
+    USEITEM(10, "使用道具"){
+        @Override
+        public Message.Option getMessage(String[] args) {
+            long objectRandomId = Long.parseLong(args[1]);
+            Message.Option build = Message.Option.newBuilder()
+                    .setUseItem(Message.UseItem.newBuilder().setItemRandomId(objectRandomId).build())
+                    .build();
+
+            return build;
+        }
+
+        @Override
+        public boolean checkParamNum(String[] args) {
+            return args.length - 1 != Message.UseItem.class.getFields().length;
+        }
     }
 
     ;

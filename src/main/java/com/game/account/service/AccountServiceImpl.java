@@ -4,7 +4,7 @@ import com.frame.event.service.IEventService;
 import com.game.account.entity.AccountEntity;
 import com.game.account.entity.PlayerEntity;
 import com.game.account.event.CreateAccountAsyncEvent;
-import com.game.persistence.IPersistenceService;
+import com.game.persistence.service.IPersistenceService;
 import com.game.util.MD5Utils;
 import com.game.util.PacketUtils;
 import com.netty.proto.Message;

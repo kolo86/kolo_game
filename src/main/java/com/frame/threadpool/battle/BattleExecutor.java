@@ -26,6 +26,7 @@ public class BattleExecutor {
             NameThreadFactory threadFactory = new NameThreadFactory("battle_thread_pool");
             BATTLE_THREAD_POOL_ARR[i] = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS,
                     new LinkedBlockingQueue<Runnable>(), threadFactory, new ThreadPoolExecutor.DiscardPolicy());
+            BATTLE_THREAD_POOL_ARR[i].prestartAllCoreThreads();
         }
     }
 

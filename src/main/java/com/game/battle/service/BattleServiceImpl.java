@@ -1,15 +1,11 @@
 package com.game.battle.service;
 
 import com.game.account.entity.PlayerEntity;
-import com.game.account.service.IPlayerService;
 import com.game.battle.util.FightUtils;
 import com.game.monster.model.Monster;
 import com.game.scene.AbstractMapHandler;
 import com.game.scene.constant.SceneType;
 import com.game.util.PacketUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import io.netty.channel.Channel;
 import org.springframework.stereotype.Component;
 
 
@@ -24,12 +20,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class BattleServiceImpl implements IBattleService {
 
-    @Autowired
-    private IPlayerService playerService;
-
     @Override
-    public void battleMonster(Channel channel, int monsterId) {
-        PlayerEntity player = playerService.getPlayer(channel);
+    public void battleMonster(PlayerEntity player, int monsterId) {
         SceneType scene = SceneType.getSceneById(player.getMapId());
         AbstractMapHandler handler = scene.getHandler();
         boolean checkMonsterExist = handler.checkMonsterExist(monsterId);

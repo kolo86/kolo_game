@@ -1,7 +1,7 @@
 package com.game.battle.service;
 
 
-import io.netty.channel.Channel;
+import com.game.account.entity.PlayerEntity;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -19,6 +19,6 @@ public interface IBattleService {
      * @param channel
      * @param monster
      */
-    void battleMonster(Channel channel, int monster);
+    void battleMonster(PlayerEntity player, int monster);
 
 }

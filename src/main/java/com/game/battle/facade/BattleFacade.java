@@ -1,7 +1,10 @@
 package com.game.battle.facade;
 
 import com.frame.dispatcher.anno.ReceiverAnno;
-import com.game.battle.service.IBattleService;
+import com.frame.threadpool.battle.BattleExecutor;
+import com.game.account.entity.PlayerEntity;
+import com.game.account.service.IPlayerService;
+import com.game.battle.command.BattleMonsterCommand;
 import com.netty.proto.Message;
 import io.netty.channel.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +21,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class BattleFacade {
-
     @Autowired
-    private IBattleService battleService;
+    private IPlayerService playerService;
 
     /**
      * 攻击场景中的怪物
@@ -30,7 +32,8 @@ public class BattleFacade {
      */
     @ReceiverAnno
     public void battleMonster(Channel channel, Message.Attack message){
-        battleService.battleMonster(channel, message.getMonsterId());
+        PlayerEntity player = playerService.getPlayer(channel);
+        BattleExecutor.submit(BattleMonsterCommand.valueOf(player, message.getMonsterId()));
     }
 
 }

@@ -2,6 +2,7 @@ package com.game;
 
 import com.frame.resource.handler.ResourceCacheHandler;
 import com.game.common.GlobalServiceImpl;
+import com.game.common.SpringContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -38,6 +39,7 @@ public class Start {
 
 		// 加载spring容器
 		applicationContext.start();
+		SpringContext.cacheSpringApplication(applicationContext);
 		
 		logger.info("spring初始化完成");
 		

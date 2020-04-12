@@ -2,8 +2,12 @@ package com.game.packback.entity;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.game.item.model.AbstractItem;
+import com.alibaba.fastjson.TypeReference;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.game.item.AbstractItem;
+import com.game.item.model.MedicineItem;
 import com.game.persistence.AbstractEntity;
+import com.game.persistence.util.ParseUtils;
 import lombok.Data;
 import org.hibernate.annotations.Table;
 
@@ -47,10 +51,14 @@ public class BackPackEntity extends AbstractEntity {
 
     @Override
     public void parse() {
-        JSONObject jsonObject = JSON.parseObject(packMapJson);
-        for( Object obj :  jsonObject.entrySet()){
-            Map.Entry entry = (Map.Entry)obj;
-            packMap.put((Long) entry.getKey(), (AbstractItem) entry.getValue());
-        }
+        packMap = ParseUtils.parseToMap(packMapJson, Long.class, AbstractItem.class);
     }
+
+    public static BackPackEntity valueOf(String accountId){
+        BackPackEntity backPack = new BackPackEntity();
+        backPack.accountId = accountId;
+        return backPack;
+    }
+
+
 }

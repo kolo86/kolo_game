@@ -4,6 +4,7 @@ import com.frame.resource.handler.ResourceCacheHandler;
 import com.game.account.resource.PlayerResource;
 import com.game.container.AbstractContainer;
 import com.game.container.constant.ContainerType;
+import com.game.packback.entity.BackPackEntity;
 import com.game.persistence.AbstractEntity;
 import com.game.role.constant.RoleEnum;
 import com.game.role.entity.RoleEntity;
@@ -57,6 +58,9 @@ public class PlayerEntity extends AbstractEntity {
 
     /** 角色的属性容器 ，这里暂不存进数据库中*/
     private transient Map<ContainerType, AbstractContainer> containerMap = new ConcurrentHashMap<>();
+
+    /** 背包数据 */
+    private transient BackPackEntity backPackEntity;
 
     /**
      * 创建角色实体

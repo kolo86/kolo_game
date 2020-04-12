@@ -11,6 +11,8 @@ package com.game.account.service;
 
 import com.game.account.entity.AccountEntity;
 import com.game.account.entity.PlayerEntity;
+import com.game.packback.entity.BackPackEntity;
+import com.game.packback.service.IBackPackService;
 import com.game.persistence.service.IPersistenceService;
 import com.game.role.entity.RoleEntity;
 import com.game.role.service.IRoleService;
@@ -39,6 +41,8 @@ public class PlayerServiceImpl implements IPlayerService {
     private IAccountService accountService;
     @Autowired
     private IRoleService roleService;
+    @Autowired
+    private IBackPackService backPackService;
 
     @Override
     public void onStart() {
@@ -50,6 +54,9 @@ public class PlayerServiceImpl implements IPlayerService {
 
             RoleEntity roleEntity = roleService.getRoleByAccountId(player.getAccountId());
             player.setRoleEntity(roleEntity);
+
+            BackPackEntity backpack = backPackService.getBackpack(player.getAccountId());
+            player.setBackPackEntity(backpack);
             playerManager.cachePlayerMap(player);
         }
     }

@@ -21,6 +21,7 @@ import com.game.item.model.Equipment;
 import com.game.item.resource.ItemResource;
 import com.game.item.service.ItemManager;
 import com.game.monster.model.Monster;
+import com.game.persistence.service.PersistenceServiceImpl;
 import com.game.skill.resource.SkillResource;
 import com.game.skill.service.SkillManager;
 import com.game.util.PacketUtils;
@@ -147,6 +148,9 @@ public class FightUtils {
             if(weaponItem.isDurabilityZero()){
                 EventServiceImpl eventService = (EventServiceImpl)SpringContext.getBean(EventServiceImpl.class);
                 eventService.submitSyncEvent(WeaponDurabilityZeroEvent.valueOf(player));
+            } else {
+                PersistenceServiceImpl persistenceService = (PersistenceServiceImpl)SpringContext.getBean(PersistenceServiceImpl.class);
+                persistenceService.update(equipmentEntity);
             }
         }
     }

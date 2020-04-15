@@ -8,7 +8,7 @@ import com.game.item.AbstractItem;
 import com.game.item.constant.ItemType;
 import com.game.item.resource.ItemResource;
 import com.game.item.service.ItemManager;
-import lombok.Getter;
+import lombok.Data;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -18,7 +18,7 @@ import lombok.Getter;
  * @create 2020/4/14
  * @since 1.0.0
  */
-@Getter
+@Data
 public class Equipment extends AbstractItem {
 
     /** 最大耐久度 */
@@ -96,6 +96,12 @@ public class Equipment extends AbstractItem {
      */
     public boolean isDurabilityZero(){
         return this.currentDurability == 0;
+    }
+
+    @Override
+    public String toString() {
+        ItemResource itemResource = ItemManager.getResource(this.getItemId());
+        return "【道具ID:" + this.getObjectOnlyId() + ", 道具名称:" + itemResource.getName() + ",道具数量:" + this.getNum() + "】\t";
     }
 
 }

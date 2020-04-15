@@ -69,9 +69,9 @@ public class ResponseTools{
                     "\t请输入：登录 账号\n" +
                     "\t  例子：登录 kolo");
         } else if(answer.contains("你的背包信息")){
-            logger.info("\n【查看背包】\n" +
-                    "\t请输入：查看背包\n" +
-                    "\t  例子：查看背包\n" +
+            logger.info("\n【使用道具】\n" +
+                    "\t请输入：使用道具 道具ID\n" +
+                    "\t  例子：使用道具 2\n" +
                     "\n" +
                     "【查看装备】\n" +
                     "\t请输入：查看装备\n" +

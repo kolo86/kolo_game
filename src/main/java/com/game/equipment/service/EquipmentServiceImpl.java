@@ -3,6 +3,7 @@ package com.game.equipment.service;
 import com.frame.event.service.IEventService;
 import com.game.account.entity.PlayerEntity;
 import com.game.account.service.IPlayerService;
+import com.game.equipment.constant.RepairEquipmentPosition;
 import com.game.equipment.constant.EquipmentPosition;
 import com.game.equipment.constant.EquipmentType;
 import com.game.equipment.entity.EquipmentEntity;
@@ -20,10 +21,7 @@ import io.netty.channel.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -230,11 +228,16 @@ public class EquipmentServiceImpl implements IEquipmentService {
     @Override
     public void repair(Channel channel, int objectOnlyId) {
         PlayerEntity player = playerService.getPlayer(channel);
-        AbstractItem item = findItem(player, objectOnlyId);
+        Map<Integer, AbstractItem> abstractItemMap = findItem(player, objectOnlyId);
+        Map.Entry<Integer, AbstractItem> itemEntry = abstractItemMap.entrySet().iterator().next();
+        AbstractItem item = itemEntry.getValue();
+
         boolean checkRepairItem = checkRepairItem(player, item);
         if ( checkRepairItem ) {
             Equipment weapon = (Equipment) item;
             weapon.recoverDurability();
+            // 保存到数据库中
+            RepairEquipmentPosition.getPosition(itemEntry.getKey()).save(player);
 
             PacketUtils.send(channel, "修复武器完成");
         }
@@ -265,9 +268,10 @@ public class EquipmentServiceImpl implements IEquipmentService {
      * @param objectOnlyId
      * @return
      */
-    private AbstractItem findItem(PlayerEntity player, int objectOnlyId){
+    private Map<Integer, AbstractItem> findItem(PlayerEntity player, int objectOnlyId){
+        /** Map<该装备所在的位置, 装备> */
+        HashMap<Integer, AbstractItem> map = new HashMap<>();
 
-        AbstractItem weapon = null;
         // 正在穿戴的装备
         EquipmentEntity equipmentEntity = player.getEquipmentEntity();
         Map<Integer, AbstractItem> equipmentMap = equipmentEntity.getEquipmentMap();
@@ -275,14 +279,15 @@ public class EquipmentServiceImpl implements IEquipmentService {
         for(Map.Entry<Integer, AbstractItem> entry : entries){
             AbstractItem abstractItem = entry.getValue();
             if(abstractItem.getObjectOnlyId() == objectOnlyId){
-                weapon = abstractItem;
-                return weapon;
+                map.put(RepairEquipmentPosition.WEARING.getId(), abstractItem);
+                return map;
             }
         }
 
         // 背包中的装备
         BackPackEntity backPackEntity = player.getBackPackEntity();
         Map<Integer, AbstractItem> packMap = backPackEntity.getPackMap();
-        return packMap.get(objectOnlyId);
+        map.put(RepairEquipmentPosition.BACKPACK.getId(), packMap.get(objectOnlyId));
+        return map;
     }
 }

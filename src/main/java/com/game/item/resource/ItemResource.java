@@ -7,6 +7,7 @@ import lombok.Data;
 /**
  * 物品表
  *
+ * @author KOLO
  */
 @Data
 @Resource
@@ -19,6 +20,8 @@ public class ItemResource extends AbstractResource {
     private int type;
     /** 道具效果 */
     private String attrs;
+    /** 最大叠加数量 */
+    private int maxAddition;
 
     @Override
     public int getResourceId() {

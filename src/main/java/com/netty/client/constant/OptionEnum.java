@@ -199,9 +199,9 @@ public enum OptionEnum {
     USEITEM(10, "使用道具"){
         @Override
         public Message.Option getMessage(String[] args) {
-            long objectRandomId = Long.parseLong(args[1]);
+            int objectRandomId = Integer.parseInt(args[1].trim());
             Message.Option build = Message.Option.newBuilder()
-                    .setUseItem(Message.UseItem.newBuilder().setItemRandomId(objectRandomId).build())
+                    .setUseItem(Message.UseItem.newBuilder().setItemOnlyId(objectRandomId).build())
                     .build();
 
             return build;
@@ -210,6 +210,72 @@ public enum OptionEnum {
         @Override
         public boolean checkParamNum(String[] args) {
             return args.length - 1 != Message.UseItem.class.getFields().length;
+        }
+    },
+    /** 查看装备栏 */
+    EQUIPMENT(11, "查看装备"){
+        @Override
+        public Message.Option getMessage(String[] args) {
+            Message.Option build = Message.Option.newBuilder()
+                    .setEquipment(Message.Equipment.newBuilder().build())
+                    .build();
+
+            return build;
+        }
+
+        @Override
+        public boolean checkParamNum(String[] args) {
+            return args.length - 1 != Message.Equipment.class.getFields().length;
+        }
+    },
+    /** 穿装备 */
+    WEAR(12, "穿装备"){
+        @Override
+        public Message.Option getMessage(String[] args) {
+            int equipmentId = Integer.parseInt(args[1].trim());
+            Message.Option build = Message.Option.newBuilder()
+                    .setWear(Message.Wear.newBuilder().setEquipmentId(equipmentId).build())
+                    .build();
+
+            return build;
+        }
+
+        @Override
+        public boolean checkParamNum(String[] args) {
+            return args.length - 1 != Message.Wear.class.getFields().length;
+        }
+    },
+    /** 脱装备 */
+    DEEQUIPMENT(13, "脱装备"){
+        @Override
+        public Message.Option getMessage(String[] args) {
+            int equipmentId = Integer.parseInt(args[1].trim());
+            Message.Option build = Message.Option.newBuilder()
+                    .setDeequipment(Message.Deequipment.newBuilder().setEquipmentId(equipmentId).build())
+                    .build();
+            return build;
+        }
+
+        @Override
+        public boolean checkParamNum(String[] args) {
+            return args.length - 1 != Message.Wear.class.getFields().length;
+        }
+    },
+    /** 修理武器 */
+    REPAIR(14, "修理"){
+        @Override
+        public Message.Option getMessage(String[] args) {
+            int objectOnlyId = Integer.parseInt(args[1].trim());
+
+            Message.Option build = Message.Option.newBuilder()
+                    .setRepair(Message.Repair.newBuilder().setEquipmentId(objectOnlyId).build())
+                    .build();
+            return build;
+        }
+
+        @Override
+        public boolean checkParamNum(String[] args) {
+            return args.length - 1 != Message.Repair.class.getFields().length;
         }
     }
 

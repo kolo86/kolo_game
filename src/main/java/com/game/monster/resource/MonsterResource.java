@@ -28,6 +28,8 @@ public class MonsterResource extends AbstractResource {
     private String attrs;
     /** 属性Map */
     private transient Map<AttrType, Long> attrMap;
+    /** 掉落选择器ID */
+    private int dropId;
 
     @Override
     public int getResourceId() {

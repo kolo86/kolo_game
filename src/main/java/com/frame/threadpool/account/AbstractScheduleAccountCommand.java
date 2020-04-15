@@ -1,5 +1,6 @@
 package com.frame.threadpool.account;
 
+import com.frame.threadpool.AbstractCommand;
 import lombok.Data;
 
 /**
@@ -11,7 +12,7 @@ import lombok.Data;
  * @since 1.0.0
  */
 @Data
-public abstract class AbstractScheduleAccountCommand {
+public abstract class AbstractScheduleAccountCommand extends AbstractCommand {
     /** 账号ID */
     private String accountId;
     /** 初始化延迟时间 */

@@ -18,6 +18,7 @@ package com.frame.resource.constant;
  * @since 1.0.0
  */
 
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 
 import java.util.HashMap;
@@ -32,6 +33,7 @@ public enum FieldEnum {
     STRING("String") {
         @Override
         public Object parseData(XSSFCell rowCell) {
+            rowCell.setCellType(CellType.STRING);
             return rowCell.getStringCellValue();
         }
     },

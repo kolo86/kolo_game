@@ -1,5 +1,7 @@
 package com.game.container.service;
 
+import com.game.account.entity.PlayerEntity;
+
 /**
  * 〈一句话功能简述〉<br>
  * 〈容器接口〉
@@ -23,4 +25,24 @@ public interface IContainerService {
      * @param accountId
      */
     void initRecoverCommand(String accountId);
+
+    /**
+     * 穿戴装备事件
+     *
+     * @param player
+     */
+    void doWearEquipment(PlayerEntity player);
+
+    /**
+     * 重新加载玩家属性
+     *
+     */
+    void reloadPlayerAttr(String accountId);
+
+    /**
+     * 处理玩家脱下装备
+     *
+     * @param player
+     */
+    void doDeequipment(PlayerEntity player);
 }

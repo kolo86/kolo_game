@@ -2,6 +2,8 @@ package com.game.container.facade;
 
 import com.frame.event.anno.EventAnno;
 import com.game.container.service.IContainerService;
+import com.game.equipment.event.DeequipmentSyncEvent;
+import com.game.equipment.event.WearEquipmentSyncEvent;
 import com.game.login.event.LoginEvent;
 import com.game.role.event.CreateRoleEvent;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,7 @@ public class ContainerFacade {
     @EventAnno
     public void doCreateRole(CreateRoleEvent event){
         containerService.initPlayerContainer(event.getAccountId());
+        containerService.initRecoverCommand(event.getAccountId());
     }
 
     /**
@@ -38,6 +41,27 @@ public class ContainerFacade {
     @EventAnno
     public void doPlayerLogin(LoginEvent event){
         containerService.initRecoverCommand(event.getAccountId());
+        containerService.reloadPlayerAttr(event.getAccountId());
+    }
+
+    /**
+     * 监听玩家穿戴装备事件
+     *
+     * @param event
+     */
+    @EventAnno
+    public void doWearEquipment(WearEquipmentSyncEvent event){
+        containerService.doWearEquipment(event.getPlayer());
+    }
+
+    /**
+     * 监听玩家脱下装备事件
+     *
+     * @param event
+     */
+    @EventAnno
+    public void doDeequipmentEvent(DeequipmentSyncEvent event){
+        containerService.doDeequipment(event.getPlayer());
     }
 
 }

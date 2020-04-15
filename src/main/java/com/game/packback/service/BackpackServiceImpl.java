@@ -3,7 +3,6 @@ package com.game.packback.service;
 import com.game.account.entity.PlayerEntity;
 import com.game.account.service.IPlayerService;
 import com.game.item.AbstractItem;
-import com.game.item.model.MedicineItem;
 import com.game.packback.entity.BackPackEntity;
 import com.game.persistence.service.IPersistenceService;
 import com.game.util.PacketUtils;
@@ -65,10 +64,6 @@ public class BackpackServiceImpl implements IBackPackService {
     @Override
     public void backPack(Channel channel) {
         PlayerEntity player = playerService.getPlayer(channel);
-
-        //TODO 临时测试
-       //  test(player);
-
         sendBackpackInfo(player);
     }
 
@@ -79,22 +74,23 @@ public class BackpackServiceImpl implements IBackPackService {
      */
     private void sendBackpackInfo(PlayerEntity player){
         BackPackEntity backPackEntity = player.getBackPackEntity();
-        Map<Long, AbstractItem> packMap = backPackEntity.getPackMap();
+        Map<Integer, AbstractItem> packMap = backPackEntity.getPackMap();
 
         StringBuilder sb = new StringBuilder();
         sb.append("你的背包信息为：");
         for(  AbstractItem item : packMap.values()){
-            sb.append(item.getItemType().getItemDetail(item)).append("\t");
+            sb.append("\n").append(item.getItemType().getItemDetail(item));
         }
 
         PacketUtils.send(player, sb.toString());
     }
 
-    private void test(PlayerEntity player){
-        BackPackEntity backpack = player.getBackPackEntity();
-        Map<Long, AbstractItem> packMap = backpack.getPackMap();
-        MedicineItem medicineItem = MedicineItem.valueOf(1, 10);
-        packMap.put(1L, medicineItem);
-        persistenceService.update(backpack);
+    @Override
+    public void addItems(PlayerEntity player, List<AbstractItem> list) {
+        BackPackEntity backPackEntity = player.getBackPackEntity();
+        for(AbstractItem item : list){
+            backPackEntity.addItem(item);
+        }
+        persistenceService.update(backPackEntity);
     }
 }

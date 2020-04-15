@@ -1,13 +1,25 @@
 package com.game.battle.util;
 
+import com.frame.event.service.EventServiceImpl;
+import com.frame.threadpool.account.AccountExecutor;
 import com.game.account.entity.PlayerEntity;
+import com.game.battle.command.RewardMonsterCommand;
 import com.game.battle.constant.BattleConstant;
+import com.game.battle.event.WeaponDurabilityZeroEvent;
+import com.game.common.SpringContext;
 import com.game.container.constant.AttrType;
 import com.game.container.constant.ContainerType;
 import com.game.container.model.AttrContainer;
 import com.game.container.model.CoolDownContainer;
 import com.game.container.model.LifeContainer;
 import com.game.container.model.SkillContainer;
+import com.game.drop.service.DropServiceImpl;
+import com.game.equipment.constant.EquipmentPosition;
+import com.game.equipment.entity.EquipmentEntity;
+import com.game.item.AbstractItem;
+import com.game.item.model.Equipment;
+import com.game.item.resource.ItemResource;
+import com.game.item.service.ItemManager;
 import com.game.monster.model.Monster;
 import com.game.skill.resource.SkillResource;
 import com.game.skill.service.SkillManager;
@@ -15,6 +27,7 @@ import com.game.util.PacketUtils;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -68,8 +81,42 @@ public class FightUtils {
                     .append("】！");
 
             PacketUtils.sendScene(player, sb.toString());
+
+            // 怪物死亡，发放怪物奖励
+            List<AbstractItem> itemList = awardMonster(player, monster);
+            // 发送掉落奖励消息给玩家
+            sendDropAwardMessage(player, itemList);
         }
     };
+
+    /**
+     * 给玩家发放怪物奖励
+     *
+     * @param player
+     * @param monster
+     */
+    private static List<AbstractItem> awardMonster(PlayerEntity player, Monster monster){
+        DropServiceImpl dropService = (DropServiceImpl)SpringContext.getBean(DropServiceImpl.class);
+        List<AbstractItem> abstractItems = dropService.hitItem(player, monster.getMonsterDropId());
+        AccountExecutor.submit(RewardMonsterCommand.valueOf(player, abstractItems));
+        return abstractItems;
+    }
+
+    /**
+     * 发送掉落奖励给玩家
+     *
+     * @param player
+     * @param itemList
+     */
+    private static void sendDropAwardMessage(PlayerEntity player, List<AbstractItem> itemList){
+        StringBuilder sb = new StringBuilder();
+        sb.append("恭喜你，击杀了怪物，得到奖励：");
+        for( AbstractItem item :  itemList){
+            ItemResource itemResource = ItemManager.getResource(item.getItemId());
+            sb.append("\n【名称：").append(itemResource.getName()).append(" 数量：").append(item.getNum()).append("】");
+        }
+        PacketUtils.send(player, sb.toString());
+    }
 
     /**
      * 在攻击者使用完技能之后
@@ -80,6 +127,28 @@ public class FightUtils {
     private static void afterAttackerUseSkill(PlayerEntity player, int skill) {
         addSkillCd(player, skill);
         reduceAttackerMp(player, skill);
+        reduceWeaponDurability(player);
+    }
+
+    /**
+     * 减少武器耐久度
+     *
+     * @param player
+     */
+    private static void reduceWeaponDurability(PlayerEntity player){
+        EquipmentEntity equipmentEntity = player.getEquipmentEntity();
+        Map<Integer, AbstractItem> equipmentMap = equipmentEntity.getEquipmentMap();
+        AbstractItem abstractItem = equipmentMap.get(EquipmentPosition.WEAPON.getPositionId());
+        if( !Objects.isNull(abstractItem) && abstractItem instanceof Equipment){
+            Equipment weaponItem = (Equipment)abstractItem;
+            weaponItem.reduceDurability(BattleConstant.WEAPON_WASTAGE);
+
+            //若武器耐久度为0，则抛出耐久度为0事件，把武器卸下来
+            if(weaponItem.isDurabilityZero()){
+                EventServiceImpl eventService = (EventServiceImpl)SpringContext.getBean(EventServiceImpl.class);
+                eventService.submitSyncEvent(WeaponDurabilityZeroEvent.valueOf(player));
+            }
+        }
     }
 
     /**
@@ -123,7 +192,7 @@ public class FightUtils {
      * 玩家使用该技能时，计算技能造成的总伤害
      */
     private static long calSkillDamage(PlayerEntity player, int skill) {
-        double skillRatio = getSkillRatio(skill);
+        double skillRatio = getSkillRatio(player, skill);
 
         AttrContainer container = (AttrContainer) ContainerType.ATTR.getContainer(player);
         long attackValue = container.getAttrValue(AttrType.ATTACK);
@@ -133,10 +202,17 @@ public class FightUtils {
     /**
      * 获取技能伤害比例
      */
-    private static double getSkillRatio(int skill) {
+    private static double getSkillRatio(PlayerEntity player, int skill) {
+        // 技能配置表的技能伤害比例
         SkillResource skillResource = SkillManager.getSkillManager().getSkillResource(skill);
         Map<AttrType, Long> attrMap = skillResource.getAttrMap();
-        return attrMap.getOrDefault(AttrType.SKILL_RATIO, 0L).doubleValue() / BattleConstant.BATTLE_TEN_THOUSAND;
+        double resourceSkillRatio = attrMap.getOrDefault(AttrType.SKILL_RATIO, 0L).doubleValue();
+
+        // 玩家的技能伤害比例属性
+        AttrContainer attrContainer = (AttrContainer) ContainerType.ATTR.getContainer(player);
+        long attrSkillRatio = attrContainer.getAttrValue(AttrType.SKILL_RATIO);
+
+        return (resourceSkillRatio + attrSkillRatio) / BattleConstant.BATTLE_TEN_THOUSAND;
     }
 
     /**

@@ -17,6 +17,10 @@ message Option{
       Attack attack = 9;
       BackPack backPack = 10;
       UseItem useItem = 11;
+      Equipment equipment = 12;
+      Wear wear = 13;
+      Deequipment deequipment = 14;
+      Repair repair = 15;
   }
 }
 
@@ -70,5 +74,24 @@ message BackPack{
 
 // 使用道具
 message UseItem{
-  int64 itemRandomId = 1; // 道具标识ID，非ItemResource的ID
+  int32 itemOnlyId = 1; // 道具标识ID，非ItemResource的ID
+}
+
+// 查看装备栏
+message Equipment{
+}
+
+// 穿装备
+message Wear{
+  int32 equipmentId = 1; // 装备ID
+}
+
+// 脱装备
+message Deequipment{
+  int32 equipmentId = 1; // 装备ID
+}
+
+// 修理武器
+message Repair{
+  int32 equipmentId = 1; // 装备ID
 }

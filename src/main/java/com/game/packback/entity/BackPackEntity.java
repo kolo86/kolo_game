@@ -1,18 +1,17 @@
 package com.game.packback.entity;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.TypeReference;
-import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.game.item.AbstractItem;
-import com.game.item.model.MedicineItem;
+import com.game.item.resource.ItemResource;
+import com.game.item.service.ItemManager;
 import com.game.persistence.AbstractEntity;
 import com.game.persistence.util.ParseUtils;
 import lombok.Data;
 import org.hibernate.annotations.Table;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -42,16 +41,16 @@ public class BackPackEntity extends AbstractEntity {
     /**
      * 背包缓存。Map< 道具唯一标识， 道具 ></>
      */
-    private transient Map<Long, AbstractItem> packMap = new HashMap<>();
+    private transient Map<Integer, AbstractItem> packMap = new HashMap<>();
 
     @Override
     public void convert() {
-        packMapJson = JSON.toJSONString(packMap);
+        packMapJson = ParseUtils.convertToJson(packMap);
     }
 
     @Override
     public void parse() {
-        packMap = ParseUtils.parseToMap(packMapJson, Long.class, AbstractItem.class);
+        packMap = ParseUtils.parseToMap(packMapJson, Integer.class, AbstractItem.class);
     }
 
     public static BackPackEntity valueOf(String accountId){
@@ -60,5 +59,81 @@ public class BackPackEntity extends AbstractEntity {
         return backPack;
     }
 
+    /**
+     * 增加一个道具进背包
+     *
+     * @param item
+     */
+    public void addItem(AbstractItem item){
+        ItemResource resource = ItemManager.getResource(item.getItemId());
+        Collection<AbstractItem> items = packMap.values();
+        Iterator<AbstractItem> iterator = items.iterator();
+
+        // 背包中已有该类型的道具
+        boolean state = true;
+        while(iterator.hasNext() && state ){
+            AbstractItem next = iterator.next();
+            if(item.equals(next)){
+                int maxAddition = resource.getMaxAddition();
+                if(next.getNum() >= maxAddition){
+                    // 当前这个已有道具已经达到了最大叠加数量
+                    continue;
+                } else if(next.getNum() + item.getNum() >= maxAddition){
+                    // 当前已有道具虽然未到达最大叠加数量，但还不能放完该道具
+                    int canPutNumber = maxAddition - next.getNum();
+                    next.addItem(canPutNumber);
+                    item.reduceItem(canPutNumber);
+                } else {
+                    // 当前已有道具可以放完该道具
+                    next.addItem(item.getNum());
+                    item.reduceItem(item.getNum());
+                    state = false;
+                }
+            }
+        }
+
+        // 背包中没有该类型的道具，或许已有道具还不能放完该道具
+        if(item.getNum() > 0 ){
+            packMap.put(item.getObjectOnlyId(), item);
+        }
+    }
+
+    /**
+     * 根据物品唯一标识获取道具
+     *
+     * @param itemOnlyId
+     * @return
+     */
+    public AbstractItem getItem(int itemOnlyId){
+        return packMap.get(itemOnlyId);
+    }
+
+    /**
+     * 减少道具
+     *
+     * @param item
+     */
+    public boolean reduceItem(AbstractItem item, int num){
+        AbstractItem abstractItem = packMap.get(item.getObjectOnlyId());
+        if(num > abstractItem.getNum()){
+            return false;
+        } else {
+            abstractItem.reduceItem(num);
+            checkAndRemoveItem(abstractItem);
+            return true;
+        }
+    }
+
+    /**
+     * 检查是否需要移除道具
+     *
+     * @param item
+     */
+    private void checkAndRemoveItem(AbstractItem item){
+        AbstractItem abstractItem = packMap.get(item.getObjectOnlyId());
+        if(abstractItem.getNum() <= 0){
+            packMap.remove(item.getObjectOnlyId());
+        }
+    }
 
 }

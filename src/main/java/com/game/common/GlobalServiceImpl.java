@@ -3,6 +3,7 @@ package com.game.common;
 import com.frame.event.impl.CloseServerSyncEvent;
 import com.frame.event.impl.OpenServerSyncEvent;
 import com.frame.event.service.IEventService;
+import com.game.unique.service.UniqueServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +27,9 @@ public class GlobalServiceImpl implements IGlobalService{
 	@Override
 	public void onStart() {
 		// 方法1 ： 直接调用各个模块的start方法，这样子在启动时，模块的启动顺序得到控制
+		UniqueServiceImpl uniqueService = (UniqueServiceImpl)SpringContext.getBean(UniqueServiceImpl.class);
+		uniqueService.doOpenServer();
+
 		// 方法2 ： 抛出onStart事件，这样子更为方便
 		eventService.submitSyncEvent(OpenServerSyncEvent.valueOf());
 	}

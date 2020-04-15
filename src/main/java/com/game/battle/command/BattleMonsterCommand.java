@@ -20,8 +20,8 @@ public class BattleMonsterCommand extends AbstractBattleMonsterCommand {
     private int monster;
 
     public static BattleMonsterCommand valueOf(PlayerEntity player, int monster){
-        // 根据玩家当前所在的地图ID和怪物ID做标识
-        int key = player.getMapId() + monster;
+        // 根据怪物ID做标识
+        int key = monster;
         BattleMonsterCommand command = new BattleMonsterCommand(key);
         command.player = player;
         command.monster = monster;

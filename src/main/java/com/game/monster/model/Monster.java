@@ -24,6 +24,8 @@ public class Monster {
     private String name;
     /** 怪物的属性容器  */
     private Map<ContainerType, AbstractContainer> containerMap = new ConcurrentHashMap<>();
+    /** 怪物掉落选择器ID */
+    private int monsterDropId;
 
     /**
      * 根据怪物配置表初始化怪物信息
@@ -36,6 +38,7 @@ public class Monster {
         monster.id = monsterResource.getId();
         monster.name = monsterResource.getName();
         monster.containerMap = ContainerType.initMonsterContainer(monsterResource);
+        monster.monsterDropId = monsterResource.getDropId();
         return monster;
     }
 

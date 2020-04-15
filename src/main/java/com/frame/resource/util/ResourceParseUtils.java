@@ -22,10 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -114,6 +111,9 @@ public class ResourceParseUtils {
 
                     // 根据类型解析出对应的真实数据
                     FieldEnum type = FieldEnum.getType(obj.getType());
+
+                    if(Objects.isNull(rowCell)) {continue;}
+
                     Object parseData = type.parseData(rowCell);
 
                     // 把数据放入对象中

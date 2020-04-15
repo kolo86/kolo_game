@@ -1,7 +1,11 @@
 package com.game.packback.service;
 
+import com.game.account.entity.PlayerEntity;
+import com.game.item.AbstractItem;
 import com.game.packback.entity.BackPackEntity;
 import io.netty.channel.Channel;
+
+import java.util.List;
 
 
 /**
@@ -37,4 +41,11 @@ public interface IBackPackService {
      * @param channel
      */
     void backPack(Channel channel);
+
+    /**
+     * 增加道具到背包中
+     *
+     * @param list
+     */
+    void addItems(PlayerEntity player, List<AbstractItem> list);
 }

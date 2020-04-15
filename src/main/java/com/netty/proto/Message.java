@@ -161,6 +161,58 @@ public final class Message {
      */
     UseItemOrBuilder getUseItemOrBuilder();
 
+    /**
+     * <code>.Equipment equipment = 12;</code>
+     */
+    boolean hasEquipment();
+    /**
+     * <code>.Equipment equipment = 12;</code>
+     */
+    Equipment getEquipment();
+    /**
+     * <code>.Equipment equipment = 12;</code>
+     */
+    EquipmentOrBuilder getEquipmentOrBuilder();
+
+    /**
+     * <code>.Wear wear = 13;</code>
+     */
+    boolean hasWear();
+    /**
+     * <code>.Wear wear = 13;</code>
+     */
+    Wear getWear();
+    /**
+     * <code>.Wear wear = 13;</code>
+     */
+    WearOrBuilder getWearOrBuilder();
+
+    /**
+     * <code>.Deequipment deequipment = 14;</code>
+     */
+    boolean hasDeequipment();
+    /**
+     * <code>.Deequipment deequipment = 14;</code>
+     */
+    Deequipment getDeequipment();
+    /**
+     * <code>.Deequipment deequipment = 14;</code>
+     */
+    DeequipmentOrBuilder getDeequipmentOrBuilder();
+
+    /**
+     * <code>.Repair repair = 15;</code>
+     */
+    boolean hasRepair();
+    /**
+     * <code>.Repair repair = 15;</code>
+     */
+    Repair getRepair();
+    /**
+     * <code>.Repair repair = 15;</code>
+     */
+    RepairOrBuilder getRepairOrBuilder();
+
     public Option.OptionContentCase getOptionContentCase();
   }
   /**
@@ -356,6 +408,62 @@ public final class Message {
               optionContentCase_ = 11;
               break;
             }
+            case 98: {
+              Equipment.Builder subBuilder = null;
+              if (optionContentCase_ == 12) {
+                subBuilder = ((Equipment) optionContent_).toBuilder();
+              }
+              optionContent_ =
+                  input.readMessage(Equipment.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((Equipment) optionContent_);
+                optionContent_ = subBuilder.buildPartial();
+              }
+              optionContentCase_ = 12;
+              break;
+            }
+            case 106: {
+              Wear.Builder subBuilder = null;
+              if (optionContentCase_ == 13) {
+                subBuilder = ((Wear) optionContent_).toBuilder();
+              }
+              optionContent_ =
+                  input.readMessage(Wear.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((Wear) optionContent_);
+                optionContent_ = subBuilder.buildPartial();
+              }
+              optionContentCase_ = 13;
+              break;
+            }
+            case 114: {
+              Deequipment.Builder subBuilder = null;
+              if (optionContentCase_ == 14) {
+                subBuilder = ((Deequipment) optionContent_).toBuilder();
+              }
+              optionContent_ =
+                  input.readMessage(Deequipment.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((Deequipment) optionContent_);
+                optionContent_ = subBuilder.buildPartial();
+              }
+              optionContentCase_ = 14;
+              break;
+            }
+            case 122: {
+              Repair.Builder subBuilder = null;
+              if (optionContentCase_ == 15) {
+                subBuilder = ((Repair) optionContent_).toBuilder();
+              }
+              optionContent_ =
+                  input.readMessage(Repair.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((Repair) optionContent_);
+                optionContent_ = subBuilder.buildPartial();
+              }
+              optionContentCase_ = 15;
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -403,6 +511,10 @@ public final class Message {
       ATTACK(9),
       BACKPACK(10),
       USEITEM(11),
+      EQUIPMENT(12),
+      WEAR(13),
+      DEEQUIPMENT(14),
+      REPAIR(15),
       OPTIONCONTENT_NOT_SET(0);
       private final int value;
       private OptionContentCase(int value) {
@@ -429,6 +541,10 @@ public final class Message {
           case 9: return ATTACK;
           case 10: return BACKPACK;
           case 11: return USEITEM;
+          case 12: return EQUIPMENT;
+          case 13: return WEAR;
+          case 14: return DEEQUIPMENT;
+          case 15: return REPAIR;
           case 0: return OPTIONCONTENT_NOT_SET;
           default: return null;
         }
@@ -730,6 +846,110 @@ public final class Message {
       return UseItem.getDefaultInstance();
     }
 
+    public static final int EQUIPMENT_FIELD_NUMBER = 12;
+    /**
+     * <code>.Equipment equipment = 12;</code>
+     */
+    public boolean hasEquipment() {
+      return optionContentCase_ == 12;
+    }
+    /**
+     * <code>.Equipment equipment = 12;</code>
+     */
+    public Equipment getEquipment() {
+      if (optionContentCase_ == 12) {
+         return (Equipment) optionContent_;
+      }
+      return Equipment.getDefaultInstance();
+    }
+    /**
+     * <code>.Equipment equipment = 12;</code>
+     */
+    public EquipmentOrBuilder getEquipmentOrBuilder() {
+      if (optionContentCase_ == 12) {
+         return (Equipment) optionContent_;
+      }
+      return Equipment.getDefaultInstance();
+    }
+
+    public static final int WEAR_FIELD_NUMBER = 13;
+    /**
+     * <code>.Wear wear = 13;</code>
+     */
+    public boolean hasWear() {
+      return optionContentCase_ == 13;
+    }
+    /**
+     * <code>.Wear wear = 13;</code>
+     */
+    public Wear getWear() {
+      if (optionContentCase_ == 13) {
+         return (Wear) optionContent_;
+      }
+      return Wear.getDefaultInstance();
+    }
+    /**
+     * <code>.Wear wear = 13;</code>
+     */
+    public WearOrBuilder getWearOrBuilder() {
+      if (optionContentCase_ == 13) {
+         return (Wear) optionContent_;
+      }
+      return Wear.getDefaultInstance();
+    }
+
+    public static final int DEEQUIPMENT_FIELD_NUMBER = 14;
+    /**
+     * <code>.Deequipment deequipment = 14;</code>
+     */
+    public boolean hasDeequipment() {
+      return optionContentCase_ == 14;
+    }
+    /**
+     * <code>.Deequipment deequipment = 14;</code>
+     */
+    public Deequipment getDeequipment() {
+      if (optionContentCase_ == 14) {
+         return (Deequipment) optionContent_;
+      }
+      return Deequipment.getDefaultInstance();
+    }
+    /**
+     * <code>.Deequipment deequipment = 14;</code>
+     */
+    public DeequipmentOrBuilder getDeequipmentOrBuilder() {
+      if (optionContentCase_ == 14) {
+         return (Deequipment) optionContent_;
+      }
+      return Deequipment.getDefaultInstance();
+    }
+
+    public static final int REPAIR_FIELD_NUMBER = 15;
+    /**
+     * <code>.Repair repair = 15;</code>
+     */
+    public boolean hasRepair() {
+      return optionContentCase_ == 15;
+    }
+    /**
+     * <code>.Repair repair = 15;</code>
+     */
+    public Repair getRepair() {
+      if (optionContentCase_ == 15) {
+         return (Repair) optionContent_;
+      }
+      return Repair.getDefaultInstance();
+    }
+    /**
+     * <code>.Repair repair = 15;</code>
+     */
+    public RepairOrBuilder getRepairOrBuilder() {
+      if (optionContentCase_ == 15) {
+         return (Repair) optionContent_;
+      }
+      return Repair.getDefaultInstance();
+    }
+
     private byte memoizedIsInitialized = -1;
     @Override
     public final boolean isInitialized() {
@@ -776,6 +996,18 @@ public final class Message {
       }
       if (optionContentCase_ == 11) {
         output.writeMessage(11, (UseItem) optionContent_);
+      }
+      if (optionContentCase_ == 12) {
+        output.writeMessage(12, (Equipment) optionContent_);
+      }
+      if (optionContentCase_ == 13) {
+        output.writeMessage(13, (Wear) optionContent_);
+      }
+      if (optionContentCase_ == 14) {
+        output.writeMessage(14, (Deequipment) optionContent_);
+      }
+      if (optionContentCase_ == 15) {
+        output.writeMessage(15, (Repair) optionContent_);
       }
       unknownFields.writeTo(output);
     }
@@ -829,6 +1061,22 @@ public final class Message {
       if (optionContentCase_ == 11) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(11, (UseItem) optionContent_);
+      }
+      if (optionContentCase_ == 12) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(12, (Equipment) optionContent_);
+      }
+      if (optionContentCase_ == 13) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(13, (Wear) optionContent_);
+      }
+      if (optionContentCase_ == 14) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(14, (Deequipment) optionContent_);
+      }
+      if (optionContentCase_ == 15) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(15, (Repair) optionContent_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -894,6 +1142,22 @@ public final class Message {
           result = result && getUseItem()
               .equals(other.getUseItem());
           break;
+        case 12:
+          result = result && getEquipment()
+              .equals(other.getEquipment());
+          break;
+        case 13:
+          result = result && getWear()
+              .equals(other.getWear());
+          break;
+        case 14:
+          result = result && getDeequipment()
+              .equals(other.getDeequipment());
+          break;
+        case 15:
+          result = result && getRepair()
+              .equals(other.getRepair());
+          break;
         case 0:
         default:
       }
@@ -952,6 +1216,22 @@ public final class Message {
         case 11:
           hash = (37 * hash) + USEITEM_FIELD_NUMBER;
           hash = (53 * hash) + getUseItem().hashCode();
+          break;
+        case 12:
+          hash = (37 * hash) + EQUIPMENT_FIELD_NUMBER;
+          hash = (53 * hash) + getEquipment().hashCode();
+          break;
+        case 13:
+          hash = (37 * hash) + WEAR_FIELD_NUMBER;
+          hash = (53 * hash) + getWear().hashCode();
+          break;
+        case 14:
+          hash = (37 * hash) + DEEQUIPMENT_FIELD_NUMBER;
+          hash = (53 * hash) + getDeequipment().hashCode();
+          break;
+        case 15:
+          hash = (37 * hash) + REPAIR_FIELD_NUMBER;
+          hash = (53 * hash) + getRepair().hashCode();
           break;
         case 0:
         default:
@@ -1194,6 +1474,34 @@ public final class Message {
             result.optionContent_ = useItemBuilder_.build();
           }
         }
+        if (optionContentCase_ == 12) {
+          if (equipmentBuilder_ == null) {
+            result.optionContent_ = optionContent_;
+          } else {
+            result.optionContent_ = equipmentBuilder_.build();
+          }
+        }
+        if (optionContentCase_ == 13) {
+          if (wearBuilder_ == null) {
+            result.optionContent_ = optionContent_;
+          } else {
+            result.optionContent_ = wearBuilder_.build();
+          }
+        }
+        if (optionContentCase_ == 14) {
+          if (deequipmentBuilder_ == null) {
+            result.optionContent_ = optionContent_;
+          } else {
+            result.optionContent_ = deequipmentBuilder_.build();
+          }
+        }
+        if (optionContentCase_ == 15) {
+          if (repairBuilder_ == null) {
+            result.optionContent_ = optionContent_;
+          } else {
+            result.optionContent_ = repairBuilder_.build();
+          }
+        }
         result.optionContentCase_ = optionContentCase_;
         onBuilt();
         return result;
@@ -1286,6 +1594,22 @@ public final class Message {
           }
           case USEITEM: {
             mergeUseItem(other.getUseItem());
+            break;
+          }
+          case EQUIPMENT: {
+            mergeEquipment(other.getEquipment());
+            break;
+          }
+          case WEAR: {
+            mergeWear(other.getWear());
+            break;
+          }
+          case DEEQUIPMENT: {
+            mergeDeequipment(other.getDeequipment());
+            break;
+          }
+          case REPAIR: {
+            mergeRepair(other.getRepair());
             break;
           }
           case OPTIONCONTENT_NOT_SET: {
@@ -2830,6 +3154,550 @@ public final class Message {
         optionContentCase_ = 11;
         onChanged();;
         return useItemBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Equipment, Equipment.Builder, EquipmentOrBuilder> equipmentBuilder_;
+      /**
+       * <code>.Equipment equipment = 12;</code>
+       */
+      public boolean hasEquipment() {
+        return optionContentCase_ == 12;
+      }
+      /**
+       * <code>.Equipment equipment = 12;</code>
+       */
+      public Equipment getEquipment() {
+        if (equipmentBuilder_ == null) {
+          if (optionContentCase_ == 12) {
+            return (Equipment) optionContent_;
+          }
+          return Equipment.getDefaultInstance();
+        } else {
+          if (optionContentCase_ == 12) {
+            return equipmentBuilder_.getMessage();
+          }
+          return Equipment.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.Equipment equipment = 12;</code>
+       */
+      public Builder setEquipment(Equipment value) {
+        if (equipmentBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          optionContent_ = value;
+          onChanged();
+        } else {
+          equipmentBuilder_.setMessage(value);
+        }
+        optionContentCase_ = 12;
+        return this;
+      }
+      /**
+       * <code>.Equipment equipment = 12;</code>
+       */
+      public Builder setEquipment(
+          Equipment.Builder builderForValue) {
+        if (equipmentBuilder_ == null) {
+          optionContent_ = builderForValue.build();
+          onChanged();
+        } else {
+          equipmentBuilder_.setMessage(builderForValue.build());
+        }
+        optionContentCase_ = 12;
+        return this;
+      }
+      /**
+       * <code>.Equipment equipment = 12;</code>
+       */
+      public Builder mergeEquipment(Equipment value) {
+        if (equipmentBuilder_ == null) {
+          if (optionContentCase_ == 12 &&
+              optionContent_ != Equipment.getDefaultInstance()) {
+            optionContent_ = Equipment.newBuilder((Equipment) optionContent_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            optionContent_ = value;
+          }
+          onChanged();
+        } else {
+          if (optionContentCase_ == 12) {
+            equipmentBuilder_.mergeFrom(value);
+          }
+          equipmentBuilder_.setMessage(value);
+        }
+        optionContentCase_ = 12;
+        return this;
+      }
+      /**
+       * <code>.Equipment equipment = 12;</code>
+       */
+      public Builder clearEquipment() {
+        if (equipmentBuilder_ == null) {
+          if (optionContentCase_ == 12) {
+            optionContentCase_ = 0;
+            optionContent_ = null;
+            onChanged();
+          }
+        } else {
+          if (optionContentCase_ == 12) {
+            optionContentCase_ = 0;
+            optionContent_ = null;
+          }
+          equipmentBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.Equipment equipment = 12;</code>
+       */
+      public Equipment.Builder getEquipmentBuilder() {
+        return getEquipmentFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.Equipment equipment = 12;</code>
+       */
+      public EquipmentOrBuilder getEquipmentOrBuilder() {
+        if ((optionContentCase_ == 12) && (equipmentBuilder_ != null)) {
+          return equipmentBuilder_.getMessageOrBuilder();
+        } else {
+          if (optionContentCase_ == 12) {
+            return (Equipment) optionContent_;
+          }
+          return Equipment.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.Equipment equipment = 12;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Equipment, Equipment.Builder, EquipmentOrBuilder>
+          getEquipmentFieldBuilder() {
+        if (equipmentBuilder_ == null) {
+          if (!(optionContentCase_ == 12)) {
+            optionContent_ = Equipment.getDefaultInstance();
+          }
+          equipmentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              Equipment, Equipment.Builder, EquipmentOrBuilder>(
+                  (Equipment) optionContent_,
+                  getParentForChildren(),
+                  isClean());
+          optionContent_ = null;
+        }
+        optionContentCase_ = 12;
+        onChanged();;
+        return equipmentBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Wear, Wear.Builder, WearOrBuilder> wearBuilder_;
+      /**
+       * <code>.Wear wear = 13;</code>
+       */
+      public boolean hasWear() {
+        return optionContentCase_ == 13;
+      }
+      /**
+       * <code>.Wear wear = 13;</code>
+       */
+      public Wear getWear() {
+        if (wearBuilder_ == null) {
+          if (optionContentCase_ == 13) {
+            return (Wear) optionContent_;
+          }
+          return Wear.getDefaultInstance();
+        } else {
+          if (optionContentCase_ == 13) {
+            return wearBuilder_.getMessage();
+          }
+          return Wear.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.Wear wear = 13;</code>
+       */
+      public Builder setWear(Wear value) {
+        if (wearBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          optionContent_ = value;
+          onChanged();
+        } else {
+          wearBuilder_.setMessage(value);
+        }
+        optionContentCase_ = 13;
+        return this;
+      }
+      /**
+       * <code>.Wear wear = 13;</code>
+       */
+      public Builder setWear(
+          Wear.Builder builderForValue) {
+        if (wearBuilder_ == null) {
+          optionContent_ = builderForValue.build();
+          onChanged();
+        } else {
+          wearBuilder_.setMessage(builderForValue.build());
+        }
+        optionContentCase_ = 13;
+        return this;
+      }
+      /**
+       * <code>.Wear wear = 13;</code>
+       */
+      public Builder mergeWear(Wear value) {
+        if (wearBuilder_ == null) {
+          if (optionContentCase_ == 13 &&
+              optionContent_ != Wear.getDefaultInstance()) {
+            optionContent_ = Wear.newBuilder((Wear) optionContent_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            optionContent_ = value;
+          }
+          onChanged();
+        } else {
+          if (optionContentCase_ == 13) {
+            wearBuilder_.mergeFrom(value);
+          }
+          wearBuilder_.setMessage(value);
+        }
+        optionContentCase_ = 13;
+        return this;
+      }
+      /**
+       * <code>.Wear wear = 13;</code>
+       */
+      public Builder clearWear() {
+        if (wearBuilder_ == null) {
+          if (optionContentCase_ == 13) {
+            optionContentCase_ = 0;
+            optionContent_ = null;
+            onChanged();
+          }
+        } else {
+          if (optionContentCase_ == 13) {
+            optionContentCase_ = 0;
+            optionContent_ = null;
+          }
+          wearBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.Wear wear = 13;</code>
+       */
+      public Wear.Builder getWearBuilder() {
+        return getWearFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.Wear wear = 13;</code>
+       */
+      public WearOrBuilder getWearOrBuilder() {
+        if ((optionContentCase_ == 13) && (wearBuilder_ != null)) {
+          return wearBuilder_.getMessageOrBuilder();
+        } else {
+          if (optionContentCase_ == 13) {
+            return (Wear) optionContent_;
+          }
+          return Wear.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.Wear wear = 13;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Wear, Wear.Builder, WearOrBuilder>
+          getWearFieldBuilder() {
+        if (wearBuilder_ == null) {
+          if (!(optionContentCase_ == 13)) {
+            optionContent_ = Wear.getDefaultInstance();
+          }
+          wearBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              Wear, Wear.Builder, WearOrBuilder>(
+                  (Wear) optionContent_,
+                  getParentForChildren(),
+                  isClean());
+          optionContent_ = null;
+        }
+        optionContentCase_ = 13;
+        onChanged();;
+        return wearBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Deequipment, Deequipment.Builder, DeequipmentOrBuilder> deequipmentBuilder_;
+      /**
+       * <code>.Deequipment deequipment = 14;</code>
+       */
+      public boolean hasDeequipment() {
+        return optionContentCase_ == 14;
+      }
+      /**
+       * <code>.Deequipment deequipment = 14;</code>
+       */
+      public Deequipment getDeequipment() {
+        if (deequipmentBuilder_ == null) {
+          if (optionContentCase_ == 14) {
+            return (Deequipment) optionContent_;
+          }
+          return Deequipment.getDefaultInstance();
+        } else {
+          if (optionContentCase_ == 14) {
+            return deequipmentBuilder_.getMessage();
+          }
+          return Deequipment.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.Deequipment deequipment = 14;</code>
+       */
+      public Builder setDeequipment(Deequipment value) {
+        if (deequipmentBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          optionContent_ = value;
+          onChanged();
+        } else {
+          deequipmentBuilder_.setMessage(value);
+        }
+        optionContentCase_ = 14;
+        return this;
+      }
+      /**
+       * <code>.Deequipment deequipment = 14;</code>
+       */
+      public Builder setDeequipment(
+          Deequipment.Builder builderForValue) {
+        if (deequipmentBuilder_ == null) {
+          optionContent_ = builderForValue.build();
+          onChanged();
+        } else {
+          deequipmentBuilder_.setMessage(builderForValue.build());
+        }
+        optionContentCase_ = 14;
+        return this;
+      }
+      /**
+       * <code>.Deequipment deequipment = 14;</code>
+       */
+      public Builder mergeDeequipment(Deequipment value) {
+        if (deequipmentBuilder_ == null) {
+          if (optionContentCase_ == 14 &&
+              optionContent_ != Deequipment.getDefaultInstance()) {
+            optionContent_ = Deequipment.newBuilder((Deequipment) optionContent_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            optionContent_ = value;
+          }
+          onChanged();
+        } else {
+          if (optionContentCase_ == 14) {
+            deequipmentBuilder_.mergeFrom(value);
+          }
+          deequipmentBuilder_.setMessage(value);
+        }
+        optionContentCase_ = 14;
+        return this;
+      }
+      /**
+       * <code>.Deequipment deequipment = 14;</code>
+       */
+      public Builder clearDeequipment() {
+        if (deequipmentBuilder_ == null) {
+          if (optionContentCase_ == 14) {
+            optionContentCase_ = 0;
+            optionContent_ = null;
+            onChanged();
+          }
+        } else {
+          if (optionContentCase_ == 14) {
+            optionContentCase_ = 0;
+            optionContent_ = null;
+          }
+          deequipmentBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.Deequipment deequipment = 14;</code>
+       */
+      public Deequipment.Builder getDeequipmentBuilder() {
+        return getDeequipmentFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.Deequipment deequipment = 14;</code>
+       */
+      public DeequipmentOrBuilder getDeequipmentOrBuilder() {
+        if ((optionContentCase_ == 14) && (deequipmentBuilder_ != null)) {
+          return deequipmentBuilder_.getMessageOrBuilder();
+        } else {
+          if (optionContentCase_ == 14) {
+            return (Deequipment) optionContent_;
+          }
+          return Deequipment.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.Deequipment deequipment = 14;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Deequipment, Deequipment.Builder, DeequipmentOrBuilder>
+          getDeequipmentFieldBuilder() {
+        if (deequipmentBuilder_ == null) {
+          if (!(optionContentCase_ == 14)) {
+            optionContent_ = Deequipment.getDefaultInstance();
+          }
+          deequipmentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              Deequipment, Deequipment.Builder, DeequipmentOrBuilder>(
+                  (Deequipment) optionContent_,
+                  getParentForChildren(),
+                  isClean());
+          optionContent_ = null;
+        }
+        optionContentCase_ = 14;
+        onChanged();;
+        return deequipmentBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Repair, Repair.Builder, RepairOrBuilder> repairBuilder_;
+      /**
+       * <code>.Repair repair = 15;</code>
+       */
+      public boolean hasRepair() {
+        return optionContentCase_ == 15;
+      }
+      /**
+       * <code>.Repair repair = 15;</code>
+       */
+      public Repair getRepair() {
+        if (repairBuilder_ == null) {
+          if (optionContentCase_ == 15) {
+            return (Repair) optionContent_;
+          }
+          return Repair.getDefaultInstance();
+        } else {
+          if (optionContentCase_ == 15) {
+            return repairBuilder_.getMessage();
+          }
+          return Repair.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.Repair repair = 15;</code>
+       */
+      public Builder setRepair(Repair value) {
+        if (repairBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          optionContent_ = value;
+          onChanged();
+        } else {
+          repairBuilder_.setMessage(value);
+        }
+        optionContentCase_ = 15;
+        return this;
+      }
+      /**
+       * <code>.Repair repair = 15;</code>
+       */
+      public Builder setRepair(
+          Repair.Builder builderForValue) {
+        if (repairBuilder_ == null) {
+          optionContent_ = builderForValue.build();
+          onChanged();
+        } else {
+          repairBuilder_.setMessage(builderForValue.build());
+        }
+        optionContentCase_ = 15;
+        return this;
+      }
+      /**
+       * <code>.Repair repair = 15;</code>
+       */
+      public Builder mergeRepair(Repair value) {
+        if (repairBuilder_ == null) {
+          if (optionContentCase_ == 15 &&
+              optionContent_ != Repair.getDefaultInstance()) {
+            optionContent_ = Repair.newBuilder((Repair) optionContent_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            optionContent_ = value;
+          }
+          onChanged();
+        } else {
+          if (optionContentCase_ == 15) {
+            repairBuilder_.mergeFrom(value);
+          }
+          repairBuilder_.setMessage(value);
+        }
+        optionContentCase_ = 15;
+        return this;
+      }
+      /**
+       * <code>.Repair repair = 15;</code>
+       */
+      public Builder clearRepair() {
+        if (repairBuilder_ == null) {
+          if (optionContentCase_ == 15) {
+            optionContentCase_ = 0;
+            optionContent_ = null;
+            onChanged();
+          }
+        } else {
+          if (optionContentCase_ == 15) {
+            optionContentCase_ = 0;
+            optionContent_ = null;
+          }
+          repairBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.Repair repair = 15;</code>
+       */
+      public Repair.Builder getRepairBuilder() {
+        return getRepairFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.Repair repair = 15;</code>
+       */
+      public RepairOrBuilder getRepairOrBuilder() {
+        if ((optionContentCase_ == 15) && (repairBuilder_ != null)) {
+          return repairBuilder_.getMessageOrBuilder();
+        } else {
+          if (optionContentCase_ == 15) {
+            return (Repair) optionContent_;
+          }
+          return Repair.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.Repair repair = 15;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Repair, Repair.Builder, RepairOrBuilder>
+          getRepairFieldBuilder() {
+        if (repairBuilder_ == null) {
+          if (!(optionContentCase_ == 15)) {
+            optionContent_ = Repair.getDefaultInstance();
+          }
+          repairBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              Repair, Repair.Builder, RepairOrBuilder>(
+                  (Repair) optionContent_,
+                  getParentForChildren(),
+                  isClean());
+          optionContent_ = null;
+        }
+        optionContentCase_ = 15;
+        onChanged();;
+        return repairBuilder_;
       }
       @Override
       public final Builder setUnknownFields(
@@ -8048,9 +8916,9 @@ public final class Message {
      * 道具标识ID，非ItemResource的ID
      * </pre>
      *
-     * <code>int64 itemRandomId = 1;</code>
+     * <code>int32 itemOnlyId = 1;</code>
      */
-    long getItemRandomId();
+    int getItemOnlyId();
   }
   /**
    * <pre>
@@ -8069,7 +8937,7 @@ public final class Message {
       super(builder);
     }
     private UseItem() {
-      itemRandomId_ = 0L;
+      itemOnlyId_ = 0;
     }
 
     @Override
@@ -8098,7 +8966,7 @@ public final class Message {
               break;
             case 8: {
 
-              itemRandomId_ = input.readInt64();
+              itemOnlyId_ = input.readInt32();
               break;
             }
             default: {
@@ -8133,17 +9001,17 @@ public final class Message {
               UseItem.class, Builder.class);
     }
 
-    public static final int ITEMRANDOMID_FIELD_NUMBER = 1;
-    private long itemRandomId_;
+    public static final int ITEMONLYID_FIELD_NUMBER = 1;
+    private int itemOnlyId_;
     /**
      * <pre>
      * 道具标识ID，非ItemResource的ID
      * </pre>
      *
-     * <code>int64 itemRandomId = 1;</code>
+     * <code>int32 itemOnlyId = 1;</code>
      */
-    public long getItemRandomId() {
-      return itemRandomId_;
+    public int getItemOnlyId() {
+      return itemOnlyId_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -8160,8 +9028,8 @@ public final class Message {
     @Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (itemRandomId_ != 0L) {
-        output.writeInt64(1, itemRandomId_);
+      if (itemOnlyId_ != 0) {
+        output.writeInt32(1, itemOnlyId_);
       }
       unknownFields.writeTo(output);
     }
@@ -8172,9 +9040,9 @@ public final class Message {
       if (size != -1) return size;
 
       size = 0;
-      if (itemRandomId_ != 0L) {
+      if (itemOnlyId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, itemRandomId_);
+          .computeInt32Size(1, itemOnlyId_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -8192,8 +9060,8 @@ public final class Message {
       UseItem other = (UseItem) obj;
 
       boolean result = true;
-      result = result && (getItemRandomId()
-          == other.getItemRandomId());
+      result = result && (getItemOnlyId()
+          == other.getItemOnlyId());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -8205,9 +9073,8 @@ public final class Message {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + ITEMRANDOMID_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getItemRandomId());
+      hash = (37 * hash) + ITEMONLYID_FIELD_NUMBER;
+      hash = (53 * hash) + getItemOnlyId();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -8345,7 +9212,7 @@ public final class Message {
       @Override
       public Builder clear() {
         super.clear();
-        itemRandomId_ = 0L;
+        itemOnlyId_ = 0;
 
         return this;
       }
@@ -8373,7 +9240,7 @@ public final class Message {
       @Override
       public UseItem buildPartial() {
         UseItem result = new UseItem(this);
-        result.itemRandomId_ = itemRandomId_;
+        result.itemOnlyId_ = itemOnlyId_;
         onBuilt();
         return result;
       }
@@ -8422,8 +9289,8 @@ public final class Message {
 
       public Builder mergeFrom(UseItem other) {
         if (other == UseItem.getDefaultInstance()) return this;
-        if (other.getItemRandomId() != 0L) {
-          setItemRandomId(other.getItemRandomId());
+        if (other.getItemOnlyId() != 0) {
+          setItemOnlyId(other.getItemOnlyId());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -8454,27 +9321,27 @@ public final class Message {
         return this;
       }
 
-      private long itemRandomId_ ;
+      private int itemOnlyId_ ;
       /**
        * <pre>
        * 道具标识ID，非ItemResource的ID
        * </pre>
        *
-       * <code>int64 itemRandomId = 1;</code>
+       * <code>int32 itemOnlyId = 1;</code>
        */
-      public long getItemRandomId() {
-        return itemRandomId_;
+      public int getItemOnlyId() {
+        return itemOnlyId_;
       }
       /**
        * <pre>
        * 道具标识ID，非ItemResource的ID
        * </pre>
        *
-       * <code>int64 itemRandomId = 1;</code>
+       * <code>int32 itemOnlyId = 1;</code>
        */
-      public Builder setItemRandomId(long value) {
+      public Builder setItemOnlyId(int value) {
         
-        itemRandomId_ = value;
+        itemOnlyId_ = value;
         onChanged();
         return this;
       }
@@ -8483,11 +9350,11 @@ public final class Message {
        * 道具标识ID，非ItemResource的ID
        * </pre>
        *
-       * <code>int64 itemRandomId = 1;</code>
+       * <code>int32 itemOnlyId = 1;</code>
        */
-      public Builder clearItemRandomId() {
+      public Builder clearItemOnlyId() {
         
-        itemRandomId_ = 0L;
+        itemOnlyId_ = 0;
         onChanged();
         return this;
       }
@@ -8539,6 +9406,1938 @@ public final class Message {
 
     @Override
     public UseItem getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface EquipmentOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Equipment)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * <pre>
+   * 查看装备栏
+   * </pre>
+   *
+   * Protobuf type {@code Equipment}
+   */
+  public  static final class Equipment extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:Equipment)
+      EquipmentOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Equipment.newBuilder() to construct.
+    private Equipment(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Equipment() {
+    }
+
+    @Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Equipment(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Message.internal_static_Equipment_descriptor;
+    }
+
+    @Override
+    protected FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Message.internal_static_Equipment_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Equipment.class, Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      unknownFields.writeTo(output);
+    }
+
+    @Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Equipment)) {
+        return super.equals(obj);
+      }
+      Equipment other = (Equipment) obj;
+
+      boolean result = true;
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Equipment parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Equipment parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Equipment parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Equipment parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Equipment parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Equipment parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Equipment parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static Equipment parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Equipment parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static Equipment parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Equipment parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static Equipment parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Equipment prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @Override
+    protected Builder newBuilderForType(
+        BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * 查看装备栏
+     * </pre>
+     *
+     * Protobuf type {@code Equipment}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Equipment)
+        EquipmentOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Message.internal_static_Equipment_descriptor;
+      }
+
+      @Override
+      protected FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Message.internal_static_Equipment_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Equipment.class, Builder.class);
+      }
+
+      // Construct using com.netty.proto.Message.Equipment.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Message.internal_static_Equipment_descriptor;
+      }
+
+      @Override
+      public Equipment getDefaultInstanceForType() {
+        return Equipment.getDefaultInstance();
+      }
+
+      @Override
+      public Equipment build() {
+        Equipment result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @Override
+      public Equipment buildPartial() {
+        Equipment result = new Equipment(this);
+        onBuilt();
+        return result;
+      }
+
+      @Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Equipment) {
+          return mergeFrom((Equipment)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Equipment other) {
+        if (other == Equipment.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        Equipment parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (Equipment) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      @Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:Equipment)
+    }
+
+    // @@protoc_insertion_point(class_scope:Equipment)
+    private static final Equipment DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Equipment();
+    }
+
+    public static Equipment getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Equipment>
+        PARSER = new com.google.protobuf.AbstractParser<Equipment>() {
+      @Override
+      public Equipment parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Equipment(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Equipment> parser() {
+      return PARSER;
+    }
+
+    @Override
+    public com.google.protobuf.Parser<Equipment> getParserForType() {
+      return PARSER;
+    }
+
+    @Override
+    public Equipment getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface WearOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Wear)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * 装备ID
+     * </pre>
+     *
+     * <code>int32 equipmentId = 1;</code>
+     */
+    int getEquipmentId();
+  }
+  /**
+   * <pre>
+   * 穿装备
+   * </pre>
+   *
+   * Protobuf type {@code Wear}
+   */
+  public  static final class Wear extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:Wear)
+      WearOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Wear.newBuilder() to construct.
+    private Wear(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Wear() {
+      equipmentId_ = 0;
+    }
+
+    @Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Wear(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              equipmentId_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Message.internal_static_Wear_descriptor;
+    }
+
+    @Override
+    protected FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Message.internal_static_Wear_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Wear.class, Builder.class);
+    }
+
+    public static final int EQUIPMENTID_FIELD_NUMBER = 1;
+    private int equipmentId_;
+    /**
+     * <pre>
+     * 装备ID
+     * </pre>
+     *
+     * <code>int32 equipmentId = 1;</code>
+     */
+    public int getEquipmentId() {
+      return equipmentId_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (equipmentId_ != 0) {
+        output.writeInt32(1, equipmentId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (equipmentId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, equipmentId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Wear)) {
+        return super.equals(obj);
+      }
+      Wear other = (Wear) obj;
+
+      boolean result = true;
+      result = result && (getEquipmentId()
+          == other.getEquipmentId());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + EQUIPMENTID_FIELD_NUMBER;
+      hash = (53 * hash) + getEquipmentId();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Wear parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Wear parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Wear parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Wear parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Wear parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Wear parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Wear parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static Wear parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Wear parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static Wear parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Wear parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static Wear parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Wear prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @Override
+    protected Builder newBuilderForType(
+        BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * 穿装备
+     * </pre>
+     *
+     * Protobuf type {@code Wear}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Wear)
+        WearOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Message.internal_static_Wear_descriptor;
+      }
+
+      @Override
+      protected FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Message.internal_static_Wear_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Wear.class, Builder.class);
+      }
+
+      // Construct using com.netty.proto.Message.Wear.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @Override
+      public Builder clear() {
+        super.clear();
+        equipmentId_ = 0;
+
+        return this;
+      }
+
+      @Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Message.internal_static_Wear_descriptor;
+      }
+
+      @Override
+      public Wear getDefaultInstanceForType() {
+        return Wear.getDefaultInstance();
+      }
+
+      @Override
+      public Wear build() {
+        Wear result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @Override
+      public Wear buildPartial() {
+        Wear result = new Wear(this);
+        result.equipmentId_ = equipmentId_;
+        onBuilt();
+        return result;
+      }
+
+      @Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Wear) {
+          return mergeFrom((Wear)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Wear other) {
+        if (other == Wear.getDefaultInstance()) return this;
+        if (other.getEquipmentId() != 0) {
+          setEquipmentId(other.getEquipmentId());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        Wear parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (Wear) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int equipmentId_ ;
+      /**
+       * <pre>
+       * 装备ID
+       * </pre>
+       *
+       * <code>int32 equipmentId = 1;</code>
+       */
+      public int getEquipmentId() {
+        return equipmentId_;
+      }
+      /**
+       * <pre>
+       * 装备ID
+       * </pre>
+       *
+       * <code>int32 equipmentId = 1;</code>
+       */
+      public Builder setEquipmentId(int value) {
+        
+        equipmentId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 装备ID
+       * </pre>
+       *
+       * <code>int32 equipmentId = 1;</code>
+       */
+      public Builder clearEquipmentId() {
+        
+        equipmentId_ = 0;
+        onChanged();
+        return this;
+      }
+      @Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:Wear)
+    }
+
+    // @@protoc_insertion_point(class_scope:Wear)
+    private static final Wear DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Wear();
+    }
+
+    public static Wear getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Wear>
+        PARSER = new com.google.protobuf.AbstractParser<Wear>() {
+      @Override
+      public Wear parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Wear(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Wear> parser() {
+      return PARSER;
+    }
+
+    @Override
+    public com.google.protobuf.Parser<Wear> getParserForType() {
+      return PARSER;
+    }
+
+    @Override
+    public Wear getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface DeequipmentOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Deequipment)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * 装备ID
+     * </pre>
+     *
+     * <code>int32 equipmentId = 1;</code>
+     */
+    int getEquipmentId();
+  }
+  /**
+   * <pre>
+   * 脱装备
+   * </pre>
+   *
+   * Protobuf type {@code Deequipment}
+   */
+  public  static final class Deequipment extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:Deequipment)
+      DeequipmentOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Deequipment.newBuilder() to construct.
+    private Deequipment(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Deequipment() {
+      equipmentId_ = 0;
+    }
+
+    @Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Deequipment(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              equipmentId_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Message.internal_static_Deequipment_descriptor;
+    }
+
+    @Override
+    protected FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Message.internal_static_Deequipment_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Deequipment.class, Builder.class);
+    }
+
+    public static final int EQUIPMENTID_FIELD_NUMBER = 1;
+    private int equipmentId_;
+    /**
+     * <pre>
+     * 装备ID
+     * </pre>
+     *
+     * <code>int32 equipmentId = 1;</code>
+     */
+    public int getEquipmentId() {
+      return equipmentId_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (equipmentId_ != 0) {
+        output.writeInt32(1, equipmentId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (equipmentId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, equipmentId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Deequipment)) {
+        return super.equals(obj);
+      }
+      Deequipment other = (Deequipment) obj;
+
+      boolean result = true;
+      result = result && (getEquipmentId()
+          == other.getEquipmentId());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + EQUIPMENTID_FIELD_NUMBER;
+      hash = (53 * hash) + getEquipmentId();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Deequipment parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Deequipment parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Deequipment parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Deequipment parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Deequipment parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Deequipment parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Deequipment parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static Deequipment parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Deequipment parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static Deequipment parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Deequipment parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static Deequipment parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Deequipment prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @Override
+    protected Builder newBuilderForType(
+        BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * 脱装备
+     * </pre>
+     *
+     * Protobuf type {@code Deequipment}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Deequipment)
+        DeequipmentOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Message.internal_static_Deequipment_descriptor;
+      }
+
+      @Override
+      protected FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Message.internal_static_Deequipment_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Deequipment.class, Builder.class);
+      }
+
+      // Construct using com.netty.proto.Message.Deequipment.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @Override
+      public Builder clear() {
+        super.clear();
+        equipmentId_ = 0;
+
+        return this;
+      }
+
+      @Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Message.internal_static_Deequipment_descriptor;
+      }
+
+      @Override
+      public Deequipment getDefaultInstanceForType() {
+        return Deequipment.getDefaultInstance();
+      }
+
+      @Override
+      public Deequipment build() {
+        Deequipment result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @Override
+      public Deequipment buildPartial() {
+        Deequipment result = new Deequipment(this);
+        result.equipmentId_ = equipmentId_;
+        onBuilt();
+        return result;
+      }
+
+      @Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Deequipment) {
+          return mergeFrom((Deequipment)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Deequipment other) {
+        if (other == Deequipment.getDefaultInstance()) return this;
+        if (other.getEquipmentId() != 0) {
+          setEquipmentId(other.getEquipmentId());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        Deequipment parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (Deequipment) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int equipmentId_ ;
+      /**
+       * <pre>
+       * 装备ID
+       * </pre>
+       *
+       * <code>int32 equipmentId = 1;</code>
+       */
+      public int getEquipmentId() {
+        return equipmentId_;
+      }
+      /**
+       * <pre>
+       * 装备ID
+       * </pre>
+       *
+       * <code>int32 equipmentId = 1;</code>
+       */
+      public Builder setEquipmentId(int value) {
+        
+        equipmentId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 装备ID
+       * </pre>
+       *
+       * <code>int32 equipmentId = 1;</code>
+       */
+      public Builder clearEquipmentId() {
+        
+        equipmentId_ = 0;
+        onChanged();
+        return this;
+      }
+      @Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:Deequipment)
+    }
+
+    // @@protoc_insertion_point(class_scope:Deequipment)
+    private static final Deequipment DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Deequipment();
+    }
+
+    public static Deequipment getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Deequipment>
+        PARSER = new com.google.protobuf.AbstractParser<Deequipment>() {
+      @Override
+      public Deequipment parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Deequipment(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Deequipment> parser() {
+      return PARSER;
+    }
+
+    @Override
+    public com.google.protobuf.Parser<Deequipment> getParserForType() {
+      return PARSER;
+    }
+
+    @Override
+    public Deequipment getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface RepairOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Repair)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * 装备ID
+     * </pre>
+     *
+     * <code>int32 equipmentId = 1;</code>
+     */
+    int getEquipmentId();
+  }
+  /**
+   * <pre>
+   * 修理武器
+   * </pre>
+   *
+   * Protobuf type {@code Repair}
+   */
+  public  static final class Repair extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:Repair)
+      RepairOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Repair.newBuilder() to construct.
+    private Repair(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Repair() {
+      equipmentId_ = 0;
+    }
+
+    @Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Repair(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              equipmentId_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Message.internal_static_Repair_descriptor;
+    }
+
+    @Override
+    protected FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Message.internal_static_Repair_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Repair.class, Builder.class);
+    }
+
+    public static final int EQUIPMENTID_FIELD_NUMBER = 1;
+    private int equipmentId_;
+    /**
+     * <pre>
+     * 装备ID
+     * </pre>
+     *
+     * <code>int32 equipmentId = 1;</code>
+     */
+    public int getEquipmentId() {
+      return equipmentId_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (equipmentId_ != 0) {
+        output.writeInt32(1, equipmentId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (equipmentId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, equipmentId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Repair)) {
+        return super.equals(obj);
+      }
+      Repair other = (Repair) obj;
+
+      boolean result = true;
+      result = result && (getEquipmentId()
+          == other.getEquipmentId());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + EQUIPMENTID_FIELD_NUMBER;
+      hash = (53 * hash) + getEquipmentId();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Repair parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Repair parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Repair parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Repair parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Repair parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Repair parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Repair parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static Repair parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Repair parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static Repair parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Repair parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static Repair parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Repair prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @Override
+    protected Builder newBuilderForType(
+        BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * 修理武器
+     * </pre>
+     *
+     * Protobuf type {@code Repair}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Repair)
+        RepairOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Message.internal_static_Repair_descriptor;
+      }
+
+      @Override
+      protected FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Message.internal_static_Repair_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Repair.class, Builder.class);
+      }
+
+      // Construct using com.netty.proto.Message.Repair.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @Override
+      public Builder clear() {
+        super.clear();
+        equipmentId_ = 0;
+
+        return this;
+      }
+
+      @Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Message.internal_static_Repair_descriptor;
+      }
+
+      @Override
+      public Repair getDefaultInstanceForType() {
+        return Repair.getDefaultInstance();
+      }
+
+      @Override
+      public Repair build() {
+        Repair result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @Override
+      public Repair buildPartial() {
+        Repair result = new Repair(this);
+        result.equipmentId_ = equipmentId_;
+        onBuilt();
+        return result;
+      }
+
+      @Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Repair) {
+          return mergeFrom((Repair)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Repair other) {
+        if (other == Repair.getDefaultInstance()) return this;
+        if (other.getEquipmentId() != 0) {
+          setEquipmentId(other.getEquipmentId());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        Repair parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (Repair) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int equipmentId_ ;
+      /**
+       * <pre>
+       * 装备ID
+       * </pre>
+       *
+       * <code>int32 equipmentId = 1;</code>
+       */
+      public int getEquipmentId() {
+        return equipmentId_;
+      }
+      /**
+       * <pre>
+       * 装备ID
+       * </pre>
+       *
+       * <code>int32 equipmentId = 1;</code>
+       */
+      public Builder setEquipmentId(int value) {
+        
+        equipmentId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 装备ID
+       * </pre>
+       *
+       * <code>int32 equipmentId = 1;</code>
+       */
+      public Builder clearEquipmentId() {
+        
+        equipmentId_ = 0;
+        onChanged();
+        return this;
+      }
+      @Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:Repair)
+    }
+
+    // @@protoc_insertion_point(class_scope:Repair)
+    private static final Repair DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Repair();
+    }
+
+    public static Repair getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Repair>
+        PARSER = new com.google.protobuf.AbstractParser<Repair>() {
+      @Override
+      public Repair parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Repair(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Repair> parser() {
+      return PARSER;
+    }
+
+    @Override
+    public com.google.protobuf.Parser<Repair> getParserForType() {
+      return PARSER;
+    }
+
+    @Override
+    public Repair getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -8604,6 +11403,26 @@ public final class Message {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_UseItem_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Equipment_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Equipment_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Wear_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Wear_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Deequipment_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Deequipment_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Repair_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Repair_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -8613,7 +11432,7 @@ public final class Message {
       descriptor;
   static {
     String[] descriptorData = {
-      "\n\nUser.proto\"\321\002\n\006Option\022\035\n\010register\030\001 \001(" +
+      "\n\nUser.proto\"\311\003\n\006Option\022\035\n\010register\030\001 \001(" +
       "\0132\t.RegisterH\000\022 \n\tcreatRole\030\002 \001(\0132\013.Crea" +
       "teRoleH\000\022\027\n\005login\030\003 \001(\0132\006.LoginH\000\022\037\n\tcha" +
       "ngeMap\030\004 \001(\0132\n.ChangeMapH\000\022\027\n\005state\030\005 \001(" +
@@ -8621,15 +11440,21 @@ public final class Message {
       "H\000\022\025\n\004quit\030\007 \001(\0132\005.QuitH\000\022\025\n\004talk\030\010 \001(\0132" +
       "\005.TalkH\000\022\031\n\006attack\030\t \001(\0132\007.AttackH\000\022\035\n\010b" +
       "ackPack\030\n \001(\0132\t.BackPackH\000\022\033\n\007useItem\030\013 " +
-      "\001(\0132\010.UseItemH\000B\017\n\roptionContent\"-\n\010Regi" +
+      "\001(\0132\010.UseItemH\000\022\037\n\tequipment\030\014 \001(\0132\n.Equ" +
+      "ipmentH\000\022\025\n\004wear\030\r \001(\0132\005.WearH\000\022#\n\013deequ" +
+      "ipment\030\016 \001(\0132\014.DeequipmentH\000\022\031\n\006repair\030\017" +
+      " \001(\0132\007.RepairH\000B\017\n\roptionContent\"-\n\010Regi" +
       "ster\022\017\n\007account\030\001 \001(\t\022\020\n\010nickName\030\002 \001(\t\"" +
       "\036\n\nCreateRole\022\020\n\010roleType\030\001 \001(\005\"\030\n\005Login" +
       "\022\017\n\007account\030\001 \001(\t\"\032\n\tChangeMap\022\r\n\005mapId\030" +
       "\001 \001(\005\"\007\n\005State\"\032\n\010Response\022\016\n\006answer\030\001 \001" +
       "(\t\"\006\n\004Quit\"\025\n\004Talk\022\r\n\005npcId\030\001 \001(\005\"\033\n\006Att" +
-      "ack\022\021\n\tmonsterId\030\001 \001(\005\"\n\n\010BackPack\"\037\n\007Us" +
-      "eItem\022\024\n\014itemRandomId\030\001 \001(\003B\034\n\017com.netty" +
-      ".protoB\007MessageH\001b\006proto3"
+      "ack\022\021\n\tmonsterId\030\001 \001(\005\"\n\n\010BackPack\"\035\n\007Us" +
+      "eItem\022\022\n\nitemOnlyId\030\001 \001(\005\"\013\n\tEquipment\"\033" +
+      "\n\004Wear\022\023\n\013equipmentId\030\001 \001(\005\"\"\n\013Deequipme" +
+      "nt\022\023\n\013equipmentId\030\001 \001(\005\"\035\n\006Repair\022\023\n\013equ" +
+      "ipmentId\030\001 \001(\005B\034\n\017com.netty.protoB\007Messa" +
+      "geH\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -8648,7 +11473,7 @@ public final class Message {
     internal_static_Option_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Option_descriptor,
-        new String[] { "Register", "CreatRole", "Login", "ChangeMap", "State", "Response", "Quit", "Talk", "Attack", "BackPack", "UseItem", "OptionContent", });
+        new String[] { "Register", "CreatRole", "Login", "ChangeMap", "State", "Response", "Quit", "Talk", "Attack", "BackPack", "UseItem", "Equipment", "Wear", "Deequipment", "Repair", "OptionContent", });
     internal_static_Register_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_Register_fieldAccessorTable = new
@@ -8714,7 +11539,31 @@ public final class Message {
     internal_static_UseItem_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UseItem_descriptor,
-        new String[] { "ItemRandomId", });
+        new String[] { "ItemOnlyId", });
+    internal_static_Equipment_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_Equipment_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Equipment_descriptor,
+        new String[] { });
+    internal_static_Wear_descriptor =
+      getDescriptor().getMessageTypes().get(13);
+    internal_static_Wear_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Wear_descriptor,
+        new String[] { "EquipmentId", });
+    internal_static_Deequipment_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_Deequipment_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Deequipment_descriptor,
+        new String[] { "EquipmentId", });
+    internal_static_Repair_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_Repair_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Repair_descriptor,
+        new String[] { "EquipmentId", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

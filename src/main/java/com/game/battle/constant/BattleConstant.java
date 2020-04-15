@@ -12,4 +12,6 @@ public interface BattleConstant {
     /** 战斗万分值 */
     long BATTLE_TEN_THOUSAND = 10000;
 
+    /** 每攻击一次，对武器的耗损值 */
+    int WEAPON_WASTAGE = 20;
 }

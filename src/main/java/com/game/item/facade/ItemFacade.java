@@ -2,7 +2,6 @@ package com.game.item.facade;
 
 import com.frame.dispatcher.anno.ReceiverAnno;
 import com.game.item.service.IItemService;
-import com.netty.proto.Message;
 import io.netty.channel.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

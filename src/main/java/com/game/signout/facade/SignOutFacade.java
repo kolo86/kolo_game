@@ -3,7 +3,6 @@ package com.game.signout.facade;
 
 import com.frame.dispatcher.anno.ReceiverAnno;
 import com.game.signout.service.ISignOutService;
-import com.netty.proto.Message;
 import io.netty.channel.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

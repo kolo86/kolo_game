@@ -31,7 +31,7 @@ public class BattleFacade {
      * @param message
      */
     @ReceiverAnno
-    public void battleMonster(Channel channel, Message.Attack message){
+    public void battleMonster(Channel channel, Message.Cm_Attack message){
         PlayerEntity player = playerService.getPlayer(channel);
         BattleExecutor.submit(BattleMonsterCommand.valueOf(player, message.getMonsterId()));
     }

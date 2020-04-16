@@ -3,6 +3,7 @@ package com.game.util;
 import com.game.account.entity.PlayerEntity;
 import com.game.scene.AbstractMapHandler;
 import com.game.scene.constant.SceneType;
+import com.netty.common.ProtocolEnum;
 import com.netty.common.ProtocolMsg;
 import com.netty.proto.Message;
 import io.netty.channel.Channel;
@@ -67,5 +68,27 @@ public class PacketUtils {
      */
     public static void send(Channel channel, ProtocolMsg msg){
         channel.writeAndFlush(msg);
+    }
+
+    /**
+     * 发送I18N消息
+     *
+     */
+    public static void sendResponse(Channel channel, int i18nId){
+        Message.Response response = Message.Response.newBuilder()
+                .setSuccess(true).setResponseId(i18nId).build();
+        ProtocolMsg protocolMsg = ProtocolMsg.valueOf(ProtocolEnum.Response.getId(), response.toByteArray());
+        channel.writeAndFlush(protocolMsg);
+    }
+
+    /**
+     * 发送I18N消息
+     *
+     */
+    public static void sendResponse(PlayerEntity player, int i18nId){
+        Message.Response response = Message.Response.newBuilder()
+                .setSuccess(true).setResponseId(i18nId).build();
+        ProtocolMsg protocolMsg = ProtocolMsg.valueOf(ProtocolEnum.Response.getId(), response.toByteArray());
+        player.getChannel().writeAndFlush(protocolMsg);
     }
 }

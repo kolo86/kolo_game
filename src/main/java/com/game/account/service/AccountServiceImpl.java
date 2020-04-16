@@ -4,10 +4,12 @@ import com.frame.event.service.IEventService;
 import com.game.account.entity.AccountEntity;
 import com.game.account.entity.PlayerEntity;
 import com.game.account.event.CreateAccountAsyncEvent;
+import com.game.common.constant.I18nId;
 import com.game.persistence.service.IPersistenceService;
 import com.game.util.MD5Utils;
 import com.game.util.PacketUtils;
 import com.netty.proto.Message;
+import com.sun.imageio.plugins.common.I18N;
 import io.netty.channel.Channel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -66,7 +68,7 @@ public class AccountServiceImpl implements IAccountService{
 	@Override
 	public void saveAccount(Channel channel, AccountEntity entity) {
 		if(accountManager.checkAccount(entity.getAccountId())) {
-			PacketUtils.send(channel, "抱歉，当前账号已被注册！");
+			PacketUtils.sendResponse(channel, I18nId.ACCOUNT_HAS_BEEN_REGISTERED);
 		}
 		
 		accountManager.addAccount(entity);
@@ -80,9 +82,9 @@ public class AccountServiceImpl implements IAccountService{
 	 * @param message
 	 */
 	@Override
-	public void createAccount(Channel channel, Message.Register message) {
+	public void createAccount(Channel channel, Message.Cm_Register message) {
 		if(checkAccount(message.getAccount())){
-			PacketUtils.send(channel, "抱歉，当前账号已被注册！");
+			PacketUtils.sendResponse(channel, I18nId.ACCOUNT_HAS_BEEN_REGISTERED);
 			return ;
 		}
 
@@ -94,7 +96,7 @@ public class AccountServiceImpl implements IAccountService{
 		playerEntity.setChannel(channel);
 		playerService.save(playerEntity);
 
-		PacketUtils.send(channel, "恭喜你，注册成功！");
+		PacketUtils.sendResponse(channel, I18nId.REGISTER_WAS_SUCCESSFUL);
 		eventService.submitAsyncEvent(CreateAccountAsyncEvent.valueOf(newAccount.getAccountId()));
 
 		logger.info("玩家注册：账号{},昵称：{}", message.getAccount(), message.getNickName() );

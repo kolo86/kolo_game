@@ -7,6 +7,7 @@ import com.game.battle.command.RewardMonsterCommand;
 import com.game.battle.constant.BattleConstant;
 import com.game.battle.event.WeaponDurabilityZeroEvent;
 import com.game.common.SpringContext;
+import com.game.common.constant.I18nId;
 import com.game.container.constant.AttrType;
 import com.game.container.constant.ContainerType;
 import com.game.container.model.AttrContainer;
@@ -49,7 +50,7 @@ public class FightUtils {
     public static void fightMonster(PlayerEntity player, Monster monster) {
         int selectSkill = selectSkill(player);
         if(selectSkill == 0){
-            PacketUtils.send(player, "当前无法使用任何技能，技能均处于CD状态或者蓝量不足！");
+            PacketUtils.sendResponse(player, I18nId.SKILL_UNAVAILABLE);
             return ;
         }
 
@@ -69,7 +70,7 @@ public class FightUtils {
      */
     private static void afterDefenderAttacked(PlayerEntity player, int skill, long skillDamage, Monster monster){
         StringBuilder sb = new StringBuilder();
-        SkillResource skillResource = SkillManager.getSkillManager().getSkillResource(skill);
+        SkillResource skillResource = SkillManager.getSkillResource(skill);
         sb.append("你使用了【").append(skillResource.getName()).append("】技能，对怪物【").append(monster.getName())
                 .append("】造成").append(skillDamage).append("点伤害！");
         PacketUtils.send(player, sb.toString());
@@ -164,7 +165,7 @@ public class FightUtils {
     private static void reduceAttackerMp(PlayerEntity player, int skill) {
         LifeContainer container = (LifeContainer) ContainerType.LIFE.getContainer(player);
 
-        SkillResource skillResource = SkillManager.getSkillManager().getSkillResource(skill);
+        SkillResource skillResource = SkillManager.getSkillResource(skill);
         container.changeMp(-skillResource.getConsumeMp());
     }
 
@@ -177,7 +178,7 @@ public class FightUtils {
     private static void addSkillCd(PlayerEntity player, int skill) {
         CoolDownContainer container = (CoolDownContainer) ContainerType.COOLDOWN.getContainer(player);
 
-        SkillResource skillResource = SkillManager.getSkillManager().getSkillResource(skill);
+        SkillResource skillResource = SkillManager.getSkillResource(skill);
         container.cacheSkillCD(skill, System.currentTimeMillis() + skillResource.getCd());
     }
 
@@ -208,7 +209,7 @@ public class FightUtils {
      */
     private static double getSkillRatio(PlayerEntity player, int skill) {
         // 技能配置表的技能伤害比例
-        SkillResource skillResource = SkillManager.getSkillManager().getSkillResource(skill);
+        SkillResource skillResource = SkillManager.getSkillResource(skill);
         Map<AttrType, Long> attrMap = skillResource.getAttrMap();
         double resourceSkillRatio = attrMap.getOrDefault(AttrType.SKILL_RATIO, 0L).doubleValue();
 

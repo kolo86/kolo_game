@@ -59,14 +59,10 @@ public class LoginFacade {
      */
     @ReceiverAnno
     public void cmLogin(Channel channel, Message.Cm_Login message){
-
-
         Message.Sm_Login sm_login = Message.Sm_Login.newBuilder().setSuccess(true).build();
         ProtocolMsg protocolMsg = ProtocolMsg.valueOf(ProtocolEnum.SM_LOGIN.getId(), sm_login.toByteArray());
 
         PacketUtils.send(channel, protocolMsg);
-
-
     }
 
 }

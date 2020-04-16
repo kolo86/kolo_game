@@ -3,43 +3,24 @@ option optimize_for = SPEED; // 加快解析
 option java_package = "com.netty.proto";  // 指定生成到哪个包下
 option java_outer_classname = "Message"; // 外部类名
 
-message Option{
-
-  oneof optionContent{
-      Register register = 1;
-      CreateRole creatRole = 2;
-      Login login = 3;
-      ChangeMap changeMap = 4;
-      State state = 5;
-      Response response = 6;
-      Quit quit = 7;
-      Talk talk = 8;
-      Attack attack = 9;
-      BackPack backPack = 10;
-      UseItem useItem = 11;
-      Equipment equipment = 12;
-      Wear wear = 13;
-      Deequipment deequipment = 14;
-      Repair repair = 15;
-  }
-}
-
 // 注册
-message Register{
+message Cm_Register{
   string account = 1; // 账号
   string nickName = 2; // 昵称
 }
+message Sm_Register{
+  bool success = 1;
+}
 
 // 创建角色
-message CreateRole{
+message Cm_CreateRole{
   int32 roleType = 1; // 角色类型：英雄、村民、怪物
+}
+message Sm_CreateRole{
+  bool success = 1;
 }
 
 // 登录
-message Login{
-  string account = 1; // 账号
-}
-
 message Cm_Login{
   string account = 1; //账号
 }
@@ -47,59 +28,141 @@ message Sm_Login{
   bool success = 1; // true表示成功，false表示失败
 }
 
-
 // 切图
-message ChangeMap{
+message Cm_ChangeMap{
   int32 mapId = 1; // 切向的地图ID
+}
+message Sm_ChangeMap{
+  bool success = 1;
 }
 
 // 查看当前场景中所有实体的状态
-message State{
+message Cm_State{
+}
+message Sm_State{
+  string mapName = 1;
+  repeated UserInfo user = 2;
+  repeated NpcInfo npc = 3;
+  repeated monsterInfo monster = 4;
+}
+// 角色信息
+message UserInfo{
+  string nickName = 1; // 昵称
+  string roleType = 2; // 角色类型
+  string liveState = 3; // 生存状态
+}
+// Npc信息
+message NpcInfo{
+  string npcName = 1; // NPC名称
+}
+// 怪物信息
+message monsterInfo{
+  string monsterName = 1; // 怪物昵称
+  int32 currentHp = 2; // 当前血量
+  int32 maxHp = 3; // 最大血量
+  int32 monsterId = 4; // 怪物ID
 }
 
 // 返回给客户端的消息
 message Response{
-  string answer = 1;
+  bool success = 1; //操作是否成功
+  int32 responseId = 2; // 响应ID，对应配置表ID
+  string answer = 3; // 额外附加内容
 }
 
 // 玩家退出游戏
-message Quit{
+message Cm_Quit{
+}
+message Sm_Quit{
+  bool success = 1;
 }
 
 // 玩家对话NPC
-message Talk{
+message Cm_Talk{
   int32 npcId = 1;
+}
+message Sm_Talk{
+  string message = 1;
 }
 
 // 攻击怪物
-message Attack{
+message Cm_Attack{
   int32 monsterId = 1;
+}
+message Sm_Attack{
+  int32 skillId = 1; // 技能ID
+  string monsterName = 2; //怪物名称
+  int32 damage = 3; // 造成伤害
+}
+
+// 怪物被击杀
+message Sm_MonsterDead{
+  string killer = 1; //击杀者
+  string monster = 2; // 怪物昵称
+}
+
+// 击杀者奖励
+message Sm_KillerReward{
+  repeated Item reward = 1; // 奖励列表
+}
+// 物品信息
+message Item{
+  int32 itemOnlyId = 1; //物品唯一ID
+  string itemName = 2; // 物品名称
+  int32 itemNum = 3; // 物品数量
+  int32 itemId = 4; //物品ID，对应配置表ItemResource的ID
 }
 
 // 查看背包
-message BackPack{
+message Cm_BackPack{
+}
+message Sm_BackPack{
+  repeated Item item = 1; // 物品列表
 }
 
 // 使用道具
-message UseItem{
+message Cm_UseItem{
   int32 itemOnlyId = 1; // 道具标识ID，非ItemResource的ID
+}
+message Sm_UseItem{
+  string result = 1; //使用道具结果
 }
 
 // 查看装备栏
+message Cm_Equipment{
+}
+message Sm_Equipment{
+  map<int32, Equipment> equipment = 1; // 穿戴信息
+}
+// 装备信息
 message Equipment{
+  int32 itemOnlyId = 1; //物品唯一ID
+  string itemName = 2; // 物品名称
+  int32 itemNum = 3; // 物品数量
+  int32 itemId = 4; //物品ID，对应配置表ItemResource的ID
+  int32 durability = 5; // 耐久度
 }
 
 // 穿装备
-message Wear{
+message Cm_Wear{
   int32 equipmentId = 1; // 装备ID
+}
+message Sm_Wear{
+  bool success = 1; //是否成功
 }
 
 // 脱装备
-message Deequipment{
+message Cm_Deequipment{
   int32 equipmentId = 1; // 装备ID
+}
+message Sm_Deequipment{
+  bool success = 1; // 是否成功
 }
 
 // 修理武器
-message Repair{
+message Cm_Repair{
   int32 equipmentId = 1; // 装备ID
+}
+message Sm_Repair{
+  bool success = 1;
 }

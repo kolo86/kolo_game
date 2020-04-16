@@ -5,7 +5,6 @@ import com.frame.event.anno.EventAnno;
 import com.frame.event.impl.OpenServerSyncEvent;
 import com.game.packback.service.IBackPackService;
 import com.game.role.event.CreateRoleEvent;
-import com.netty.proto.Message;
 import io.netty.channel.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

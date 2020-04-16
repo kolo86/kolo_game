@@ -28,7 +28,7 @@ public class AccountFacade {
 	 * 创建账号
 	 */
 	@ReceiverAnno
-	public void createAccount(Channel channel, Message.Register message) {
+	public void createAccount(Channel channel, Message.Cm_Register message) {
 		accountService.createAccount(channel, message);
 	}
 

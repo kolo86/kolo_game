@@ -16,7 +16,7 @@ public interface IAccountService {
 	 * @param channel
 	 * @param message
 	 */
-	void createAccount(Channel channel, Message.Register message);
+	void createAccount(Channel channel, Message.Cm_Register message);
 
 	/**
 	 * 检查账号是否已存在

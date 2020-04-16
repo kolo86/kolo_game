@@ -16,7 +16,6 @@ public interface IBattleService {
     /**
      * 攻击场景中的怪物
      *
-     * @param channel
      * @param monster
      */
     void battleMonster(PlayerEntity player, int monster);

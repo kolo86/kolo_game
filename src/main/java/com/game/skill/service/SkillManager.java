@@ -17,24 +17,13 @@ import javax.annotation.PostConstruct;
 @Component
 public class SkillManager {
 
-    private static SkillManager instance;
-
-    @PostConstruct
-    private void init(){
-        instance = this;
-    }
-
-    public static SkillManager getSkillManager(){
-        return instance;
-    }
-
     /**
      * 获取技能配置表
      *
      * @param key
      * @return
      */
-    public SkillResource getSkillResource(int key){
+    public static SkillResource getSkillResource(int key){
         return (SkillResource) ResourceCacheHandler.getResource(SkillResource.class, key);
     }
 

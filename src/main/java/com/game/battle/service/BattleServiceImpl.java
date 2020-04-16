@@ -2,10 +2,12 @@ package com.game.battle.service;
 
 import com.game.account.entity.PlayerEntity;
 import com.game.battle.util.FightUtils;
+import com.game.common.constant.I18nId;
 import com.game.monster.model.Monster;
 import com.game.scene.AbstractMapHandler;
 import com.game.scene.constant.SceneType;
 import com.game.util.PacketUtils;
+import com.sun.org.apache.xml.internal.security.utils.I18n;
 import org.springframework.stereotype.Component;
 
 
@@ -27,9 +29,7 @@ public class BattleServiceImpl implements IBattleService {
         boolean checkMonsterExist = handler.checkMonsterExist(monsterId);
 
         if(!checkMonsterExist){
-            StringBuilder sb = new StringBuilder();
-            sb.append("你当前所在地图【").append(scene.getMapName()).append("】，不存在ID为【").append(monsterId).append("】的怪物，或者该怪物已死亡");
-            PacketUtils.send(player, sb.toString());
+            PacketUtils.sendResponse(player, I18nId.MONSTER_DOES_NOT_EXIST);
         } else {
             Monster monster = handler.getMonsterById(monsterId);
             FightUtils.fightMonster(player, monster);

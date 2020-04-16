@@ -27,7 +27,7 @@ public class ActionDispatcher {
 
     private static final Logger logger = LoggerFactory.getLogger(ActionDispatcher.class);
 
-    // Map < 协议字节码文件， 协议中介对象>
+    /** Map < 协议字节码文件， 协议中介对象> */
     public static final Map<Class<?>, HandlerDefintion> agreeHandlerMap = new HashMap<Class<?>, HandlerDefintion>();
 
     public static void registerAgreeMap(Class<?> clz, HandlerDefintion beanDefintion){

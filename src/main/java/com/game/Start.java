@@ -48,7 +48,6 @@ public class Start {
 		service.onStart();
 		
 		logger.info("其他模块初始化完成");
-
 	}
 	
 }

@@ -3,6 +3,7 @@ package com.game.util;
 import com.game.account.entity.PlayerEntity;
 import com.game.scene.AbstractMapHandler;
 import com.game.scene.constant.SceneType;
+import com.netty.common.ProtocolMsg;
 import com.netty.proto.Message;
 import io.netty.channel.Channel;
 
@@ -56,5 +57,15 @@ public class PacketUtils {
         for(PlayerEntity tempPlayer : accountMap.values()){
             send(tempPlayer, message);
         }
+    }
+
+    /**
+     * 发送协议给玩家
+     *
+     * @param channel
+     * @param msg
+     */
+    public static void send(Channel channel, ProtocolMsg msg){
+        channel.writeAndFlush(msg);
     }
 }

@@ -40,6 +40,14 @@ message Login{
   string account = 1; // 账号
 }
 
+message Cm_Login{
+  string account = 1; //账号
+}
+message Sm_Login{
+  bool success = 1; // true表示成功，false表示失败
+}
+
+
 // 切图
 message ChangeMap{
   int32 mapId = 1; // 切向的地图ID

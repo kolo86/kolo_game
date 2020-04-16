@@ -13,6 +13,9 @@ import com.frame.event.anno.EventAnno;
 import com.frame.dispatcher.anno.ReceiverAnno;
 import com.game.account.event.CreateAccountAsyncEvent;
 import com.game.login.service.ILoginService;
+import com.game.util.PacketUtils;
+import com.netty.common.ProtocolEnum;
+import com.netty.common.ProtocolMsg;
 import com.netty.proto.Message;
 import io.netty.channel.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +49,24 @@ public class LoginFacade {
     @EventAnno
     public void doCreateAccount(CreateAccountAsyncEvent event){
         loginService.createAccountToLogin(event.getAccount());
+    }
+
+    /**
+     * 登录
+     *
+     * @param channel
+     * @param message
+     */
+    @ReceiverAnno
+    public void cmLogin(Channel channel, Message.Cm_Login message){
+
+
+        Message.Sm_Login sm_login = Message.Sm_Login.newBuilder().setSuccess(true).build();
+        ProtocolMsg protocolMsg = ProtocolMsg.valueOf(ProtocolEnum.SM_LOGIN.getId(), sm_login.toByteArray());
+
+        PacketUtils.send(channel, protocolMsg);
+
+
     }
 
 }

@@ -1,8 +1,8 @@
 package com.netty.client;
 
 import com.frame.resource.handler.ResourceCacheHandler;
-import com.netty.client.tool.ClientParseToos;
-import com.netty.proto.Message;
+import com.netty.client.util.ClientParseUtils;
+import com.netty.common.ProtocolMsg;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.EventLoopGroup;
@@ -44,7 +44,7 @@ public class NettyClient {
             while (true) {
                 // 解析中文，找到对应的功能，然后发送协议给服务端
                 String order = in.readLine();
-                Message.Option option = ClientParseToos.parseStr(order);
+                ProtocolMsg option = ClientParseUtils.parseStr(order);
                 if(option != null){
                     channel.writeAndFlush(option);
                 }

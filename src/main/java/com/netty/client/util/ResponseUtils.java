@@ -7,7 +7,7 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package com.netty.client.tool;
+package com.netty.client.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,9 +20,9 @@ import org.slf4j.LoggerFactory;
  * @create 2020/4/2
  * @since 1.0.0
  */
-public class ResponseTools{
+public class ResponseUtils {
 
-    private static final Logger logger = LoggerFactory.getLogger(ResponseTools.class);
+    private static final Logger logger = LoggerFactory.getLogger(ResponseUtils.class);
 
     /**
      * 根据服务端返回的提示，进一步提示玩家下一步的操作

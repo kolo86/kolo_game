@@ -1,7 +1,8 @@
 package com.netty.client;
 
-import com.netty.client.tool.ResponseTools;
-import com.netty.proto.Message;
+import com.netty.client.util.ResponseUtils;
+import com.netty.common.ProtocolEnum;
+import com.netty.common.ProtocolMsg;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import org.slf4j.Logger;
@@ -11,7 +12,7 @@ import org.slf4j.LoggerFactory;
  * @author kolo
  * SimpleChannelInboundHandler<Message.Option>
  */
-public class ClientHandler extends SimpleChannelInboundHandler<Message.Option> {
+public class ClientHandler extends SimpleChannelInboundHandler<ProtocolMsg> {
 
     private static final Logger logger = LoggerFactory.getLogger(ClientHandler.class.getName());
 
@@ -37,10 +38,14 @@ public class ClientHandler extends SimpleChannelInboundHandler<Message.Option> {
      * 当服务端返回应答消息时，channelRead方法会被调用
      */
     @Override
-    public void channelRead0(ChannelHandlerContext ctx, Message.Option msg) throws Exception {
-        String answer = msg.getResponse().getAnswer();
+    public void channelRead0(ChannelHandlerContext ctx, ProtocolMsg msg) throws Exception {
+        int code = msg.getCode();
+        ProtocolEnum protocol = ProtocolEnum.getProtocol(code);
+        protocol.printMsg(msg);
+
+        String answer = "";
         logger.info(answer);
-        ResponseTools.specialHandler(answer);
+        ResponseUtils.specialHandler(answer);
     }
 
     @Override

@@ -1,11 +1,10 @@
 package com.netty.client;
 
-import com.netty.proto.Message;
+import com.netty.common.ProtocolDecoder;
+import com.netty.common.ProtocolEncoder;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.handler.codec.protobuf.ProtobufDecoder;
-import io.netty.handler.codec.protobuf.ProtobufEncoder;
 
 /**
  * @author kolo
@@ -18,8 +17,8 @@ public class ClientChannelInitializer extends ChannelInitializer<SocketChannel> 
     @Override
     public void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
-        pipeline.addLast("encoder", new ProtobufEncoder());
-        pipeline.addLast("decoder", new ProtobufDecoder(Message.Option.getDefaultInstance()));
+        pipeline.addLast("decoder", new ProtocolDecoder());
+        pipeline.addLast("encoder", new ProtocolEncoder());
         pipeline.addLast("handler", new ClientHandler());
     }
 }

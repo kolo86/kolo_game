@@ -180,13 +180,13 @@ public enum ProtocolEnum {
         public void printMsg(ProtocolMsg msg) {
             Message.Sm_State protocolObj = (Message.Sm_State)ProtocolParseUtils.getProtocolObj(msg);
             StringBuilder sb = new StringBuilder();
-            sb.append("你当前在地图【").append(protocolObj.getMapNameBytes()).append("】");
-            sb.append("玩家列表为：");
+            sb.append("你当前所在地图【").append(protocolObj.getMapName()).append("】");
+            sb.append("\n玩家列表为：");
             protocolObj.getUserList().forEach(user -> sb.append(user.getNickName()).append("【").append(user.getRoleType()).append("】")
                     .append("【").append(user.getLiveState()).append("】\t"));
-            sb.append("NPC列表为：");
+            sb.append("\nNPC列表为：");
             protocolObj.getNpcList().forEach(npc -> sb.append(npc.getNpcName()).append("\t"));
-            sb.append("怪物列表为：");
+            sb.append("\n怪物列表为：");
             protocolObj.getMonsterList().forEach(monster -> sb.append(monster.getMonsterName()).append("【").append(monster.getCurrentHp()).append("/").append(monster.getMaxHp()).append("】")
                     .append("【").append(monster.getMonsterId()).append("】\t"));
             logger.info(sb.toString());

@@ -3,9 +3,13 @@ package com.game.packback.service;
 import com.game.account.entity.PlayerEntity;
 import com.game.account.service.IPlayerService;
 import com.game.item.AbstractItem;
+import com.game.item.resource.ItemResource;
+import com.game.item.service.ItemManager;
 import com.game.packback.entity.BackPackEntity;
 import com.game.persistence.service.IPersistenceService;
 import com.game.util.PacketUtils;
+import com.netty.common.ProtocolEnum;
+import com.netty.proto.Message;
 import io.netty.channel.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -76,13 +80,16 @@ public class BackpackServiceImpl implements IBackPackService {
         BackPackEntity backPackEntity = player.getBackPackEntity();
         Map<Integer, AbstractItem> packMap = backPackEntity.getPackMap();
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("你的背包信息为：");
+        Message.Sm_BackPack.Builder smBackPackBuilder = Message.Sm_BackPack.newBuilder();
         for(  AbstractItem item : packMap.values()){
-            sb.append("\n").append(item.getItemType().getItemDetail(item));
+            ItemResource itemResource = ItemManager.getResource(item.getItemId());
+            Message.Item messageItem = Message.Item.newBuilder().setItemOnlyId(item.getObjectOnlyId())
+                    .setItemName(itemResource.getName()).setItemNum(item.getNum())
+                    .setItemId(item.getItemId()).build();
+            smBackPackBuilder.addItem(messageItem);
         }
-
-        PacketUtils.send(player, sb.toString());
+        Message.Sm_BackPack smBackPack = smBackPackBuilder.build();
+        PacketUtils.send(player, ProtocolEnum.Sm_BackPack.getId(), smBackPack.toByteArray());
     }
 
     @Override

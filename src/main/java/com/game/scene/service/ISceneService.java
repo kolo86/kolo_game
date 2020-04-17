@@ -25,36 +25,29 @@ public interface ISceneService {
     /**
      * 当玩家创建完角色后，进入地图
      *
-     * @param account
      */
     void doCreateRole(String account);
 
     /**
      * 玩家登录
      *
-     * @param accountId
      */
     void login(String accountId);
 
     /**
      * 切换地图
      *
-     * @param channel
-     * @param mapId
      */
     void changeMap(Channel channel, int mapId);
 
     /**
      * 查看当前场景中的所有玩家状态
      *
-     * @param channel
      */
     void state(Channel channel);
 
     /**
      * 玩家退出游戏事件
-     *
-     * @param accountId
      */
     void signOut(String accountId);
 

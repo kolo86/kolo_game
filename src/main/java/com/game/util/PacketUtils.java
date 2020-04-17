@@ -17,46 +17,14 @@ import java.util.Map;
 public class PacketUtils {
 
     /**
-     * 发送一句话给玩家
-     *
-     * @param channel
-     * @param message
-     */
-    public static void send(Channel channel, String message){
-        Message.Option build = Message.Option.newBuilder()
-                .setResponse(Message.Response.newBuilder()
-                        .setAnswer(message).build())
-                .build();
-
-        channel.writeAndFlush(build);
-    }
-
-    /**
-     * 发送一句话给玩家
-     *
-     * @param player
-     * @param message
-     */
-    public static void send(PlayerEntity player, String message){
-        Message.Option build = Message.Option.newBuilder()
-                .setResponse(Message.Response.newBuilder()
-                        .setAnswer(message).build())
-                .build();
-
-        player.getChannel().writeAndFlush(build);
-    }
-
-    /**
      * 发送一句话给所有处于同一场景的玩家
      *
-     * @param player
-     * @param message
      */
-    public static void sendScene(PlayerEntity player, String message){
+    public static void sendScene(PlayerEntity player, int code, byte[] data){
         AbstractMapHandler handler = SceneType.getSceneById(player.getMapId()).getHandler();
         Map<String, PlayerEntity> accountMap = handler.getAccountMap();
         for(PlayerEntity tempPlayer : accountMap.values()){
-            send(tempPlayer, message);
+            send(tempPlayer, code, data);
         }
     }
 
@@ -91,4 +59,17 @@ public class PacketUtils {
         ProtocolMsg protocolMsg = ProtocolMsg.valueOf(ProtocolEnum.Response.getId(), response.toByteArray());
         player.getChannel().writeAndFlush(protocolMsg);
     }
+
+    /**
+     * 发送协议数据给玩家
+     *
+     * @param player
+     * @param code
+     * @param data
+     */
+    public static void send(PlayerEntity player, int code, byte[] data){
+        ProtocolMsg protocolMsg = ProtocolMsg.valueOf(code, data);
+        player.getChannel().writeAndFlush(protocolMsg);
+    }
+
 }

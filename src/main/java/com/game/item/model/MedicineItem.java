@@ -64,9 +64,4 @@ public class MedicineItem extends AbstractItem {
         recoverType.useItem(player, args);
     }
 
-    @Override
-    public String toString() {
-        ItemResource itemResource = ItemManager.getResource(this.getItemId());
-        return "【道具ID:" + this.getObjectOnlyId() + ", 道具名称:" + itemResource.getName() + ",道具数量:" + this.getNum() + "】\t";
-    }
 }

@@ -11,6 +11,7 @@ package com.game.npc.facade;
 
 import com.frame.dispatcher.anno.ReceiverAnno;
 import com.game.npc.service.INpcService;
+import com.netty.proto.Message;
 import io.netty.channel.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -36,7 +37,7 @@ public class NpcFacade {
      * @param message
      */
     @ReceiverAnno
-    public void talk(Channel channel, Message.Talk message){
+    public void talk(Channel channel, Message.Cm_Talk message){
         npcService.talk(channel, message.getNpcId());
     }
 

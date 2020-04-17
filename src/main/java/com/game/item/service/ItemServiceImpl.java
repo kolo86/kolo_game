@@ -2,6 +2,7 @@ package com.game.item.service;
 
 import com.game.account.entity.PlayerEntity;
 import com.game.account.service.IPlayerService;
+import com.game.common.constant.I18nId;
 import com.game.item.AbstractItem;
 import com.game.item.constant.ItemType;
 import com.game.item.resource.ItemResource;
@@ -54,7 +55,7 @@ public class ItemServiceImpl implements IItemService {
         if(success){
             item.useItem(player);
         } else {
-            PacketUtils.send(player, "扣除道具失败！");
+            PacketUtils.sendResponse(player, I18nId.FAILED_TO_DEDUCT_PROPS);
         }
     }
 
@@ -69,11 +70,11 @@ public class ItemServiceImpl implements IItemService {
         BackPackEntity backPackEntity = player.getBackPackEntity();
         AbstractItem item = backPackEntity.getItem(itemOnlyId);
         if(Objects.isNull(item)){
-            PacketUtils.send(player, "你的背包中没有标识为：" + itemOnlyId + "的道具");
+            PacketUtils.sendResponse(player, I18nId.THERE_IS_NO_SUCH_ITEM_IN_THE_BACKPACK);
             return false;
         }
         if(item.getType() == ItemType.EQUIPMENT.getId()){
-            PacketUtils.send(player, "当前道具是装备类型，应该使用穿戴装备命令！");
+            PacketUtils.sendResponse(player, I18nId.USE_WEARABLE_EQUIPMENT_COMMAND);
             return false;
         }
         return true;

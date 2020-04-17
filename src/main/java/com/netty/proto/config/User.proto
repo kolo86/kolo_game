@@ -58,8 +58,8 @@ message NpcInfo{
 // 怪物信息
 message monsterInfo{
   string monsterName = 1; // 怪物昵称
-  int32 currentHp = 2; // 当前血量
-  int32 maxHp = 3; // 最大血量
+  int64 currentHp = 2; // 当前血量
+  int64 maxHp = 3; // 最大血量
   int32 monsterId = 4; // 怪物ID
 }
 
@@ -92,7 +92,7 @@ message Cm_Attack{
 message Sm_Attack{
   int32 skillId = 1; // 技能ID
   string monsterName = 2; //怪物名称
-  int32 damage = 3; // 造成伤害
+  int64 damage = 3; // 造成伤害
 }
 
 // 怪物被击杀

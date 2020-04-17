@@ -37,11 +37,9 @@ public class SkillContainer extends AbstractContainer {
      * @param list
      */
     private static List<Integer> sort(List<Integer> list){
-        SkillManager skillManager = SkillManager.getSkillManager();
-
         List<SkillResource> sortResourceList = new ArrayList<>();
         for(Integer skillId : list){
-            SkillResource skillResource = skillManager.getSkillResource(skillId);
+            SkillResource skillResource = SkillManager.getSkillResource(skillId);
             sortResourceList.add(skillResource);
         }
 

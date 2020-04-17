@@ -27,10 +27,10 @@ import java.util.Map;
 @Data
 @Component
 public class RoleManager {
-    // 是否已经被初始化
+    /** 是否已经被初始化 */
     private transient boolean init = false;
 
-    // Map < 玩家账号ID， 角色信息 >
+    /** Map < 玩家账号ID， 角色信息 > */
     private static final Map<String, RoleEntity> roleMap = new HashMap<String, RoleEntity>();
 
     /**

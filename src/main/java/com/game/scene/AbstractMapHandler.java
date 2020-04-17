@@ -3,6 +3,7 @@ package com.game.scene;
 import com.frame.resource.AbstractResource;
 import com.frame.resource.handler.ResourceCacheHandler;
 import com.game.account.entity.PlayerEntity;
+import com.game.common.constant.I18nId;
 import com.game.container.constant.ContainerType;
 import com.game.container.model.LifeContainer;
 import com.game.monster.model.Monster;
@@ -12,6 +13,8 @@ import com.game.role.constant.RoleEnum;
 import com.game.role.constant.RoleStateEnum;
 import com.game.scene.constant.SceneType;
 import com.game.util.PacketUtils;
+import com.netty.common.ProtocolEnum;
+import com.netty.proto.Message;
 import lombok.Data;
 
 import java.util.*;
@@ -78,63 +81,73 @@ public abstract class AbstractMapHandler {
      * 发送切图成功的提示语给玩家
      */
     public void sendSuccessMessage(PlayerEntity player) {
-        StringBuilder sb = new StringBuilder();
-        SceneType sceneType = getSceneType();
-
-        sb.append("你已成功进入【");
-        sb.append(sceneType.getMapName()).append("】");
-        PacketUtils.send(player, sb.toString());
+        Message.Sm_ChangeMap smChangeMap = Message.Sm_ChangeMap.newBuilder().setSuccess(true).build();
+        PacketUtils.send(player, ProtocolEnum.Sm_ChangeMap.getId(),smChangeMap.toByteArray());
 
         sendEntityInfo(player);
-    }
-
-    /**
-     * 获取当前场景的Npc信息
-     */
-    private String getNpcInfo() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("NPC列表为：");
-        for (int npcId : npcSet) {
-            NpcResource resource = (NpcResource) ResourceCacheHandler.getResource(NpcResource.class, npcId);
-            assert resource != null;
-            sb.append(resource.getName()).append("\t");
-        }
-        return sb.toString();
     }
 
     /**
      * 给玩家发送当前场景中所有实体的状态
      */
     public void sendEntityInfo(PlayerEntity player) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("当前地图:【").append(SceneType.getSceneById(player.getMapId()).getMapName())
-                .append("】中：\n玩家列表为：");
+        Message.Sm_State.Builder stateBuilder = Message.Sm_State.newBuilder();
+        // 场景信息
+        stateBuilder.setMapName(SceneType.getSceneById(player.getMapId()).getMapName());
+        // 用户信息
+        List<Message.UserInfo> userList = getUserList();
+        stateBuilder.addAllUser(userList);
+        // 怪物信息
+        List<Message.monsterInfo> monsterInfoList = getMonsterInfo();
+        stateBuilder.addAllMonster(monsterInfoList);
+        // NPC信息
+        List<Message.NpcInfo> npcInfo = getNpcInfo();
+        stateBuilder.addAllNpc(npcInfo);
 
-        for (PlayerEntity tempPlayer : accountMap.values()) {
-            sb.append(tempPlayer.getAccountEntity().getNickName())
-                    .append("【").append(RoleEnum.getRoleNameById(tempPlayer.getRoleType()))
-                    .append("】").append("【")
-                    .append(RoleStateEnum.getStateNameById(tempPlayer.getRoleEntity().getRoleState()))
-                    .append("】\t");
-        }
-        sb.append("\n").append(getNpcInfo());
-        sb.append("\n").append(getMonsterInfo());
-        PacketUtils.send(player, sb.toString());
+        Message.Sm_State smState = stateBuilder.build();
+        PacketUtils.send(player, ProtocolEnum.Sm_State.getId(), smState.toByteArray());
+    }
+
+    /**
+     * 获取玩家列表
+     *
+     */
+    private List<Message.UserInfo> getUserList(){
+        List<Message.UserInfo> userList = new ArrayList<>();
+        accountMap.values().forEach(tempPlayer -> {
+            Message.UserInfo userInfo = Message.UserInfo.newBuilder().setNickName(tempPlayer.getAccountEntity().getNickName())
+                    .setRoleType(RoleEnum.getRoleNameById(tempPlayer.getRoleType()))
+                    .setLiveState(RoleStateEnum.getStateNameById(tempPlayer.getRoleEntity().getRoleState()))
+                    .build();
+            userList.add(userInfo);
+        });
+        return userList;
     }
 
     /**
      * 获取怪物列表
      */
-    private String getMonsterInfo() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("怪物列表为：");
+    private List<Message.monsterInfo> getMonsterInfo() {
+        List<Message.monsterInfo> monsterList = new ArrayList<>();
         for( Monster monster : monsterMap.values()){
             LifeContainer container = (LifeContainer)monster.getContainerMap().get(ContainerType.LIFE);
-            sb.append(monster.getName()).append("【").append(container.getCurrentHp()).append("/")
-                    .append(container.getMaxHp()).append("】").append("【").append(monster.getId())
-                    .append("】\t");
+            Message.monsterInfo monsterInfo = Message.monsterInfo.newBuilder().setMonsterName(monster.getName()).setCurrentHp(container.getCurrentHp().get())
+                    .setMaxHp(container.getMaxHp()).setMonsterId(monster.getId()).build();
+            monsterList.add(monsterInfo);
         }
-        return sb.toString();
+        return monsterList;
+    }
+
+    /**
+     * 获取当前场景的Npc信息
+     */
+    private List<Message.NpcInfo> getNpcInfo() {
+        List<Message.NpcInfo> npcInfoList = new ArrayList<>();
+        for (int npcId : npcSet) {
+            NpcResource resource = (NpcResource) ResourceCacheHandler.getResource(NpcResource.class, npcId);
+            npcInfoList.add(Message.NpcInfo.newBuilder().setNpcName(resource.getName()).build());
+        }
+        return npcInfoList;
     }
 
     /**

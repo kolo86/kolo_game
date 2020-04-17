@@ -13,10 +13,13 @@ import com.frame.event.service.IEventService;
 import com.game.account.entity.PlayerEntity;
 import com.game.account.service.IAccountService;
 import com.game.account.service.IPlayerService;
+import com.game.common.constant.I18nId;
 import com.game.login.event.CreateRoleLoginEvent;
 import com.game.login.event.LoginEvent;
 import com.game.util.MD5Utils;
 import com.game.util.PacketUtils;
+import com.netty.common.ProtocolEnum;
+import com.netty.proto.Message;
 import io.netty.channel.Channel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,7 +54,7 @@ public class LoginServiceImpl implements ILoginService {
         }
 
         player.online();
-        PacketUtils.send(player, "登录游戏成功！");
+        PacketUtils.sendResponse(player, I18nId.LOGIN_IN_SUCCESSFULLY);
 
         eventService.submitAsyncEvent(CreateRoleLoginEvent.valueOf(accountId));
     }
@@ -61,9 +64,7 @@ public class LoginServiceImpl implements ILoginService {
         String encryptionAccount = MD5Utils.encryption(account);
         boolean checkAccount = accountService.checkAccount(encryptionAccount);
         if(!checkAccount){
-            StringBuilder sb = new StringBuilder();
-            sb.append("妲己：你还没有创建账号：").append(account).append("呢，快来创建帐号吧！");
-            PacketUtils.send(channel, sb.toString());
+            PacketUtils.sendResponse(channel, I18nId.THE_ACCOUNT_HAS_NOT_BEEN_CREATED);
             return ;
         }
 
@@ -71,9 +72,8 @@ public class LoginServiceImpl implements ILoginService {
         player.login(channel);
         playerService.cacheChannelMap(channel, player);
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("欢迎回来:").append(player.getAccountEntity().getNickName());
-        PacketUtils.send(player, sb.toString());
+        Message.Sm_Login smLogin = Message.Sm_Login.newBuilder().setSuccess(true).build();
+        PacketUtils.send(player, ProtocolEnum.SM_LOGIN.getId(),smLogin.toByteArray());
 
         eventService.submitAsyncEvent(LoginEvent.valueOf(encryptionAccount));
     }

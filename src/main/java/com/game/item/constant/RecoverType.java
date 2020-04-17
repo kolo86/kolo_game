@@ -5,6 +5,8 @@ import com.game.account.entity.PlayerEntity;
 import com.game.container.command.RecoverHpCommand;
 import com.game.container.command.RecoverMpCommand;
 import com.game.util.PacketUtils;
+import com.netty.common.ProtocolEnum;
+import com.netty.proto.Message;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,9 +31,8 @@ public enum  RecoverType {
 
             AccountScheduleExecutor.submit(command);
 
-            StringBuilder sb = new StringBuilder();
-            sb.append("使用道具成功：恢复血量，每秒恢复【").append(args[1]).append("】，持续【").append(args[2]).append("】秒");
-            PacketUtils.send(player, sb.toString());
+            Message.Sm_UseItem smUseItem = Message.Sm_UseItem.newBuilder().setResult("使用道具成功：恢复血量，每秒恢复【" + args[1] + "】，持续【" + args[2] + "】秒").build();
+            PacketUtils.send(player, ProtocolEnum.Sm_UseItem.getId(),smUseItem.toByteArray());
         }
     },
     /** 恢复蓝量 */
@@ -44,9 +45,8 @@ public enum  RecoverType {
 
             AccountScheduleExecutor.submit(command);
 
-            StringBuilder sb = new StringBuilder();
-            sb.append("使用道具成功：恢复蓝量，每秒恢复【").append(args[1]).append("】，持续【").append(args[2]).append("】秒");
-            PacketUtils.send(player, sb.toString());
+            Message.Sm_UseItem smUseItem = Message.Sm_UseItem.newBuilder().setResult("使用道具成功：恢复蓝量，每秒恢复【" + args[1] + "】，持续【" + args[2] + "】秒").build();
+            PacketUtils.send(player, ProtocolEnum.Sm_UseItem.getId(),smUseItem.toByteArray());
         }
     }
 

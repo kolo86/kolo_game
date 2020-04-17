@@ -2,6 +2,7 @@ package com.game.item.facade;
 
 import com.frame.dispatcher.anno.ReceiverAnno;
 import com.game.item.service.IItemService;
+import com.netty.proto.Message;
 import io.netty.channel.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,7 +28,7 @@ public class ItemFacade {
      * @param message
      */
     @ReceiverAnno
-    public void useItem(Channel channel, Message.UseItem message){
+    public void useItem(Channel channel, Message.Cm_UseItem message){
         itemService.useItem(channel, message.getItemOnlyId());
     }
 

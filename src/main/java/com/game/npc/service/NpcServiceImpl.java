@@ -11,11 +11,14 @@ package com.game.npc.service;
 
 import com.game.account.entity.PlayerEntity;
 import com.game.account.service.IPlayerService;
+import com.game.common.constant.I18nId;
 import com.game.npc.constant.NpcEnum;
 import com.game.npc.resource.NpcResource;
 import com.game.scene.AbstractMapHandler;
 import com.game.scene.constant.SceneType;
 import com.game.util.PacketUtils;
+import com.netty.common.ProtocolEnum;
+import com.netty.proto.Message;
 import io.netty.channel.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -41,17 +44,11 @@ public class NpcServiceImpl implements INpcService {
         PlayerEntity player = playerService.getPlayer(channel);
         if(checkNpcExist(player, npcId)){
             NpcResource npcResource = npcManager.getNpcResource(npcId);
+            Message.Sm_Talk smTalk = Message.Sm_Talk.newBuilder().setMessage(npcResource.getName() + " : " +npcResource.getDesc()).build();
+            PacketUtils.send(player, ProtocolEnum.Sm_Talk.getId() ,smTalk.toByteArray());
 
-            StringBuilder sb = new StringBuilder();
-            sb.append(npcResource.getName()).append(" : ").append(npcResource.getDesc());
-            PacketUtils.send(player, sb.toString());
         } else {
-            StringBuilder sb = new StringBuilder();
-            sb.append("你当前所在场景【")
-                    .append(SceneType.getSceneById(player.getMapId()).getMapName())
-                    .append("】，不存在【").append(NpcEnum.getNpcName(npcId)).append("】");
-
-            PacketUtils.send(player, sb.toString());
+            PacketUtils.sendResponse(player, I18nId.THE_NPC_DOES_NOT_EXIST );
         }
     }
 

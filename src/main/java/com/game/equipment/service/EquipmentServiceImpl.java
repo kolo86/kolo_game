@@ -3,6 +3,7 @@ package com.game.equipment.service;
 import com.frame.event.service.IEventService;
 import com.game.account.entity.PlayerEntity;
 import com.game.account.service.IPlayerService;
+import com.game.common.constant.I18nId;
 import com.game.equipment.constant.RepairEquipmentPosition;
 import com.game.equipment.constant.EquipmentPosition;
 import com.game.equipment.constant.EquipmentType;
@@ -17,6 +18,8 @@ import com.game.item.service.ItemManager;
 import com.game.packback.entity.BackPackEntity;
 import com.game.persistence.service.IPersistenceService;
 import com.game.util.PacketUtils;
+import com.netty.common.ProtocolEnum;
+import com.netty.proto.Message;
 import io.netty.channel.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -91,27 +94,20 @@ public class EquipmentServiceImpl implements IEquipmentService {
      * @param equipmentMap
      */
     private void sendEquipmentInfo(PlayerEntity player, Map<Integer, AbstractItem> equipmentMap) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("你已穿戴的装备信息为：\n");
-        for (EquipmentPosition position : EquipmentPosition.values()) {
-            sb.append(position.getName()).append("【");
+        Message.Sm_Equipment.Builder smEquipmentBuilder = Message.Sm_Equipment.newBuilder();
 
+        for (EquipmentPosition position : EquipmentPosition.values()) {
             AbstractItem abstractItem = equipmentMap.get(position.getPositionId());
             if (!Objects.isNull(abstractItem)) {
                 ItemResource itemResource = ItemManager.getResource(abstractItem.getItemId());
-                sb.append("道具ID：").append(abstractItem.getObjectOnlyId()).append(" 名称：").append(itemResource.getName());
-                EquipmentResource equipmentResource = EquipmentManager.getResource(Integer.parseInt(itemResource.getAttrs()));
-                if(equipmentResource.getEquipmentType() == EquipmentType.WEAPON.getId()){
-                    Equipment equipment = (Equipment) abstractItem;
-                    sb.append(" 耐久度为：").append(equipment.getCurrentDurability());
-                }
-            } else {
-                sb.append(" 暂无 ");
+                Message.Equipment equipment = Message.Equipment.newBuilder().setItemOnlyId(abstractItem.getObjectOnlyId()).setItemName(itemResource.getName())
+                        .setItemNum(abstractItem.getNum()).setItemId(abstractItem.getItemId())
+                        .setDurability(((Equipment) abstractItem).getCurrentDurability()).build();
+                smEquipmentBuilder.putEquipment(position.getPositionId(), equipment);
             }
-
-            sb.append("】\t");
         }
-        PacketUtils.send(player, sb.toString());
+        Message.Sm_Equipment smEquipment = smEquipmentBuilder.build();
+        PacketUtils.send(player, ProtocolEnum.Sm_Equipment.getId(),smEquipment.toByteArray());
     }
 
     @Override
@@ -149,10 +145,10 @@ public class EquipmentServiceImpl implements IEquipmentService {
      */
     private boolean checkWearItem(PlayerEntity player, AbstractItem item) {
         if (Objects.isNull(item)) {
-            PacketUtils.send(player, "你当前没有这个装备，无法穿戴！");
+            PacketUtils.sendResponse(player, I18nId.EQUIPMENT_AT_PRESENT );
             return false;
         } else if (!(item instanceof Equipment)) {
-            PacketUtils.send(player, "当前道具不是装备类型，无法穿戴！");
+            PacketUtils.sendResponse(player, I18nId.CURRENT_ITEM_IS_NOT_EQUIPMENT_TYPE );
             return false;
         }
         Equipment equipment = (Equipment) item;
@@ -160,7 +156,7 @@ public class EquipmentServiceImpl implements IEquipmentService {
         EquipmentResource equipmentResource = EquipmentManager.getResource(Integer.parseInt(itemResource.getAttrs()));
         if( equipmentResource.getEquipmentType() == EquipmentType.WEAPON.getId() &&
                 equipment.isDurabilityZero()){
-            PacketUtils.send(player, "当前装备的耐久度为0，无法穿戴！");
+            PacketUtils.sendResponse(player, I18nId.CURRENT_EQUIPMENT_IS_ZERO );
             return false;
         }
 
@@ -187,7 +183,7 @@ public class EquipmentServiceImpl implements IEquipmentService {
 
             sendEquipmentInfo(player, equipmentEntity.getEquipmentMap());
         } else {
-            PacketUtils.send(player, "你当前没有穿戴该道具！");
+            PacketUtils.sendResponse(player, I18nId.YOU_ARE_NOT_WEARING_THIS_ITEM_AT_PRESENT);
         }
     }
 
@@ -221,7 +217,7 @@ public class EquipmentServiceImpl implements IEquipmentService {
         AbstractItem abstractItem = equipmentMap.get(EquipmentPosition.WEAPON.getPositionId());
         if(Objects.nonNull(abstractItem)){
             deequipment(player.getChannel(), abstractItem.getObjectOnlyId());
-            PacketUtils.send(player, "你当前武器耐久度为0，无法使用，请修理后再重新使用！");
+            PacketUtils.sendResponse(player, I18nId.REPAIR_THE_WEAPON_AND_REUSE_IT);
         }
     }
 
@@ -239,7 +235,7 @@ public class EquipmentServiceImpl implements IEquipmentService {
             // 保存到数据库中
             RepairEquipmentPosition.getPosition(itemEntry.getKey()).save(player);
 
-            PacketUtils.send(channel, "修复武器完成");
+            PacketUtils.sendResponse(channel, I18nId.REPAIR_WEAPON_COMPLETE);
         }
     }
 
@@ -252,10 +248,10 @@ public class EquipmentServiceImpl implements IEquipmentService {
      */
     private boolean checkRepairItem(PlayerEntity player, AbstractItem item){
         if(Objects.isNull(item)){
-            PacketUtils.send(player, "修复的道具不存在，请重新输入!");
+            PacketUtils.sendResponse(player, I18nId.REPAIRED_ITEM_DOES_NOT_EXIST);
             return false;
         } else if( !(item instanceof Equipment) ){
-            PacketUtils.send(player, "修复的道具不是装备类型，请重新输入！");
+            PacketUtils.sendResponse(player, I18nId.ITEM_REPAIRED_IS_NOT_EQUIPMENT_TYPE);
             return false;
         }
         return true;

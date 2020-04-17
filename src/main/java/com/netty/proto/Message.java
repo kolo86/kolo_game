@@ -7948,18 +7948,18 @@ public final class Message {
      * 当前血量
      * </pre>
      *
-     * <code>int32 currentHp = 2;</code>
+     * <code>int64 currentHp = 2;</code>
      */
-    int getCurrentHp();
+    long getCurrentHp();
 
     /**
      * <pre>
      * 最大血量
      * </pre>
      *
-     * <code>int32 maxHp = 3;</code>
+     * <code>int64 maxHp = 3;</code>
      */
-    int getMaxHp();
+    long getMaxHp();
 
     /**
      * <pre>
@@ -7988,8 +7988,8 @@ public final class Message {
     }
     private monsterInfo() {
       monsterName_ = "";
-      currentHp_ = 0;
-      maxHp_ = 0;
+      currentHp_ = 0L;
+      maxHp_ = 0L;
       monsterId_ = 0;
     }
 
@@ -8025,12 +8025,12 @@ public final class Message {
             }
             case 16: {
 
-              currentHp_ = input.readInt32();
+              currentHp_ = input.readInt64();
               break;
             }
             case 24: {
 
-              maxHp_ = input.readInt32();
+              maxHp_ = input.readInt64();
               break;
             }
             case 32: {
@@ -8113,28 +8113,28 @@ public final class Message {
     }
 
     public static final int CURRENTHP_FIELD_NUMBER = 2;
-    private int currentHp_;
+    private long currentHp_;
     /**
      * <pre>
      * 当前血量
      * </pre>
      *
-     * <code>int32 currentHp = 2;</code>
+     * <code>int64 currentHp = 2;</code>
      */
-    public int getCurrentHp() {
+    public long getCurrentHp() {
       return currentHp_;
     }
 
     public static final int MAXHP_FIELD_NUMBER = 3;
-    private int maxHp_;
+    private long maxHp_;
     /**
      * <pre>
      * 最大血量
      * </pre>
      *
-     * <code>int32 maxHp = 3;</code>
+     * <code>int64 maxHp = 3;</code>
      */
-    public int getMaxHp() {
+    public long getMaxHp() {
       return maxHp_;
     }
 
@@ -8168,11 +8168,11 @@ public final class Message {
       if (!getMonsterNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, monsterName_);
       }
-      if (currentHp_ != 0) {
-        output.writeInt32(2, currentHp_);
+      if (currentHp_ != 0L) {
+        output.writeInt64(2, currentHp_);
       }
-      if (maxHp_ != 0) {
-        output.writeInt32(3, maxHp_);
+      if (maxHp_ != 0L) {
+        output.writeInt64(3, maxHp_);
       }
       if (monsterId_ != 0) {
         output.writeInt32(4, monsterId_);
@@ -8189,13 +8189,13 @@ public final class Message {
       if (!getMonsterNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, monsterName_);
       }
-      if (currentHp_ != 0) {
+      if (currentHp_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, currentHp_);
+          .computeInt64Size(2, currentHp_);
       }
-      if (maxHp_ != 0) {
+      if (maxHp_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, maxHp_);
+          .computeInt64Size(3, maxHp_);
       }
       if (monsterId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
@@ -8239,9 +8239,11 @@ public final class Message {
       hash = (37 * hash) + MONSTERNAME_FIELD_NUMBER;
       hash = (53 * hash) + getMonsterName().hashCode();
       hash = (37 * hash) + CURRENTHP_FIELD_NUMBER;
-      hash = (53 * hash) + getCurrentHp();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getCurrentHp());
       hash = (37 * hash) + MAXHP_FIELD_NUMBER;
-      hash = (53 * hash) + getMaxHp();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getMaxHp());
       hash = (37 * hash) + MONSTERID_FIELD_NUMBER;
       hash = (53 * hash) + getMonsterId();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -8383,9 +8385,9 @@ public final class Message {
         super.clear();
         monsterName_ = "";
 
-        currentHp_ = 0;
+        currentHp_ = 0L;
 
-        maxHp_ = 0;
+        maxHp_ = 0L;
 
         monsterId_ = 0;
 
@@ -8471,10 +8473,10 @@ public final class Message {
           monsterName_ = other.monsterName_;
           onChanged();
         }
-        if (other.getCurrentHp() != 0) {
+        if (other.getCurrentHp() != 0L) {
           setCurrentHp(other.getCurrentHp());
         }
-        if (other.getMaxHp() != 0) {
+        if (other.getMaxHp() != 0L) {
           setMaxHp(other.getMaxHp());
         }
         if (other.getMonsterId() != 0) {
@@ -8598,15 +8600,15 @@ public final class Message {
         return this;
       }
 
-      private int currentHp_ ;
+      private long currentHp_ ;
       /**
        * <pre>
        * 当前血量
        * </pre>
        *
-       * <code>int32 currentHp = 2;</code>
+       * <code>int64 currentHp = 2;</code>
        */
-      public int getCurrentHp() {
+      public long getCurrentHp() {
         return currentHp_;
       }
       /**
@@ -8614,9 +8616,9 @@ public final class Message {
        * 当前血量
        * </pre>
        *
-       * <code>int32 currentHp = 2;</code>
+       * <code>int64 currentHp = 2;</code>
        */
-      public Builder setCurrentHp(int value) {
+      public Builder setCurrentHp(long value) {
         
         currentHp_ = value;
         onChanged();
@@ -8627,24 +8629,24 @@ public final class Message {
        * 当前血量
        * </pre>
        *
-       * <code>int32 currentHp = 2;</code>
+       * <code>int64 currentHp = 2;</code>
        */
       public Builder clearCurrentHp() {
         
-        currentHp_ = 0;
+        currentHp_ = 0L;
         onChanged();
         return this;
       }
 
-      private int maxHp_ ;
+      private long maxHp_ ;
       /**
        * <pre>
        * 最大血量
        * </pre>
        *
-       * <code>int32 maxHp = 3;</code>
+       * <code>int64 maxHp = 3;</code>
        */
-      public int getMaxHp() {
+      public long getMaxHp() {
         return maxHp_;
       }
       /**
@@ -8652,9 +8654,9 @@ public final class Message {
        * 最大血量
        * </pre>
        *
-       * <code>int32 maxHp = 3;</code>
+       * <code>int64 maxHp = 3;</code>
        */
-      public Builder setMaxHp(int value) {
+      public Builder setMaxHp(long value) {
         
         maxHp_ = value;
         onChanged();
@@ -8665,11 +8667,11 @@ public final class Message {
        * 最大血量
        * </pre>
        *
-       * <code>int32 maxHp = 3;</code>
+       * <code>int64 maxHp = 3;</code>
        */
       public Builder clearMaxHp() {
         
-        maxHp_ = 0;
+        maxHp_ = 0L;
         onChanged();
         return this;
       }
@@ -11976,9 +11978,9 @@ public final class Message {
      * 造成伤害
      * </pre>
      *
-     * <code>int32 damage = 3;</code>
+     * <code>int64 damage = 3;</code>
      */
-    int getDamage();
+    long getDamage();
   }
   /**
    * Protobuf type {@code Sm_Attack}
@@ -11995,7 +11997,7 @@ public final class Message {
     private Sm_Attack() {
       skillId_ = 0;
       monsterName_ = "";
-      damage_ = 0;
+      damage_ = 0L;
     }
 
     @java.lang.Override
@@ -12035,7 +12037,7 @@ public final class Message {
             }
             case 24: {
 
-              damage_ = input.readInt32();
+              damage_ = input.readInt64();
               break;
             }
             default: {
@@ -12126,15 +12128,15 @@ public final class Message {
     }
 
     public static final int DAMAGE_FIELD_NUMBER = 3;
-    private int damage_;
+    private long damage_;
     /**
      * <pre>
      * 造成伤害
      * </pre>
      *
-     * <code>int32 damage = 3;</code>
+     * <code>int64 damage = 3;</code>
      */
-    public int getDamage() {
+    public long getDamage() {
       return damage_;
     }
 
@@ -12158,8 +12160,8 @@ public final class Message {
       if (!getMonsterNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, monsterName_);
       }
-      if (damage_ != 0) {
-        output.writeInt32(3, damage_);
+      if (damage_ != 0L) {
+        output.writeInt64(3, damage_);
       }
       unknownFields.writeTo(output);
     }
@@ -12177,9 +12179,9 @@ public final class Message {
       if (!getMonsterNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, monsterName_);
       }
-      if (damage_ != 0) {
+      if (damage_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, damage_);
+          .computeInt64Size(3, damage_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -12219,7 +12221,8 @@ public final class Message {
       hash = (37 * hash) + MONSTERNAME_FIELD_NUMBER;
       hash = (53 * hash) + getMonsterName().hashCode();
       hash = (37 * hash) + DAMAGE_FIELD_NUMBER;
-      hash = (53 * hash) + getDamage();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getDamage());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -12357,7 +12360,7 @@ public final class Message {
 
         monsterName_ = "";
 
-        damage_ = 0;
+        damage_ = 0L;
 
         return this;
       }
@@ -12443,7 +12446,7 @@ public final class Message {
           monsterName_ = other.monsterName_;
           onChanged();
         }
-        if (other.getDamage() != 0) {
+        if (other.getDamage() != 0L) {
           setDamage(other.getDamage());
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -12602,15 +12605,15 @@ public final class Message {
         return this;
       }
 
-      private int damage_ ;
+      private long damage_ ;
       /**
        * <pre>
        * 造成伤害
        * </pre>
        *
-       * <code>int32 damage = 3;</code>
+       * <code>int64 damage = 3;</code>
        */
-      public int getDamage() {
+      public long getDamage() {
         return damage_;
       }
       /**
@@ -12618,9 +12621,9 @@ public final class Message {
        * 造成伤害
        * </pre>
        *
-       * <code>int32 damage = 3;</code>
+       * <code>int64 damage = 3;</code>
        */
-      public Builder setDamage(int value) {
+      public Builder setDamage(long value) {
         
         damage_ = value;
         onChanged();
@@ -12631,11 +12634,11 @@ public final class Message {
        * 造成伤害
        * </pre>
        *
-       * <code>int32 damage = 3;</code>
+       * <code>int64 damage = 3;</code>
        */
       public Builder clearDamage() {
         
-        damage_ = 0;
+        damage_ = 0L;
         onChanged();
         return this;
       }
@@ -22930,15 +22933,15 @@ public final class Message {
       "rInfo\"A\n\010UserInfo\022\020\n\010nickName\030\001 \001(\t\022\020\n\010r" +
       "oleType\030\002 \001(\t\022\021\n\tliveState\030\003 \001(\t\"\032\n\007NpcI" +
       "nfo\022\017\n\007npcName\030\001 \001(\t\"W\n\013monsterInfo\022\023\n\013m" +
-      "onsterName\030\001 \001(\t\022\021\n\tcurrentHp\030\002 \001(\005\022\r\n\005m" +
-      "axHp\030\003 \001(\005\022\021\n\tmonsterId\030\004 \001(\005\"?\n\010Respons" +
+      "onsterName\030\001 \001(\t\022\021\n\tcurrentHp\030\002 \001(\003\022\r\n\005m" +
+      "axHp\030\003 \001(\003\022\021\n\tmonsterId\030\004 \001(\005\"?\n\010Respons" +
       "e\022\017\n\007success\030\001 \001(\010\022\022\n\nresponseId\030\002 \001(\005\022\016" +
       "\n\006answer\030\003 \001(\t\"\t\n\007Cm_Quit\"\032\n\007Sm_Quit\022\017\n\007" +
       "success\030\001 \001(\010\"\030\n\007Cm_Talk\022\r\n\005npcId\030\001 \001(\005\"" +
       "\032\n\007Sm_Talk\022\017\n\007message\030\001 \001(\t\"\036\n\tCm_Attack" +
       "\022\021\n\tmonsterId\030\001 \001(\005\"A\n\tSm_Attack\022\017\n\007skil" +
       "lId\030\001 \001(\005\022\023\n\013monsterName\030\002 \001(\t\022\016\n\006damage" +
-      "\030\003 \001(\005\"1\n\016Sm_MonsterDead\022\016\n\006killer\030\001 \001(\t" +
+      "\030\003 \001(\003\"1\n\016Sm_MonsterDead\022\016\n\006killer\030\001 \001(\t" +
       "\022\017\n\007monster\030\002 \001(\t\"(\n\017Sm_KillerReward\022\025\n\006" +
       "reward\030\001 \003(\0132\005.Item\"M\n\004Item\022\022\n\nitemOnlyI" +
       "d\030\001 \001(\005\022\020\n\010itemName\030\002 \001(\t\022\017\n\007itemNum\030\003 \001" +

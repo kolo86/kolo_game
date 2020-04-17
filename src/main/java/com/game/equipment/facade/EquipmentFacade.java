@@ -32,7 +32,7 @@ public class EquipmentFacade {
      * @param equipment
      */
     @ReceiverAnno
-    public void equipment(Channel channel, Message.Equipment equipment){
+    public void equipment(Channel channel, Message.Cm_Equipment equipment){
         equipmentService.equipment(channel);
     }
 
@@ -43,7 +43,7 @@ public class EquipmentFacade {
      * @param message
      */
     @ReceiverAnno
-    public void wear(Channel channel, Message.Wear message){
+    public void wear(Channel channel, Message.Cm_Wear message){
         equipmentService.wear(channel, message.getEquipmentId());
     }
 
@@ -54,7 +54,7 @@ public class EquipmentFacade {
      * @param message
      */
     @ReceiverAnno
-    public void deequipment(Channel channel, Message.Deequipment message){
+    public void deequipment(Channel channel, Message.Cm_Deequipment message){
         equipmentService.deequipment(channel, message.getEquipmentId());
     }
 
@@ -65,7 +65,7 @@ public class EquipmentFacade {
      * @param message
      */
     @ReceiverAnno
-    public void repair(Channel channel, Message.Repair message){
+    public void repair(Channel channel, Message.Cm_Repair message){
         equipmentService.repair(channel, message.getEquipmentId());
     }
 

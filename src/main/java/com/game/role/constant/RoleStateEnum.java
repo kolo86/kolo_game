@@ -32,7 +32,7 @@ public enum RoleStateEnum {
 
     private String name;
 
-    // MAP < 标识ID， 状态 >
+    /** MAP < 标识ID， 状态 > */
     private static final Map<Integer, String> idNameMap = new HashMap<Integer, String>();
 
     static{

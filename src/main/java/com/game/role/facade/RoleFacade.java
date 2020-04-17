@@ -16,6 +16,7 @@ import com.frame.event.impl.OpenServerSyncEvent;
 import com.game.account.service.IPlayerService;
 import com.game.login.event.CreateRoleLoginEvent;
 import com.game.role.service.IRoleService;
+import com.netty.proto.Message;
 import io.netty.channel.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -44,7 +45,7 @@ public class RoleFacade {
      * @param message
      */
     @ReceiverAnno
-    public void doCreateRole(Channel channel, Message.CreateRole message){
+    public void doCreateRole(Channel channel, Message.Cm_CreateRole message){
         roleService.doCreateRole(channel, message.getRoleType());
     }
 

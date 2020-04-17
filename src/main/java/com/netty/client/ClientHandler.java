@@ -42,10 +42,6 @@ public class ClientHandler extends SimpleChannelInboundHandler<ProtocolMsg> {
         int code = msg.getCode();
         ProtocolEnum protocol = ProtocolEnum.getProtocol(code);
         protocol.printMsg(msg);
-
-        String answer = "";
-        logger.info(answer);
-        ResponseUtils.specialHandler(answer);
     }
 
     @Override

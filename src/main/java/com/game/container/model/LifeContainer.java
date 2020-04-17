@@ -85,7 +85,7 @@ public class LifeContainer extends AbstractContainer {
      * @return
      */
     public boolean isMpEnough(int skillId){
-        SkillResource skillResource = SkillManager.getSkillManager().getSkillResource(skillId);
+        SkillResource skillResource = SkillManager.getSkillResource(skillId);
         return this.currentMp.get() >= skillResource.getConsumeMp();
     }
 

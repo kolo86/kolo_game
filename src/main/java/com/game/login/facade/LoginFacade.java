@@ -37,7 +37,7 @@ public class LoginFacade {
     private ILoginService loginService;
 
     @ReceiverAnno
-    public void login(Channel channel, Message.Login message){
+    public void login(Channel channel, Message.Cm_Login message){
         loginService.login(channel, message.getAccount());
     }
 
@@ -49,20 +49,6 @@ public class LoginFacade {
     @EventAnno
     public void doCreateAccount(CreateAccountAsyncEvent event){
         loginService.createAccountToLogin(event.getAccount());
-    }
-
-    /**
-     * 登录
-     *
-     * @param channel
-     * @param message
-     */
-    @ReceiverAnno
-    public void cmLogin(Channel channel, Message.Cm_Login message){
-        Message.Sm_Login sm_login = Message.Sm_Login.newBuilder().setSuccess(true).build();
-        ProtocolMsg protocolMsg = ProtocolMsg.valueOf(ProtocolEnum.SM_LOGIN.getId(), sm_login.toByteArray());
-
-        PacketUtils.send(channel, protocolMsg);
     }
 
 }

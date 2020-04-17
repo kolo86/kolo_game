@@ -12,11 +12,14 @@ package com.game.role.service;
 import com.frame.event.service.IEventService;
 import com.game.account.entity.PlayerEntity;
 import com.game.account.service.IPlayerService;
+import com.game.common.constant.I18nId;
 import com.game.persistence.service.IPersistenceService;
 import com.game.role.constant.RoleEnum;
 import com.game.role.entity.RoleEntity;
 import com.game.role.event.CreateRoleEvent;
 import com.game.util.PacketUtils;
+import com.netty.common.ProtocolEnum;
+import com.netty.proto.Message;
 import io.netty.channel.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -62,7 +65,7 @@ public class RoleServiceImpl implements IRoleService {
         PlayerEntity player = playerService.getPlayer(accountId);
         if(player.checkRoleIsNull()){
             Channel channel = playerService.getChannel(player);
-            PacketUtils.send(channel, "妲己：快来创建一个角色和我玩耍吧！");
+            PacketUtils.sendResponse(channel, I18nId.PLEASE_CREATE_A_ROLE);
         }
     }
 
@@ -82,10 +85,8 @@ public class RoleServiceImpl implements IRoleService {
         player.setRoleType(roleType);
         persistenceService.update(player);
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("恭喜你，创建角色：【").append(RoleEnum.getRoleNameById(roleType)).append("】成功！\n")
-            .append("正在为你进入【起始之地】!请稍候！\n");
-        PacketUtils.send(channel, sb.toString());
+        Message.Sm_CreateRole smCreateRole = Message.Sm_CreateRole.newBuilder().setSuccess(true).build();
+        PacketUtils.send(player, ProtocolEnum.Sm_CreateRole.getId() , smCreateRole.toByteArray());
 
         eventService.submitAsyncEvent(CreateRoleEvent.valueOf(player.getAccountId()));
     }
@@ -93,24 +94,17 @@ public class RoleServiceImpl implements IRoleService {
     /**
      * 检查能够创建角色
      *
-     * @param channel
-     * @param roleType
-     * @return
      */
     private boolean checkCreateRoleCondition(Channel channel, int roleType){
         PlayerEntity player = playerService.getPlayer(channel);
         if(player == null){
-            PacketUtils.send(channel,"请你登录后，再进行操作！");
+            PacketUtils.sendResponse(channel,I18nId.PLEASE_LOGIN);
             return false;
         }
 
         int oldRoleType = player.getRoleType();
         if(oldRoleType != RoleEnum.NONE.getRoleId()){
-            StringBuilder sb = new StringBuilder();
-            sb.append("你已经有一个角色:【")
-                    .append(RoleEnum.getRoleNameById(oldRoleType))
-                    .append("】，不能再创建新角色！");
-            PacketUtils.send(channel, sb.toString());
+            PacketUtils.sendResponse(channel, I18nId.CANNOT_CREATE_ROLE);
             return false;
         }
         return true;

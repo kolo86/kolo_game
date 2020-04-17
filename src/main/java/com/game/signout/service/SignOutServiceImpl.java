@@ -3,6 +3,7 @@ package com.game.signout.service;
 import com.frame.event.service.IEventService;
 import com.game.account.entity.PlayerEntity;
 import com.game.account.service.IPlayerService;
+import com.game.common.constant.I18nId;
 import com.game.signout.event.SignOutEvent;
 import com.game.util.PacketUtils;
 import io.netty.channel.Channel;
@@ -30,7 +31,7 @@ public class SignOutServiceImpl implements ISignOutService {
         PlayerEntity player = playerService.getPlayer(channel);
         player.signOut();
 
-        PacketUtils.send(channel, "退出游戏成功！");
+        PacketUtils.sendResponse(channel, I18nId.QUIT_THE_GAME_SUCCESSFULLY);
 
         eventService.submitAsyncEvent(SignOutEvent.valueOf(player.getAccountId()));
     }

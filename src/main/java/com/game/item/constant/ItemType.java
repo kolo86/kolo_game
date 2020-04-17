@@ -54,8 +54,6 @@ public enum ItemType {
     /**
      * 根据类型ID获取对应的类型
      *
-     * @param typeId
-     * @return
      */
     public static ItemType getType(int typeId){
         return  ITEM_TYPE_MAP.get(typeId);
@@ -83,28 +81,14 @@ public enum ItemType {
     }
 
     /**
-     * 获取物品的详细信息
-     *
-     * @return
-     */
-    public String getItemDetail(AbstractItem item){
-        return item.toString();
-    };
-
-    /**
      * 创建道具
      *
-     * @param itemId
-     * @return
      */
     public abstract AbstractItem createItem(int itemId, int num);
 
     /**
      * 根据道具的最大叠加数，计算应该创建多少个道具，同时把道具创建出来
      *
-     * @param itemId
-     * @param num
-     * @return
      */
     public List<AbstractItem> calAndCreateItem(int itemId, int num){
         List<AbstractItem> list = new ArrayList<>();

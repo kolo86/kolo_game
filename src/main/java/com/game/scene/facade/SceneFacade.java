@@ -15,6 +15,7 @@ import com.game.login.event.LoginEvent;
 import com.game.role.event.CreateRoleEvent;
 import com.game.scene.service.ISceneService;
 import com.game.signout.event.SignOutEvent;
+import com.netty.proto.Message;
 import io.netty.channel.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -37,7 +38,6 @@ public class SceneFacade {
     /**
      * 监听玩家创建角色事件，默认进入起始之地
      *
-     * @param event
      */
     @EventAnno
     public void doCreateRole(CreateRoleEvent event){
@@ -47,7 +47,6 @@ public class SceneFacade {
     /**
      * 玩家登录事件
      *
-     * @param event
      */
     @EventAnno
     public void doLogin(LoginEvent event){
@@ -57,7 +56,6 @@ public class SceneFacade {
     /**
      * 监听玩家退出游戏事件
      *
-     * @param event
      */
     @EventAnno
     public void doSignOut(SignOutEvent event){
@@ -67,22 +65,18 @@ public class SceneFacade {
     /**
      * 玩家切换地图
      *
-     * @param channel
-     * @param change_map
      */
     @ReceiverAnno
-    public void changeMap(Channel channel, Message.ChangeMap change_map){
+    public void changeMap(Channel channel, Message.Cm_ChangeMap change_map){
         sceneService.changeMap(channel, change_map.getMapId());
     }
 
     /**
      * 查看当前场景中的所有玩家状态
      *
-     * @param channel
-     * @param state
      */
     @ReceiverAnno
-    public void state(Channel channel, Message.State state){
+    public void state(Channel channel, Message.Cm_State state){
         sceneService.state(channel);
     }
 

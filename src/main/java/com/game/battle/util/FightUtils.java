@@ -26,6 +26,9 @@ import com.game.persistence.service.PersistenceServiceImpl;
 import com.game.skill.resource.SkillResource;
 import com.game.skill.service.SkillManager;
 import com.game.util.PacketUtils;
+import com.netty.common.ProtocolEnum;
+import com.netty.common.ProtocolMsg;
+import com.netty.proto.Message;
 
 import java.util.List;
 import java.util.Map;
@@ -69,20 +72,15 @@ public class FightUtils {
      * @param monster
      */
     private static void afterDefenderAttacked(PlayerEntity player, int skill, long skillDamage, Monster monster){
-        StringBuilder sb = new StringBuilder();
-        SkillResource skillResource = SkillManager.getSkillResource(skill);
-        sb.append("你使用了【").append(skillResource.getName()).append("】技能，对怪物【").append(monster.getName())
-                .append("】造成").append(skillDamage).append("点伤害！");
-        PacketUtils.send(player, sb.toString());
+
+        Message.Sm_Attack sm_attack = Message.Sm_Attack.newBuilder().setSkillId(skill).setMonsterName(monster.getName()).setDamage(skillDamage).build();
+        PacketUtils.send(player, ProtocolEnum.Sm_Attack.getId(), sm_attack.toByteArray());
 
         LifeContainer container = (LifeContainer) ContainerType.LIFE.getContainer(monster);
         boolean dead = container.isDead();
         if(dead){
-            sb.delete(0,sb.length());
-            sb.append("玩家【").append(player.getAccountEntity().getNickName()).append("】已经击杀了怪物【").append(monster.getName())
-                    .append("】！");
-
-            PacketUtils.sendScene(player, sb.toString());
+            Message.Sm_MonsterDead sm_monsterDead = Message.Sm_MonsterDead.newBuilder().setKiller(player.getAccountEntity().getNickName()).setMonster(monster.getName()).build();
+            PacketUtils.sendScene(player, ProtocolEnum.Sm_MonsterDead.getId(), sm_monsterDead.toByteArray());
 
             // 怪物死亡，发放怪物奖励
             List<AbstractItem> itemList = awardMonster(player, monster);
@@ -111,13 +109,17 @@ public class FightUtils {
      * @param itemList
      */
     private static void sendDropAwardMessage(PlayerEntity player, List<AbstractItem> itemList){
-        StringBuilder sb = new StringBuilder();
-        sb.append("恭喜你，击杀了怪物，得到奖励：");
-        for( AbstractItem item :  itemList){
+        Message.Sm_KillerReward.Builder smKillerRewardbuilder = Message.Sm_KillerReward.newBuilder();
+
+        for(int i = 0 ; i < itemList.size() ; i++){
+            AbstractItem item = itemList.get(i);
             ItemResource itemResource = ItemManager.getResource(item.getItemId());
-            sb.append("\n【名称：").append(itemResource.getName()).append(" 数量：").append(item.getNum()).append("】");
+            Message.Item messageItem = Message.Item.newBuilder().setItemId(item.getItemId()).setItemName(itemResource.getName()).setItemNum(item.getNum())
+                    .setItemOnlyId(item.getItemId()).build();
+            smKillerRewardbuilder.addReward(messageItem);
         }
-        PacketUtils.send(player, sb.toString());
+        Message.Sm_KillerReward smKillerReward = smKillerRewardbuilder.build();
+        PacketUtils.send(player, ProtocolEnum.Sm_KillerReward.getId(),smKillerReward.toByteArray());
     }
 
     /**

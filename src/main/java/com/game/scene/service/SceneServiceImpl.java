@@ -11,6 +11,7 @@ package com.game.scene.service;
 
 import com.game.account.entity.PlayerEntity;
 import com.game.account.service.IPlayerService;
+import com.game.common.constant.I18nId;
 import com.game.persistence.service.IPersistenceService;
 import com.game.scene.AbstractMapHandler;
 import com.game.scene.constant.SceneType;
@@ -72,28 +73,18 @@ public class SceneServiceImpl implements ISceneService {
     /**
      * 检查玩家能够切图
      *
-     * @param player
-     * @param mapId
-     * @return
      */
     private boolean checkChangeMap(PlayerEntity player, int mapId){
         // 检查当前切去的地图跟玩家所在地图是否一样
         if(player.getMapId() == mapId){
-            StringBuilder sb = new StringBuilder();
-            sb.append("你当前已在地图【").append(SceneType.getSceneById(player.getMapId()).getMapName()).append("】!");
-            PacketUtils.send(player.getChannel(), sb.toString());
+            PacketUtils.sendResponse(player.getChannel(), I18nId.YOU_ARE_ON_THE_TARGET_MAP);
             return false;
         }
 
         // 检查能否切去新地图
         boolean checkChangeMapCondition = SceneType.getSceneById(mapId).getHandler().checkChangeMapCondition(player, player.getMapId());
         if( !checkChangeMapCondition){
-            StringBuilder sb = new StringBuilder();
-            sb.append("你不能从地图【").append(SceneType.getSceneById(player.getMapId()).getMapName())
-                    .append("】直接去到地图【").append(SceneType.getSceneById(mapId).getMapName())
-                    .append("】，请重新输入!");
-
-            PacketUtils.send(player, sb.toString());
+            PacketUtils.sendResponse(player, I18nId.DIRECTLY_CHANGE_THE_MAP_ERROR);
             return false;
         }
         return true;
@@ -102,8 +93,6 @@ public class SceneServiceImpl implements ISceneService {
     /**
      * 离开老地图
      *
-     * @param player
-     * @return
      */
     private boolean leaveOldMap(PlayerEntity player){
         int oldMap = player.getMapId();
@@ -115,8 +104,6 @@ public class SceneServiceImpl implements ISceneService {
     /**
      * 进入新地图
      *
-     * @param player
-     * @param newMapId
      */
     public void enterNewMap(PlayerEntity player, int newMapId){
         SceneType newScece = SceneType.getSceneById(newMapId);

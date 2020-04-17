@@ -21,7 +21,7 @@ import java.util.Map;
  * @since 1.0.0
  */
 public enum NpcEnum {
-
+    /** 村民NPC */
     VILLAGER(101 , "村民NPC")
 
     ;

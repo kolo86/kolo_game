@@ -80,12 +80,12 @@ public class AccountServiceImpl implements IAccountService{
 	 */
 	@Override
 	public void createAccount(Channel channel, Message.Cm_Register message) {
-		if(checkAccount(message.getAccount())){
+		String accountId = MD5Utils.encryption(message.getAccount());
+		if(checkAccount(accountId)){
 			PacketUtils.sendResponse(channel, I18nId.ACCOUNT_HAS_BEEN_REGISTERED);
 			return ;
 		}
 
-		String accountId = MD5Utils.encryption(message.getAccount());
 		AccountEntity newAccount = AccountEntity.valueOf(accountId, message.getNickName());
 		saveAccount(channel, newAccount);
 

@@ -24,7 +24,7 @@ public class SceneExecutor {
         for(int i = 0 ; i < CORE_NUM ; i++){
             NameThreadFactory threadFactory = new NameThreadFactory("scene_thread_pool");
             SCENE_THREAD_POOL[i] = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS,
-                    new LinkedBlockingQueue<Runnable>(),threadFactory, new ThreadPoolExecutor.DiscardPolicy());
+                    new LinkedBlockingQueue<>(),threadFactory, new ThreadPoolExecutor.DiscardPolicy());
             SCENE_THREAD_POOL[i].prestartAllCoreThreads();
         }
     }
@@ -32,18 +32,14 @@ public class SceneExecutor {
     /**
      * 提交场景命令
      *
-     * @return
      */
     public static void submit(AbstractSceneCommand command){
         int index = command.modIndex(CORE_NUM);
-        SCENE_THREAD_POOL[index].submit(new Runnable() {
-            @Override
-            public void run() {
-                try{
-                    command.action();
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
+        SCENE_THREAD_POOL[index].submit(() -> {
+            try{
+                command.action();
+            }catch (Exception e){
+                e.printStackTrace();
             }
         });
     }

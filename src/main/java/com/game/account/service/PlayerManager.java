@@ -1,12 +1,3 @@
-/**
- * FileName: PlayerManager
- * Author:   坤龙
- * Date:     2020/4/2 14:11
- * Description: 玩家管理类
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.account.service;
 
 import com.frame.resource.handler.ResourceCacheHandler;
@@ -36,9 +27,9 @@ public class PlayerManager {
     private static final Logger logger = LoggerFactory.getLogger(PlayerManager.class);
 
     /** Map< 玩家channel， 玩家对象信息 > */
-    private static final Map<Channel, PlayerEntity> channelPlayerMap = new ConcurrentHashMap<Channel, PlayerEntity>();
+    private static final Map<Channel, PlayerEntity> CHANNEL_PLAYER_MAP = new ConcurrentHashMap<>();
     /** Map< 玩家账号ID， 玩家对象信息 > */
-    private static final Map<String, PlayerEntity> accountPlayerMap = new ConcurrentHashMap<String, PlayerEntity>();
+    private static final Map<String, PlayerEntity> ACCOUNT_PLAYER_MAP = new ConcurrentHashMap<>();
     /** 当前对象的实例 */
     private static PlayerManager instance;
 
@@ -54,8 +45,6 @@ public class PlayerManager {
     /**
      * 根据角色类型获取角色配置表
      *
-     * @param roleType
-     * @return
      */
     public PlayerResource getPlayerResource(int roleType){
         return (PlayerResource) ResourceCacheHandler.getResource(PlayerResource.class, roleType);
@@ -64,61 +53,52 @@ public class PlayerManager {
     /**
      * 缓存玩家信息
      *
-     * @param player
      */
     public void cachePlayerInfo(PlayerEntity player){
-        channelPlayerMap.put(player.getChannel(), player);
-        accountPlayerMap.put(player.getAccountId(), player);
+        CHANNEL_PLAYER_MAP.put(player.getChannel(), player);
+        ACCOUNT_PLAYER_MAP.put(player.getAccountId(), player);
     }
 
     /**
      * 缓存玩家信息到accountPlayerMap中
      *
-     * @param player
      */
     public void cachePlayerMap(PlayerEntity player){
-        accountPlayerMap.put(player.getAccountId(), player);
+        ACCOUNT_PLAYER_MAP.put(player.getAccountId(), player);
     }
 
     /**
      * 缓存玩家通道到channelPlayerMap中
      *
-     * @param player
      */
     public void cacheChannelMap(Channel channel, PlayerEntity player){
-        channelPlayerMap.put(channel, player);
+        CHANNEL_PLAYER_MAP.put(channel, player);
     }
 
     /**
      * 通过玩家信息获取玩家的通道信息
      *
-     * @param channel
-     * @return
      */
     public PlayerEntity getPlayerByChannel(Channel channel){
-        return channelPlayerMap.get(channel);
+        return CHANNEL_PLAYER_MAP.get(channel);
     }
 
     /**
      * 根据玩家账号得到玩家信息
      *
-     * @param accountId
-     * @return
      */
     public PlayerEntity getPlayerByAccountId(String accountId){
-        return accountPlayerMap.get(accountId);
+        return ACCOUNT_PLAYER_MAP.get(accountId);
     }
 
     /**
      * 通过玩家信息得到channel
      *
-     * @param player
-     * @return
      */
     public Channel getChannelByPlayer(PlayerEntity player){
         Channel channel = null;
 
-        Set<Map.Entry<Channel, PlayerEntity>> entrySet = channelPlayerMap.entrySet();
+        Set<Map.Entry<Channel, PlayerEntity>> entrySet = CHANNEL_PLAYER_MAP.entrySet();
         for(Map.Entry<Channel, PlayerEntity> entry : entrySet){
             if(player.getAccountId().equals(entry.getValue().getAccountId())){
                 channel = entry.getKey();
@@ -134,12 +114,11 @@ public class PlayerManager {
     /**
      * 根据玩家账号ID移除玩家channel信息
      *
-     * @param accountId
      */
     public void removeChannel(String accountId){
-        PlayerEntity playerEntity = accountPlayerMap.get(accountId);
+        PlayerEntity playerEntity = ACCOUNT_PLAYER_MAP.get(accountId);
         if(playerEntity != null && playerEntity.getChannel() != null){
-            channelPlayerMap.remove(playerEntity.getChannel());
+            CHANNEL_PLAYER_MAP.remove(playerEntity.getChannel());
         }
     }
 
@@ -148,7 +127,7 @@ public class PlayerManager {
      *
      */
     public void closeService(){
-        accountPlayerMap.clear();
-        channelPlayerMap.clear();
+        ACCOUNT_PLAYER_MAP.clear();
+        CHANNEL_PLAYER_MAP.clear();
     }
 }

@@ -1,6 +1,5 @@
 package com.netty.client;
 
-import com.netty.client.util.ResponseUtils;
 import com.netty.common.ProtocolEnum;
 import com.netty.common.ProtocolMsg;
 import io.netty.channel.ChannelHandlerContext;
@@ -21,7 +20,7 @@ public class ClientHandler extends SimpleChannelInboundHandler<ProtocolMsg> {
      * 当客户端和服务端连接成功之后，Netty的NIO线程会调用channelActive方法
      */
     @Override
-    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+    public void channelActive(ChannelHandlerContext ctx) {
         logger.info("\n******************欢迎进入游戏空间************************\n" +
                 "请输入你的功能：\n" +
                 "【注册账号】\n" +
@@ -38,19 +37,16 @@ public class ClientHandler extends SimpleChannelInboundHandler<ProtocolMsg> {
      * 当服务端返回应答消息时，channelRead方法会被调用
      */
     @Override
-    public void channelRead0(ChannelHandlerContext ctx, ProtocolMsg msg) throws Exception {
+    public void channelRead0(ChannelHandlerContext ctx, ProtocolMsg msg) {
         int code = msg.getCode();
         ProtocolEnum protocol = ProtocolEnum.getProtocol(code);
         protocol.printMsg(msg);
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
 
         logger.warn("服务端已关闭 : {} ",cause.getMessage());
-        /**
-         * 发生异常时，关闭ChannelHandlerContext
-         */
         ctx.close();
     }
 

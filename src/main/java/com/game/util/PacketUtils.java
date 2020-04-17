@@ -30,16 +30,6 @@ public class PacketUtils {
     }
 
     /**
-     * 发送协议给玩家
-     *
-     * @param channel
-     * @param msg
-     */
-    public static void send(Channel channel, ProtocolMsg msg){
-        channel.writeAndFlush(msg);
-    }
-
-    /**
      * 发送I18N消息
      *
      */
@@ -64,9 +54,6 @@ public class PacketUtils {
     /**
      * 发送协议数据给玩家
      *
-     * @param player
-     * @param code
-     * @param data
      */
     public static void send(PlayerEntity player, int code, byte[] data){
         ProtocolMsg protocolMsg = ProtocolMsg.valueOf(code, data);

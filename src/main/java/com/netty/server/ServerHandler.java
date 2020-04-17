@@ -17,7 +17,7 @@ public class ServerHandler extends SimpleChannelInboundHandler<ProtocolMsg> {
     private Logger logger = LoggerFactory.getLogger(ServerHandler.class);
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, ProtocolMsg msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, ProtocolMsg msg) {
         Object agreement = ProtocolParseUtils.getProtocolObj(msg);
         HandlerDefintion handlerDefintion = ActionDispatcher.getHandlerDefintion(agreement.getClass());
         try{
@@ -28,12 +28,9 @@ public class ServerHandler extends SimpleChannelInboundHandler<ProtocolMsg> {
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
 
         logger.warn("客户端退出 : {} ",cause.getMessage());
-        /**
-         * 发生异常时，关闭ChannelHandlerContext
-         */
         ctx.close();
     }
 }

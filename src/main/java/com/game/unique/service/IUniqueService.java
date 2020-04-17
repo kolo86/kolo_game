@@ -15,8 +15,6 @@ public interface IUniqueService {
     /**
      * 获取唯一性ID
      *
-     * @param type
-     * @return
      */
     int getUniqueId(UniqueType type);
 

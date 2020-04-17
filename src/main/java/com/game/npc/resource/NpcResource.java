@@ -1,12 +1,3 @@
-/**
- * FileName: NpcResource
- * Author:   坤龙
- * Date:     2020/4/7 17:36
- * Description: Npc配置表
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.npc.resource;
 
 import com.frame.resource.AbstractResource;

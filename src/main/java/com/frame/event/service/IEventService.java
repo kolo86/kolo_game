@@ -1,12 +1,3 @@
-/**
- * FileName: IEventService
- * Author:   坤龙
- * Date:     2020/4/2 11:20
- * Description: 事件接口类
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.frame.event.service;
 
 import com.frame.event.IEvent;
@@ -29,7 +20,6 @@ public interface IEventService {
     /**
      * 提交异步事件
      *
-     * @param event
      */
     void submitAsyncEvent(IEvent event);
 

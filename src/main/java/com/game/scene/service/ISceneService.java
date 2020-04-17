@@ -1,12 +1,3 @@
-/**
- * FileName: ISceneService
- * Author:   坤龙
- * Date:     2020/4/2 17:41
- * Description: 场景接口类
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.scene.service;
 
 

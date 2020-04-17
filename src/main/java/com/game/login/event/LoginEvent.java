@@ -1,12 +1,3 @@
-/**
- * FileName: LoginEvent
- * Author:   坤龙
- * Date:     2020/4/3 11:36
- * Description: 登录事件
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.login.event;
 
 import com.frame.event.IEvent;
@@ -31,4 +22,8 @@ public class LoginEvent implements IEvent {
         return event;
     }
 
+    @Override
+    public int getKey() {
+        return accountId.hashCode();
+    }
 }

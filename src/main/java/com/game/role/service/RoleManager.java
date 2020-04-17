@@ -1,12 +1,3 @@
-/**
- * FileName: RoleManager
- * Author:   坤龙
- * Date:     2020/4/3 11:16
- * Description: 角色管理者
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.role.service;
 
 import com.game.role.entity.RoleEntity;
@@ -31,25 +22,22 @@ public class RoleManager {
     private transient boolean init = false;
 
     /** Map < 玩家账号ID， 角色信息 > */
-    private static final Map<String, RoleEntity> roleMap = new HashMap<String, RoleEntity>();
+    private static final Map<String, RoleEntity> ROLE_MAP = new HashMap<>();
 
     /**
      * 缓存角色信息
      *
-     * @param entity
      */
     public void cacheRole(RoleEntity entity){
-        roleMap.put(entity.getAccountId(), entity);
+        ROLE_MAP.put(entity.getAccountId(), entity);
     }
 
     /**
      * 通过账号ID获取角色信息
      *
-     * @param accountId
-     * @return
      */
     public RoleEntity getRole(String accountId){
-        return roleMap.get(accountId);
+        return ROLE_MAP.get(accountId);
     }
 
     /**
@@ -57,6 +45,6 @@ public class RoleManager {
      *
      */
     public void closeService(){
-        roleMap.clear();
+        ROLE_MAP.clear();
     }
 }

@@ -1,12 +1,3 @@
-/**
- * FileName: SceneServiceImpl
- * Author:   坤龙
- * Date:     2020/4/2 17:43
- * Description: 场景实现类
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.scene.service;
 
 import com.game.account.entity.PlayerEntity;
@@ -43,7 +34,6 @@ public class SceneServiceImpl implements ISceneService {
     /**
      * 当玩家创建完角色后，进入地图
      *
-     * @param account
      */
     @Override
     public void doCreateRole(String account) {

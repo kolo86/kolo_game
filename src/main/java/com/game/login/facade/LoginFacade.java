@@ -1,21 +1,9 @@
-/**
- * FileName: LoginFacade
- * Author:   坤龙
- * Date:     2020/3/31 18:30
- * Description: 玩家登录模块
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.login.facade;
 
-import com.frame.event.anno.EventAnno;
 import com.frame.dispatcher.anno.ReceiverAnno;
+import com.frame.event.anno.EventAnno;
 import com.game.account.event.CreateAccountAsyncEvent;
 import com.game.login.service.ILoginService;
-import com.game.util.PacketUtils;
-import com.netty.common.ProtocolEnum;
-import com.netty.common.ProtocolMsg;
 import com.netty.proto.Message;
 import io.netty.channel.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +32,6 @@ public class LoginFacade {
     /**
      * 监听玩家创建新账号的事件
      *
-     * @param event
      */
     @EventAnno
     public void doCreateAccount(CreateAccountAsyncEvent event){

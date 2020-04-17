@@ -25,8 +25,6 @@ public class CoolDownContainer extends AbstractContainer {
     /**
      * 检查该技能当前是否可以使用
      *
-     * @param skillId
-     * @return
      */
     public boolean checkSkill(int skillId){
         Long cool = coolDownMap.getOrDefault(skillId, 0L);

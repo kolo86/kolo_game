@@ -62,7 +62,6 @@ public class BackPackEntity extends AbstractEntity {
     /**
      * 增加一个道具进背包
      *
-     * @param item
      */
     public void addItem(AbstractItem item){
         ItemResource resource = ItemManager.getResource(item.getItemId());
@@ -101,8 +100,6 @@ public class BackPackEntity extends AbstractEntity {
     /**
      * 根据物品唯一标识获取道具
      *
-     * @param itemOnlyId
-     * @return
      */
     public AbstractItem getItem(int itemOnlyId){
         return packMap.get(itemOnlyId);
@@ -111,7 +108,6 @@ public class BackPackEntity extends AbstractEntity {
     /**
      * 减少道具
      *
-     * @param item
      */
     public boolean reduceItem(AbstractItem item, int num){
         AbstractItem abstractItem = packMap.get(item.getObjectOnlyId());
@@ -127,7 +123,6 @@ public class BackPackEntity extends AbstractEntity {
     /**
      * 检查是否需要移除道具
      *
-     * @param item
      */
     private void checkAndRemoveItem(AbstractItem item){
         AbstractItem abstractItem = packMap.get(item.getObjectOnlyId());

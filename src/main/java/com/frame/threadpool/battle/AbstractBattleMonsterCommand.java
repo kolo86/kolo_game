@@ -20,8 +20,6 @@ public abstract class AbstractBattleMonsterCommand {
     /**
      * 获取线程池数组的下标
      *
-     * @param coreNum
-     * @return
      */
     public int modIndex(int coreNum){
         return Math.abs( key % coreNum );

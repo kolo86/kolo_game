@@ -33,8 +33,6 @@ public class AttrContainer extends AbstractContainer {
     /**
      * 获取某个属性的值
      *
-     * @param type
-     * @return
      */
     public long getAttrValue(AttrType type){
         return finalAttrMap.getOrDefault(type, 0L);

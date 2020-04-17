@@ -24,8 +24,6 @@ public class ItemFacade {
     /**
      * 使用道具
      *
-     * @param channel
-     * @param message
      */
     @ReceiverAnno
     public void useItem(Channel channel, Message.Cm_UseItem message){

@@ -67,7 +67,7 @@ public class DropResource extends AbstractResource {
                     String[] strs = itemStr.split("\\s+");
 
                     String[] split = strs[0].split(ResourceSeparator.XIE_GANG);
-                    Double prob = Double.parseDouble(split[0]) / Double.parseDouble(split[1]);
+                    double prob = Double.parseDouble(split[0]) / Double.parseDouble(split[1]);
                     itemList.add(SelectItem.valueOf(prob, Integer.parseInt(strs[1])));
                 }
 

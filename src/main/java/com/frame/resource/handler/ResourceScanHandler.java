@@ -1,12 +1,3 @@
-/**
- * FileName: ResourceScanHandler
- * Author:   坤龙
- * Date:     2020/4/7 21:41
- * Description: 资源扫描处理器
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.frame.resource.handler;
 
 import com.frame.resource.anno.Resource;
@@ -30,7 +21,7 @@ import java.util.Set;
 public class ResourceScanHandler {
 
     /** Map< 资源名， 资源Class路径 ></> */
-    private static final Map<String, Class<?>> nameClassMap = new HashMap<String, Class<?>>();
+    private static final Map<String, Class<?>> NAME_CLASS_MAP = new HashMap<>();
 
     /**
      * 初始化资源扫描处理器
@@ -41,18 +32,16 @@ public class ResourceScanHandler {
         Reflections reflections = new Reflections(basePath);
         Set<Class<?>> classSet = reflections.getTypesAnnotatedWith(Resource.class);
         for(Class<?> clz : classSet){
-            nameClassMap.put(clz.getSimpleName().toUpperCase(), clz);
+            NAME_CLASS_MAP.put(clz.getSimpleName().toUpperCase(), clz);
         }
     }
 
     /**
      * 获取资源Class路径
      *
-     * @param name
-     * @return
      */
     public static Class<?> getResourceClass(String name){
-        return nameClassMap.get(name);
+        return NAME_CLASS_MAP.get(name);
     }
 
 }

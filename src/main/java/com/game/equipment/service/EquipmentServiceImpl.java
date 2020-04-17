@@ -90,8 +90,6 @@ public class EquipmentServiceImpl implements IEquipmentService {
     /**
      * 发送装备信息
      *
-     * @param player
-     * @param equipmentMap
      */
     private void sendEquipmentInfo(PlayerEntity player, Map<Integer, AbstractItem> equipmentMap) {
         Message.Sm_Equipment.Builder smEquipmentBuilder = Message.Sm_Equipment.newBuilder();
@@ -190,8 +188,6 @@ public class EquipmentServiceImpl implements IEquipmentService {
     /**
      * 获取脱下装备的位置ID
      *
-     * @param player
-     * @param objectOnlyId
      * @return 位置ID，若无法找到，返回0
      */
     private int getDeequipmentPosition(PlayerEntity player, int objectOnlyId){
@@ -242,9 +238,6 @@ public class EquipmentServiceImpl implements IEquipmentService {
     /**
      * 检查修复装备的条件
      *
-     * @param player
-     * @param item
-     * @return
      */
     private boolean checkRepairItem(PlayerEntity player, AbstractItem item){
         if(Objects.isNull(item)){
@@ -260,12 +253,9 @@ public class EquipmentServiceImpl implements IEquipmentService {
     /**
      * 查看道具
      *
-     * @param player
-     * @param objectOnlyId
-     * @return
      */
     private Map<Integer, AbstractItem> findItem(PlayerEntity player, int objectOnlyId){
-        /** Map<该装备所在的位置, 装备> */
+        // Map<该装备所在的位置, 装备>
         HashMap<Integer, AbstractItem> map = new HashMap<>();
 
         // 正在穿戴的装备

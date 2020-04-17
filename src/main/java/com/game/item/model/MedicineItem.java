@@ -31,13 +31,9 @@ public class MedicineItem extends AbstractItem {
     /**
      * 创建药水道具
      *
-     * @param itemId
-     * @param num
-     * @return
      */
     public static MedicineItem valueOf(int itemId, int num) {
-        MedicineItem item = new MedicineItem(itemId, num);
-        return item;
+        return new MedicineItem(itemId, num);
     }
 
     @Override
@@ -46,10 +42,7 @@ public class MedicineItem extends AbstractItem {
             return false;
         }
         MedicineItem otherItem = (MedicineItem)obj;
-        if(otherItem.getItemId() == this.getItemId()){
-            return true;
-        }
-        return false;
+        return otherItem.getItemId() == this.getItemId();
     }
 
     /**

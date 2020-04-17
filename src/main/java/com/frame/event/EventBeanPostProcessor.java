@@ -1,12 +1,3 @@
-/**
- * FileName: EventBeanPostProcessor
- * Author:   坤龙
- * Date:     2020/4/2 10:46
- * Description: 事件
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.frame.event;
 
 import com.frame.event.anno.EventAnno;

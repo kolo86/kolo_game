@@ -22,8 +22,6 @@ public class SignOutFacade {
     /**
      * 玩家退出游戏
      *
-     * @param channel
-     * @param quitMessage
      */
     @ReceiverAnno
     public void signOut(Channel channel, Message.Cm_Quit quitMessage){

@@ -1,12 +1,3 @@
-/**
- * FileName: EventDefintion
- * Author:   坤龙
- * Date:     2020/4/2 10:55
- * Description: 执行事件时，需要使用的反射中介对象
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.frame.event;
 
 import lombok.Data;
@@ -24,11 +15,11 @@ import java.lang.reflect.Method;
  */
 @Data
 public class EventDefintion {
-    // 当前所在类
+    /** 当前所在类 */
     private final Object bean;
-    // 事件所在方法
+    /** 事件所在方法 */
     private final Method method;
-    // 事件的字节码文件
+    /** 事件的字节码文件 */
     private final Class<?> clz;
 
     private EventDefintion(Object bean, Method method, Class<?> clz){
@@ -40,9 +31,6 @@ public class EventDefintion {
     /**
      * 构建一个事件中介对象
      *
-     * @param bean
-     * @param method
-     * @return
      */
     public static EventDefintion valueOf(Object bean, Method method){
         Class<?>[] parameterTypes = method.getParameterTypes();
@@ -52,7 +40,6 @@ public class EventDefintion {
     /**
      * 执行监听了该事件的方法
      *
-     * @param event
      */
     public void invoke(IEvent event){
         ReflectionUtils.makeAccessible(this.method);

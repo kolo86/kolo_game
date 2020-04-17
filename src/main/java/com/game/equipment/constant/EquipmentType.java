@@ -38,8 +38,6 @@ public enum  EquipmentType {
     /**
      * 根据装备类型ID获取对应的装备类型
      *
-     * @param id
-     * @return
      */
     public static EquipmentType getEquipmentType(int id){
         return ID_EQUIPMENT_TYPE_MAP.get(id);

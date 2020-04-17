@@ -27,7 +27,6 @@ import com.game.skill.resource.SkillResource;
 import com.game.skill.service.SkillManager;
 import com.game.util.PacketUtils;
 import com.netty.common.ProtocolEnum;
-import com.netty.common.ProtocolMsg;
 import com.netty.proto.Message;
 
 import java.util.List;
@@ -47,8 +46,6 @@ public class FightUtils {
     /**
      * 玩家挑战一个怪物
      *
-     * @param player
-     * @param monster
      */
     public static void fightMonster(PlayerEntity player, Monster monster) {
         int selectSkill = selectSkill(player);
@@ -67,33 +64,28 @@ public class FightUtils {
     /**
      * 当防守方被攻击之后
      *
-     * @param player
-     * @param skill
-     * @param monster
      */
     private static void afterDefenderAttacked(PlayerEntity player, int skill, long skillDamage, Monster monster){
 
-        Message.Sm_Attack sm_attack = Message.Sm_Attack.newBuilder().setSkillId(skill).setMonsterName(monster.getName()).setDamage(skillDamage).build();
-        PacketUtils.send(player, ProtocolEnum.Sm_Attack.getId(), sm_attack.toByteArray());
+        Message.Sm_Attack smAttack = Message.Sm_Attack.newBuilder().setSkillId(skill).setMonsterName(monster.getName()).setDamage(skillDamage).build();
+        PacketUtils.send(player, ProtocolEnum.Sm_Attack.getId(), smAttack.toByteArray());
 
         LifeContainer container = (LifeContainer) ContainerType.LIFE.getContainer(monster);
         boolean dead = container.isDead();
         if(dead){
-            Message.Sm_MonsterDead sm_monsterDead = Message.Sm_MonsterDead.newBuilder().setKiller(player.getAccountEntity().getNickName()).setMonster(monster.getName()).build();
-            PacketUtils.sendScene(player, ProtocolEnum.Sm_MonsterDead.getId(), sm_monsterDead.toByteArray());
+            Message.Sm_MonsterDead smMonsterDead = Message.Sm_MonsterDead.newBuilder().setKiller(player.getAccountEntity().getNickName()).setMonster(monster.getName()).build();
+            PacketUtils.sendScene(player, ProtocolEnum.Sm_MonsterDead.getId(), smMonsterDead.toByteArray());
 
             // 怪物死亡，发放怪物奖励
             List<AbstractItem> itemList = awardMonster(player, monster);
             // 发送掉落奖励消息给玩家
             sendDropAwardMessage(player, itemList);
         }
-    };
+    }
 
     /**
      * 给玩家发放怪物奖励
      *
-     * @param player
-     * @param monster
      */
     private static List<AbstractItem> awardMonster(PlayerEntity player, Monster monster){
         DropServiceImpl dropService = (DropServiceImpl)SpringContext.getBean(DropServiceImpl.class);
@@ -105,14 +97,11 @@ public class FightUtils {
     /**
      * 发送掉落奖励给玩家
      *
-     * @param player
-     * @param itemList
      */
     private static void sendDropAwardMessage(PlayerEntity player, List<AbstractItem> itemList){
         Message.Sm_KillerReward.Builder smKillerRewardbuilder = Message.Sm_KillerReward.newBuilder();
 
-        for(int i = 0 ; i < itemList.size() ; i++){
-            AbstractItem item = itemList.get(i);
+        for (AbstractItem item : itemList) {
             ItemResource itemResource = ItemManager.getResource(item.getItemId());
             Message.Item messageItem = Message.Item.newBuilder().setItemId(item.getItemId()).setItemName(itemResource.getName()).setItemNum(item.getNum())
                     .setItemOnlyId(item.getItemId()).build();
@@ -125,8 +114,6 @@ public class FightUtils {
     /**
      * 在攻击者使用完技能之后
      *
-     * @param player
-     * @param skill
      */
     private static void afterAttackerUseSkill(PlayerEntity player, int skill) {
         addSkillCd(player, skill);
@@ -137,7 +124,6 @@ public class FightUtils {
     /**
      * 减少武器耐久度
      *
-     * @param player
      */
     private static void reduceWeaponDurability(PlayerEntity player){
         EquipmentEntity equipmentEntity = player.getEquipmentEntity();
@@ -161,8 +147,6 @@ public class FightUtils {
     /**
      * 扣除攻击者的蓝量
      *
-     * @param player
-     * @param skill
      */
     private static void reduceAttackerMp(PlayerEntity player, int skill) {
         LifeContainer container = (LifeContainer) ContainerType.LIFE.getContainer(player);
@@ -174,8 +158,6 @@ public class FightUtils {
     /**
      * 增加技能CD
      *
-     * @param player
-     * @param skill
      */
     private static void addSkillCd(PlayerEntity player, int skill) {
         CoolDownContainer container = (CoolDownContainer) ContainerType.COOLDOWN.getContainer(player);
@@ -187,8 +169,6 @@ public class FightUtils {
     /**
      * 减少防守方的HP
      *
-     * @param skillDamage
-     * @param monster
      */
     private static void reduceDefenderHp(long skillDamage, Monster monster) {
         LifeContainer container = (LifeContainer) ContainerType.LIFE.getContainer(monster);

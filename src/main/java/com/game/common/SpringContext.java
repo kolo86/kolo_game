@@ -18,7 +18,6 @@ public class SpringContext {
     /**
      * 缓存Spring容器对象
      *
-     * @param applicationContext
      */
     public static void cacheSpringApplication(ApplicationContext applicationContext){
         SpringContext.applicationContext = applicationContext;
@@ -27,8 +26,6 @@ public class SpringContext {
     /**
      * 获取bean对象
      *
-     * @param clz
-     * @return
      */
     public static Object getBean(Class<?> clz){
         return applicationContext.getBean(clz);

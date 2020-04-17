@@ -26,7 +26,7 @@ public class AccountManager{
 	// 是否已经被初始化
 	private transient boolean init = false;
 
-	private Map<String, AccountEntity> accountMap = new ConcurrentHashMap<String, AccountEntity>();
+	private Map<String, AccountEntity> accountMap = new ConcurrentHashMap<>();
 	
 	/**
 	 * 缓存账号
@@ -35,21 +35,10 @@ public class AccountManager{
 	public void addAccount(AccountEntity entity) {
 		accountMap.put(entity.getAccountId(), entity);
 	}
-	
-	/**
-	 * 获取所有已存在的账号ID
-	 * 
-	 * @return
-	 */
-	public Set<String> getAllAccountId(){
-		return accountMap.keySet();
-	}
-	
+
 	/**
 	 * 检查当前账号是否已存在
 	 * 
-	 * @param accountId
-	 * @return
 	 */
 	public boolean checkAccount(String accountId) {
 		return accountMap.get(accountId) != null;

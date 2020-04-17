@@ -40,9 +40,6 @@ public class Equipment extends AbstractItem {
     /**
      * 构建装备
      *
-     * @param itemId
-     * @param num
-     * @return
      */
     public static Equipment valueOf(int itemId, int num){
         Equipment equipment = new Equipment(itemId, num);
@@ -72,7 +69,6 @@ public class Equipment extends AbstractItem {
     /**
      * 减少武器耐久度
      *
-     * @param wastage
      */
     public void reduceDurability(int wastage){
         if(wastage > this.currentDurability){
@@ -93,7 +89,6 @@ public class Equipment extends AbstractItem {
     /**
      * 当前装备是否耐久度为0
      *
-     * @return
      */
     public boolean isDurabilityZero(){
         return this.currentDurability == 0;

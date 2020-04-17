@@ -30,8 +30,6 @@ public class Monster {
     /**
      * 根据怪物配置表初始化怪物信息
      *
-     * @param monsterResource
-     * @return
      */
     public static Monster valueOf(MonsterResource monsterResource){
         Monster monster = new Monster();

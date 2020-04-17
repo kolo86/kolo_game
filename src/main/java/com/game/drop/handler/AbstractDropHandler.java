@@ -19,9 +19,6 @@ public abstract class AbstractDropHandler {
     /**
      * 命中道具
      *
-     * @param player
-     * @param dropResource
-     * @return
      */
     public abstract List<AbstractItem> hitItem(PlayerEntity player, DropResource dropResource);
 

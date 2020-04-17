@@ -32,16 +32,13 @@ public class AccountScheduleExecutor {
      */
     public static void submit(AbstractScheduleAccountCommand command){
         int index = command.modIndex(THREAD_POOL_NUM);
-        ScheduledFuture<?> scheduledFuture = SCHEDULE_THREAD_POOL_ARR[index].scheduleAtFixedRate(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    if( !command.isCannel() ){
-                        command.action();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
+        ScheduledFuture<?> scheduledFuture = SCHEDULE_THREAD_POOL_ARR[index].scheduleAtFixedRate(() -> {
+            try {
+                if( !command.isCannel() ){
+                    command.action();
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }, command.getInitialDalay(), command.getDelay(), TimeUnit.MILLISECONDS);
 

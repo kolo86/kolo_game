@@ -1,12 +1,3 @@
-/**
- * FileName: IRoleService
- * Author:   坤龙
- * Date:     2020/4/2 15:49
- * Description: 角色接口类
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.role.service;
 
 import com.game.role.entity.RoleEntity;
@@ -25,15 +16,12 @@ public interface IRoleService {
     /**
      * 玩家创建角色
      *
-     * @param channel
-     * @param roleType
      */
     void doCreateRole(Channel channel, int roleType);
 
     /**
      * 玩家登录
      *
-     * @param accountId
      */
     void login(String accountId);
 
@@ -46,8 +34,6 @@ public interface IRoleService {
     /**
      * 通过账号ID获取角色信息
      *
-     * @param accountId
-     * @return
      */
     RoleEntity getRoleByAccountId(String accountId);
 

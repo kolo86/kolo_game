@@ -1,12 +1,3 @@
-/**
- * FileName: NpcManager
- * Author:   坤龙
- * Date:     2020/4/8 10:44
- * Description: Npc管理器
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.npc.service;
 
 import com.frame.resource.service.IResourceService;
@@ -31,8 +22,6 @@ public class NpcManager {
     /**
      * 根据npc主键ID获取对应的配置表资源
      *
-     * @param key
-     * @return
      */
     public NpcResource getNpcResource(int key){
         return (NpcResource) resourceService.getResource(NpcResource.class, key);

@@ -35,7 +35,6 @@ public class AccountFacade {
 	/**
 	 * 监听开服事件，缓存账号信息
 	 *
-	 * @param event
 	 */
 	@EventAnno
 	public void doOpenServer(OpenServerSyncEvent event){
@@ -45,7 +44,6 @@ public class AccountFacade {
 	/**
 	 * 监听关服事件
 	 *
-	 * @param event
 	 */
 	@EventAnno
 	public void doCloseServer(CloseServerSyncEvent event){

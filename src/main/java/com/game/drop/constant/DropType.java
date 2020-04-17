@@ -39,8 +39,6 @@ public enum DropType {
     /**
      * 获取掉落类型
      *
-     * @param name
-     * @return
      */
     public static DropType getDropType(String name){
         return dropTypeMap.get(name);
@@ -70,9 +68,6 @@ public enum DropType {
     /**
      * 命中道具
      *
-     * @param player
-     * @param dropResource
-     * @return
      */
     public List<AbstractItem> hitItem(PlayerEntity player, DropResource dropResource){
         return getDropHandler().hitItem(player, dropResource);

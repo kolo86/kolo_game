@@ -1,12 +1,3 @@
-/**
- * FileName: MainCityMapHandler
- * Author:   坤龙
- * Date:     2020/4/2 17:34
- * Description: 起始之地
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.scene.handler;
 
 import com.game.account.entity.PlayerEntity;
@@ -40,8 +31,6 @@ public class MainCityMapHandler extends AbstractMapHandler {
     /**
      * 检查切图条件
      *
-     * @param player
-     * @return
      */
     @Override
     public boolean checkChangeMapCondition(PlayerEntity player, int oldMapId) {

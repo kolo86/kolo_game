@@ -1,12 +1,3 @@
-/**
- * FileName: NpcFacade
- * Author:   坤龙
- * Date:     2020/4/7 15:20
- * Description: NPC门面类
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.npc.facade;
 
 import com.frame.dispatcher.anno.ReceiverAnno;
@@ -33,8 +24,6 @@ public class NpcFacade {
     /**
      * 玩家跟NPC对话
      *
-     * @param channel
-     * @param message
      */
     @ReceiverAnno
     public void talk(Channel channel, Message.Cm_Talk message){

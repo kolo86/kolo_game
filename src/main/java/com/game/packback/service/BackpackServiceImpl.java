@@ -74,7 +74,6 @@ public class BackpackServiceImpl implements IBackPackService {
     /**
      * 发送背包数据给玩家
      *
-     * @param player
      */
     private void sendBackpackInfo(PlayerEntity player){
         BackPackEntity backPackEntity = player.getBackPackEntity();

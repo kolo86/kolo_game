@@ -1,12 +1,3 @@
-/**
- * FileName: LoginService
- * Author:   坤龙
- * Date:     2020/4/2 15:25
- * Description: 登录实现类
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.login.service;
 
 import com.frame.event.service.IEventService;

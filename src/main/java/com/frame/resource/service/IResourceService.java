@@ -1,12 +1,3 @@
-/**
- * FileName: IResourceService
- * Author:   坤龙
- * Date:     2020/4/7 21:35
- * Description: 资源接口类
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.frame.resource.service;
 
 import com.frame.resource.AbstractResource;
@@ -24,9 +15,6 @@ public interface IResourceService {
     /**
      * 获取配置表资源
      *
-     * @param clz
-     * @param key
-     * @return
      */
     AbstractResource getResource(Class<?> clz, int key);
 

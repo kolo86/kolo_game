@@ -21,8 +21,7 @@ public class BattleMonsterCommand extends AbstractBattleMonsterCommand {
 
     public static BattleMonsterCommand valueOf(PlayerEntity player, int monster){
         // 根据怪物ID做标识
-        int key = monster;
-        BattleMonsterCommand command = new BattleMonsterCommand(key);
+        BattleMonsterCommand command = new BattleMonsterCommand(monster);
         command.player = player;
         command.monster = monster;
         return command;

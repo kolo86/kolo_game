@@ -1,12 +1,3 @@
-/**
- * FileName: OpenServerSyncEvent
- * Author:   坤龙
- * Date:     2020/4/2 11:49
- * Description: 开服同步事件
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.frame.event.impl;
 
 import com.frame.event.IEvent;
@@ -23,5 +14,10 @@ public class OpenServerSyncEvent implements IEvent {
 
     public static OpenServerSyncEvent valueOf(){
         return new OpenServerSyncEvent();
+    }
+
+    @Override
+    public int getKey() {
+        return 0;
     }
 }

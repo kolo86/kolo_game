@@ -1,12 +1,3 @@
-/**
- * FileName: ResourceParseUtils
- * Author:   坤龙
- * Date:     2020/4/7 22:22
- * Description: 配置表解析工具
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.frame.resource.util;
 
 import com.frame.resource.AbstractResource;
@@ -18,9 +9,6 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.lang.reflect.Field;
 import java.util.*;
 
@@ -34,8 +22,6 @@ import java.util.*;
  */
 public class ResourceParseUtils {
 
-    private static final Logger logger = LoggerFactory.getLogger(ResourceParseUtils.class);
-
     private static final String SERVER_MARK = "SERVER";
 
     private static final String END_MARK = "End";
@@ -43,7 +29,6 @@ public class ResourceParseUtils {
     /**
      * 解析单个Excel文件
      *
-     * @param workBook
      */
     public static void parseWorkBook(XSSFWorkbook workBook) {
         int sheets = workBook.getNumberOfSheets();
@@ -55,7 +40,6 @@ public class ResourceParseUtils {
     /**
      * 解析单个工作表
      *
-     * @param sheet
      */
     private static void parseSheet(XSSFSheet sheet) {
         String resourceName = sheet.getRow(0).getCell(0).getStringCellValue();
@@ -69,22 +53,16 @@ public class ResourceParseUtils {
     /**
      * 缓存数据
      *
-     * @param list
      */
     private static void cacheData(List list) {
-        for (int i = 0; i < list.size(); i++) {
-            ResourceCacheHandler.addResource(list.get(i).getClass(), (AbstractResource) list.get(i));
+        for (Object o : list) {
+            ResourceCacheHandler.addResource(o.getClass(), (AbstractResource) o);
         }
     }
 
     /**
      * 解析数据
      *
-     * @param sheet
-     * @param resourceClass
-     * @param serverRow
-     * @param readerSet
-     * @return
      */
     private static List parseData(XSSFSheet sheet, Class<?> resourceClass, int serverRow, Set<FieldObj> readerSet) {
         List list = new ArrayList();
@@ -134,12 +112,9 @@ public class ResourceParseUtils {
     /**
      * 获取需要读取字段的信息
      *
-     * @param sheet
-     * @param serverIndex
-     * @return
      */
     private static Set<FieldObj> getFiledInfo(XSSFSheet sheet, int serverIndex) {
-        Set<FieldObj> readerSet = new HashSet<FieldObj>();
+        Set<FieldObj> readerSet = new HashSet<>();
         // 服务端定义那一行
         XSSFRow serverRow = sheet.getRow(serverIndex);
         XSSFRow typeRow = sheet.getRow(serverIndex - 1);
@@ -161,8 +136,6 @@ public class ResourceParseUtils {
     /**
      * 服务端标识所在行
      *
-     * @param sheet
-     * @return
      */
     private static int getServerRow(XSSFSheet sheet) {
         boolean state = true;

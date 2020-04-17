@@ -12,8 +12,6 @@ public class MD5Utils {
     /**
      * 对字符串进行加密
      *
-     * @param content
-     * @return
      */
     public static String encryption(String content){
         byte[] md5Digest = DigestUtils.md5Digest(content.getBytes());

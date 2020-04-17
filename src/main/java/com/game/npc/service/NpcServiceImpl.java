@@ -1,18 +1,8 @@
-/**
- * FileName: NpcService
- * Author:   坤龙
- * Date:     2020/4/7 15:20
- * Description: Npc服务类
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.npc.service;
 
 import com.game.account.entity.PlayerEntity;
 import com.game.account.service.IPlayerService;
 import com.game.common.constant.I18nId;
-import com.game.npc.constant.NpcEnum;
 import com.game.npc.resource.NpcResource;
 import com.game.scene.AbstractMapHandler;
 import com.game.scene.constant.SceneType;
@@ -55,9 +45,6 @@ public class NpcServiceImpl implements INpcService {
     /**
      * 检查玩家当前所在的场景中是否存在该NPC
      *
-     * @param player
-     * @param npcId
-     * @return
      */
     private boolean checkNpcExist(PlayerEntity player, int npcId){
         SceneType scene = SceneType.getSceneById(player.getMapId());

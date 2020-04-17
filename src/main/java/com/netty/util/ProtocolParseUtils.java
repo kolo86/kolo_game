@@ -15,8 +15,6 @@ public class ProtocolParseUtils {
     /**
      * 获取协议对象
      *
-     * @param msg
-     * @return
      */
     public static Object getProtocolObj(ProtocolMsg msg){
         Object protocolObj = null;

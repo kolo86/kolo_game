@@ -9,7 +9,6 @@ import com.game.persistence.service.IPersistenceService;
 import com.game.util.MD5Utils;
 import com.game.util.PacketUtils;
 import com.netty.proto.Message;
-import com.sun.imageio.plugins.common.I18N;
 import io.netty.channel.Channel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -78,8 +77,6 @@ public class AccountServiceImpl implements IAccountService{
 	/**
 	 * 创建新账号
 	 *
-	 * @param channel
-	 * @param message
 	 */
 	@Override
 	public void createAccount(Channel channel, Message.Cm_Register message) {

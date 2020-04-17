@@ -1,12 +1,3 @@
-/**
- * FileName: ResourceService
- * Author:   坤龙
- * Date:     2020/4/7 21:37
- * Description: 配置表资源服务类
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.frame.resource.service;
 
 import com.frame.resource.AbstractResource;

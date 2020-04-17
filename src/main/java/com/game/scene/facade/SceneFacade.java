@@ -1,18 +1,9 @@
-/**
- * FileName: SceneFacade
- * Author:   坤龙
- * Date:     2020/4/2 17:31
- * Description: 场景门面类
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.scene.facade;
 
 import com.frame.event.anno.EventAnno;
 import com.frame.dispatcher.anno.ReceiverAnno;
 import com.game.login.event.LoginEvent;
-import com.game.role.event.CreateRoleEvent;
+import com.game.role.event.CreateRoleSyncEvent;
 import com.game.scene.service.ISceneService;
 import com.game.signout.event.SignOutEvent;
 import com.netty.proto.Message;
@@ -40,7 +31,7 @@ public class SceneFacade {
      *
      */
     @EventAnno
-    public void doCreateRole(CreateRoleEvent event){
+    public void doCreateRole(CreateRoleSyncEvent event){
         sceneService.doCreateRole(event.getAccountId());
     }
 

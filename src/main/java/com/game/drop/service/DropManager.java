@@ -18,8 +18,6 @@ public class DropManager {
     /**
      * 获取掉落表资源
      *
-     * @param dropId
-     * @return
      */
     public static DropResource getResource(int dropId){
         return (DropResource) ResourceCacheHandler.getResource(DropResource.class, dropId);

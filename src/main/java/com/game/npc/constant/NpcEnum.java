@@ -1,12 +1,3 @@
-/**
- * FileName: NpcEnum
- * Author:   坤龙
- * Date:     2020/4/7 14:29
- * Description: Npc枚举类
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.npc.constant;
 
 import java.util.HashMap;
@@ -31,14 +22,14 @@ public enum NpcEnum {
     /** Npc名字 */
     private String name;
     /** Map < Npc名字 ， NpcId >  */
-    public static final Map<String , Integer> nameIdMap = new HashMap<String, Integer>();
+    public static final Map<String , Integer> NAME_ID_MAP = new HashMap<>();
     /** Map < NpcId , Npc名字 >*/
-    public static final Map<Integer, String> idNameMap = new HashMap<Integer, String>();
+    public static final Map<Integer, String> ID_NAME_MAP = new HashMap<>();
 
     static{
         for(NpcEnum npc : values()){
-            nameIdMap.put(npc.getName(), npc.getId());
-            idNameMap.put(npc.getId(), npc.getName());
+            NAME_ID_MAP.put(npc.getName(), npc.getId());
+            ID_NAME_MAP.put(npc.getId(), npc.getName());
         }
     }
 
@@ -50,21 +41,17 @@ public enum NpcEnum {
     /**
      * 通过Npc名字获取NpcId
      *
-     * @param npcName
-     * @return
      */
     public static Integer getNpcId(String npcName){
-        return nameIdMap.get(npcName);
+        return NAME_ID_MAP.get(npcName);
     }
 
     /**
      * 通过NpcId获取Npc名字
      *
-     * @param npcId
-     * @return
      */
     public static String getNpcName(int npcId){
-        return idNameMap.get(npcId);
+        return ID_NAME_MAP.get(npcId);
     }
 
     public int getId() {

@@ -54,7 +54,6 @@ public class PersistenceServiceImpl implements IPersistenceService {
     /**
      * 解析所有的重写了Convert方法的实体
      *
-     * @param list
      */
     private void parseAll(List list){
         for(Object obj : list){

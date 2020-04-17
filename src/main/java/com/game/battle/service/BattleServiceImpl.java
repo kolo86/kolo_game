@@ -7,7 +7,6 @@ import com.game.monster.model.Monster;
 import com.game.scene.AbstractMapHandler;
 import com.game.scene.constant.SceneType;
 import com.game.util.PacketUtils;
-import com.sun.org.apache.xml.internal.security.utils.I18n;
 import org.springframework.stereotype.Component;
 
 

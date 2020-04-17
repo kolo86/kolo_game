@@ -1,12 +1,3 @@
-/**
- * FileName: RoleFacade
- * Author:   坤龙
- * Date:     2020/4/2 15:47
- * Description: 角色门面类
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.role.facade;
 
 import com.frame.event.anno.EventAnno;
@@ -41,8 +32,6 @@ public class RoleFacade {
     /**
      * 创建角色
      *
-     * @param channel
-     * @param message
      */
     @ReceiverAnno
     public void doCreateRole(Channel channel, Message.Cm_CreateRole message){
@@ -52,7 +41,6 @@ public class RoleFacade {
     /**
      * 监听玩家登录事件
      *
-     * @param event
      */
     @EventAnno
     public void doPlayerLogin(CreateRoleLoginEvent event){
@@ -62,7 +50,6 @@ public class RoleFacade {
     /**
      * 监听起服事件，初始化角色信息
      *
-     * @param event
      */
     @EventAnno
     public void onStart(OpenServerSyncEvent event){
@@ -72,7 +59,6 @@ public class RoleFacade {
     /**
      * 关服
      *
-     * @param event
      */
     @EventAnno
     public void closeService(CloseServerSyncEvent event){

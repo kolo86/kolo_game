@@ -25,7 +25,7 @@ public class BattleExecutor {
         for(int i = 0 ; i < CORE_NUM ; i++ ){
             NameThreadFactory threadFactory = new NameThreadFactory("battle_thread_pool");
             BATTLE_THREAD_POOL_ARR[i] = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS,
-                    new LinkedBlockingQueue<Runnable>(), threadFactory, new ThreadPoolExecutor.DiscardPolicy());
+                    new LinkedBlockingQueue<>(), threadFactory, new ThreadPoolExecutor.DiscardPolicy());
             BATTLE_THREAD_POOL_ARR[i].prestartAllCoreThreads();
         }
     }
@@ -36,14 +36,11 @@ public class BattleExecutor {
      */
     public static void submit(AbstractBattleMonsterCommand command){
         int index = command.modIndex(CORE_NUM);
-        BATTLE_THREAD_POOL_ARR[index].submit(new Runnable() {
-            @Override
-            public void run() {
-                try{
-                    command.action();
-                } catch (Exception e){
-                    e.printStackTrace();
-                }
+        BATTLE_THREAD_POOL_ARR[index].submit(() -> {
+            try{
+                command.action();
+            } catch (Exception e){
+                e.printStackTrace();
             }
         });
     }

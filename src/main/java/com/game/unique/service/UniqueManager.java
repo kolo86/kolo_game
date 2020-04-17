@@ -32,8 +32,6 @@ public class UniqueManager {
     /**
      * 获取该类型当前已被使用的最高值
      *
-     * @param type
-     * @return
      */
     public int getCurrentValue(UniqueType type){
         return uniqueMap.getOrDefault(type.getId(), 0);

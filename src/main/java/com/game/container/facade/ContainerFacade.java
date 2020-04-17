@@ -5,7 +5,7 @@ import com.game.container.service.IContainerService;
 import com.game.equipment.event.DeequipmentSyncEvent;
 import com.game.equipment.event.WearEquipmentSyncEvent;
 import com.game.login.event.LoginEvent;
-import com.game.role.event.CreateRoleEvent;
+import com.game.role.event.CreateRoleSyncEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,10 +26,9 @@ public class ContainerFacade {
     /**
      * 监听玩家创建角色事件
      *
-     * @param event
      */
     @EventAnno
-    public void doCreateRole(CreateRoleEvent event){
+    public void doCreateRole(CreateRoleSyncEvent event){
         containerService.initPlayerContainer(event.getAccountId());
         containerService.initRecoverCommand(event.getAccountId());
     }
@@ -47,7 +46,6 @@ public class ContainerFacade {
     /**
      * 监听玩家穿戴装备事件
      *
-     * @param event
      */
     @EventAnno
     public void doWearEquipment(WearEquipmentSyncEvent event){
@@ -57,7 +55,6 @@ public class ContainerFacade {
     /**
      * 监听玩家脱下装备事件
      *
-     * @param event
      */
     @EventAnno
     public void doDeequipmentEvent(DeequipmentSyncEvent event){

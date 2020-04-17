@@ -1,12 +1,3 @@
-/**
- * FileName: RoleStateEnum
- * Author:   坤龙
- * Date:     2020/4/2 17:08
- * Description: 角色状态枚举
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.role.constant;
 
 import java.util.HashMap;
@@ -33,11 +24,11 @@ public enum RoleStateEnum {
     private String name;
 
     /** MAP < 标识ID， 状态 > */
-    private static final Map<Integer, String> idNameMap = new HashMap<Integer, String>();
+    private static final Map<Integer, String> ID_NAME_MAP = new HashMap<>();
 
     static{
         for(RoleStateEnum stateEnum : values()){
-            idNameMap.put(stateEnum.getId(), stateEnum.getName());
+            ID_NAME_MAP.put(stateEnum.getId(), stateEnum.getName());
         }
     }
 
@@ -49,11 +40,9 @@ public enum RoleStateEnum {
     /**
      * 通过标识ID获取状态
      *
-     * @param id
-     * @return
      */
     public static String getStateNameById(int id){
-        return idNameMap.get(id);
+        return ID_NAME_MAP.get(id);
     }
 
     public int getId() {

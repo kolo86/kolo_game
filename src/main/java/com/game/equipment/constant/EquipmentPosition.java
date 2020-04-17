@@ -40,8 +40,6 @@ public enum EquipmentPosition {
     /**
      * 根据装备类型得到对应的装备部位
      *
-     * @param type
-     * @return
      */
     public static EquipmentPosition getPosition(EquipmentType type){
         return TYPE_EQUIPMENT_POSITION_MAP.get(type);

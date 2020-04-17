@@ -57,8 +57,6 @@ public enum RepairEquipmentPosition {
     /**
      * 根据位置ID获取对应的位置类型
      *
-     * @param id
-     * @return
      */
     public static RepairEquipmentPosition getPosition(int id){
         return REPAIR_EQUIPMENT_POSITION_MAP.get(id);
@@ -88,7 +86,6 @@ public enum RepairEquipmentPosition {
     /**
      * 维修后，保存数据库
      *
-     * @param player
      */
     public abstract void save(PlayerEntity player);
 }

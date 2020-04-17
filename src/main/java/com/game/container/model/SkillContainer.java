@@ -26,15 +26,13 @@ public class SkillContainer extends AbstractContainer {
 
     public static SkillContainer valueOf(List<Integer> list){
         SkillContainer container = new SkillContainer();
-        List<Integer> sortList = sort(list);
-        container.skillList = sortList;
+        container.skillList = sort(list);
         return container;
     }
 
     /**
      * 对技能排序
      *
-     * @param list
      */
     private static List<Integer> sort(List<Integer> list){
         List<SkillResource> sortResourceList = new ArrayList<>();
@@ -43,12 +41,7 @@ public class SkillContainer extends AbstractContainer {
             sortResourceList.add(skillResource);
         }
 
-        Collections.sort(sortResourceList, new Comparator<SkillResource>() {
-            @Override
-            public int compare(SkillResource s1, SkillResource s2) {
-                return s2.getPriority() - s1.getPriority() ;
-            }
-        });
+        sortResourceList.sort((s1, s2) -> s2.getPriority() - s1.getPriority());
         
         List<Integer> sortIdList = new ArrayList<>();
         for( SkillResource resource : sortResourceList ){

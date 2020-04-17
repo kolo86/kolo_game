@@ -15,7 +15,7 @@ public class ClientChannelInitializer extends ChannelInitializer<SocketChannel> 
      * 设置客户端IO事件的处理类，用于记录日志、对消息进行编解码等功能
      */
     @Override
-    public void initChannel(SocketChannel ch) throws Exception {
+    public void initChannel(SocketChannel ch) {
         ChannelPipeline pipeline = ch.pipeline();
         pipeline.addLast("decoder", new ProtocolDecoder());
         pipeline.addLast("encoder", new ProtocolEncoder());

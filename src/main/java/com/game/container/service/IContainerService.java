@@ -15,21 +15,18 @@ public interface IContainerService {
     /**
      * 初始化玩家容器
      *
-     * @param accountId
      */
     void initPlayerContainer(String accountId);
 
     /**
      * 执行定时恢复命令
      *
-     * @param accountId
      */
     void initRecoverCommand(String accountId);
 
     /**
      * 穿戴装备事件
      *
-     * @param player
      */
     void doWearEquipment(PlayerEntity player);
 
@@ -42,7 +39,6 @@ public interface IContainerService {
     /**
      * 处理玩家脱下装备
      *
-     * @param player
      */
     void doDeequipment(PlayerEntity player);
 }

@@ -1,12 +1,3 @@
-/**
- * FileName: Resource
- * Author:   坤龙
- * Date:     2020/4/7 17:38
- * Description: 配置表注解
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.frame.resource.anno;
 
 import java.lang.annotation.*;

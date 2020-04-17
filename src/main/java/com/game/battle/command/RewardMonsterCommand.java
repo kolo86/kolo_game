@@ -29,9 +29,6 @@ public class RewardMonsterCommand extends AbstractAccountCommand {
     /**
      * 创建发放奖励命令
      *
-     * @param player
-     * @param list
-     * @return
      */
     public static RewardMonsterCommand valueOf(PlayerEntity player, List<AbstractItem> list){
         RewardMonsterCommand command = new RewardMonsterCommand(player);

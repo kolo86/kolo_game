@@ -30,7 +30,6 @@ public class EquipmentManager {
     /**
      * 缓存装备数据
      *
-     * @param equipmentEntity
      */
     public void cache(EquipmentEntity equipmentEntity){
         equipmentEntityMap.put(equipmentEntity.getAccountId(), equipmentEntity);
@@ -39,8 +38,6 @@ public class EquipmentManager {
     /**
      * 根据玩家ID获取装备信息
      *
-     * @param accountId
-     * @return
      */
     public EquipmentEntity getEntity(String accountId){
         return equipmentEntityMap.get(accountId);
@@ -49,8 +46,6 @@ public class EquipmentManager {
     /**
      * 根据配置表ID获取配置表资源
      *
-     * @param key
-     * @return
      */
     public static EquipmentResource getResource(int key){
         return (EquipmentResource) ResourceCacheHandler.getResource(EquipmentResource.class, key);

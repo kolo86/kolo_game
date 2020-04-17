@@ -25,9 +25,6 @@ public class RandomDropHandler extends AbstractDropHandler {
     /**
      * 命中道具
      *
-     * @param player
-     * @param dropResource
-     * @return
      */
     @Override
     public List<AbstractItem> hitItem(PlayerEntity player, DropResource dropResource){

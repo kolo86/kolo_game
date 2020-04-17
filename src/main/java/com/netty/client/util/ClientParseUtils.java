@@ -1,12 +1,3 @@
-/**
- * FileName: ClientParseToos
- * Author:   坤龙
- * Date:     2020/4/1 14:21
- * Description: 客户端解析工具
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.netty.client.util;
 
 import com.netty.common.ProtocolEnum;
@@ -30,8 +21,6 @@ public class ClientParseUtils {
     /**
      * 解析字符串，得到对应的协议对象
      *
-     * @param order
-     * @return
      */
     public static ProtocolMsg parseStr(String order){
         order = order.trim();

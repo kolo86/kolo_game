@@ -1,12 +1,3 @@
-/**
- * FileName: PlayerServiceImpl
- * Author:   坤龙
- * Date:     2020/4/2 15:05
- * Description: 玩家实现类
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.account.service;
 
 import com.game.account.entity.AccountEntity;

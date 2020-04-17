@@ -64,8 +64,6 @@ public enum  RecoverType {
     /**
      * 获取恢复类型
      *
-     * @param name
-     * @return
      */
     public static RecoverType getType(String name){
         return RECOVER_TYPE_MAP.get(name);
@@ -86,8 +84,6 @@ public enum  RecoverType {
     /**
      * 玩家使用恢复类道具
      *
-     * @param player
-     * @param args
      */
     public abstract void useItem(PlayerEntity player, String[] args);
 }

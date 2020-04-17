@@ -1,12 +1,3 @@
-/**
- * FileName: ActionDispatcher
- * Author:   坤龙
- * Date:     2020/4/1 16:50
- * Description: 协议派发器
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.frame.dispatcher;
 
 import org.slf4j.Logger;
@@ -28,7 +19,7 @@ public class ActionDispatcher {
     private static final Logger logger = LoggerFactory.getLogger(ActionDispatcher.class);
 
     /** Map < 协议字节码文件， 协议中介对象> */
-    public static final Map<Class<?>, HandlerDefintion> agreeHandlerMap = new HashMap<Class<?>, HandlerDefintion>();
+    public static final Map<Class<?>, HandlerDefintion> agreeHandlerMap = new HashMap<>();
 
     public static void registerAgreeMap(Class<?> clz, HandlerDefintion beanDefintion){
         agreeHandlerMap.put(clz, beanDefintion);

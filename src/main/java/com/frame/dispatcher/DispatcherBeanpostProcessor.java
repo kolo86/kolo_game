@@ -1,17 +1,6 @@
-/**
- * FileName: DispatcherBeanpostProcessor
- * Author:   坤龙
- * Date:     2020/4/1 17:10
- * Description: 加载类对象
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.frame.dispatcher;
 
 import com.frame.dispatcher.anno.ReceiverAnno;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.core.Ordered;
@@ -29,8 +18,6 @@ import java.lang.reflect.Method;
  */
 @Component
 public class DispatcherBeanpostProcessor implements BeanPostProcessor , Ordered {
-
-    private static final Logger logger = LoggerFactory.getLogger(DispatcherBeanpostProcessor.class);
 
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {

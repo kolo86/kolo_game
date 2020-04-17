@@ -18,8 +18,6 @@ public class WorldManager {
     /**
      * 根据ID获取I18N配置表资源
      *
-     * @param id
-     * @return
      */
     public static I18NResource getI18nResource(int id){
         return (I18NResource) ResourceCacheHandler.getResource(I18NResource.class, id);

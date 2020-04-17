@@ -28,8 +28,6 @@ public class EquipmentFacade {
     /**
      * 查看装备栏信息
      *
-     * @param channel
-     * @param equipment
      */
     @ReceiverAnno
     public void equipment(Channel channel, Message.Cm_Equipment equipment){
@@ -39,8 +37,6 @@ public class EquipmentFacade {
     /**
      * 玩家穿装备
      *
-     * @param channel
-     * @param message
      */
     @ReceiverAnno
     public void wear(Channel channel, Message.Cm_Wear message){
@@ -50,8 +46,6 @@ public class EquipmentFacade {
     /**
      * 玩家脱装备
      *
-     * @param channel
-     * @param message
      */
     @ReceiverAnno
     public void deequipment(Channel channel, Message.Cm_Deequipment message){
@@ -61,8 +55,6 @@ public class EquipmentFacade {
     /**
      * 玩家修理武器
      *
-     * @param channel
-     * @param message
      */
     @ReceiverAnno
     public void repair(Channel channel, Message.Cm_Repair message){
@@ -72,7 +64,6 @@ public class EquipmentFacade {
     /**
      * 创建角色完成后，初始化玩家装备信息
      *
-     * @param event
      */
     @EventAnno
     public void doCreatePlayer(CreateAccountAsyncEvent event){
@@ -83,7 +74,6 @@ public class EquipmentFacade {
     /**
      * 监听起服事件
      *
-     * @param event
      */
     @EventAnno
     public void doOpenServer(OpenServerSyncEvent event){
@@ -93,7 +83,6 @@ public class EquipmentFacade {
     /**
      * 处理武器耐久度为0事件
      *
-     * @param event
      */
     @EventAnno
     public void doWeaponDurabilityZero(WeaponDurabilityZeroEvent event){

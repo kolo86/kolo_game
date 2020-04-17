@@ -33,8 +33,7 @@ public class ItemServiceImpl implements IItemService {
     public List<AbstractItem> ceateItem(int itemId, int num) {
         ItemResource itemResource = ItemManager.getResource(itemId);
         ItemType type = ItemType.getType(itemResource.getType());
-        List<AbstractItem> itemList = type.calAndCreateItem(itemId, num);
-        return itemList;
+        return type.calAndCreateItem(itemId, num);
     }
 
     @Override
@@ -62,9 +61,6 @@ public class ItemServiceImpl implements IItemService {
     /**
      * 检查使用道具的条件
      *
-     * @param player
-     * @param itemOnlyId
-     * @return
      */
     private boolean checkUseItemCondition(PlayerEntity player, int itemOnlyId){
         BackPackEntity backPackEntity = player.getBackPackEntity();

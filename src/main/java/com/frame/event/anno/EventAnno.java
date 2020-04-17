@@ -1,12 +1,3 @@
-/**
- * FileName: EventAnno
- * Author:   坤龙
- * Date:     2020/4/2 10:37
- * Description: 事件注解
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.frame.event.anno;
 
 import java.lang.annotation.*;

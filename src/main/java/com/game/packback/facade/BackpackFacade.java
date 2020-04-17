@@ -4,7 +4,7 @@ import com.frame.dispatcher.anno.ReceiverAnno;
 import com.frame.event.anno.EventAnno;
 import com.frame.event.impl.OpenServerSyncEvent;
 import com.game.packback.service.IBackPackService;
-import com.game.role.event.CreateRoleEvent;
+import com.game.role.event.CreateRoleSyncEvent;
 import com.netty.proto.Message;
 import io.netty.channel.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +24,6 @@ public class BackpackFacade {
     /**
      * 玩家查看背包数据
      *
-     * @param channel
-     * @param message
      */
     @ReceiverAnno
     public void backPack(Channel channel, Message.Cm_BackPack message){
@@ -35,10 +33,9 @@ public class BackpackFacade {
     /**
      * 创建角色完成
      *
-     * @param event
      */
     @EventAnno
-    public void doCreateRole(CreateRoleEvent event){
+    public void doCreateRole(CreateRoleSyncEvent event){
         backPackService.doCreateRole(event.getAccountId());
     }
 

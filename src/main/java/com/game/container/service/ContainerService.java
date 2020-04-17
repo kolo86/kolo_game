@@ -55,7 +55,6 @@ public class ContainerService implements IContainerService {
     /**
      * 重新计算玩家最终属性
      *
-     * @param player
      */
     private void reloadPlayerFinalAttr(PlayerEntity player){
         AttrContainer attrContainer = (AttrContainer) ContainerType.ATTR.getContainer(player);
@@ -65,7 +64,6 @@ public class ContainerService implements IContainerService {
     /**
      * 重新计算玩家临时属性
      *
-     * @param player
      */
     private void reloadPlayerTempAttr(PlayerEntity player){
         AttrContainer attrContainer = (AttrContainer)ContainerType.ATTR.getContainer(player);

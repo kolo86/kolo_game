@@ -1,12 +1,3 @@
-/**
- * FileName: FieldObj
- * Author:   坤龙
- * Date:     2020/4/7 21:04
- * Description: 单个字段的信息
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.frame.resource.model;
 
 import lombok.Data;

@@ -1,12 +1,3 @@
-/**
- * FileName: RoleEnum
- * Author:   坤龙
- * Date:     2020/4/2 14:51
- * Description: 角色类型
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.role.constant;
 
 import java.util.HashMap;
@@ -36,14 +27,14 @@ public enum RoleEnum {
 
     private String roleName;
 
-    private static final Map<Integer, String> idToNameMap = new HashMap<Integer, String>();
+    private static final Map<Integer, String> ID_TO_NAME_MAP = new HashMap<>();
 
-    private static final Map<String, Integer> nameToIdMap = new HashMap<String, Integer>();
+    private static final Map<String, Integer> NAME_TO_ID_MAP = new HashMap<>();
 
     static{
         for(RoleEnum role : values()){
-            idToNameMap.put(role.getRoleId(), role.getRoleName());
-            nameToIdMap.put(role.getRoleName(), role.getRoleId());
+            ID_TO_NAME_MAP.put(role.getRoleId(), role.getRoleName());
+            NAME_TO_ID_MAP.put(role.getRoleName(), role.getRoleId());
         }
     }
 
@@ -55,21 +46,17 @@ public enum RoleEnum {
     /**
      * 通过角色ID获取角色名称
      *
-     * @param roleId
-     * @return
      */
     public static String getRoleNameById(int roleId){
-        return idToNameMap.get(roleId);
+        return ID_TO_NAME_MAP.get(roleId);
     }
 
     /**
      * 通过角色名字得到角色ID
      *
-     * @param roleName
-     * @return
      */
     public static int getIdByRoleName(String roleName){
-        return nameToIdMap.getOrDefault(roleName,0);
+        return NAME_TO_ID_MAP.getOrDefault(roleName,0);
     }
 
     public int getRoleId() {

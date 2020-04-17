@@ -24,8 +24,8 @@ public class NettyServer {
 
     private Logger logger = LoggerFactory.getLogger(NettyServer.class);
 
-    private static final EventLoopGroup bossGroup = useEpoll() ? new EpollEventLoopGroup(4) : new NioEventLoopGroup(4);
-    private static final EventLoopGroup workerGroup = useEpoll() ? new EpollEventLoopGroup() : new NioEventLoopGroup();
+    private static final EventLoopGroup BOSS_GROUP = useEpoll() ? new EpollEventLoopGroup(4) : new NioEventLoopGroup(4);
+    private static final EventLoopGroup WORKER_GROUP = useEpoll() ? new EpollEventLoopGroup() : new NioEventLoopGroup();
     private Channel channel;
 
     private String url;
@@ -38,10 +38,10 @@ public class NettyServer {
 
     @PostConstruct
     public void run(){
-        ChannelFuture future = null;
+        ChannelFuture future;
         try{
             ServerBootstrap bootstrap = new ServerBootstrap();
-            bootstrap.group(bossGroup, workerGroup)
+            bootstrap.group(BOSS_GROUP, WORKER_GROUP)
                     .channel(useEpoll()? EpollServerSocketChannel.class : NioServerSocketChannel.class)
                     .option(ChannelOption.SO_BACKLOG, 128)
                     .childOption(ChannelOption.SO_KEEPALIVE, true)
@@ -52,8 +52,8 @@ public class NettyServer {
             channel = future.channel();
             logger.info("Netty服务启动成功！");
         } catch (InterruptedException e) {
-            bossGroup.shutdownGracefully();
-            workerGroup.shutdownGracefully();
+            BOSS_GROUP.shutdownGracefully();
+            WORKER_GROUP.shutdownGracefully();
             logger.error("Netty启动失败！地址：{}，端口号：{}！", url, port);
             e.printStackTrace();
         }
@@ -64,14 +64,14 @@ public class NettyServer {
             channel.close();
         }
 
-        workerGroup.shutdownGracefully();
-        bossGroup.shutdownGracefully();
+        WORKER_GROUP.shutdownGracefully();
+        BOSS_GROUP.shutdownGracefully();
         logger.info("Netty服务关闭！");
     }
 
     private static boolean useEpoll(){
-        String os_name = System.getProperty("os.name");
-        return os_name != null && os_name.toLowerCase().contains("linux");
+        String osName = System.getProperty("os.name");
+        return osName != null && osName.toLowerCase().contains("linux");
     }
 
     public static void main(String[] args) {

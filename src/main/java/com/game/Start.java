@@ -24,15 +24,12 @@ public class Start {
 		applicationContext = new ClassPathXmlApplicationContext(DEFAULT_APPLICATION_CONTEXT);
 		
 		// 定义钩子，在JVM即将被销毁的时候，先关闭其他程序
-		Runtime.getRuntime().addShutdownHook(new Thread() {
-			@Override
-			public void run() {
-				if(applicationContext != null && applicationContext.isActive()) {
-					GlobalServiceImpl service = applicationContext.getBean(GlobalServiceImpl.class);
-					service.onStop();
-				}
+		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+			if(applicationContext != null && applicationContext.isActive()) {
+				GlobalServiceImpl service = applicationContext.getBean(GlobalServiceImpl.class);
+				service.onStop();
 			}
-		});
+		}));
 
 		// 初始化配置表数据
 		ResourceCacheHandler.init();

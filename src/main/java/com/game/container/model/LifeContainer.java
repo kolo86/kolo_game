@@ -40,7 +40,6 @@ public class LifeContainer extends AbstractContainer {
     /**
      * 改变HP的值
      *
-     * @param changeHp
      */
     public void changeHp(long changeHp){
         long remainHp = currentHp.addAndGet(changeHp);
@@ -54,7 +53,6 @@ public class LifeContainer extends AbstractContainer {
     /**
      * 改变MP的值
      *
-     * @param changeMp
      */
     public void changeMp(long changeMp){
         long mp = currentMp.get();
@@ -72,7 +70,6 @@ public class LifeContainer extends AbstractContainer {
     /**
      * 当前实体是否已经死亡
      *
-     * @return
      */
     public boolean isDead(){
         return this.currentHp.get() <= 0 ;
@@ -81,8 +78,6 @@ public class LifeContainer extends AbstractContainer {
     /**
      * 检查玩家够不够蓝去释放该技能
      *
-     * @param skillId
-     * @return
      */
     public boolean isMpEnough(int skillId){
         SkillResource skillResource = SkillManager.getSkillResource(skillId);

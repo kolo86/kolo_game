@@ -1,12 +1,3 @@
-/**
- * FileName: AbstractResource
- * Author:   坤龙
- * Date:     2020/4/7 21:26
- * Description: 抽象资源类
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.frame.resource;
 
 /**

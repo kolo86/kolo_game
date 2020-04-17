@@ -18,8 +18,6 @@ public class MonsterManager {
     /**
      * 根据怪物ID获取怪物表配置表
      *
-     * @param key
-     * @return
      */
     public MonsterResource getMonsterResource(int key){
         return (MonsterResource) ResourceCacheHandler.getResource(MonsterResource.class, key);

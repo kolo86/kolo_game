@@ -27,8 +27,6 @@ public class BattleFacade {
     /**
      * 攻击场景中的怪物
      *
-     * @param channel
-     * @param message
      */
     @ReceiverAnno
     public void battleMonster(Channel channel, Message.Cm_Attack message){

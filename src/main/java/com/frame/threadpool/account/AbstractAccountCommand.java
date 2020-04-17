@@ -19,8 +19,6 @@ public abstract class AbstractAccountCommand {
     /**
      * 获取该账号的线程池下标
      *
-     * @param coreNum
-     * @return
      */
     public int modIndex(int coreNum){
         return Math.abs(accountId.hashCode() % coreNum);

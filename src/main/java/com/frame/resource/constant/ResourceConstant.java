@@ -1,12 +1,3 @@
-/**
- * FileName: ResourceConstant
- * Author:   坤龙
- * Date:     2020/4/7 21:48
- * Description: 资源常量
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.frame.resource.constant;
 
 import org.springframework.util.ResourceUtils;

@@ -13,23 +13,18 @@ public interface IAccountService {
 	/**
 	 * 创建新账号
 	 *
-	 * @param channel
-	 * @param message
 	 */
 	void createAccount(Channel channel, Message.Cm_Register message);
 
 	/**
 	 * 检查账号是否已存在
 	 *
-	 * @param account
-	 * @return
 	 */
 	boolean checkAccount(String account);
 
 	/**
 	 * 保存新账号
 	 * 
-	 * @param entity
 	 */
 	void saveAccount(Channel channel, AccountEntity entity);
 
@@ -42,8 +37,6 @@ public interface IAccountService {
 	/**
 	 * 通过账号ID获取实体信息
 	 *
-	 * @param accountId
-	 * @return
 	 */
 	AccountEntity getEntityByAccountId(String accountId);
 

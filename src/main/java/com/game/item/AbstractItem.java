@@ -3,8 +3,6 @@ package com.game.item;
 import com.game.account.entity.PlayerEntity;
 import com.game.common.SpringContext;
 import com.game.item.constant.ItemType;
-import com.game.item.resource.ItemResource;
-import com.game.item.service.ItemManager;
 import com.game.unique.constant.UniqueType;
 import com.game.unique.service.UniqueServiceImpl;
 import lombok.Data;
@@ -48,7 +46,6 @@ public class AbstractItem {
     /**
      * 获取道具类型
      *
-     * @return
      */
     public ItemType getItemType() {
         return null;
@@ -57,7 +54,6 @@ public class AbstractItem {
     /**
      * 对同一个道具增加持有数量
      *
-     * @param num
      */
     public void addItem(int num){
         this.num += num;
@@ -66,7 +62,6 @@ public class AbstractItem {
     /**
      * 减少同一个道具的持有数量
      *
-     * @param num
      */
     public void reduceItem(int num){
         if(num > this.num){
@@ -80,6 +75,6 @@ public class AbstractItem {
      * 使用道具
      *
      */
-    public void useItem(PlayerEntity player){};
+    public void useItem(PlayerEntity player){}
 
 }

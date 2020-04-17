@@ -1,12 +1,3 @@
-/**
- * FileName: PlayerFacade
- * Author:   坤龙
- * Date:     2020/4/3 10:55
- * Description: 玩家门面类
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.account.facade;
 
 import com.frame.event.anno.EventAnno;
@@ -34,7 +25,6 @@ public class PlayerFacade {
     /**
      * 监听起服事件
      *
-     * @param event
      */
     @EventAnno
     public void onStart(OpenServerSyncEvent event){
@@ -53,7 +43,6 @@ public class PlayerFacade {
     /**
      * 监听关服事件
      *
-     * @param event
      */
     @EventAnno
     public void closeServer(CloseServerSyncEvent event){

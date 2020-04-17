@@ -75,8 +75,6 @@ public class PlayerEntity extends AbstractEntity {
     /**
      * 创建角色实体
      *
-     * @param accountEntity
-     * @return
      */
     public static PlayerEntity valueOf(AccountEntity accountEntity){
         PlayerEntity playerEnt = new PlayerEntity();
@@ -106,7 +104,6 @@ public class PlayerEntity extends AbstractEntity {
     /**
      * 玩家登录时，保存玩家通道信息。并初始化玩家容器
      *
-     * @param channel
      */
     public void login(Channel channel){
         this.channel = channel;

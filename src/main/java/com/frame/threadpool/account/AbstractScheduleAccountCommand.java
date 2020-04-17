@@ -29,8 +29,6 @@ public abstract class AbstractScheduleAccountCommand extends AbstractCommand {
     /**
      * 获取该玩家所在的线程池下标
      *
-     * @param threadPoolNum
-     * @return
      */
     public int modIndex(int threadPoolNum){
         return Math.abs(accountId.hashCode() % threadPoolNum);

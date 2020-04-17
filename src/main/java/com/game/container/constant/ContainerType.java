@@ -89,7 +89,6 @@ public enum ContainerType {
     /**
      * 初始化怪物容器
      *
-     * @return
      */
     public static Map<ContainerType, AbstractContainer> initMonsterContainer(MonsterResource resource){
         Map<ContainerType, AbstractContainer> map = new ConcurrentHashMap<>();
@@ -103,8 +102,6 @@ public enum ContainerType {
     /**
      * 初始化怪物容器
      *
-     * @param resource
-     * @return
      */
     public abstract AbstractContainer initForMonster(MonsterResource resource);
 
@@ -119,15 +116,12 @@ public enum ContainerType {
     /**
      * 初始化角色容器
      *
-     * @param playerResource
-     * @return
      */
     public abstract AbstractContainer initForPlayer(PlayerResource playerResource);
 
     /**
      * 初始化玩家容器
      *
-     * @return
      */
     public static Map<ContainerType, AbstractContainer> initPlayerContainer(PlayerResource resource){
         Map<ContainerType, AbstractContainer> map = new ConcurrentHashMap<>();

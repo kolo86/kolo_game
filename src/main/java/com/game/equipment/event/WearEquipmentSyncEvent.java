@@ -23,4 +23,8 @@ public class WearEquipmentSyncEvent implements IEvent {
         return event;
     }
 
+    @Override
+    public int getKey() {
+        return player.getAccountId().hashCode();
+    }
 }

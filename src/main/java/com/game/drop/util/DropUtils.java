@@ -16,9 +16,6 @@ public class DropUtils {
 
     /**
      * 查看道具被命中的数量
-     *
-     * @param dropProb
-     * @return
      */
     public static int hitNum(double dropProb){
         // 分子

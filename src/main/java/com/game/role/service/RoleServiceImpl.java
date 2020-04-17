@@ -1,12 +1,3 @@
-/**
- * FileName: RoleService
- * Author:   坤龙
- * Date:     2020/4/2 15:50
- * Description: 角色服务类
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.game.role.service;
 
 import com.frame.event.service.IEventService;
@@ -16,7 +7,7 @@ import com.game.common.constant.I18nId;
 import com.game.persistence.service.IPersistenceService;
 import com.game.role.constant.RoleEnum;
 import com.game.role.entity.RoleEntity;
-import com.game.role.event.CreateRoleEvent;
+import com.game.role.event.CreateRoleSyncEvent;
 import com.game.util.PacketUtils;
 import com.netty.common.ProtocolEnum;
 import com.netty.proto.Message;
@@ -88,7 +79,7 @@ public class RoleServiceImpl implements IRoleService {
         Message.Sm_CreateRole smCreateRole = Message.Sm_CreateRole.newBuilder().setSuccess(true).build();
         PacketUtils.send(player, ProtocolEnum.Sm_CreateRole.getId() , smCreateRole.toByteArray());
 
-        eventService.submitAsyncEvent(CreateRoleEvent.valueOf(player.getAccountId()));
+        eventService.submitAsyncEvent(CreateRoleSyncEvent.valueOf(player.getAccountId()));
     }
 
     /**

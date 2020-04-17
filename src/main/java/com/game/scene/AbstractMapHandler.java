@@ -3,7 +3,6 @@ package com.game.scene;
 import com.frame.resource.AbstractResource;
 import com.frame.resource.handler.ResourceCacheHandler;
 import com.game.account.entity.PlayerEntity;
-import com.game.common.constant.I18nId;
 import com.game.container.constant.ContainerType;
 import com.game.container.model.LifeContainer;
 import com.game.monster.model.Monster;
@@ -153,6 +152,9 @@ public abstract class AbstractMapHandler {
         List<Message.NpcInfo> npcInfoList = new ArrayList<>();
         for (int npcId : npcSet) {
             NpcResource resource = (NpcResource) ResourceCacheHandler.getResource(NpcResource.class, npcId);
+            if(Objects.isNull(resource)){
+                continue;
+            }
             npcInfoList.add(Message.NpcInfo.newBuilder().setNpcName(resource.getName()).build());
         }
         return npcInfoList;
@@ -198,7 +200,7 @@ public abstract class AbstractMapHandler {
 
         LifeContainer lifeContainer = (LifeContainer) ContainerType.LIFE.getContainer(monster);
         boolean dead = lifeContainer.isDead();
-        return dead ? false : true;
+        return !dead;
 
     }
 

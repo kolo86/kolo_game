@@ -24,7 +24,6 @@ public class BackpackManager {
     /**
      * 缓存背包实体数据
      *
-     * @param entity
      */
     public void cacheBackpack(BackPackEntity entity){
         backpackMap.put(entity.getAccountId(), entity);
@@ -33,8 +32,6 @@ public class BackpackManager {
     /**
      * 根据账号ID获取背包数据
      *
-     * @param accountId
-     * @return
      */
     public BackPackEntity getEntity(String accountId){
         BackPackEntity backPackEntity = backpackMap.get(accountId);

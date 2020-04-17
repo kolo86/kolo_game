@@ -1,22 +1,4 @@
-/**
- * FileName: FieldEnum
- * Author:   坤龙
- * Date:     2020/4/7 21:06
- * Description: 字段类型枚举
- * History:
- * <author>          <time>          <version>          <desc>
- * 作者姓名           修改时间           版本号              描述
- */
 package com.frame.resource.constant;
-
-/**
- * 〈一句话功能简述〉<br>
- * 〈字段类型枚举〉
- *
- * @author 坤龙
- * @create 2020/4/7
- * @since 1.0.0
- */
 
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -61,11 +43,11 @@ public enum FieldEnum {
     /**
      * Map< 字段名 ， 字段类型 >
      */
-    private static final Map<String, FieldEnum> fieldMap = new HashMap<String, FieldEnum>();
+    private static final Map<String, FieldEnum> FIELD_MAP = new HashMap<>();
 
     static {
         for (FieldEnum type : values()) {
-            fieldMap.put(type.getName().toUpperCase(), type);
+            FIELD_MAP.put(type.getName().toUpperCase(), type);
         }
     }
 
@@ -76,11 +58,9 @@ public enum FieldEnum {
     /**
      * 根据字段值获取字段类型
      *
-     * @param name
-     * @return
      */
     public static FieldEnum getType(String name) {
-        return fieldMap.get(name);
+        return FIELD_MAP.get(name);
     }
 
     public String getName() {

@@ -20,7 +20,11 @@ public class ServerHandler extends SimpleChannelInboundHandler<ProtocolMsg> {
     protected void channelRead0(ChannelHandlerContext ctx, ProtocolMsg msg) throws Exception {
         Object agreement = ProtocolParseUtils.getProtocolObj(msg);
         HandlerDefintion handlerDefintion = ActionDispatcher.getHandlerDefintion(agreement.getClass());
-        handlerDefintion.invoke(ctx.channel(), agreement);
+        try{
+            handlerDefintion.invoke(ctx.channel(), agreement);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override

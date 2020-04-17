@@ -61,8 +61,6 @@ public class EquipmentEntity extends AbstractEntity {
     /**
      * 创建装备实体
      *
-     * @param accountId
-     * @return
      */
     public static EquipmentEntity valueOf(String accountId){
         EquipmentEntity entity = new EquipmentEntity();
@@ -73,7 +71,6 @@ public class EquipmentEntity extends AbstractEntity {
     /**
      * 穿戴装备
      *
-     * @param item
      */
     public void wear(AbstractItem item){
         ItemResource itemResource = ItemManager.getResource(item.getItemId());
@@ -112,7 +109,6 @@ public class EquipmentEntity extends AbstractEntity {
     /**
      * 脱下装备
      *
-     * @param position
      */
     public AbstractItem deequipment(int position){
         AbstractItem abstractItem = equipmentMap.get(position);

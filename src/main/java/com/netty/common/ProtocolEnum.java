@@ -290,7 +290,7 @@ public enum ProtocolEnum {
         public void printMsg(ProtocolMsg msg) {
             Message.Sm_KillerReward protocolObj = (Message.Sm_KillerReward)ProtocolParseUtils.getProtocolObj(msg);
             StringBuilder sb = new StringBuilder();
-            sb.append("恭喜你，击杀了怪物，得到奖励：");
+            sb.append("恭喜你，击杀了怪物，得到奖励：\n");
             List<Message.Item> rewardList = protocolObj.getRewardList();
             rewardList.forEach(item -> sb.append("名称：").append(item.getItemName()).append(" 数量：").append(item.getItemNum()).append("\n"));
 

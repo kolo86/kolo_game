@@ -76,7 +76,8 @@ public class Equipment extends AbstractItem {
      */
     public void reduceDurability(int wastage){
         if(wastage > this.currentDurability){
-            wastage = this.currentDurability;
+            this.currentDurability = 0;
+            return ;
         }
         this.currentDurability -= wastage;
     }

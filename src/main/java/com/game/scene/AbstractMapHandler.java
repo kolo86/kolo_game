@@ -16,6 +16,8 @@ import com.game.util.PacketUtils;
 import com.netty.common.ProtocolEnum;
 import com.netty.proto.Message;
 import lombok.Data;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -30,6 +32,8 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @Data
 public abstract class AbstractMapHandler {
+
+    private static final Logger logger = LoggerFactory.getLogger(AbstractMapHandler.class);
     /**
      * 在当前场景中所有账号信息。Map < 账号ID， 账号信息 >
      */
@@ -45,6 +49,10 @@ public abstract class AbstractMapHandler {
 
     public AbstractMapHandler() {
         List<AbstractResource> resourceList = ResourceCacheHandler.getAllResource(MonsterResource.class);
+        if( Objects.isNull(resourceList) ){
+            logger.error("MonsterResource为空！无法初始化怪物信息！");
+            return ;
+        }
         for (AbstractResource resource : resourceList) {
             MonsterResource monsterResource = (MonsterResource) resource;
             Monster monster = Monster.valueOf(monsterResource);

@@ -13,6 +13,7 @@ import com.game.role.constant.RoleEnum;
 import com.game.scene.constant.SceneType;
 import com.game.skill.resource.SkillResource;
 import com.game.skill.service.SkillManager;
+import com.game.util.PacketUtils;
 import com.netty.proto.Message;
 import com.netty.util.ProtocolParseUtils;
 import org.slf4j.Logger;
@@ -38,7 +39,7 @@ public enum ProtocolEnum {
         @Override
         public void printMsg(ProtocolMsg msg) {
             Message.Response protocolObj = (Message.Response)ProtocolParseUtils.getProtocolObj(msg);
-            if(protocolObj.getSuccess()){
+            if(protocolObj.getType() == PacketUtils.I18N_TYPE ){
                 I18NResource i18nResource = WorldManager.getI18nResource(protocolObj.getResponseId());
                 logger.info(i18nResource.getDesc());
             }else{

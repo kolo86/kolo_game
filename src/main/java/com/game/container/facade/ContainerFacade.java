@@ -30,7 +30,6 @@ public class ContainerFacade {
     @EventAnno
     public void doCreateRole(CreateRoleSyncEvent event){
         containerService.initPlayerContainer(event.getAccountId());
-        containerService.initRecoverCommand(event.getAccountId());
     }
 
     /**
@@ -39,7 +38,6 @@ public class ContainerFacade {
      */
     @EventAnno
     public void doPlayerLogin(LoginEvent event){
-        containerService.initRecoverCommand(event.getAccountId());
         containerService.reloadPlayerAttr(event.getAccountId());
     }
 

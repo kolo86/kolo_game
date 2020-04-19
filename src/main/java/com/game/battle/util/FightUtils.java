@@ -2,13 +2,18 @@ package com.game.battle.util;
 
 import com.frame.event.service.EventServiceImpl;
 import com.frame.threadpool.account.AccountExecutor;
+import com.frame.threadpool.account.AccountScheduleExecutor;
 import com.game.account.entity.PlayerEntity;
+import com.game.account.resource.PlayerResource;
+import com.game.account.service.PlayerManager;
 import com.game.battle.command.RewardMonsterCommand;
 import com.game.battle.constant.BattleConstant;
 import com.game.battle.event.WeaponDurabilityZeroEvent;
 import com.game.common.SpringContext;
 import com.game.common.constant.I18nId;
+import com.game.container.command.RecoverMpCommand;
 import com.game.container.constant.AttrType;
+import com.game.container.constant.CommandConstant;
 import com.game.container.constant.ContainerType;
 import com.game.container.model.AttrContainer;
 import com.game.container.model.CoolDownContainer;
@@ -153,6 +158,24 @@ public class FightUtils {
 
         SkillResource skillResource = SkillManager.getSkillResource(skill);
         container.changeMp(-skillResource.getConsumeMp());
+
+        // 查看是否需要增加定时回蓝命令
+        boolean haveAutoRecoverMp = player.haveAutoRecoverMp();
+        if(!haveAutoRecoverMp){
+            initRecoverCommand(player);
+        }
+    }
+
+    /**
+     * 给玩家增加自动恢复蓝量的命令
+     *
+     * @param player
+     */
+    private static void initRecoverCommand(PlayerEntity player) {
+        PlayerResource playerResource = PlayerManager.getPlayerResource(player.getRoleType());
+        RecoverMpCommand command = RecoverMpCommand.valueOf(player, 1000, 1000, playerResource.getRecoverMp());
+        AccountScheduleExecutor.submit(command);
+        player.cacheCommand(CommandConstant.AUTO_RECOVER_MP, command);
     }
 
     /**

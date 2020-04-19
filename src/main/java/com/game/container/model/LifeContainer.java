@@ -41,20 +41,25 @@ public class LifeContainer extends AbstractContainer {
      * 改变HP的值
      *
      */
-    public void changeHp(long changeHp){
-        long remainHp = currentHp.addAndGet(changeHp);
-        if(remainHp < 0){
-            currentHp.set(0);
-        } else if( remainHp > maxHp ){
-            currentHp.set(maxHp);
+    public long changeHp(long changeHp){
+        long hp = currentHp.get();
+
+        long realChangeNum = changeHp;
+        if(changeHp < 0 && hp + changeHp < 0){
+            realChangeNum = -hp;
+        } else if(changeHp > 0 && hp + changeHp > maxHp){
+            realChangeNum = maxHp - hp;
         }
+
+        currentHp.addAndGet(realChangeNum);
+        return realChangeNum;
     }
 
     /**
      * 改变MP的值
      *
      */
-    public void changeMp(long changeMp){
+    public long changeMp(long changeMp){
         long mp = currentMp.get();
 
         long realChangeNum = changeMp;
@@ -63,8 +68,8 @@ public class LifeContainer extends AbstractContainer {
         } else if(changeMp > 0 && mp + changeMp > maxMp){
             realChangeNum = maxMp - mp;
         }
-
         currentMp.addAndGet(realChangeNum);
+        return realChangeNum;
     }
 
     /**

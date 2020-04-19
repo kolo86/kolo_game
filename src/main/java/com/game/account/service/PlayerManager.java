@@ -30,23 +30,12 @@ public class PlayerManager {
     private static final Map<Channel, PlayerEntity> CHANNEL_PLAYER_MAP = new ConcurrentHashMap<>();
     /** Map< 玩家账号ID， 玩家对象信息 > */
     private static final Map<String, PlayerEntity> ACCOUNT_PLAYER_MAP = new ConcurrentHashMap<>();
-    /** 当前对象的实例 */
-    private static PlayerManager instance;
-
-    @PostConstruct
-    public void init(){
-        instance = this;
-    }
-
-    public static PlayerManager getPlayerManager(){
-        return instance;
-    }
 
     /**
      * 根据角色类型获取角色配置表
      *
      */
-    public PlayerResource getPlayerResource(int roleType){
+    public static PlayerResource getPlayerResource(int roleType){
         return (PlayerResource) ResourceCacheHandler.getResource(PlayerResource.class, roleType);
     }
 

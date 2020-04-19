@@ -19,12 +19,6 @@ public interface IContainerService {
     void initPlayerContainer(String accountId);
 
     /**
-     * 执行定时恢复命令
-     *
-     */
-    void initRecoverCommand(String accountId);
-
-    /**
      * 穿戴装备事件
      *
      */

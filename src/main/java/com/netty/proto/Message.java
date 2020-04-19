@@ -8772,16 +8772,16 @@ public final class Message {
 
     /**
      * <pre>
-     *操作是否成功
+     * 1为I18N提示，2为字符串提示
      * </pre>
      *
-     * <code>bool success = 1;</code>
+     * <code>int32 type = 1;</code>
      */
-    boolean getSuccess();
+    int getType();
 
     /**
      * <pre>
-     * 响应ID，对应配置表ID
+     * I18N提示，对应I18NResource配置表ID
      * </pre>
      *
      * <code>int32 responseId = 2;</code>
@@ -8790,7 +8790,7 @@ public final class Message {
 
     /**
      * <pre>
-     * 额外附加内容
+     * 字符串提示
      * </pre>
      *
      * <code>string answer = 3;</code>
@@ -8798,7 +8798,7 @@ public final class Message {
     java.lang.String getAnswer();
     /**
      * <pre>
-     * 额外附加内容
+     * 字符串提示
      * </pre>
      *
      * <code>string answer = 3;</code>
@@ -8823,7 +8823,7 @@ public final class Message {
       super(builder);
     }
     private Response() {
-      success_ = false;
+      type_ = 0;
       responseId_ = 0;
       answer_ = "";
     }
@@ -8854,7 +8854,7 @@ public final class Message {
               break;
             case 8: {
 
-              success_ = input.readBool();
+              type_ = input.readInt32();
               break;
             }
             case 16: {
@@ -8900,24 +8900,24 @@ public final class Message {
               com.netty.proto.Message.Response.class, com.netty.proto.Message.Response.Builder.class);
     }
 
-    public static final int SUCCESS_FIELD_NUMBER = 1;
-    private boolean success_;
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private int type_;
     /**
      * <pre>
-     *操作是否成功
+     * 1为I18N提示，2为字符串提示
      * </pre>
      *
-     * <code>bool success = 1;</code>
+     * <code>int32 type = 1;</code>
      */
-    public boolean getSuccess() {
-      return success_;
+    public int getType() {
+      return type_;
     }
 
     public static final int RESPONSEID_FIELD_NUMBER = 2;
     private int responseId_;
     /**
      * <pre>
-     * 响应ID，对应配置表ID
+     * I18N提示，对应I18NResource配置表ID
      * </pre>
      *
      * <code>int32 responseId = 2;</code>
@@ -8930,7 +8930,7 @@ public final class Message {
     private volatile java.lang.Object answer_;
     /**
      * <pre>
-     * 额外附加内容
+     * 字符串提示
      * </pre>
      *
      * <code>string answer = 3;</code>
@@ -8949,7 +8949,7 @@ public final class Message {
     }
     /**
      * <pre>
-     * 额外附加内容
+     * 字符串提示
      * </pre>
      *
      * <code>string answer = 3;</code>
@@ -8982,8 +8982,8 @@ public final class Message {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (success_ != false) {
-        output.writeBool(1, success_);
+      if (type_ != 0) {
+        output.writeInt32(1, type_);
       }
       if (responseId_ != 0) {
         output.writeInt32(2, responseId_);
@@ -9000,9 +9000,9 @@ public final class Message {
       if (size != -1) return size;
 
       size = 0;
-      if (success_ != false) {
+      if (type_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(1, success_);
+          .computeInt32Size(1, type_);
       }
       if (responseId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
@@ -9027,8 +9027,8 @@ public final class Message {
       com.netty.proto.Message.Response other = (com.netty.proto.Message.Response) obj;
 
       boolean result = true;
-      result = result && (getSuccess()
-          == other.getSuccess());
+      result = result && (getType()
+          == other.getType());
       result = result && (getResponseId()
           == other.getResponseId());
       result = result && getAnswer()
@@ -9044,9 +9044,8 @@ public final class Message {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + SUCCESS_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getSuccess());
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getType();
       hash = (37 * hash) + RESPONSEID_FIELD_NUMBER;
       hash = (53 * hash) + getResponseId();
       hash = (37 * hash) + ANSWER_FIELD_NUMBER;
@@ -9188,7 +9187,7 @@ public final class Message {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        success_ = false;
+        type_ = 0;
 
         responseId_ = 0;
 
@@ -9220,7 +9219,7 @@ public final class Message {
       @java.lang.Override
       public com.netty.proto.Message.Response buildPartial() {
         com.netty.proto.Message.Response result = new com.netty.proto.Message.Response(this);
-        result.success_ = success_;
+        result.type_ = type_;
         result.responseId_ = responseId_;
         result.answer_ = answer_;
         onBuilt();
@@ -9271,8 +9270,8 @@ public final class Message {
 
       public Builder mergeFrom(com.netty.proto.Message.Response other) {
         if (other == com.netty.proto.Message.Response.getDefaultInstance()) return this;
-        if (other.getSuccess() != false) {
-          setSuccess(other.getSuccess());
+        if (other.getType() != 0) {
+          setType(other.getType());
         }
         if (other.getResponseId() != 0) {
           setResponseId(other.getResponseId());
@@ -9310,40 +9309,40 @@ public final class Message {
         return this;
       }
 
-      private boolean success_ ;
+      private int type_ ;
       /**
        * <pre>
-       *操作是否成功
+       * 1为I18N提示，2为字符串提示
        * </pre>
        *
-       * <code>bool success = 1;</code>
+       * <code>int32 type = 1;</code>
        */
-      public boolean getSuccess() {
-        return success_;
+      public int getType() {
+        return type_;
       }
       /**
        * <pre>
-       *操作是否成功
+       * 1为I18N提示，2为字符串提示
        * </pre>
        *
-       * <code>bool success = 1;</code>
+       * <code>int32 type = 1;</code>
        */
-      public Builder setSuccess(boolean value) {
+      public Builder setType(int value) {
         
-        success_ = value;
+        type_ = value;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       *操作是否成功
+       * 1为I18N提示，2为字符串提示
        * </pre>
        *
-       * <code>bool success = 1;</code>
+       * <code>int32 type = 1;</code>
        */
-      public Builder clearSuccess() {
+      public Builder clearType() {
         
-        success_ = false;
+        type_ = 0;
         onChanged();
         return this;
       }
@@ -9351,7 +9350,7 @@ public final class Message {
       private int responseId_ ;
       /**
        * <pre>
-       * 响应ID，对应配置表ID
+       * I18N提示，对应I18NResource配置表ID
        * </pre>
        *
        * <code>int32 responseId = 2;</code>
@@ -9361,7 +9360,7 @@ public final class Message {
       }
       /**
        * <pre>
-       * 响应ID，对应配置表ID
+       * I18N提示，对应I18NResource配置表ID
        * </pre>
        *
        * <code>int32 responseId = 2;</code>
@@ -9374,7 +9373,7 @@ public final class Message {
       }
       /**
        * <pre>
-       * 响应ID，对应配置表ID
+       * I18N提示，对应I18NResource配置表ID
        * </pre>
        *
        * <code>int32 responseId = 2;</code>
@@ -9389,7 +9388,7 @@ public final class Message {
       private java.lang.Object answer_ = "";
       /**
        * <pre>
-       * 额外附加内容
+       * 字符串提示
        * </pre>
        *
        * <code>string answer = 3;</code>
@@ -9408,7 +9407,7 @@ public final class Message {
       }
       /**
        * <pre>
-       * 额外附加内容
+       * 字符串提示
        * </pre>
        *
        * <code>string answer = 3;</code>
@@ -9428,7 +9427,7 @@ public final class Message {
       }
       /**
        * <pre>
-       * 额外附加内容
+       * 字符串提示
        * </pre>
        *
        * <code>string answer = 3;</code>
@@ -9445,7 +9444,7 @@ public final class Message {
       }
       /**
        * <pre>
-       * 额外附加内容
+       * 字符串提示
        * </pre>
        *
        * <code>string answer = 3;</code>
@@ -9458,7 +9457,7 @@ public final class Message {
       }
       /**
        * <pre>
-       * 额外附加内容
+       * 字符串提示
        * </pre>
        *
        * <code>string answer = 3;</code>
@@ -22934,33 +22933,33 @@ public final class Message {
       "oleType\030\002 \001(\t\022\021\n\tliveState\030\003 \001(\t\"\032\n\007NpcI" +
       "nfo\022\017\n\007npcName\030\001 \001(\t\"W\n\013monsterInfo\022\023\n\013m" +
       "onsterName\030\001 \001(\t\022\021\n\tcurrentHp\030\002 \001(\003\022\r\n\005m" +
-      "axHp\030\003 \001(\003\022\021\n\tmonsterId\030\004 \001(\005\"?\n\010Respons" +
-      "e\022\017\n\007success\030\001 \001(\010\022\022\n\nresponseId\030\002 \001(\005\022\016" +
-      "\n\006answer\030\003 \001(\t\"\t\n\007Cm_Quit\"\032\n\007Sm_Quit\022\017\n\007" +
-      "success\030\001 \001(\010\"\030\n\007Cm_Talk\022\r\n\005npcId\030\001 \001(\005\"" +
-      "\032\n\007Sm_Talk\022\017\n\007message\030\001 \001(\t\"\036\n\tCm_Attack" +
-      "\022\021\n\tmonsterId\030\001 \001(\005\"A\n\tSm_Attack\022\017\n\007skil" +
-      "lId\030\001 \001(\005\022\023\n\013monsterName\030\002 \001(\t\022\016\n\006damage" +
-      "\030\003 \001(\003\"1\n\016Sm_MonsterDead\022\016\n\006killer\030\001 \001(\t" +
-      "\022\017\n\007monster\030\002 \001(\t\"(\n\017Sm_KillerReward\022\025\n\006" +
-      "reward\030\001 \003(\0132\005.Item\"M\n\004Item\022\022\n\nitemOnlyI" +
-      "d\030\001 \001(\005\022\020\n\010itemName\030\002 \001(\t\022\017\n\007itemNum\030\003 \001" +
-      "(\005\022\016\n\006itemId\030\004 \001(\005\"\r\n\013Cm_BackPack\"\"\n\013Sm_" +
-      "BackPack\022\023\n\004item\030\001 \003(\0132\005.Item\" \n\nCm_UseI" +
-      "tem\022\022\n\nitemOnlyId\030\001 \001(\005\"\034\n\nSm_UseItem\022\016\n" +
-      "\006result\030\001 \001(\t\"\016\n\014Cm_Equipment\"}\n\014Sm_Equi" +
-      "pment\022/\n\tequipment\030\001 \003(\0132\034.Sm_Equipment." +
-      "EquipmentEntry\032<\n\016EquipmentEntry\022\013\n\003key\030" +
-      "\001 \001(\005\022\031\n\005value\030\002 \001(\0132\n.Equipment:\0028\001\"f\n\t" +
-      "Equipment\022\022\n\nitemOnlyId\030\001 \001(\005\022\020\n\010itemNam" +
-      "e\030\002 \001(\t\022\017\n\007itemNum\030\003 \001(\005\022\016\n\006itemId\030\004 \001(\005" +
-      "\022\022\n\ndurability\030\005 \001(\005\"\036\n\007Cm_Wear\022\023\n\013equip" +
-      "mentId\030\001 \001(\005\"\032\n\007Sm_Wear\022\017\n\007success\030\001 \001(\010" +
-      "\"%\n\016Cm_Deequipment\022\023\n\013equipmentId\030\001 \001(\005\"" +
-      "!\n\016Sm_Deequipment\022\017\n\007success\030\001 \001(\010\" \n\tCm" +
-      "_Repair\022\023\n\013equipmentId\030\001 \001(\005\"\034\n\tSm_Repai" +
-      "r\022\017\n\007success\030\001 \001(\010B\034\n\017com.netty.protoB\007M" +
-      "essageH\001b\006proto3"
+      "axHp\030\003 \001(\003\022\021\n\tmonsterId\030\004 \001(\005\"<\n\010Respons" +
+      "e\022\014\n\004type\030\001 \001(\005\022\022\n\nresponseId\030\002 \001(\005\022\016\n\006a" +
+      "nswer\030\003 \001(\t\"\t\n\007Cm_Quit\"\032\n\007Sm_Quit\022\017\n\007suc" +
+      "cess\030\001 \001(\010\"\030\n\007Cm_Talk\022\r\n\005npcId\030\001 \001(\005\"\032\n\007" +
+      "Sm_Talk\022\017\n\007message\030\001 \001(\t\"\036\n\tCm_Attack\022\021\n" +
+      "\tmonsterId\030\001 \001(\005\"A\n\tSm_Attack\022\017\n\007skillId" +
+      "\030\001 \001(\005\022\023\n\013monsterName\030\002 \001(\t\022\016\n\006damage\030\003 " +
+      "\001(\003\"1\n\016Sm_MonsterDead\022\016\n\006killer\030\001 \001(\t\022\017\n" +
+      "\007monster\030\002 \001(\t\"(\n\017Sm_KillerReward\022\025\n\006rew" +
+      "ard\030\001 \003(\0132\005.Item\"M\n\004Item\022\022\n\nitemOnlyId\030\001" +
+      " \001(\005\022\020\n\010itemName\030\002 \001(\t\022\017\n\007itemNum\030\003 \001(\005\022" +
+      "\016\n\006itemId\030\004 \001(\005\"\r\n\013Cm_BackPack\"\"\n\013Sm_Bac" +
+      "kPack\022\023\n\004item\030\001 \003(\0132\005.Item\" \n\nCm_UseItem" +
+      "\022\022\n\nitemOnlyId\030\001 \001(\005\"\034\n\nSm_UseItem\022\016\n\006re" +
+      "sult\030\001 \001(\t\"\016\n\014Cm_Equipment\"}\n\014Sm_Equipme" +
+      "nt\022/\n\tequipment\030\001 \003(\0132\034.Sm_Equipment.Equ" +
+      "ipmentEntry\032<\n\016EquipmentEntry\022\013\n\003key\030\001 \001" +
+      "(\005\022\031\n\005value\030\002 \001(\0132\n.Equipment:\0028\001\"f\n\tEqu" +
+      "ipment\022\022\n\nitemOnlyId\030\001 \001(\005\022\020\n\010itemName\030\002" +
+      " \001(\t\022\017\n\007itemNum\030\003 \001(\005\022\016\n\006itemId\030\004 \001(\005\022\022\n" +
+      "\ndurability\030\005 \001(\005\"\036\n\007Cm_Wear\022\023\n\013equipmen" +
+      "tId\030\001 \001(\005\"\032\n\007Sm_Wear\022\017\n\007success\030\001 \001(\010\"%\n" +
+      "\016Cm_Deequipment\022\023\n\013equipmentId\030\001 \001(\005\"!\n\016" +
+      "Sm_Deequipment\022\017\n\007success\030\001 \001(\010\" \n\tCm_Re" +
+      "pair\022\023\n\013equipmentId\030\001 \001(\005\"\034\n\tSm_Repair\022\017" +
+      "\n\007success\030\001 \001(\010B\034\n\017com.netty.protoB\007Mess" +
+      "ageH\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -23057,7 +23056,7 @@ public final class Message {
     internal_static_Response_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Response_descriptor,
-        new java.lang.String[] { "Success", "ResponseId", "Answer", });
+        new java.lang.String[] { "Type", "ResponseId", "Answer", });
     internal_static_Cm_Quit_descriptor =
       getDescriptor().getMessageTypes().get(14);
     internal_static_Cm_Quit_fieldAccessorTable = new

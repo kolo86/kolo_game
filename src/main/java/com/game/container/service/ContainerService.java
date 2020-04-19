@@ -37,15 +37,6 @@ public class ContainerService implements IContainerService {
         reloadPlayerAttr(accountId);
     }
 
-    @Override
-    public void initRecoverCommand(String accountId) {
-        PlayerEntity player = playerService.getPlayer(accountId);
-        PlayerResource playerResource = PlayerManager.getPlayerManager().getPlayerResource(player.getRoleType());
-        // MP
-        RecoverMpCommand command = RecoverMpCommand.valueOf(player, 1000, 1000, playerResource.getRecoverMp());
-        AccountScheduleExecutor.submit(command);
-        player.cacheCommand(command);
-    }
 
     @Override
     public void doWearEquipment(PlayerEntity player) {

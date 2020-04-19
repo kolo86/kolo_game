@@ -4,6 +4,7 @@ import com.frame.resource.handler.ResourceCacheHandler;
 import com.frame.threadpool.AbstractCommand;
 import com.game.account.resource.PlayerResource;
 import com.game.container.AbstractContainer;
+import com.game.container.constant.CommandConstant;
 import com.game.container.constant.ContainerType;
 import com.game.equipment.entity.EquipmentEntity;
 import com.game.packback.entity.BackPackEntity;
@@ -16,9 +17,9 @@ import lombok.Data;
 import org.hibernate.annotations.Table;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -67,7 +68,7 @@ public class PlayerEntity extends AbstractEntity {
     private transient BackPackEntity backPackEntity;
 
     /** 玩家当前所有的命令 */
-    private transient List<AbstractCommand> commandList = new ArrayList<>();
+    private transient Map<String, AbstractCommand> commandMap = new HashMap<>();
 
     /** 装备信息 */
     private transient EquipmentEntity equipmentEntity;
@@ -138,7 +139,7 @@ public class PlayerEntity extends AbstractEntity {
      *
      */
     public void cancelCommand(){
-        for(AbstractCommand command : commandList){
+        for(AbstractCommand command : commandMap.values()){
             command.cancel();
         }
     }
@@ -147,9 +148,21 @@ public class PlayerEntity extends AbstractEntity {
      * 缓存玩家command
      *
      */
-    public void cacheCommand(AbstractCommand command){
-        commandList.add(command);
+    public void cacheCommand(String name, AbstractCommand command){
+        commandMap.put(name, command);
     }
 
+    /**
+     * 玩家当前是否已经有恢复蓝量的命令
+     *
+     * @return
+     */
+    public boolean haveAutoRecoverMp(){
+        AbstractCommand abstractCommand = commandMap.get(CommandConstant.AUTO_RECOVER_MP);
+        if(Objects.isNull(abstractCommand) || abstractCommand.isCannel()){
+            return false;
+        }
+        return true;
+    }
 
 }

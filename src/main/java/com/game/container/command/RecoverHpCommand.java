@@ -4,6 +4,7 @@ import com.frame.threadpool.account.AbstractScheduleAccountCommand;
 import com.game.account.entity.PlayerEntity;
 import com.game.container.constant.ContainerType;
 import com.game.container.model.LifeContainer;
+import com.game.util.PacketUtils;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -49,7 +50,13 @@ public class RecoverHpCommand extends AbstractScheduleAccountCommand {
         }
 
         LifeContainer container = (LifeContainer) ContainerType.LIFE.getContainer(player);
-        container.changeHp(recoverHp);
+        long changeHp = container.changeHp(recoverHp);
+        if( changeHp != 0 ){
+            PacketUtils.sendResponse(player, "你恢复了" + changeHp + "点Hp!");
+        } else if( invalidTime == 0 ){
+            // 对于自动恢复类型，血量满了就不再执行
+            this.cancel();
+        }
     }
 
 }

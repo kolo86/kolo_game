@@ -65,9 +65,9 @@ message monsterInfo{
 
 // 返回给客户端的消息
 message Response{
-  bool success = 1; //操作是否成功
-  int32 responseId = 2; // 响应ID，对应配置表ID
-  string answer = 3; // 额外附加内容
+  int32 type = 1; // 1为I18N提示，2为字符串提示
+  int32 responseId = 2; // I18N提示，对应I18NResource配置表ID
+  string answer = 3; // 字符串提示
 }
 
 // 玩家退出游戏

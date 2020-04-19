@@ -17,6 +17,11 @@ import java.util.Map;
  */
 public class PacketUtils {
 
+    /** I18N响应类型 */
+    public static final int I18N_TYPE = 1;
+    /** 字符串响应类型 */
+    public static final int ANSWER_TYPE = 2;
+
     /**
      * 发送一句话给所有处于同一场景的玩家
      *
@@ -35,7 +40,7 @@ public class PacketUtils {
      */
     public static void sendResponse(Channel channel, int i18nId){
         Message.Response response = Message.Response.newBuilder()
-                .setSuccess(true).setResponseId(i18nId).build();
+                .setType(PacketUtils.I18N_TYPE).setResponseId(i18nId).build();
         ProtocolMsg protocolMsg = ProtocolMsg.valueOf(ProtocolEnum.Response.getId(), response.toByteArray());
         channel.writeAndFlush(protocolMsg);
     }
@@ -46,7 +51,20 @@ public class PacketUtils {
      */
     public static void sendResponse(PlayerEntity player, int i18nId){
         Message.Response response = Message.Response.newBuilder()
-                .setSuccess(true).setResponseId(i18nId).build();
+                .setType(PacketUtils.I18N_TYPE).setResponseId(i18nId).build();
+        ProtocolMsg protocolMsg = ProtocolMsg.valueOf(ProtocolEnum.Response.getId(), response.toByteArray());
+        player.getChannel().writeAndFlush(protocolMsg);
+    }
+
+    /**
+     * 发送字符串的响应消息给玩家
+     *
+     * @param player
+     * @param answer
+     */
+    public static void sendResponse(PlayerEntity player, String answer){
+        Message.Response response = Message.Response.newBuilder()
+                .setType(PacketUtils.ANSWER_TYPE).setAnswer(answer).build();
         ProtocolMsg protocolMsg = ProtocolMsg.valueOf(ProtocolEnum.Response.getId(), response.toByteArray());
         player.getChannel().writeAndFlush(protocolMsg);
     }

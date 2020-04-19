@@ -30,7 +30,9 @@ public class EventBeanPostProcessor implements BeanPostProcessor, Ordered {
         Method[] methods = beanClass.getDeclaredMethods();
         for( Method method : methods){
             if(method.isAnnotationPresent(EventAnno.class)){
-                EventDefintion eventDefintion = EventDefintion.valueOf(bean, method);
+                EventAnno eventAnno = method.getAnnotation(EventAnno.class);
+                int level = eventAnno.level();
+                EventDefintion eventDefintion = EventDefintion.valueOf(bean, method, level);
                 EventDispatcher.registerEventDefintion(method, eventDefintion);
             }
         }

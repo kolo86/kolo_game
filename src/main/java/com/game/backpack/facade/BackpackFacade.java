@@ -43,7 +43,7 @@ public class BackpackFacade {
      * 执行开服事件
      *
      */
-    @EventAnno
+    @EventAnno(level = 300)
     public void doOpenServer(OpenServerSyncEvent event){
         backPackService.openServer();
     }

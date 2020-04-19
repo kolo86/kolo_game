@@ -43,25 +43,15 @@ public class BackpackServiceImpl implements IBackPackService {
 
     @Override
     public void openServer() {
-        if(backpackManager.isInit()){
-           return ;
-        }
-
         List<Object> all = persistenceService.getAll(BackPackEntity.class);
         for(Object obj : all){
             BackPackEntity entity = (BackPackEntity)obj;
             backpackManager.cacheBackpack(entity);
         }
-
-        backpackManager.setInit(true);
     }
 
     @Override
     public BackPackEntity getBackpack(String accountId) {
-        if(!backpackManager.isInit()){
-            openServer();
-        }
-
         return backpackManager.getEntity(accountId);
     }
 

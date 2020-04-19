@@ -4,10 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -32,6 +29,16 @@ public class EventDispatcher {
         Class<?>[] parameterTypes = method.getParameterTypes();
         List<EventDefintion> defintionList = EVENT_DEFINTION_MAP.computeIfAbsent(parameterTypes[0], k -> new LinkedList<>());
         defintionList.add(defintion);
+    }
+
+    /**
+     * 对所有监听了事件的地方做排序
+     *
+     */
+    public static void sort(){
+        for( List<EventDefintion> list:  EVENT_DEFINTION_MAP.values()){
+            Collections.sort(list);
+        }
     }
 
     /**

@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -22,9 +21,6 @@ import java.util.concurrent.ConcurrentHashMap;
 public class AccountManager{
 	
 	private static final Logger logger = LoggerFactory.getLogger("AccountManager");
-
-	// 是否已经被初始化
-	private transient boolean init = false;
 
 	private Map<String, AccountEntity> accountMap = new ConcurrentHashMap<>();
 	

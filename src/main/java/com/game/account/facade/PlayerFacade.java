@@ -26,7 +26,7 @@ public class PlayerFacade {
      * 监听起服事件
      *
      */
-    @EventAnno
+    @EventAnno(level = 500)
     public void onStart(OpenServerSyncEvent event){
         playerService.onStart();
     }

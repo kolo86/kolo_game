@@ -75,7 +75,7 @@ public class EquipmentFacade {
      * 监听起服事件
      *
      */
-    @EventAnno
+    @EventAnno(level = 400)
     public void doOpenServer(OpenServerSyncEvent event){
         equipmentService.doOpenServer();
     }

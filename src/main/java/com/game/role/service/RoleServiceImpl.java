@@ -39,16 +39,11 @@ public class RoleServiceImpl implements IRoleService {
 
     @Override
     public void onStart() {
-        if(roleManager.isInit()){
-           return ;
-        }
-
         List<Object> objectList = persistenceService.getAll(RoleEntity.class);
         for(Object obj : objectList){
             RoleEntity role = (RoleEntity) obj;
             roleManager.cacheRole(role);
         }
-        roleManager.setInit(true);
     }
 
     @Override
@@ -62,7 +57,7 @@ public class RoleServiceImpl implements IRoleService {
 
     @Override
     public void doCreateRole(Channel channel, int roleType) {
-        boolean checkCreateRoleCondition = checkCreateRoleCondition(channel, roleType);
+        boolean checkCreateRoleCondition = checkCreateRoleCondition(channel);
         if(!checkCreateRoleCondition){
             return ;
         }
@@ -86,7 +81,7 @@ public class RoleServiceImpl implements IRoleService {
      * 检查能够创建角色
      *
      */
-    private boolean checkCreateRoleCondition(Channel channel, int roleType){
+    private boolean checkCreateRoleCondition(Channel channel){
         PlayerEntity player = playerService.getPlayer(channel);
         if(player == null){
             PacketUtils.sendResponse(channel,I18nId.PLEASE_LOGIN);
@@ -103,10 +98,6 @@ public class RoleServiceImpl implements IRoleService {
 
     @Override
     public RoleEntity getRoleByAccountId(String accountId) {
-        if(!roleManager.isInit()){
-            onStart();
-        }
-
         return roleManager.getRole(accountId);
     }
 

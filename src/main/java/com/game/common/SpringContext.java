@@ -1,5 +1,6 @@
 package com.game.common;
 
+import com.frame.event.EventDispatcher;
 import org.springframework.context.ApplicationContext;
 
 /**
@@ -16,11 +17,15 @@ public class SpringContext {
     private static ApplicationContext applicationContext = null;
 
     /**
-     * 缓存Spring容器对象
+     * 当Spring启动完成后，需要处理的事情
      *
      */
-    public static void cacheSpringApplication(ApplicationContext applicationContext){
+    public static void afterSpringStart(ApplicationContext applicationContext){
+        // 缓存Spring容器对象
         SpringContext.applicationContext = applicationContext;
+
+        // 对所有监听了事件的地方，做优先级排序
+        EventDispatcher.sort();
     }
 
     /**

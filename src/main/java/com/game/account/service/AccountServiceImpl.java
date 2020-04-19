@@ -43,16 +43,11 @@ public class AccountServiceImpl implements IAccountService{
 	 */
 	@Override
 	public void onStart(){
-		if(accountManager.isInit()){
-			return ;
-		}
-
 		List<Object> allAccountEntity = persistenceService.getAll(AccountEntity.class);
 		for(Object obj : allAccountEntity){
 			AccountEntity entity = (AccountEntity)obj;
 			accountManager.addAccount(entity);
 		}
-		accountManager.setInit(true);
 	}
 
 	@Override
@@ -101,10 +96,6 @@ public class AccountServiceImpl implements IAccountService{
 
 	@Override
 	public AccountEntity getEntityByAccountId(String accountId) {
-		if(!accountManager.isInit()){
-			onStart();
-		}
-
 		return accountManager.getAccountMap().get(accountId);
 	}
 

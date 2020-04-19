@@ -36,7 +36,7 @@ public class AccountFacade {
 	 * 监听开服事件，缓存账号信息
 	 *
 	 */
-	@EventAnno
+	@EventAnno(level = 100)
 	public void doOpenServer(OpenServerSyncEvent event){
 		accountService.onStart();
 	}

@@ -48,17 +48,12 @@ public class EquipmentServiceImpl implements IEquipmentService {
 
     @Override
     public void doOpenServer() {
-        if (equipmentManager.isInit()) {
-            return;
-        }
-
         List<Object> all = persistenceService.getAll(EquipmentEntity.class);
         for (Object obj : all) {
             EquipmentEntity entity = (EquipmentEntity) obj;
             entity.reCalEquipmentAttr();
             equipmentManager.cache(entity);
         }
-        equipmentManager.setInit(true);
     }
 
     @Override
@@ -71,10 +66,6 @@ public class EquipmentServiceImpl implements IEquipmentService {
 
     @Override
     public EquipmentEntity getEquipment(String accountId) {
-        if (!equipmentManager.isInit()) {
-            doOpenServer();
-        }
-
         return equipmentManager.getEntity(accountId);
     }
 

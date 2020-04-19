@@ -14,10 +14,6 @@ import java.util.Map;
 @Data
 @Component
 public class BackpackManager {
-
-    /** 是否已经起服初始化 */
-    private transient boolean init = false;
-
     /** Map < 账号ID， 背包实体 ></> */
     private Map<String , BackPackEntity> backpackMap = new HashMap<>();
 
@@ -34,7 +30,6 @@ public class BackpackManager {
      *
      */
     public BackPackEntity getEntity(String accountId){
-        BackPackEntity backPackEntity = backpackMap.get(accountId);
-        return backPackEntity;
+        return backpackMap.get(accountId);
     }
 }

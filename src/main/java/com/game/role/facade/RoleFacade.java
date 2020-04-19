@@ -51,7 +51,7 @@ public class RoleFacade {
      * 监听起服事件，初始化角色信息
      *
      */
-    @EventAnno
+    @EventAnno(level = 200)
     public void onStart(OpenServerSyncEvent event){
         roleService.onStart();
     }

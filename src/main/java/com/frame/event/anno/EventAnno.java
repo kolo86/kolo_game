@@ -15,4 +15,10 @@ import java.lang.annotation.*;
 @Target(value = {ElementType.METHOD})
 public @interface EventAnno {
 
+    /**
+     * 事件的优先级。数值越小，优先级越大
+     *
+     */
+    int level() default 0;
+
 }

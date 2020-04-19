@@ -36,7 +36,7 @@ public class Start {
 
 		// 加载spring容器
 		applicationContext.start();
-		SpringContext.cacheSpringApplication(applicationContext);
+		SpringContext.afterSpringStart(applicationContext);
 		
 		logger.info("spring初始化完成");
 		

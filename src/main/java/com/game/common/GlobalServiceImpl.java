@@ -27,10 +27,8 @@ public class GlobalServiceImpl implements IGlobalService{
 	@Override
 	public void onStart() {
 		// 方法1 ： 直接调用各个模块的start方法，这样子在启动时，模块的启动顺序得到控制
-		UniqueServiceImpl uniqueService = (UniqueServiceImpl)SpringContext.getBean(UniqueServiceImpl.class);
-		uniqueService.doOpenServer();
 
-		// 方法2 ： 抛出onStart事件，这样子更为方便
+		// 方法2 ： 抛出onStart事件，这样子更为方便。同时，现在已经可以对执行监听事件的地方做排序
 		eventService.submitSyncEvent(OpenServerSyncEvent.valueOf());
 	}
 	

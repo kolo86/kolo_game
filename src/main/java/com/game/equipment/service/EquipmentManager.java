@@ -20,10 +20,6 @@ import java.util.Map;
 @Data
 @Component
 public class EquipmentManager {
-
-    /** 起服后，是否已经被初始化完成 */
-    private transient boolean init = false;
-
     /** Map< 玩家账号ID， 装备信息 ></> */
     private Map<String, EquipmentEntity> equipmentEntityMap = new HashMap<>();
 

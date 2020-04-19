@@ -58,8 +58,10 @@ public class ContainerService implements IContainerService {
      */
     private void reloadPlayerTempAttr(PlayerEntity player){
         AttrContainer attrContainer = (AttrContainer)ContainerType.ATTR.getContainer(player);
+        // 装备模块的临时属性
         EquipmentEntity equipmentEntity = player.getEquipmentEntity();
         Map<AttrType, Long> equipmentAttrMap = equipmentEntity.getEquipmentAttrMap();
+        // 统计所有的临时属性，覆盖之前旧的临时属性
         attrContainer.coverTempAttr(equipmentAttrMap);
     }
 

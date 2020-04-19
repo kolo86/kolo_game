@@ -1,6 +1,7 @@
 package com.game.item.model;
 
 
+import com.game.container.constant.AttrType;
 import com.game.equipment.constant.EquipmentType;
 import com.game.equipment.resource.EquipmentResource;
 import com.game.equipment.service.EquipmentManager;
@@ -9,6 +10,9 @@ import com.game.item.constant.ItemType;
 import com.game.item.resource.ItemResource;
 import com.game.item.service.ItemManager;
 import lombok.Data;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -21,9 +25,10 @@ import lombok.Data;
 @Data
 public class Equipment extends AbstractItem {
 
-
     /** 当前耐久度 */
     private int currentDurability;
+    /** 装备属性, Map< 属性类型， 属性值 > */
+    private Map<AttrType, Long> equipmentAttrMap = new HashMap<>();
 
     @Override
     public ItemType getItemType() {
@@ -46,9 +51,13 @@ public class Equipment extends AbstractItem {
         ItemResource itemResource = ItemManager.getResource(itemId);
         String attrs = itemResource.getAttrs();
         EquipmentResource equipmentResource = EquipmentManager.getResource(Integer.parseInt(attrs));
+        // 装备属性
+        equipment.equipmentAttrMap = equipmentResource.getAttrMap();
+        // 耐久度
         if(equipmentResource.getEquipmentType() == EquipmentType.WEAPON.getId()){
             equipment.currentDurability = equipmentResource.getDurability();
         }
+
         return equipment;
     }
 
@@ -56,6 +65,7 @@ public class Equipment extends AbstractItem {
     public AbstractItem copy() {
         Equipment equipment = new Equipment();
         equipment.currentDurability = this.currentDurability;
+        equipment.equipmentAttrMap = this.equipmentAttrMap;
         equipment.setObjectOnlyId(this.getObjectOnlyId());
         equipment.setItemId(this.getItemId());
         equipment.setNum(this.getNum());

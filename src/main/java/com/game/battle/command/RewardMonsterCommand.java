@@ -4,7 +4,7 @@ import com.frame.threadpool.account.AbstractAccountCommand;
 import com.game.account.entity.PlayerEntity;
 import com.game.common.SpringContext;
 import com.game.item.AbstractItem;
-import com.game.packback.service.BackpackServiceImpl;
+import com.game.backpack.service.BackpackServiceImpl;
 
 import java.util.List;
 

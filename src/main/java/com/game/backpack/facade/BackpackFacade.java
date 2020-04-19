@@ -1,9 +1,9 @@
-package com.game.packback.facade;
+package com.game.backpack.facade;
 
 import com.frame.dispatcher.anno.ReceiverAnno;
 import com.frame.event.anno.EventAnno;
 import com.frame.event.impl.OpenServerSyncEvent;
-import com.game.packback.service.IBackPackService;
+import com.game.backpack.service.IBackPackService;
 import com.game.role.event.CreateRoleSyncEvent;
 import com.netty.proto.Message;
 import io.netty.channel.Channel;

@@ -6,7 +6,7 @@ import com.game.common.constant.I18nId;
 import com.game.item.AbstractItem;
 import com.game.item.constant.ItemType;
 import com.game.item.resource.ItemResource;
-import com.game.packback.entity.BackPackEntity;
+import com.game.backpack.entity.BackPackEntity;
 import com.game.persistence.service.IPersistenceService;
 import com.game.util.PacketUtils;
 import io.netty.channel.Channel;

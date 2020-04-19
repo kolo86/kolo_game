@@ -1,11 +1,11 @@
-package com.game.packback.service;
+package com.game.backpack.service;
 
 import com.game.account.entity.PlayerEntity;
 import com.game.account.service.IPlayerService;
 import com.game.item.AbstractItem;
 import com.game.item.resource.ItemResource;
 import com.game.item.service.ItemManager;
-import com.game.packback.entity.BackPackEntity;
+import com.game.backpack.entity.BackPackEntity;
 import com.game.persistence.service.IPersistenceService;
 import com.game.util.PacketUtils;
 import com.netty.common.ProtocolEnum;

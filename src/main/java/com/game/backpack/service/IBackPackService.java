@@ -1,8 +1,8 @@
-package com.game.packback.service;
+package com.game.backpack.service;
 
 import com.game.account.entity.PlayerEntity;
 import com.game.item.AbstractItem;
-import com.game.packback.entity.BackPackEntity;
+import com.game.backpack.entity.BackPackEntity;
 import io.netty.channel.Channel;
 
 import java.util.List;

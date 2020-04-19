@@ -1,6 +1,6 @@
-package com.game.packback.service;
+package com.game.backpack.service;
 
-import com.game.packback.entity.BackPackEntity;
+import com.game.backpack.entity.BackPackEntity;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 

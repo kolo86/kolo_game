@@ -7,7 +7,7 @@ import com.game.container.AbstractContainer;
 import com.game.container.constant.CommandConstant;
 import com.game.container.constant.ContainerType;
 import com.game.equipment.entity.EquipmentEntity;
-import com.game.packback.entity.BackPackEntity;
+import com.game.backpack.entity.BackPackEntity;
 import com.game.persistence.AbstractEntity;
 import com.game.role.constant.RoleEnum;
 import com.game.role.entity.RoleEntity;

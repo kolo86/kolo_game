@@ -6,6 +6,7 @@ import com.game.equipment.constant.EquipmentType;
 import com.game.equipment.resource.EquipmentResource;
 import com.game.equipment.service.EquipmentManager;
 import com.game.item.AbstractItem;
+import com.game.item.model.Equipment;
 import com.game.item.resource.ItemResource;
 import com.game.item.service.ItemManager;
 import com.game.persistence.AbstractEntity;
@@ -44,7 +45,7 @@ public class EquipmentEntity extends AbstractEntity {
     /** 缓存的装备信息， Map< 部位ID， 装备 ></> */
     private transient Map<Integer, AbstractItem> equipmentMap = new HashMap<>();
 
-    /** 装备属性, Map< 属性类型， 属性值 ></> */
+    /** 已穿戴的装备属性缓存, Map< 属性类型， 属性值 ></> */
     private transient Map<AttrType, Long> equipmentAttrMap = new HashMap<>();
 
     @Override
@@ -87,11 +88,10 @@ public class EquipmentEntity extends AbstractEntity {
     public void reCalEquipmentAttr(){
         Map<AttrType, Long> newEquipmentAttrMap = new HashMap<>();
 
+        // 重新计算已穿戴装备的所有属性
         for( Map.Entry<Integer, AbstractItem> entry : equipmentMap.entrySet() ){
-            AbstractItem abstractItem = entry.getValue();
-            ItemResource itemResource = ItemManager.getResource(abstractItem.getItemId());
-            EquipmentResource equipmentResource = EquipmentManager.getResource(Integer.parseInt(itemResource.getAttrs()));
-            Map<AttrType, Long> attrMap = equipmentResource.getAttrMap();
+            Equipment equipment = (Equipment)entry.getValue();
+            Map<AttrType, Long> attrMap = equipment.getEquipmentAttrMap();
 
             for( Map.Entry<AttrType, Long> attrEntry :  attrMap.entrySet() ){
                 Long oldAttrValue = newEquipmentAttrMap.get(attrEntry.getKey());

@@ -1,4 +1,4 @@
-package com.game.packback.entity;
+package com.game.backpack.entity;
 
 import com.game.item.AbstractItem;
 import com.game.item.resource.ItemResource;

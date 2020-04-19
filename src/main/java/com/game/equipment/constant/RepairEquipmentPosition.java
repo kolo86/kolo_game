@@ -3,7 +3,7 @@ package com.game.equipment.constant;
 import com.game.account.entity.PlayerEntity;
 import com.game.common.SpringContext;
 import com.game.equipment.entity.EquipmentEntity;
-import com.game.packback.entity.BackPackEntity;
+import com.game.backpack.entity.BackPackEntity;
 import com.game.persistence.service.PersistenceServiceImpl;
 
 import java.util.HashMap;

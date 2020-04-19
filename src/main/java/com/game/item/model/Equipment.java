@@ -21,8 +21,7 @@ import lombok.Data;
 @Data
 public class Equipment extends AbstractItem {
 
-    /** 最大耐久度 */
-    private int maxDurability;
+
     /** 当前耐久度 */
     private int currentDurability;
 
@@ -48,7 +47,6 @@ public class Equipment extends AbstractItem {
         String attrs = itemResource.getAttrs();
         EquipmentResource equipmentResource = EquipmentManager.getResource(Integer.parseInt(attrs));
         if(equipmentResource.getEquipmentType() == EquipmentType.WEAPON.getId()){
-            equipment.maxDurability = equipmentResource.getDurability();
             equipment.currentDurability = equipmentResource.getDurability();
         }
         return equipment;
@@ -58,7 +56,6 @@ public class Equipment extends AbstractItem {
     public AbstractItem copy() {
         Equipment equipment = new Equipment();
         equipment.currentDurability = this.currentDurability;
-        equipment.maxDurability = this.maxDurability;
         equipment.setObjectOnlyId(this.getObjectOnlyId());
         equipment.setItemId(this.getItemId());
         equipment.setNum(this.getNum());
@@ -83,7 +80,10 @@ public class Equipment extends AbstractItem {
      *
      */
     public void recoverDurability(){
-        this.currentDurability = maxDurability;
+        ItemResource itemResource = ItemManager.getResource(this.getItemId());
+        String attrs = itemResource.getAttrs();
+        EquipmentResource equipmentResource = EquipmentManager.getResource(Integer.parseInt(attrs));
+        this.currentDurability = equipmentResource.getDurability();
     }
 
     /**
